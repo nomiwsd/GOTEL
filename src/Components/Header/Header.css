@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+.navbard{
+    background-color: rgb(255, 255, 255);
+}
+.navlinks{
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+   padding: 10px;
+   color: black !important;
+}
+.navlinks:hover{
+    color:orange !important;
+}
+ .findjobbtn{
+    border: 0px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgba(129, 111, 231, 0.911);
+    color: white;
+}
+.findjobbtn:hover{
+    border: 0px;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: rgba(129, 111, 231, 0.911);
+    color: white;
+}
