@@ -1,0 +1,43 @@
+*:focus {outline:none !important}
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+input:focus { outline: none !important; box-shadow: none !important; }
+button:focus { outline: none !important; box-shadow: none !important; }
+.loginhead,
+.logintxt {
+    text-align: left !important;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.formlabel {
+    text-align: left !important;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.forgetpswd {
+    text-align: end;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.socialicon {
+    border: 0px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.fbicon {
+    color: #1778f2;
+}
+.signup{
+    border: 1px solid rgb(177, 171, 171);
+    border-radius: 10px;
+}
+.signuptxt{
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+}
+.createbtn {
+    color: #2988fd !important;
+    background-color: #E6E6FA !important;
+}

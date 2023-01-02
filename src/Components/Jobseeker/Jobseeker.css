@@ -1,0 +1,9 @@
+.Usernavbar{
+    background-color: crimson;
+}
+.userlinks{
+    color: black !important;
+}
+*:focus {outline:none !important}
+
+button:focus { outline: none !important; box-shadow: none !important; }
