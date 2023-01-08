@@ -1,9 +1,68 @@
-.Usernavbar{
-    background-color: crimson;
+.Usernavbar {
+    background-color: #1F51FF;
 }
-.userlinks{
+
+.userlinks {
     color: black !important;
 }
-*:focus {outline:none !important}
 
-button:focus { outline: none !important; box-shadow: none !important; }
+*:focus {
+    outline: none !important
+}
+
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.userpage{
+    background-color: #EFF7F3;
+}
+#dropdownMenuButton2{
+    background-color: #1F51FF !important;
+    border: 0px !important;
+}
+.textef {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+}
+.mainhead{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
+
+.textds,
+.textloc {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+}
+.textedit {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #0536e7 !important;
+    text-decoration: none !important;
+}
+
+.textcom {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.textlang {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+}
+.textsocial {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+}
+ul li{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+}
+.progressbar {
+    border-radius: 50%;
+    margin-top: 5px;
+    height: 10px !important;
+}
+

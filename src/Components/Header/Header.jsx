@@ -1,5 +1,6 @@
 import React from 'react'
 import { Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Header.css'
 
 function Header() {
@@ -19,9 +20,9 @@ function Header() {
               Portal
             </button>
             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
-              <li><a class="dropdown-item active" href="#Company">Company</a></li>
-              <li><a class="dropdown-item" href="#admin">Admin</a></li>
-              <li><a class="dropdown-item" href="#Employer">Employer</a></li>
+              <li><Link class="dropdown-item active" to="../Login">Company</Link></li>
+              <li><Link class="dropdown-item" to="../Login">Admin</Link></li>
+              <li><Link class="dropdown-item" to="../Login">Employer</Link></li>
             </ul>
           </div>
           <button className='findjobbtn m-0 px-3 py-0'>Find a Job</button>

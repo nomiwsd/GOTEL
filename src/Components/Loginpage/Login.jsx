@@ -1,15 +1,15 @@
 import React from 'react'
 import './Login.css'
-import loginimg from '../Assets/loginimgd.jpg'
+import loginimg from '../Assets/Loginimg.jpg'
 // import { Button } from 'bootstrap'
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { Link } from 'react-router-dom'
 function Login() {
     return (
-        <div className='row m-0 p-0'>
-            <img className='col-6 p-0' src={loginimg} alt="wait for internet" />
-            <div className='col-6 px-5'>
+        <div className='row m-0 p-0 d-flex justify-content-center align-items-center ' style={{backgroundImage: `url(${loginimg} )`,  backgroundRepeat: 'no-repeat',backgroundSize:'cover'}}>
+            {/* <img className='col-5 p-0' src={loginimg} alt="wait for internet" /> */}
+            <div className='col-5 px-3  rounded-3 my-2 bg-light'>
                 <p className="loginhead h2">Login</p>
                 <p className='logintxt text-muted'>Login with the Data you entered during your Registration</p>
 
@@ -26,7 +26,7 @@ function Login() {
                 <button className='btn btn-light socialicon'><FaFacebook className='fs-3 fbicon'/></button>
                 <button className='btn btn-light socialicon'><FcGoogle className='fs-3' /></button>
                 </div>
-                <div className='signup py-3 px-4'>
+                <div className='signup border-1 border-secondary py-3 px-4 mb-2'>
                 <p className="signuphead h5">Signup</p>
                 <p className='signuptxt text-muted'>Register your Account First!</p>
                  <Link to='../Signup' className='btn createbtn my-3 w-100'>Create Account</Link> 
