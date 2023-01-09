@@ -1,10 +1,14 @@
+.jobseeker{
+    overflow-x: hidden;
+}
 .Usernavbar {
     background-color: #1F51FF;
 }
 
 .userlinks {
     color: black !important;
-}
+    text-decoration: none !important;
+}   
 
 *:focus {
     outline: none !important
@@ -14,7 +18,7 @@ button:focus {
     outline: none !important;
     box-shadow: none !important;
 }
-.userpage{
+.userpage ,.background{
     background-color: #EFF7F3;
 }
 #dropdownMenuButton2{
@@ -65,4 +69,86 @@ ul li{
     margin-top: 5px;
     height: 10px !important;
 }
+
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+.social-button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    border-radius: 100%;
+    background: #fff;
+    text-align: center;
+}
+.social-button::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    display: block;
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    transition: 0.3s;
+}
+.social-button:focus, .social-button:hover {
+    color: #fff;
+}
+.social-button:focus::after, .social-button:hover::after {
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    margin-left: calc(-50% - 1px);
+}
+.socialicon {
+    position: relative;
+    z-index: 1;
+    transition: 0.3s;
+}
+
+.socialicon  {
+    height: 40%;
+    width: 40%;
+}
+.social-button-mail {
+    color: #EA4335;
+}
+.social-button-mail::after {
+    background:#BB001B;
+}
+.social-button-facebook {
+    color: #3b5999;
+}
+.social-button-facebook::after {
+    background: #3b5999;
+}
+
+.social-button-github {
+    color: #6e5494;
+}
+.social-button-github::after {
+    background: #6e5494;
+}
+
+.social-button-twitter {
+    color: #55acee;
+}
+.social-button-twitter::after {
+    background: #55acee;
+}
+.social-button-instagram {
+    color: #e4405f;
+}
+.social-button-instagram::after {
+    background: #e4405f;
+}
+
 

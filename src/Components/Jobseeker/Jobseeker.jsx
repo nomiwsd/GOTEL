@@ -1,43 +1,22 @@
 import React from 'react'
-import { Button, Nav, Navbar } from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { FaFacebookSquare, FaInstagram, FaGithub, FaTwitter } from 'react-icons/fa'
+import { SiGmail } from 'react-icons/si'
+import Usernavbar from '../Usernavbar/Usernavbar';
 import './Jobseeker.css'
+
 function Jobseeker() {
+
     const now = 60;
     return (
-        <div>
-            <Navbar className='Usernavbar px-lg-5 m-0' collapseOnSelect expand="lg" variant="dark">
-                <Nav.Link className='fs-4' href="#home">Gotel</Nav.Link>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav" className='d-flex justify-content-center'>
-                    <Nav className="">
-                        <Nav.Link className='userlinks' href="#Contactus">Profile</Nav.Link>
-                        <Nav.Link className='userlinks' href="#features">Messages</Nav.Link>
-                        <Nav.Link className='userlinks' href="#About us">Find Job</Nav.Link>
-                        <Nav.Link className='userlinks' href="#About us">Courses</Nav.Link>
-                        <Nav.Link className='userlinks' href="#About us">Settings</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-                <Nav className='d-flex justify-content-end d-none d-lg-flex'>
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle me-2" style={{ width: "50px" }}
-                        alt="Avatar" />
-                    <div class="dropdown me-3 pt-2 ">
-                        <button class="btn dropdownbtn dropdown-toggle " type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                            User Name
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
-                            <li><a class="dropdown-item active" href="#Company">Log Out</a></li>
-                        </ul>
-                    </div>
-                </Nav>
-            </Navbar>
-
+        <div className='jobseeker'>
+           <Usernavbar/>
             {/* Profile Page */}
-            <div className="row m-0 p-0 userpage ">
-                <div className='col-md-5 col-lg-3 col-12 my-lg-4 mt-4 px-0 px-md-2'>
+            <div className="row m-0 p-0 userpage overflow-hidden">
+                <div className='col-md-6 col-lg-3 col-12 my-lg-4 mt-4 px-0 px-md-2'>
                     <div className="d-flex justify-content-center">
-                        <div className="editprofile border-1 rounded-2 px-4 col-10 col-md-11 py-2">
+                        <div className="editprofile border-1 rounded-2 px-4 col-10 col-md-11  py-2">
                             <div className="d-flex justify-content-center">
                                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style={{ width: "100px" }}
                                     alt="Avatar" />
@@ -83,29 +62,47 @@ function Jobseeker() {
 
                     {/* Social Media Links */}
                     <div className="d-flex justify-content-center my-3">
-                        <div className="col-10 col-md-11 col-lg-10 row  border-1 rounded-2">
+                        <div className="col-10 col-md-12 col-lg-11 row  border-1 rounded-2">
                             <div className="col-12 col-md-12 d-flex pt-2  px-3 justify-content-between">
                                 <p className='mainhead fw-bold mb-2'>Social Links</p>
                                 <a href='#edit' className='textedit m-0'>Edit</a>
                             </div>
 
-                            <div className="col-12 col-md-12 d-flex justify-content-between px-3">
-                                <div className='d-flex m-0 p-0'> <FaFacebookSquare className='me-1 p-' style={{ color: "#3b5998" }} />
-                                    <p className='m-0 textsocial '>Facebook</p></div>
-                                <p className='m-0 textloc text-muted'>www.facebook.com</p>
+                            <div class="social-buttons my-3">
+                                <a href="#social" class="social-button social-button-facebook" aria-label="Facebook">
+                                    <FaFacebookSquare className='socialicon me-1' />
+                                </a>
+                                <a href="#social" class="social-button social-button-instagram" aria-label="Instagram">
+                                    <FaInstagram className='socialicon me-1' />
+                                </a>
+                                <a href="#social" class="social-button social-button-twitter" aria-label="Twitter">
+                                    <FaTwitter className='socialicon me-1' />
+                                </a>
+                                <a href="#social" class="social-button social-button-github" aria-label="GitHub">
+                                    <FaGithub className='socialicon me-1' />
+                                </a>
+                                <a href="#social" class="social-button social-button-mail" aria-label="Mail">
+                                    <SiGmail className='socialicon me-1' />
+                                </a>
+                            </div>
+                            {/* <div className="col-12 col-md-12 d-flex justify-content-between px-3">
+                                <div className='d-flex m-0 p-0'> 
+                                   </div>
+                                <p className='m-0 textloc text-muted'>Facebook</p>
                             </div>
                             <div className="col-12 col-md-12 d-flex justify-content-between px-3 mt-2">
-                                <div className='d-flex m-0 p-0'> <FaInstagram className='me-1 p-' style={{ color: "#ac2bac" }} />      <p className='m-0 textsocial '>Instagram</p></div>
-                                <p className='m-0 textloc text-muted'>www.instagram.com</p>
+                                <div className='d-flex m-0 p-0'> 
+                                </div>
+                                <p className='m-0 textloc text-muted'>Instagram</p>
                             </div>
                             <div className="col-12 col-md-12 d-flex justify-content-between px-3 mt-2">
-                                <div className='d-flex m-0 p-0'><FaTwitter className='me-1 p-' style={{ color: "#55acee" }} /><p className='m-0 textsocial '>Twitter</p></div>
-                                <p className='m-0 textloc text-muted'>www.twitter.com</p>
+                                <div className='d-flex m-0 p-0'></div>
+                                <p className='m-0 textloc text-muted'>Twitter</p>
                             </div>
                             <div className="col-12 col-md-12 d-flex justify-content-between px-3 my-2">
-                                <div className='d-flex m-0 p-0'> <FaGithub className='me-1 p-' style={{ color: '#333333' }} /> <p className='m-0 textsocial '>Github</p></div>
-                                <p className='m-0 textloc text-muted'>www.github.com</p>
-                            </div>
+                                <div className='d-flex m-0 p-0'> </div>
+                                <p className='m-0 textloc text-muted'>Github</p>
+                            </div> */}
 
 
                         </div>
@@ -116,7 +113,7 @@ function Jobseeker() {
                 </div>
 
                 {/* Personal info */}
-                <div className="col-12  col-md-7 my-md-2 p-0 pe-md-3 px-4">
+                <div className="col-12  col-md-6 col-lg-5 my-md-2 p-0 pe-md-3 px-4 px-lg-2">
                     <div className="d-flex justify-content-center my-3">
                         <div className="col-12 col-md-12 row  border-1 rounded-2 m-0">
                             <div className="col-12 col-md-12 d-flex pt-2  px-3 justify-content-between m-0">
@@ -208,9 +205,9 @@ function Jobseeker() {
                     </div>
                 </div>
 
-                <div className="col-12 col-md-12 row m-0">
+                <div className="col-12 col-md-12 col-lg-4 row m-0 my-lg-2">
                     {/* Bio Section */}
-                    <div className=" col-md-4 col-12 d-flex justify-content-center">
+                    <div className=" col-md-4 col-12 col-lg-12 d-flex justify-content-center my-lg-3">
                         <div className="col-12 col-md-12  row  border-1 rounded-2">
                             <div className="col-12 col-md-12 d-flex pt-2  m-0 justify-content-between">
                                 <p className='mainhead fw-bold mb-2 mb-md-0'>Bio</p>
@@ -226,30 +223,30 @@ function Jobseeker() {
                         </div>
 
                     </div>
-                    <div className=" col-md-4 col-12 d-flex justify-content-center my-3 my-md-0">
-                        <div className="col-12 col-md-12 row  border-1 rounded-2">
+                    <div className=" col-md-4 col-lg-12 col-12 d-flex justify-content-center my-3 my-md-0">
+                        <div className="col-12 col-md-12  row  border-1 rounded-2">
                             <div className="col-12 d-flex justify-content-between pt-2">
                                 <p className='mainhead fw-bold mb-2'>Achievements</p>
                                 <a href='#edit' className='textedit m-0'>Edit</a>
                             </div>
 
-                            <div className="col-12 col-md-10 d-flex justify-content-between my-2">
-                                    <ul  className='ps-4' style={{
-                                        listStyleType: 'Square'
-                                    }}>
-                                        <li> Come up with a new idea that improved things.</li>
-                                        <li>Developed or implemented new procedures or systems.</li>
-                                        <li> Worked on special projects.</li>
-                                        <li> Received awards.</li>
-                                    </ul>
-                                
+                            <div className="col-12 col-md-12 d-flex justify-content-between my-2">
+                                <ul className='ps-4' style={{
+                                    listStyleType: 'Square'
+                                }}>
+                                    <li> Come up with a new idea that improved things.</li>
+                                    <li>Developed or implemented new procedures or systems.</li>
+                                    <li> Worked on special projects.</li>
+                                    <li> Received awards.</li>
+                                </ul>
+
                             </div>
 
                         </div>
 
                     </div>
                     {/* Skills Section */}
-                    <div className=" col-md-4 col-12 d-flex justify-content-center mb-3 my-md-0">
+                    <div className=" col-md-4 col-lg-12 col-12 d-flex justify-content-center mb-3 my-md-0 my-lg-3">
                         <div className="col-12 col-md-12 row  border-1 rounded-2">
                             <div className="col-12 col-md-12 d-flex justify-content-between pt-2">
                                 <p className='mainhead fw-bold mb-2 m-md-0'>Top Skills</p>

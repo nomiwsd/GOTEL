@@ -4,6 +4,7 @@ import Signup from './Components/Signuppage/Signup';
 import { BrowserRouter,Route,Routes } from 'react-router-dom';
 import Jobseeker from './Components/Jobseeker/Jobseeker';
 import Homepage from './Components/Homepage';
+import Messages from './Components/Messagespage/Messages';
 function App() {
   return (
     <div className="App">
@@ -12,6 +13,8 @@ function App() {
         <Route exact path="/" element={<Homepage/>}/>
         <Route exact path="/Login" element={<Login/>}/>
         <Route exact path="/Signup" element={<Signup/>}/>
+        <Route exact path="/Jobseeker" element={<Jobseeker/>}/>
+        <Route exact path="/Messages" element={<Messages/>}/>
         <Route exact path="/Jobseeker" element={<Jobseeker/>}/>
         </Routes> 
       </BrowserRouter>

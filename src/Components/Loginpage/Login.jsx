@@ -9,7 +9,7 @@ function Login() {
     return (
         <div className='row m-0 p-0 d-flex justify-content-center align-items-center ' style={{backgroundImage: `url(${loginimg} )`,  backgroundRepeat: 'no-repeat',backgroundSize:'cover'}}>
             {/* <img className='col-5 p-0' src={loginimg} alt="wait for internet" /> */}
-            <div className='col-5 px-3  rounded-3 my-2 bg-light'>
+            <div className='col-md-5 col-10 px-3  rounded-3 my-2 bg-light'>
                 <p className="loginhead h2">Login</p>
                 <p className='logintxt text-muted'>Login with the Data you entered during your Registration</p>
 
