@@ -226,11 +226,11 @@ function Jobseeker() {
                     <div className=" col-md-4 col-lg-12 col-12 d-flex justify-content-center my-3 my-md-0">
                         <div className="col-12 col-md-12  row  border-1 rounded-2">
                             <div className="col-12 d-flex justify-content-between pt-2">
-                                <p className='mainhead fw-bold mb-2'>Achievements</p>
+                                <p className='mainhead fw-bold mb-0'>Achievements</p>
                                 <a href='#edit' className='textedit m-0'>Edit</a>
                             </div>
 
-                            <div className="col-12 col-md-12 d-flex justify-content-between my-2">
+                            <div className="col-12 col-md-12 d-flex justify-content-between mb-2">
                                 <ul className='ps-4' style={{
                                     listStyleType: 'Square'
                                 }}>
@@ -271,18 +271,11 @@ function Jobseeker() {
 
                 </div>
             </div>
+                                    
+  
 
         </div>
     )
 }
-// const LinearProgressBar = (props) => {
-//     return (React.createElement("div", { className: "mainProgressBarDiv" },
-//         React.createElement("span", { className: "percentage", style: { fontSize: props.fontSize || 46 } },
-//             props.percent,
-//             " %"),
-//         React.createElement("div", { className: "emptyProgressBar", style: { width: "100%" } },
-//             React.createElement("div", { className: "fillingProgressBar", style: {
-//                     left: props.percent - 100 + "%",
-//                     transition: "3s"
-//                 } }))));};
+
 export default Jobseeker

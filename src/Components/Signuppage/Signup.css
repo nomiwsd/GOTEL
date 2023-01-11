@@ -3,6 +3,6 @@ input:focus { outline: none !important; box-shadow: none !important; }
 .signupimg{
     background-image: url('../Assets/Signupimg.jpg');
     background-size: cover;
-    height: 694px;
+    height: 750px;
     background-repeat: no-repeat;
 }
