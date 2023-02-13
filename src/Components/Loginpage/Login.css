@@ -1,4 +1,10 @@
 *:focus {outline:none !important}
+.loginpage{
+    background-image: url('../Assets/Loginimg.jpg');
+    background-size: cover;
+    height: 780px;
+    background-repeat: no-repeat;
+}
 p {
     font-family: 'Open Sans', sans-serif;
 }

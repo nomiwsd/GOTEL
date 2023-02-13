@@ -1,34 +1,34 @@
 import React from 'react'
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import './Landing.css'
-import { Autoplay} from "swiper";
-import Img1 from "../Assets/slideimg (1).jpg";
-import Img2 from "../Assets/slideimg (2).jpg";
-import Img3 from "../Assets/slideimg (3).jpg";
-import Img4 from "../Assets/slideimg (4).jpg";
-import Img5 from "../Assets/slideimg (5).jpg";
 function Landing() {
   return (
-    <div>
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 4500,
-          disableOnInteraction: false,
-        }}
-        modules={[Autoplay]}
-        className="mySwiper h-50"
-      >
-        <SwiperSlide className='slides'><img src={Img1} alt="wait for internet" /></SwiperSlide>
-        <SwiperSlide> <img src={Img2} alt="wait for internet" /></SwiperSlide>
-        <SwiperSlide> <img src={Img3} alt="wait for internet" /></SwiperSlide>
-        <SwiperSlide> <img src={Img4} alt="wait for internet" /></SwiperSlide>
-        <SwiperSlide> <img src={Img5} alt="wait for internet" /></SwiperSlide>
-      </Swiper>
+    <div className='Landingpage'>
+      <div class="Shapedivider">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+    </svg>
+</div>
+<div className=" h-75 w-100 d-flex justify-content-center align-items-center">
+<div className="Jobsearchbar row m-0 p-1">
+  <input type="text" className='jobtitle col-3 p-0' placeholder='Job Title or Keyword'/>
+
+<select className='col-3 jobcategory py-1'>
+	<option value="Job Category" selected>Job Category</option>
+	<option value="Job Category" >Graphic Designing</option>
+	<option value="Job Category" >Web Developing</option>
+	<option value="Job Category">Data Science</option>
+	<option value="Job Category" >Digital Marketing</option>
+</select>
+  <input type="text" className='joblocation col-3 border-1 border-dark ' placeholder='Job Location'/>
+  <select className='col-3 jobtype py-1'>
+	<option value="Job Type" selected>Job Type</option>
+	<option value="OnSite" >OnSite</option>
+	<option value="Remote" >Remote</option>
+</select>
+  
+</div>
+<button className='searchbtn p-0 col-1 mx-2 py-2'>Search</button>
+</div>
     </div>
   )
 }

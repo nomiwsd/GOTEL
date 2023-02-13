@@ -1,8 +1,32 @@
-*:focus {outline:none !important}
-input:focus { outline: none !important; box-shadow: none !important; }
-.signupimg{
+*:focus {
+    outline: none !important
+}
+
+input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.signupimg {
     background-image: url('../Assets/Signupimg.jpg');
     background-size: cover;
-    height: 750px;
+    height: 780px;
     background-repeat: no-repeat;
+}
+
+.Tabbtns {
+    display: inline-flex;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    white-space: nowrap;
+    align-items: center;
+    border-bottom-width: 2px;
+    cursor: pointer;
 }

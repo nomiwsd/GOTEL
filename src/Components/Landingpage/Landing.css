@@ -1,34 +1,74 @@
+.Landingpage {
+  position: relative;
+  background-image: url('../Assets/Homepage1.jpg');
+  background-size: cover;
+  height: 600px;
+  background-repeat: no-repeat;
+}
+.Jobsearchbar{
+  border: 2px solid rgb(20, 20, 228);
+  border-radius: 12px;
+  background-color: white;
+}
+.Jobsearchbar input::placeholder{
+  text-align: center;
+  color: black;
+}
+.jobtitle {
+background-color: rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid black;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.joblocation{
+	background-color: rgba(0, 0, 0, 0.05) !important;
+	border: 1px solid black;
+}
+.jobcategory{
+	background-color: rgba(0, 0, 0, 0.05) !important;
+	border: 1px solid black;
+}
+.jobtype {
+background-color: rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid black;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+ 
+}
+option:checked{
+	color: black !important;
+}
+option{
+	background-color:rgba(0, 0, 0, 0.05);
+	color: black;
+}
 
-.swiper {
-    width: 100%;
-    height: 100%;
-  } 
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-  
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-  }
-  .slides{
-    width: 100%;
-    height: 50% !important;
-  }
-.swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 10% !important;
-    object-fit: cover;
-  }
+.searchbtn {
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: rgba(129, 111, 231, 0.911);
+  color: white;
+  border-radius: 10px;
+  padding-top: 2px;
+  padding-bottom: 1px;
+}
+
+.Shapedivider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.Shapedivider svg {
+  position: relative;
+  display: block;
+  width: calc(135% + 1.3px);
+  height: 184px;
+}
+
+.Shapedivider .shape-fill {
+  fill: #3C69DDE8;
+}

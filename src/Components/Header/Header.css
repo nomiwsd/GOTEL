@@ -25,11 +25,14 @@ button:focus { outline: none !important; box-shadow: none !important; }
 } */
  .findjobbtn{
     border: 0px;
+    text-decoration: none;
     border-radius: 30px;
     font-size: 16px;
     font-family: 'Open Sans', sans-serif;
     background-color: rgba(129, 111, 231, 0.911);
     color: white;
+    padding-top: 10px;
+
 }
 .findjobbtn:hover{
     border: 0px;

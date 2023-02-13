@@ -10,7 +10,7 @@ function Jobseeker() {
 
     const now = 60;
     return (
-        <div className='jobseeker'>
+        <div className='jobseeker h-100'>
            <Usernavbar/>
             {/* Profile Page */}
             <div className="row m-0 p-0 userpage overflow-hidden">

@@ -5,7 +5,6 @@ import './Header.css'
 
 function Header() {
   return (
-
     <Navbar className='navbard px-5 m-0' collapseOnSelect expand="lg" variant="dark">
       <Nav.Link className='fs-4' href="#home">Gotel</Nav.Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -15,7 +14,7 @@ function Header() {
           <Nav.Link className='navlinks' href="#About us">About Us</Nav.Link>
           <Nav.Link className='navlinks' href="#partners">Partners</Nav.Link>
           <Nav.Link className='navlinks' href="#Contactus">Contact Us</Nav.Link>
-          <div class="dropdown me-3">
+          {/* <div class="dropdown me-3">
             <button class="btn  dropdownbtn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
               Portal
             </button>
@@ -24,8 +23,9 @@ function Header() {
               <li><Link class="dropdown-item" to="../Login">Admin</Link></li>
               <li><Link class="dropdown-item" to="../Login">Employer</Link></li>
             </ul>
-          </div>
-          <button className='findjobbtn m-0 px-3 py-0'>Find a Job</button>
+          </div> */}
+          <Link to='../Signup'className='findjobbtn m-0 px-3 py-1'>Register</Link>
+          <Link to='../Login' className='findjobbtn m-0 px-3 py-1 mx-2'>Login</Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

@@ -1,0 +1,45 @@
+.ftco-section {
+    padding: 7em 0;
+    position: relative;
+}
+
+.bg-light {
+    background: #f8f9fa !important;
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.job-post-item {
+    margin-bottom: 10px;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+job-post-item .badge {
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.job-post-item {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.bg-primary {
+    background: #157efb !important;
+}
+
+.bg-primary {
+    background: #157efb;
+}
+
+.ftco-counter {
+    background-image: url('../Assets/bg_1.jpg.webp');
+}

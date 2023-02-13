@@ -1,13 +1,12 @@
 import React from 'react'
 import './Login.css'
-import loginimg from '../Assets/Loginimg.jpg'
 // import { Button } from 'bootstrap'
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { Link } from 'react-router-dom'
 function Login() {
     return (
-        <div className='row m-0 p-0 d-flex justify-content-center align-items-center ' style={{backgroundImage: `url(${loginimg} )`,  backgroundRepeat: 'no-repeat',backgroundSize:'cover'}}>
+        <div className='row m-0 p-0 loginpage d-flex justify-content-center align-items-center '>
             {/* <img className='col-5 p-0' src={loginimg} alt="wait for internet" /> */}
             <div className='col-md-5 col-10 px-3  rounded-3 my-2 bg-light'>
                 <p className="loginhead h2">Login</p>

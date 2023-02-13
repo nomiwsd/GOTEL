@@ -38,7 +38,7 @@ function Usernavbar() {
             <Button variant="primary"  className="d-md-none w-100 me-2" onClick={toggleShow} >
                 Menu
             </Button>
-            <Offcanvas show={show} onHide={handleClose} placement='top'>
+            <Offcanvas show={show} onHide={handleClose} placement='start'>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Gotel</Offcanvas.Title>
                 </Offcanvas.Header>

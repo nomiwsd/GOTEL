@@ -17,7 +17,7 @@ function Signup() {
     return (
         <div className='signupimg ' >
         <div className='d-flex justify-content-center align-items-center pb-5' >
-            <div className="col-md-8  col-10 col-lg-6 rounded-2 align-items-center my-3 bg-light px-md-3 pt-2 px-2">
+            <div className="col-md-8  col-10 col-lg-6 rounded-2 align-items-center my-5 bg-light px-md-3 pt-2 px-2">
                 <p className="loginhead h2">Register</p>
                 <p className='logintxt text-muted'>Enter your details to get Registered</p>
                 <nav className="d-flex navtab justify-content-center px-3">
