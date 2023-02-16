@@ -1,14 +1,11 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Open+Sans&display=swap');
 .ftco-section {
     padding: 7em 0;
     position: relative;
 }
-
 .bg-light {
-    background: #f8f9fa !important;
-}
-
-.bg-light {
-    background-color: #f8f9fa !important;
+    background-color: rgb(233, 233, 233) !important;
 }
 
 .job-post-item {
@@ -19,27 +16,34 @@
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
-
 job-post-item .badge {
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     -ms-border-radius: 30px;
     border-radius: 30px;
 }
-
-.job-post-item {
+.job-post-item{
     border: 1px solid black;
     border-radius: 10px;
+    background-color: #58a3ff !important;
+    color: white;
 }
-
 .bg-primary {
     background: #157efb !important;
 }
-
 .bg-primary {
     background: #157efb;
 }
-
-.ftco-counter {
+.ftco-counter{
     background-image: url('../Assets/bg_1.jpg.webp');
+}
+.counternumber{
+    font-size: 34px;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+}
+.spantext{
+    font-size: 18px;
+    font-family: 'Nunito', sans-serif;
+    color: white;
 }

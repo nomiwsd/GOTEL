@@ -3,21 +3,21 @@ import { BsHeartFill } from 'react-icons/bs'
 import './Jobs.css'
 function Jobs() {
     return (
-        <div>
-            <section className="ftco-section bg-light">
+        <div className='p-0 m-0 bg-light'>
+            <section className="py-4">
                 <div className="container">
-                    <div className="row justify-content-center mb-5 pb-3">
-                        <div className="col-md-7 heading-section text-center">
+                    <div className="row justify-content-center mb-3 pb-3">
+                        <div className="col-md-7 heading-section text-center ">
                             <span className="subheading">Recently Added Jobs</span>
-                            <h2 className="mb-4"><span>Recent</span> Jobs</h2>
+                            <h2 className="mb-2"><span>Recent</span> Jobs</h2>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-12 ">
-                            <div className="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+                        <div className="col-md-12 job-post-item">
+                            <div className="p-4 d-block d-md-flex align-items-center">
                                 <div className="mb-4 mb-md-0 mr-5">
                                     <div className="job-post-item-header d-flex align-items-center">
-                                        <h2 className="mr-3 text-black h3">Frontend Development</h2>
+                                        <h2 className="mr-3 h3">Frontend Development</h2>
                                         <div className="badge-wrap">
                                             <span className="bg-primary text-white badge py-2 px-3">Partime</span>
                                         </div>
@@ -28,18 +28,18 @@ function Jobs() {
                                     </div>
                                 </div>
                                 <div className="ml-auto d-flex">
-                                    <a href="job-single.html" className="btn btn-primary py-2 mr-1">Apply Job</a>
+                                    <a href="#dfj" className="btn btn-primary py-2 mr-1">Apply Job</a>
                                     <a href="#fsd" className="btn btn-secondary rounded-circle  d-flex align-items-center icon">
                                         <BsHeartFill />
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-12 ">
-                            <div className="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+                        <div className="col-md-12 job-post-item">
+                            <div className="p-4 d-block d-md-flex align-items-center">
                                 <div className="mb-4 mb-md-0 mr-5">
                                     <div className="job-post-item-header d-flex align-items-center">
-                                        <h2 className="mr-3 text-black h4">Full Stack Developer</h2>
+                                        <h2 className="mr-3 h4">Full Stack Developer</h2>
                                         <div className="badge-wrap">
                                             <span className="bg-warning text-white badge py-2 px-3">Full Time</span>
                                         </div>
@@ -50,18 +50,18 @@ function Jobs() {
                                     </div>
                                 </div>
                                 <div className="ml-auto d-flex">
-                                    <a href="job-single.html" className="btn btn-primary py-2 mr-1">Apply Job</a>
-                                    <a href="#fda" className="btn btn-danger rounded-circle d-flex align-items-center">
+                                    <a href="#dfj" className="btn btn-primary py-2 mr-1">Apply Job</a>
+                                    <a href="#fda" className="btn btn-danger rounded-circle  d-flex align-items-center">
                                         <BsHeartFill />
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-12 ">
-                            <div className="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+                        <div className="col-md-12 job-post-item">
+                            <div className=" p-4 d-block d-md-flex align-items-center">
                                 <div className="mb-4 mb-md-0 mr-5">
                                     <div className="job-post-item-header d-flex align-items-center">
-                                        <h2 className="mr-3 text-black h4">Open Source Interactive Developer</h2>
+                                        <h2 className="mr-3 h4">Open Source Interactive Developer</h2>
                                         <div className="badge-wrap">
                                             <span className="bg-info text-white badge py-2 px-3">Freelance</span>
                                         </div>
@@ -72,18 +72,18 @@ function Jobs() {
                                     </div>
                                 </div>
                                 <div className="ml-auto d-flex">
-                                    <a href="job-single.html" className="btn btn-primary py-2 mr-1">Apply Job</a>
-                                    <a href="#fds" className="btn btn-secondary rounded-circle btn-favorite d-flex align-items-center icon">
+                                    <a href="#dfj" className="btn btn-primary py-2 mr-1">Apply Job</a>
+                                    <a href="#fds" className="btn btn-secondary rounded-circle  d-flex align-items-center icon">
                                         <BsHeartFill />
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-12 ">
-                            <div className="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+                        <div className="col-md-12 job-post-item">
+                            <div className=" p-4 d-block d-md-flex align-items-center">
                                 <div className="mb-4 mb-md-0 mr-5">
                                     <div className="job-post-item-header d-flex align-items-center">
-                                        <h2 className="mr-3 text-black h4">Frontend Development</h2>
+                                        <h2 className="mr-3  h4">Frontend Development</h2>
                                         <div className="badge-wrap">
                                             <span className="bg-secondary text-white badge py-2 px-3">Internship</span>
                                         </div>
@@ -94,18 +94,18 @@ function Jobs() {
                                     </div>
                                 </div>
                                 <div className="ml-auto d-flex">
-                                    <a href="job-single.html" className="btn btn-primary py-2 mr-1">Apply Job</a>
-                                    <a href="#sdf" className="btn btn-secondary rounded-circle btn-favorite d-flex align-items-center icon">
+                                    <a href="#dfj" className="btn btn-primary py-2 mr-1">Apply Job</a>
+                                    <a href="#sdf" className="btn btn-secondary rounded-circle  d-flex align-items-center icon">
                                         <BsHeartFill />
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-12 ">
-                            <div className="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+                        <div className="col-md-12 job-post-item">
+                            <div className="p-4 d-block d-md-flex align-items-center">
                                 <div className="mb-4 mb-md-0 mr-5">
                                     <div className="job-post-item-header d-flex align-items-center">
-                                        <h2 className="mr-3 text-black h4">Open Source Interactive Developer</h2>
+                                        <h2 className="mr-3 h4">Open Source Interactive Developer</h2>
                                         <div className="badge-wrap">
                                             <span className="bg-danger text-white badge py-2 px-3">Temporary</span>
                                         </div>
@@ -116,18 +116,18 @@ function Jobs() {
                                     </div>
                                 </div>
                                 <div className="ml-auto d-flex">
-                                    <a href="job-single.html" className="btn btn-primary py-2 mr-1">Apply Job</a>
-                                    <a href="#fds" className="btn btn-secondary rounded-circle btn-favorite d-flex align-items-center icon">
+                                    <a href="#dfj" className="btn btn-primary py-2 mr-1">Apply Job</a>
+                                    <a href="#fds" className="btn btn-secondary rounded-circle  d-flex align-items-center icon">
                                         <BsHeartFill />
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-12">
-                            <div className="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+                        <div className="col-md-12 job-post-item">
+                            <div className="p-4 d-block d-md-flex align-items-center">
                                 <div className="mb-4 mb-md-0 mr-5">
                                     <div className="job-post-item-header d-flex align-items-center">
-                                        <h2 className="mr-3 text-black h3">Frontend Development</h2>
+                                        <h2 className="mr-3 h3">Frontend Development</h2>
                                         <div className="badge-wrap">
                                             <span className="bg-primary text-white badge py-2 px-3">Partime</span>
                                         </div>
@@ -138,18 +138,18 @@ function Jobs() {
                                     </div>
                                 </div>
                                 <div className="ml-auto d-flex">
-                                    <a href="job-single.html" className="btn btn-primary py-2 mr-1">Apply Job</a>
-                                    <a href="#sdf" className="btn btn-secondary rounded-circle btn-favorite d-flex align-items-center icon">
+                                    <a href="#dfj" className="btn btn-primary py-2 mr-1">Apply Job</a>
+                                    <a href="#sdf" className="btn btn-secondary rounded-circle  d-flex align-items-center icon">
                                         <BsHeartFill />
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-12 ftco-animate fadeInUp ftco-animated">
-                            <div className="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+                        <div className="col-md-12 job-post-item">
+                            <div className="p-4 d-block d-md-flex align-items-center">
                                 <div className="mb-4 mb-md-0 mr-5">
                                     <div className="job-post-item-header d-flex align-items-center">
-                                        <h2 className="mr-3 text-black h4">Full Stack Developer</h2>
+                                        <h2 className="mr-3  h4">Full Stack Developer</h2>
                                         <div className="badge-wrap">
                                             <span className="bg-warning text-white badge py-2 px-3">Full Time</span>
                                         </div>
@@ -160,18 +160,18 @@ function Jobs() {
                                     </div>
                                 </div>
                                 <div className="ml-auto d-flex">
-                                    <a href="job-single.html" className="btn btn-primary py-2 mr-1">Apply Job</a>
+                                    <a href="#dfj" className="btn btn-primary py-2 mr-1">Apply Job</a>
                                     <a href="#sdf" className="btn btn-secondary rounded-circle  d-flex align-items-center icon">
                                         <BsHeartFill />
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-12 ">
-                            <div className="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+                        <div className="col-md-12 job-post-item">
+                            <div className=" p-4 d-block d-md-flex align-items-center">
                                 <div className="mb-4 mb-md-0 mr-5">
                                     <div className="job-post-item-header d-flex align-items-center">
-                                        <h2 className="mr-3 text-black h4">Open Source Interactive Developer</h2>
+                                        <h2 className="mr-3 h4">Open Source Interactive Developer</h2>
                                         <div className="badge-wrap">
                                             <span className="bg-info text-white badge py-2 px-3">Freelance</span>
                                         </div>
@@ -182,18 +182,18 @@ function Jobs() {
                                     </div>
                                 </div>
                                 <div className="ml-auto d-flex">
-                                    <a href="#dfsf" className="btn btn-primary py-2 mr-1">Apply Job</a>
-                                    <a href="#sg" className="btn btn-secondary rounded-circle btn-favorite d-flex align-items-center icon">
+                                    <a href="#dfj" className="btn btn-primary py-2 mr-1">Apply Job</a>
+                                    <a href="#sg" className="btn btn-secondary rounded-circle  d-flex align-items-center icon">
                                         <BsHeartFill />
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-12">
-                            <div className="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+                        <div className="col-md-12 job-post-item">
+                            <div className="p-4 d-block d-md-flex align-items-center">
                                 <div className="mb-4 mb-md-0 mr-5">
                                     <div className="job-post-item-header d-flex align-items-center">
-                                        <h2 className="mr-3 text-black h4">Frontend Development</h2>
+                                        <h2 className="mr-3 h4">Frontend Development</h2>
                                         <div className="badge-wrap">
                                             <span className="bg-secondary text-white badge py-2 px-3">Internship</span>
                                         </div>
@@ -204,18 +204,18 @@ function Jobs() {
                                     </div>
                                 </div>
                                 <div className="ml-auto d-flex">
-                                    <a href="#dfs" className="btn btn-primary py-2 mr-1">Apply Job</a>
+                                    <a href="#dfj" className="btn btn-primary py-2 mr-1">Apply Job</a>
                                     <a href="#df" className="btn btn-secondary rounded-circle  d-flex align-items-center icon">
                                         <BsHeartFill />
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-12 ">
-                            <div className="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+                        <div className="col-md-12 job-post-item">
+                            <div className="p-4 d-block d-md-flex align-items-center">
                                 <div className="mb-4 mb-md-0 mr-5">
                                     <div className="job-post-item-header d-flex align-items-center">
-                                        <h2 className="mr-3 text-black h4">Open Source Interactive Developer</h2>
+                                        <h2 className="mr-3 h4">Open Source Interactive Developer</h2>
                                         <div className="badge-wrap">
                                             <span className="bg-danger text-white badge py-2 px-3">Temporary</span>
                                         </div>
@@ -226,55 +226,55 @@ function Jobs() {
                                     </div>
                                 </div>
                                 <div className="ml-auto d-flex">
-                                    <a href="#fds" className="btn btn-primary py-2 mr-1">Apply Job</a>
-                                    <a href="#dfs" className="btn btn-secondary rounded-circle d-flex align-items-center">
+                                    <a href="#dfj" className="btn btn-primary py-2 mr-1">Apply Job</a>
+                                    <a href="#dfs" className="btn btn-secondary rounded-circle  d-flex align-items-center icon">
                                         <BsHeartFill />
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="d-flex justify-content-between mt-5">
+                    <div className="d-flex justify-content-between mt-3">
                         <button className='col-2 btn btn-danger'>Previous</button>
                         <button className=' col-2 btn btn-danger'>Next</button>
                     </div>
                 </div>
             </section>
-            <section className="ftco-counter" >
+            <section className="ftco-section ftco-counter section-overly img"  >
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-10">
                             <div className="row">
-                                <div className="col-md-3 d-flex justify-content-center">
-                                    <div className=" text-center">
+                                <div className="col-md-3 ">
+                                    <div className="text-center d-block">
                                         <div className="text">
-                                            <strong className="number" data-number="1350000">1,350,000</strong>
-                                            <span>Jobs</span>
+                                            <strong className="counternumber" data-number="1350000">1,350,000</strong>
                                         </div>
+                                        <span className='spantext'>Jobs</span>
                                     </div>
                                 </div>
-                                <div className="col-md-3 d-flex justify-content-center ">
-                                    <div className="text-center">
+                                <div className="col-md-3">
+                                    <div className=" text-center d-block">
                                         <div className="text">
-                                            <strong className="number" data-number="40000">40,000</strong>
-                                            <span>Members</span>
+                                            <strong className="counternumber" data-number="40000">40,000</strong>
                                         </div>
+                                        <span className='spantext'>Members</span>
                                     </div>
                                 </div>
-                                <div className="col-md-3 d-flex justify-content-center">
-                                    <div className="text-center">
+                                <div className="col-md-3">
+                                    <div className=" text-center d-block">
                                         <div className="text">
-                                            <strong className="number" data-number="30000">30,000</strong>
-                                            <span>Resume</span>
-                                        </div>
+                                            <strong className="counternumber" data-number="30000">30,000</strong>
+                                            </div>
+                                        <span className='spantext'>Resume</span>
                                     </div>
                                 </div>
-                                <div className="col-md-3 d-flex justify-content-center">
-                                    <div className="text-center">
+                                <div className="col-md-3">
+                                    <div className=" text-center d-block">
                                         <div className="text">
-                                            <strong className="number" data-number="10500">10,500</strong>
-                                            <span>Company</span>
+                                            <strong className="counternumber" data-number="10500">10,500</strong>
                                         </div>
+                                        <span className='spantext'>Company</span>
                                     </div>
                                 </div>
                             </div>

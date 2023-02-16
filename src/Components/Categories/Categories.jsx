@@ -10,35 +10,35 @@ import icon8 from '../Assets/content-writing.png'
 import './Categories.css'
 function Categories() {
     return (
-        <div className='Categories'>
+        <div className='Categories m-0 p-0'>
             <div className="row m-0 p-0 categoriessect">
                 <div className="col-3 d-flex justify-content-center py-3">
                     <div className="sect align-content-center">
                         <div className="d-flex justify-content-center">
-                            <img src="https://img.icons8.com/dotty/80/null/set-as-resume.png" alt='wait for loading' />
+                        <img src="https://img.icons8.com/stickers/100/null/parse-from-clipboard.png" alt='wait for loading'/>
                         </div>
-                        <p>Search Thousands of Jobs</p></div>
+                        <p className='imgtext'>Search Thousands of Jobs</p></div>
                 </div>
                 <div className="col-3 d-flex justify-content-center py-3">
                     <div className="sect align-content-center">
                         <div className="d-flex justify-content-center">
-                            <img src="https://img.icons8.com/external-outline-geotatah/64/null/external-company-conflict-resolution-outline-geotatah.png" alt='wait for internet' />
+                        <img src="https://img.icons8.com/stickers/100/null/client-company.png" alt='wait for internet'/>
                         </div>
-                        <p>Easy to Manage Jobs</p></div>
+                        <p className='imgtext'>Easy to Manage Jobs</p></div>
                 </div>
                 <div className="col-3 d-flex justify-content-center py-3">
                     <div className="sect align-content-center">
                         <div className="d-flex justify-content-center">
-                            <img src="https://img.icons8.com/ios-filled/50/null/personal-growth.png"
-                                alt='wait for internet' /></div>
-                        <p>Top Careers</p></div>
+                        <img src="https://img.icons8.com/fluency/48/null/personal-growth.png" alt='wait for internet'/>
+                                </div>
+                        <p className='imgtext'>Top Careers</p></div>
                 </div>
                 <div className="col-3 d-flex justify-content-center py-3">
                     <div className="sect align-content-center">
                         <div className="d-flex justify-content-center">
-                            <img src="https://img.icons8.com/ios-filled/50/null/group-foreground-selected.png" alt='wait for internet' />
+                        <img src="https://img.icons8.com/external-xnimrodx-blue-xnimrodx/64/null/external-candidates-politics-xnimrodx-blue-xnimrodx.png" alt='wait for internet'/>
                         </div>
-                        <p>Search Expert Candidates</p></div>
+                        <p className='imgtext'>Search Expert Candidates</p></div>
                 </div>
             </div>
             <div className="CategoriesCards pt-3">
@@ -134,21 +134,21 @@ function Categories() {
                         </div>
                     </div>
                 </div>
-<div className="d-flex justify-content-center">
-    <button className='btn btn-danger'>Browse All Categories </button>
-</div>
-<div class="online-cv cv-bg section-overly pt-90 pb-120 my-2" >
-<div class="container">
-<div class="row justify-content-center">
-<div class="col-xl-10">
-<div class="cv-caption text-center">
-<h4 class=""> Make a Difference with Your Online Resume!</h4>
-<a href="#sd" class="border-btn2 border-btn4">Upload your cv</a>
-</div>
-</div>
-</div>
-</div>
-</div>
+                <div className="d-flex justify-content-center py-3 my-3">
+                    <button className='btn btn-danger'>Browse All Categories </button>
+                </div>
+                <div class="online-cv cv-bg section-overly pt-90 pb-120 my-2" >
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-10">
+                                <div class="cv-caption text-center">
+                                    <h4 class=""> Make a Difference with Your Online Resume!</h4>
+                                    <a href="#sd" class="border-btn2 border-btn4">Upload your cv</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

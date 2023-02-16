@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 *:focus {outline:none !important}
 .navbard{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(65, 63, 63);
+    color: white;
+}
+.logoimg{
+    width: 100px;
+    height: 100px;
 }
 .navlinks{
     font-size: 16px;
     font-family: 'Open Sans', sans-serif;
    padding: 10px;
-   color: black !important;
 }
 .navlinks:hover{
     color:orange !important;

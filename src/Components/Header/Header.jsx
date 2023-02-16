@@ -1,12 +1,15 @@
 import React from 'react'
 import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Logo from '../Assets/Logo.png'
 import './Header.css'
 
 function Header() {
   return (
     <Navbar className='navbard px-5 m-0' collapseOnSelect expand="lg" variant="dark">
-      <Nav.Link className='fs-4' href="#home">Gotel</Nav.Link>
+      <Nav.Link className='fs-4' href="#home">
+        <img src={Logo} alt="" className='logoimg' />
+      </Nav.Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className='d-flex justify-content-end'>
         <Nav className="">
