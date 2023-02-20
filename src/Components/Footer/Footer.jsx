@@ -69,9 +69,7 @@ function Footer() {
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <p>
-                                Copyright ©<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script>document.write(new Date().getFullYear());</script>2023 All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="blank">Colorlib</a>
-                            </p>
+                          <p>Copyright © 2023 All Rights Reserved</p>
                         </div>
                     </div>
                 </div>

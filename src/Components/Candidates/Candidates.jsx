@@ -1,4 +1,7 @@
 import React from 'react'
+import {ImUserCheck} from 'react-icons/im'
+import {FaSearch} from 'react-icons/fa'
+import {AiOutlineFileSearch} from 'react-icons/ai'
 import './Candidates.css'
 function Candidates() {
     return (
@@ -15,7 +18,7 @@ function Candidates() {
                 <div class="carddetails px-5">
                     <div class="d-flex flex-row cardoverflow gap-2">
 
-                        <div class="card col-4">
+                        <div class="card col-lg-3 col-md-6 col-12">
                             <div class="card-container">
                                 <span class="pro">PRO</span>
                                 <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
@@ -44,7 +47,7 @@ function Candidates() {
                                 </div>
                             </div>
                         </div>
-                        <div class="card col-4">
+                        <div class="card col-lg-3 col-md-6 col-12">
                             <div class="card-container">
                                 <span class="pro">PRO</span>
                                 <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
@@ -73,7 +76,7 @@ function Candidates() {
                                 </div>
                             </div>
                         </div>
-                        <div class="card col-4">
+                        <div class="card col-lg-3 col-md-6 col-12">
                             <div class="card-container">
                                 <span class="pro">PRO</span>
                                 <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
@@ -102,7 +105,7 @@ function Candidates() {
                                 </div>
                             </div>
                         </div>
-                        <div class="card col-4">
+                        <div class="card col-lg-3 col-md-6 col-12">
                             <div class="card-container">
                                 <span class="pro">PRO</span>
                                 <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
@@ -131,7 +134,7 @@ function Candidates() {
                                 </div>
                             </div>
                         </div>
-                        <div class="card col-4">
+                        <div class="card col-lg-3 col-md-6 col-12">
                             <div class="card-container">
                                 <span class="pro">PRO</span>
                                 <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
@@ -160,7 +163,7 @@ function Candidates() {
                                 </div>
                             </div>
                         </div>
-                        <div class="card col-4">
+                        <div class="card col-lg-3 col-md-6 col-12">
                             <div class="card-container">
                                 <span class="pro">PRO</span>
                                 <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
@@ -189,7 +192,7 @@ function Candidates() {
                                 </div>
                             </div>
                         </div>
-                        <div class="card col-4">
+                        <div class="card col-lg-3 col-md-6 col-12">
                             <div class="card-container">
                                 <span class="pro">PRO</span>
                                 <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
@@ -218,7 +221,7 @@ function Candidates() {
                                 </div>
                             </div>
                         </div>
-                        <div class="card col-4">
+                        <div class="card col-lg-3 col-md-6 col-12">
                             <div class="card-container">
                                 <span class="pro">PRO</span>
                                 <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
@@ -247,7 +250,7 @@ function Candidates() {
                                 </div>
                             </div>
                         </div>
-                        <div class="card col-4">
+                        <div class="card col-lg-3 col-md-6 col-12">
                             <div class="card-container">
                                 <span class="pro">PRO</span>
                                 <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
@@ -276,7 +279,7 @@ function Candidates() {
                                 </div>
                             </div>
                         </div>
-                        <div class="card col-4">
+                        <div class="card col-lg-3 col-md-6 col-12">
                             <div class="card-container">
                                 <span class="pro">PRO</span>
                                 <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
@@ -311,7 +314,6 @@ function Candidates() {
             </section>
             <div class="apply-process-area apply-bg pt-150 pb-150">
                 <div class="container">
-
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-tittle text-white text-center">
@@ -324,8 +326,8 @@ function Candidates() {
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
                             <div class="single-process text-center mb-30">
-                                <div class="process-ion">
-                                    <span class="flaticon-search"></span>
+                                <div class="process-ion d-flex justify-content-center">
+                                    <FaSearch className='fs-3'/>
                                 </div>
                                 <div class="process-cap">
                                     <h5>1. Search a job</h5>
@@ -335,8 +337,8 @@ function Candidates() {
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="single-process text-center mb-30">
-                                <div class="process-ion">
-                                    <span class="flaticon-curriculum-vitae"></span>
+                                <div class="process-ion d-flex justify-content-center">
+                                   <AiOutlineFileSearch className='fs-2'/>
                                 </div>
                                 <div class="process-cap">
                                     <h5>2. Apply for job</h5>
@@ -346,8 +348,8 @@ function Candidates() {
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="single-process text-center mb-30">
-                                <div class="process-ion">
-                                    <span class="flaticon-tour"></span>
+                                <div class="process-ion d-flex justify-content-center">
+                                <ImUserCheck className='fs-3'/>
                                 </div>
                                 <div class="process-cap">
                                     <h5>3. Get your job</h5>
@@ -359,6 +361,7 @@ function Candidates() {
                 </div>
             </div>
         </div>
+
     )
 }
 

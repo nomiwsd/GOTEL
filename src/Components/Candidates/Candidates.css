@@ -5,7 +5,9 @@
 .cardoverflow{
     overflow-x: auto !important;
 }
-
+.carddetails::-webkit-scrollbar{
+	width: 0;
+}
 h3 {
 	margin: 10px 0;
 }

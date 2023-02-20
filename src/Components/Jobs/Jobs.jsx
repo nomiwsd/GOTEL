@@ -1,8 +1,17 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { BsHeartFill } from 'react-icons/bs'
 import './Jobs.css'
+import ScrollTrigger from 'react-scroll-trigger';
+import CountUp from 'react-countup';
 function Jobs() {
+    const [counterup,setcounterup]=useState(false);
     return (
+        <ScrollTrigger onEnter={()=>{
+            setcounterup(true)
+          }}
+          onExit={()=>{
+            setcounterup(false)
+          }}>
         <div className='p-0 m-0 bg-light'>
             <section className="py-4">
                 <div className="container">
@@ -12,7 +21,7 @@ function Jobs() {
                             <h2 className="mb-2"><span>Recent</span> Jobs</h2>
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row p-0 m-0">
                         <div className="col-md-12 job-post-item">
                             <div className="p-4 d-block d-md-flex align-items-center">
                                 <div className="mb-4 mb-md-0 mr-5">
@@ -234,9 +243,9 @@ function Jobs() {
                             </div>
                         </div>
                     </div>
-                    <div className="d-flex justify-content-between mt-3">
-                        <button className='col-2 btn btn-danger'>Previous</button>
-                        <button className=' col-2 btn btn-danger'>Next</button>
+                    <div className="d-flex justify-content-center mt-3">
+                        <button className='col-md-3 col-6 btn btn-danger'>Browse All Jobs</button>
+                        
                     </div>
                 </div>
             </section>
@@ -248,7 +257,9 @@ function Jobs() {
                                 <div className="col-md-3 ">
                                     <div className="text-center d-block">
                                         <div className="text">
-                                            <strong className="counternumber" data-number="1350000">1,350,000</strong>
+                                            <strong className="counternumber" data-number="1350000">
+                                            {counterup && <CountUp start={0} end={135000} duration={4} delay={0}/>}
+                                            </strong>
                                         </div>
                                         <span className='spantext'>Jobs</span>
                                     </div>
@@ -256,7 +267,7 @@ function Jobs() {
                                 <div className="col-md-3">
                                     <div className=" text-center d-block">
                                         <div className="text">
-                                            <strong className="counternumber" data-number="40000">40,000</strong>
+                                            <strong className="counternumber" data-number="40000"> {counterup && <CountUp start={0} end={4000} duration={4} delay={0}/>}</strong>
                                         </div>
                                         <span className='spantext'>Members</span>
                                     </div>
@@ -264,7 +275,7 @@ function Jobs() {
                                 <div className="col-md-3">
                                     <div className=" text-center d-block">
                                         <div className="text">
-                                            <strong className="counternumber" data-number="30000">30,000</strong>
+                                            <strong className="counternumber" data-number="30000">{counterup && <CountUp start={0} end={30000} duration={4} delay={0}/>}</strong>
                                             </div>
                                         <span className='spantext'>Resume</span>
                                     </div>
@@ -272,7 +283,7 @@ function Jobs() {
                                 <div className="col-md-3">
                                     <div className=" text-center d-block">
                                         <div className="text">
-                                            <strong className="counternumber" data-number="10500">10,500</strong>
+                                            <strong className="counternumber" data-number="10500">{counterup && <CountUp start={0} end={10500} duration={4} delay={0}/>}</strong>
                                         </div>
                                         <span className='spantext'>Company</span>
                                     </div>
@@ -283,6 +294,7 @@ function Jobs() {
                 </div>
             </section>
         </div>
+        </ScrollTrigger>
     )
 }
 

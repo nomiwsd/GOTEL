@@ -12,28 +12,28 @@ function Categories() {
     return (
         <div className='Categories m-0 p-0'>
             <div className="row m-0 p-0 categoriessect">
-                <div className="col-3 d-flex justify-content-center py-3">
+                <div className="col-md-3 col-12 d-flex justify-content-center py-3">
                     <div className="sect align-content-center">
                         <div className="d-flex justify-content-center">
                         <img src="https://img.icons8.com/stickers/100/null/parse-from-clipboard.png" alt='wait for loading'/>
                         </div>
                         <p className='imgtext'>Search Thousands of Jobs</p></div>
                 </div>
-                <div className="col-3 d-flex justify-content-center py-3">
+                <div className="col-md-3 col-12 d-flex justify-content-center py-3">
                     <div className="sect align-content-center">
                         <div className="d-flex justify-content-center">
                         <img src="https://img.icons8.com/stickers/100/null/client-company.png" alt='wait for internet'/>
                         </div>
                         <p className='imgtext'>Easy to Manage Jobs</p></div>
                 </div>
-                <div className="col-3 d-flex justify-content-center py-3">
+                <div className="col-md-3 col-12 d-flex justify-content-center py-3">
                     <div className="sect align-content-center">
                         <div className="d-flex justify-content-center">
                         <img src="https://img.icons8.com/fluency/48/null/personal-growth.png" alt='wait for internet'/>
                                 </div>
                         <p className='imgtext'>Top Careers</p></div>
                 </div>
-                <div className="col-3 d-flex justify-content-center py-3">
+                <div className="col-md-3 col-12 d-flex justify-content-center py-3">
                     <div className="sect align-content-center">
                         <div className="d-flex justify-content-center">
                         <img src="https://img.icons8.com/external-xnimrodx-blue-xnimrodx/64/null/external-candidates-politics-xnimrodx-blue-xnimrodx.png" alt='wait for internet'/>

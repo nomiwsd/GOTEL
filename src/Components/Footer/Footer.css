@@ -2,11 +2,11 @@ ftco-footer {
     font-size: 16px;
     background: rgb(255, 255, 255);
     padding: 6em 0px;
-    color: white !important;
+    color: black !important;
 }
 
 .ftco-bg-dark {
-    background: rgb(60, 49, 46);
+    background: rgb(255, 255, 255);
 }
 .ftco-section {
     padding: 6em 0px;
@@ -14,8 +14,8 @@ ftco-footer {
 }
 .ftco-footer-widget ul li a{
     text-decoration: none;
-    color: white;
+    color:black;
 }
 .ftco-heading-2{
-    color: white !important;
+    color: black !important;
 }

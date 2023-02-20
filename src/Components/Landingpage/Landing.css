@@ -5,42 +5,87 @@
   height: 600px;
   background-repeat: no-repeat;
 }
-.Jobsearchbar{
-  border: 2px solid rgb(20, 20, 228);
-  border-radius: 12px;
-  background-color: white;
+
+.Jobsearchbar {
+  border: 8px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50px;
 }
-.Jobsearchbar input::placeholder{
+.Landingbox{
+  top: 30%;
+  left: 15%;
+}
+@media screen and (min-width:768px) and (max-width:1024px){
+  .Landingbox{
+    top: 30%;
+    left: 3%;
+  } 
+}
+@media screen and (max-width:768px) {
+  .Jobsearchbar {
+    border: 0 !important;
+  }
+  .Landingbox{
+    top: 10%;
+    left: 0%;
+  }
+  .joblocation {
+    border: 1px solid black !important;
+  }
+
+  .jobtitle {
+    border: 1px solid black !important;
+    border-radius: 0px !important;
+  }
+
+  .jobtype {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid black !important;
+    border-radius: 0px !important;
+  }
+}
+
+.Jobsearchbar input,
+.Jobsearchbar select {
+  height: 60px;
+  color: #000;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 9px 18px 9px 24px;
+  background-color: #fff !important;
+  border: 1px solid black;
+}
+
+.Jobsearchbar input::placeholder {
   text-align: center;
   color: black;
 }
+
+.joblocation {
+  border: 0;
+}
+
 .jobtitle {
-background-color: rgba(0, 0, 0, 0.05) !important;
-  border: 1px solid black;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border: 0;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
 }
-.joblocation{
-	background-color: rgba(0, 0, 0, 0.05) !important;
-	border: 1px solid black;
-}
-.jobcategory{
-	background-color: rgba(0, 0, 0, 0.05) !important;
-	border: 1px solid black;
-}
+
 .jobtype {
-background-color: rgba(0, 0, 0, 0.05) !important;
-  border: 1px solid black;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
- 
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  border: 0;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+
 }
-option:checked{
-	color: black !important;
+
+option:checked {
+  color: black !important;
+text-align: center;
 }
-option{
-	background-color:rgba(0, 0, 0, 0.05);
-	color: black;
+
+option {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: black;
 }
 
 .searchbtn {
