@@ -1,0 +1,121 @@
+:root {
+	--font-family: 'Inter', sans-serif;
+	--background-color: #eee;
+	--border-color: #eee;
+	--btn-color: #007456;
+	--primary-color: #111111;
+	--filter-heading: #999;
+	--text-color: #555555;
+	--option-color: #007456;
+    --bs-dropdown-min-width: 70px;
+  }
+.bg-color{
+    background-color:#f9f9f9;
+}
+
+.select-box {
+    position: relative;
+    font-family: var(--font-family);
+    font-size: 18px;
+    color: #60666d;
+    z-index: 999;
+    width: 100px !important;
+    
+}
+.select-box__current {
+    position: relative;
+    cursor: pointer;
+}
+
+.select-box__current:focus+.select-box__list {
+    opacity: 1;
+    animation-name: none;
+}
+
+.select-box__current:focus+.select-box__list .select-box__option {
+    cursor: pointer;
+    z-index: 9;
+
+}
+
+.select-box__current:focus .select-box__icon {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.select-box__icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 10px;
+    opacity: 0.3;
+    transition: 0.2s ease;
+}
+
+.select-box__value {
+    display: flex;
+}
+
+.select-box__input {
+    display: none;
+}
+
+.select-box__input:checked+.select-box__input-text {
+    display: block;
+}
+
+.select-box__input-text {
+    display: none;
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    background-color: var(--background-color);
+    border-radius: 20px !important;
+}
+
+.select-box__list {
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    list-style: none;
+    border-radius: 20px !important;
+    opacity: 0;
+    background-color: var(--background-color) !important;
+    animation-name: HideList;
+    animation-duration: 0.5s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: step-start;
+
+}
+
+.select-box__option {
+    display: block;
+    padding: 5px;
+    background-color:var(--background-color);
+    border-radius: 20px !important;
+}
+
+.select-box__option:hover,
+.select-box__option:focus {
+    color: #546c84;
+    background-color: #fbfbfb;
+}
+
+@keyframes HideList {
+    from {
+        transform: scaleY(1);
+    }
+
+    to {
+        transform: scaleY(0);
+    }
+}
+.table-dashboard-wapper {
+    background-color: #fff;
+    position: relative;
+}
+.table-dashboard-wapper .title-jobs-dashboard{
+    color: var(--primary-color) !important;
+    position: relative;
+}

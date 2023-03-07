@@ -1,50 +1,90 @@
-*:focus {outline:none !important}
-.loginpage{
+:root {
+    --font-family: 'Inter', sans-serif;
+    --background-color: #eee;
+    --border-color: #eee;
+    --btn-color: #007456;
+    --primary-color: #111111;
+    --filter-heading: #999;
+    --text-color: #555555;
+    --option-color: #007456;
+}
+
+*:focus {
+    outline: none !important
+}
+
+.loginpage {
     background-image: url('../Assets/Loginimg.jpg');
     background-size: cover;
     height: 780px;
     background-repeat: no-repeat;
+}   
+.loginbg{
+    background-color: var(--background-color);
+    border-radius: 20px;
 }
+
 p {
-    font-family: 'Open Sans', sans-serif;
+
+    font-family: var(--font-family);
 }
-input:focus { outline: none !important; box-shadow: none !important; }
-button:focus { outline: none !important; box-shadow: none !important; }
+
+input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 .loginhead,
 .logintxt {
-    text-align: left !important;
-    font-family: 'Open Sans', sans-serif;
+    text-align: center !important;
+    font-family: var(--font-family);
+}
+
+.loginhead {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: var(--font-family);
 }
 
 .formlabel {
     text-align: left !important;
-    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: var(--font-family);
 }
 
 .forgetpswd {
-    color: white;
+    color: black;
     text-align: end;
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-family);
 }
 
 .socialicon {
     border: 0px;
     border-radius: 5px;
     margin: 5px;
+    background-color: transparent;
 }
 
 .fbicon {
     color: #1778f2;
 }
-.signup{
-    
+
+.signup {
     border-radius: 10px;
 }
-.signuptxt{
+
+.signuptxt {
     font-size: 12px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-family);
 }
+
 .createbtn {
-    color: #2988fd !important;
+    color: var(--btn-color) !important;
     background-color: #E6E6FA !important;
 }

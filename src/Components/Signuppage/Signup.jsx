@@ -17,8 +17,8 @@ function Signup() {
     return (
         <div className='signupimg ' >
         <div className='d-flex justify-content-center align-items-center pb-5' >
-            <div className="col-md-8  col-10 col-lg-6 rounded-2 align-items-center my-5 bg-light px-md-3 pt-2 px-2">
-                <p className="loginhead h2">Register</p>
+            <div className="col-md-8  col-10 col-lg-6 loginbg align-items-center my-5 bg-light px-md-3 pt-2 px-2">
+                <p className="loginhead my-3">Register</p>
                 <p className='logintxt text-muted'>Enter your details to get Registered</p>
                 <nav className="d-flex navtab justify-content-center px-3">
                     <TabSelector
@@ -61,12 +61,13 @@ function Signup() {
                                 <input type="password" className="form-control" id="ControlInput4" placeholder="********" />
                             </div>
                         </div>
-                        <button className='btn btn-primary my-3 w-100'>Register</button>
+                        <div className="d-flex justify-content-center"><Link to='../Admin' className='btn civibtn col-lg-6 col-6 my-3'>Register</Link></div>
+                       
                         <p className='text-center'>--------Or Signup With--------</p>
 
                         <div className='d-flex justify-content-center mb-3'>
-                            <button className='btn btn-light socialicon'><FaFacebook className='fs-3 fbicon' /></button>
-                            <button className='btn btn-light socialicon'><FcGoogle className='fs-3' /></button>
+                            <button className='btn col-1 socialicon  p-0 px-1 py-1'><FaFacebook className='fs-3 fbicon' /></button>
+                            <button className='btn  col-1 socialicon p-0 px-1 py-1'><FcGoogle className='fs-3 p-0' /></button>
                         </div>
                         <p className='text-center'>Already have an Account?
                         <Link to='../Login'>Login</Link>
@@ -92,12 +93,12 @@ function Signup() {
                                 <input type="password" className="form-control" id="ControlInput4" placeholder="********" />
                             </div>
                         </div>
-                        <button className='btn btn-primary my-3 w-100'>Register</button>
+                        <div className="d-flex justify-content-center"><Link to='../Admin' className='btn civibtn col-lg-6 col-6 my-3'>Register</Link></div>
                         <p className='text-center'>--------Or Signup With--------</p>
 
                         <div className='d-flex justify-content-center mb-3'>
-                            <button className='btn btn-light socialicon'><FaFacebook className='fs-3 fbicon' /></button>
-                            <button className='btn btn-light socialicon'><FcGoogle className='fs-3' /></button>
+                            <button className='btn  socialicon col-1  p-0 px-1 py-1'><FaFacebook className='fs-3 fbicon' /></button>
+                            <button className='btn  socialicon col-1  p-0 px-1 py-1'><FcGoogle className='fs-3' /></button>
                         </div>
                         <p className='text-center'>Already have an Account?
                         <Link to='../Login'>Login</Link>
@@ -134,12 +135,12 @@ function Signup() {
                                 <input type="password" className="form-control" id="ControlInput4" placeholder="********" />
                             </div>
                         </div>
-                        <Link to='../Jobseeker' className='btn btn-primary my-3 w-100'>Register</Link>
+                        <div className="d-flex justify-content-center"><Link to='../Usernavbar' className='btn civibtn col-lg-6 col-6 my-3'>Register</Link></div>
                         <p className='text-center'>--------Or Signup With--------</p>
 
                         <div className='d-flex justify-content-center mb-3'>
-                            <button className='btn btn-light socialicon'><FaFacebook className='fs-3 fbicon' /></button>
-                            <button className='btn btn-light socialicon'><FcGoogle className='fs-3' /></button>
+                            <button className='btn col-1 socialicon  p-0 px-1 py-1'><FaFacebook className='fs-3 fbicon' /></button>
+                            <button className='btn  socialicon col-1  p-0 px-1 py-1'><FcGoogle className='fs-3' /></button>
                         </div>
                         <p className='text-center'>Already have an Account?
                         <Link to='../Login'>Login</Link>

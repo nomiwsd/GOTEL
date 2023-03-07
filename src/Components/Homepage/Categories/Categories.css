@@ -1,0 +1,127 @@
+:root {
+    --font-family: 'Inter', sans-serif;
+    --background-color: #eee;
+    --border-color: #eee;
+    --btn-color: #007456;
+    --primary-color: #111111;
+    --filter-heading: #999;
+    --text-color: #555555;
+    --option-color: #007456;
+  }
+.Categories {
+    background-color:var(--background-color);}
+
+.categoriessect {
+    background-color: var(--background-color);
+}
+
+
+.categorycard {
+    border: 1px solid var(--border-color);
+}
+
+.services-ion img {
+    width: 50px;
+    height: 50px;
+}
+
+.our-services .single-services {
+    background-color: var(--btn-color);
+    border: 1px solid #dafcef;
+    padding: 44px 0;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s;
+}
+.single-services:hover{
+    color:white;
+}
+.services-ion img:hover{
+color:#FB246A !important;
+}
+.our-services a {
+    text-decoration: none;
+}
+.our-services a:hover {
+    text-decoration: none;
+    color: white !important;
+}
+.cv-bg{
+    background-image: url('../Images/cv_bg.jpg.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 90px;
+    padding-bottom: 120px;
+    color: white; 
+    margin: 0px;
+}
+.section-overly {
+    position: relative;
+    z-index: 0;
+}
+.section-overly::before {
+    position: absolute;
+    content: "";
+    background-color: rgba(31,43,123,0.8);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background-repeat: no-repeat;
+}
+.border-btn2 {
+ text-decoration: none;
+    border: 1px solid #8b92dd;
+    color: #8b92dd;
+    font-family:var(--font-family);
+    background: none;
+    padding: 19px 69px;
+    margin: 0px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0;
+}
+.border-btn4 {
+    border: 1px solid #fff;
+    color: #fff !important;
+    text-decoration: none;
+}
+.Browseheading {
+    margin-top: 20px;
+    font-size: 28px;
+    font-family: var(--font-family);
+    font-weight: 600;
+}
+.exploreheading{
+    font-size:20px;
+    font-family: var(--font-family);
+    font-weight: 500;
+}
+.services-cap a{
+font-size: 16px;
+font-family: var(--font-family);
+font-weight: 500;
+color: var(--background-color);
+}
+.services-cap span{
+font-size: 12px;
+font-family: var(--font-family);
+font-weight: 400;
+color: var(--background-color);
+}
+.civibtn{
+    background-color: var(--btn-color) !important;
+    color: white !important;
+    border-radius: 30px !important;
+}

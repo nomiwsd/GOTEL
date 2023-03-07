@@ -1,0 +1,61 @@
+:root {
+    --font-family: 'Inter', sans-serif;
+    --background-color: #eee;
+    --border-color: #eee;
+    --btn-color: #007456;
+    --primary-color: #111111;
+    --filter-heading: #999;
+    --text-color: #555555;
+    --option-color: #007456;
+}
+
+*:focus {
+    outline: none !important
+}
+
+.navbard {
+    background-color: white !important;
+    color: black !important;
+}
+
+.logoimg {
+    width: 120px;
+    height: 95px;
+}
+
+.navlinks {
+    text-align: center;
+    font-size: 16px !important;
+    font-family: var(--font-family);
+    font-weight: 700;
+    padding: 10px;
+    color: black !important;
+}
+
+.navlinks:hover {
+    color: orange !important;
+}
+
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.findjobbtn {
+    border: 0px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-family: var(--font-family);
+    background-color: var(--btn-color);
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+
+.findjobbtn:hover {
+    border: 0px;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: var(--btn-color);
+    color: white;
+}

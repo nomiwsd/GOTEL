@@ -7,23 +7,22 @@ import { Link } from 'react-router-dom'
 function Login() {
     return (
         <div className='row m-0 p-0 loginpage d-flex justify-content-center align-items-center '>
-            {/* <img className='col-5 p-0' src={loginimg} alt="wait for internet" /> */}
-            <div className='col-md-5 col-10 px-3  rounded-3 my-2 bg-light'>
-                <p className="loginhead h2">Login</p>
+            <div className='col-md-5 col-10 px-3  my-2 loginbg'>
+                <p className="loginhead pt-3">Login</p>
                 <p className='logintxt text-muted'>Login with the Data you entered during your Registration</p>
 
                 <label for="ControlInput1" className="formlabel ">Email Address</label>
                 <input type="email" className="form-control" id="ControlInput1" placeholder="name@example.com" />
 
                 <label for="mControlInput2" className="formlabel">Password</label>
-                <input type="password" className="form-control" id="ControlInput2" placeholder="******" />
-                <button className='btn btn-primary my-3 w-100'>Login</button>
+                <input type="password" className="form-control" id="ControlInput2" placeholder="******" /> <div className="d-flex justify-content-center"><button className='btn civibtn  my-3 col-4'>Login</button></div>
+                
                 <p className='forgetpswd'>Did you Forget your Password?</p>
                 <p className='text-center'>--------Or Login With--------</p>
                
                 <div className='d-flex justify-content-center mb-3'>
-                <button className='btn btn-light socialicon'><FaFacebook className='fs-3 fbicon'/></button>
-                <button className='btn btn-light socialicon'><FcGoogle className='fs-3' /></button>
+                <button className='btn  socialicon  p-0 px-2 py-1 col-1'><FaFacebook className='fs-3 fbicon'/></button>
+                <button className='btn  socialicon  p-0 px-2 py-1 col-1'><FcGoogle className='fs-3' /></button>
                 </div>
                 <div className='signup border-1 border-secondary py-3 px-4 mb-2'>
                 <p className="signuphead h5">Signup</p>

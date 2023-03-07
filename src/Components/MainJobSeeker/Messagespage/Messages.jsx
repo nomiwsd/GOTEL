@@ -1,5 +1,5 @@
 import React from 'react'
-import Usernavbar from '../../Usernavbar/Usernavbar';
+import Usernavbar from '../Usernavbar/Usernavbar';
 import {GrSearch} from 'react-icons/gr'
 import './Messages.css'
 function Messages() {
