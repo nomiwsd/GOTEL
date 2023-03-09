@@ -8,12 +8,9 @@ import { Link } from 'react-router-dom';
 // import Signupimg from '../Assets/Signupimg.jpg'
 function Signup() {
     const [selectedTab, setSelectedTab] = useTabs([
-        "Admin",
         "Company",
         "JobSeeker"
     ]);
-
-    // style={{backgroundImage: `url(${Signupimg} )`,  backgroundRepeat: 'no-repeat',backgroundSize:'contain'}}
     return (
         <div className='signupimg ' >
         <div className='d-flex justify-content-center align-items-center pb-5' >
@@ -21,12 +18,7 @@ function Signup() {
                 <p className="loginhead my-3">Register</p>
                 <p className='logintxt text-muted'>Enter your details to get Registered</p>
                 <nav className="d-flex navtab justify-content-center px-3">
-                    <TabSelector
-                        isActive={selectedTab === "Admin"}
-                        onClick={() => setSelectedTab("Admin")}
-                    >
-                        Admin
-                    </TabSelector>
+                    
                     <TabSelector
                         isActive={selectedTab === "Company"}
                         onClick={() => setSelectedTab("Company")}
@@ -42,38 +34,7 @@ function Signup() {
 
                 </nav>
                 <div className="col-12 col-lg-12 d-grid justify-content-center m-0 px-4 px-lg-0">
-                    <TabPanel hidden={selectedTab !== "Admin"}>
-                        <div className="row my-3">
-                            <div className="col-md-6  col-12"> <label for="ControlInput1" className="formlabel ">Full Name</label>
-                                <input type="text" className="form-control" id="ControlInput1" placeholder="FullName" />
-                            </div>
-                            <div className="col-md-6  col-12">
-                                <label for="mControlInput2" className="formlabel">Email Address</label>
-                                <input type="email" className="form-control" id="ControlInput2" placeholder="Email" />
-                            </div>
-                        </div>
-                        <div className="row ">
-                            <div className="col-md-6  col-12"> <label for="ControlInput3" className="formlabel ">Password</label>
-                                <input type="password" className="form-control" id="ControlInput3" placeholder="********" />
-                            </div>
-                            <div className="col-md-6  col-12">
-                                <label for="mControlInput4" className="formlabel">Confirm Password</label>
-                                <input type="password" className="form-control" id="ControlInput4" placeholder="********" />
-                            </div>
-                        </div>
-                        <div className="d-flex justify-content-center"><Link to='../Admin' className='btn civibtn col-lg-6 col-6 my-3'>Register</Link></div>
-                       
-                        <p className='text-center'>--------Or Signup With--------</p>
-
-                        <div className='d-flex justify-content-center mb-3'>
-                            <button className='btn col-1 socialicon  p-0 px-1 py-1'><FaFacebook className='fs-3 fbicon' /></button>
-                            <button className='btn  col-1 socialicon p-0 px-1 py-1'><FcGoogle className='fs-3 p-0' /></button>
-                        </div>
-                        <p className='text-center'>Already have an Account?
-                        <Link to='../Login'>Login</Link>
-                        </p>
-
-                    </TabPanel>
+                    
                     <TabPanel hidden={selectedTab !== "Company"}>
                     <div className="row my-3">
                             <div className="col-md-6  col-12"> <label for="ControlInput1" className="formlabel ">Company Name</label>
@@ -93,7 +54,7 @@ function Signup() {
                                 <input type="password" className="form-control" id="ControlInput4" placeholder="********" />
                             </div>
                         </div>
-                        <div className="d-flex justify-content-center"><Link to='../Admin' className='btn civibtn col-lg-6 col-6 my-3'>Register</Link></div>
+                        <div className="d-flex justify-content-center"><Link to='../Company' className='btn civibtn col-lg-6 col-6 my-3'>Register</Link></div>
                         <p className='text-center'>--------Or Signup With--------</p>
 
                         <div className='d-flex justify-content-center mb-3'>
@@ -135,7 +96,7 @@ function Signup() {
                                 <input type="password" className="form-control" id="ControlInput4" placeholder="********" />
                             </div>
                         </div>
-                        <div className="d-flex justify-content-center"><Link to='../Usernavbar' className='btn civibtn col-lg-6 col-6 my-3'>Register</Link></div>
+                        <div className="d-flex justify-content-center"><Link to='../JobSeeker' className='btn civibtn col-lg-6 col-6 my-3'>Register</Link></div>
                         <p className='text-center'>--------Or Signup With--------</p>
 
                         <div className='d-flex justify-content-center mb-3'>

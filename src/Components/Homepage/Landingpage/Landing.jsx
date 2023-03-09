@@ -11,7 +11,7 @@ function Landing() {
         <div className='Landingpage position-relative'>
             <div className="colorsection d-block d-lg-none">
             <div className="smallcontent">
-                <div className='py-3 px-3'>
+                <div className='py-3 px-3 landingpage'>
                     <h2 className="mainheading">Find your Dream Job Here</h2>
                     <div className="row m-0 p-0 smallsearchbar py-2">
                         <div className="col-lg-3 col-12 formgroup">
@@ -86,7 +86,7 @@ function Landing() {
             <div class="elementor-background-overlay d-none d-lg-block"></div>
             <video src={videobg} autoPlay loop muted  className='d-none d-lg-block'/>
             <div className="content d-none d-lg-block">
-                <div className=' container py-5 px-3'>
+                <div className=' container py-5 px-3 landingpage'>
                     <h2 className="mainheading">Find your Dream Job Here</h2>
                     <div className="row m-0 p-0 searchbar ">
                         <div className="col-lg-3 col-md-6 col-12 formgroup my-1">

@@ -1,9 +1,9 @@
-import Navbar from '../Navbar/Navbar'
-import Sidebar from '../Sidebar/Sidebar'
 import './Jobpost.css';
 import React, { useState } from "react";
 import Select from 'react-select';
 import MyStatefulEditor from "./rte_test";
+import CompanySidebar from '../Sidebar/CompanySidebar';
+import CompanyNavbar from '../Navbar/CompanyNavbar';
 const categoryoptions = [
   { value: 'Analytics', label: 'Analytics' },
   { value: 'Design & Creative', label: 'Design & Creative' },
@@ -18,11 +18,12 @@ const typeoptions = [
   { value: 'Remote', label: 'Remote' },
   { value: 'Internship', label: 'Internship' },
 ];
+
 const SkillsOptions = [
-  { value: 'Full Time', label: 'Full Time' },
-  { value: 'Part Time', label: 'Part Time' },
-  { value: 'Remote', label: 'Remote' },
-  { value: 'Internship', label: 'Internship' },
+  { value: 'BackEND Developer', label: 'BackEnd Developer' },
+  { value: 'Software Engineer', label: 'Software Engineer' },
+  { value: 'Content Writer', label: 'Content Writer' },
+  { value: 'Product Manager', label: 'Product Manager' },
 ];
 function Jobpost() {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -34,12 +35,12 @@ function Jobpost() {
   return (
     <div>
       <div className='jobpostsection row d-flex m-0 p-0'>
-        <div className=" d-none d-md-block col-md-3 col-lg-2  m-0 p-0"><Sidebar /></div>
-        <div className="col-12 col-md-9 col-lg-10 h-100"><Navbar />
-          <div className="bg-color py-2 px-3">
-            <div class="entry-title d-flex justify-content-between my-2 col-6">
-              <h4>Create a Job Post</h4>
-              <div className="d-flex">
+        <div className=" d-none d-md-block col-md-3 col-lg-2  m-0 p-0"><CompanySidebar /></div>
+        <div className="col-12 col-md-9 col-lg-10 h-100"><CompanyNavbar />
+          <div className="bg-color py-2 px-3 rounded-3">
+            <div class="entry-title d-flex justify-content-between my-2 col-md-12 col-12 row">
+              <h4 className='col-12 col-md-6'> Create a Job Post</h4>
+              <div className="d-flex col-12 col-md-6">
                 <button className='clearbtn my-1 '>Cancel</button>
                 <button className='mx-3 submitbtn'>
                   Post Job

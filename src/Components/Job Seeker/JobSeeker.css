@@ -1,0 +1,182 @@
+:root {
+	--font-family: 'Inter', sans-serif;
+	--background-color: #eee;
+	--border-color: #eee;
+	--btn-color: #007456;
+	--primary-color: #111111;
+	--filter-heading: #999;
+	--text-color: #555555;
+	--option-color: #007456;
+  }
+.form-dashboard label {
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.civi-fields-avatar #civi_avatar_errors {
+    font-size: 10px;
+    color: red;
+    margin-bottom: 5px;
+}
+.civi-fields-avatar #civi_avatar_container {
+    border-radius: 6px;
+    border: 1px dashed #ddd;
+    background-color: #f9f9f9;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin-right: 16px;
+    overflow: hidden;
+}
+.civi-fields-avatar #civi_avatar_view, .civi-fields-avatar .media-thumb {
+    height: 100%;
+    width: 100%;
+}
+.civi-fields-avatar #civi_add_avatar {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    left: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+.uploadimagecontainer{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    z-index: 0;
+}
+.uploadbtn{    font-size: 999px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+.nav-tabs {
+    --bs-nav-tabs-link-active-color: white !important;
+   
+}
+.nav {
+    --bs-nav-link-padding-x: 1rem;
+    --bs-nav-link-padding-y: 0.5rem;
+    --bs-nav-link-font-weight: ;
+    --bs-nav-link-color: var(--btn-color) !important;  
+}
+.nav-tabs .nav-link.active {
+    color: white !important;
+    background-color: var(--btn-color) !important;
+    border-color: var(--border-color) !important;}
+    .form-dashboard .form-group {
+        padding-left: 8px;
+        padding-right: 8px;
+        margin-bottom: 24px;
+    }
+   .form-dashboard input[type="text"], input[type="url"], input[type="tel"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="date"], input[type="file"], textarea {
+        font-size: 16px;
+        border: 1px solid #ddd;
+        padding: 10.5px 16px;
+        color: var(--text-color);
+        border-radius: 4px;
+        width: 100%;
+   }
+   .form-group{
+    border: 0 !important;
+   }
+   
+
+.css-13cymwt-control{
+    padding: 4px !important;
+}
+.form-dashboard .block-from {
+    padding: 24px 32px 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+}
+.form-dashboard h6 {
+    font-size: 20px;
+    margin-bottom: 28px;
+}
+.candidate-profile .resume .file-type {
+    color: var(--text-color);
+}
+.block-from {
+    padding: 24px 32px 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+}
+.sub-head {
+    color: var(--text-color);
+    margin-top: 8px;
+}
+
+.candidate-profile .result-notify, .sub-head, .uxper-messages .mess-content.empty p {
+    margin-bottom: 24px;
+}
+.candidate-profile .group-title {
+    display: flex;
+    flex-direction: row;
+    column-gap: 14px;
+    position: relative;
+    margin-bottom: 28px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+}
+.candidate-profile .group-title i:before {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fa-times:before {
+    content: "\f00d";
+}
+.fa-times:before {
+    content: "\f00d";
+}
+.candidate-profile .group-title h6 {
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 0;
+}
+.form-dashboard h6 {
+    font-size: 20px;
+    margin-bottom: 28px;
+}
+.candidate-profile .group-title i:before {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fa-angle-up:before {
+    content: "\f106";
+}
+.fa-angle-up:before {
+    content: "\f106";
+}
+.civi-candidate-wrapper input[type="text"], input[type="url"], input[type="tel"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="date"], input[type="file"], textarea {
+    font-size: 16px;
+    border: 1px solid #ddd;
+    padding: 10.5px 16px;
+    color: var(--text-color);
+    border-radius: 4px;
+    width: 100%;
+}
+ .button-warpper {
+    margin-top: 24px;
+    text-align: right;
+}

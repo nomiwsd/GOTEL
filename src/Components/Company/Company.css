@@ -1,0 +1,54 @@
+:root {
+	--font-family: 'Inter', sans-serif;
+	--background-color: #eee;
+	--border-color: #eee;
+	--btn-color: #007456;
+	--primary-color: #111111;
+	--filter-heading: #999;
+	--text-color: #555555;
+	--option-color: #007456;
+  }
+.submit-company-dashboard .submit-company-header {
+    margin-top: 32px;
+    margin-bottom: 24px;
+}
+
+.meetings-dashboard .tab-list, .submit-company-dashboard .entry-title h4 {
+    margin-bottom: 0;
+}
+.submit-company-header h4 {
+    font-size: 28px;
+}
+
+.submit-company-header .button-warpper {
+    margin-top: 0;
+}
+.form-dashboard .button-warpper {
+    margin-top: 24px;
+    text-align: right;
+}
+.civi-button .button-outline {
+    background-color: transparent;
+    color: var(--btn-color);
+    border-color: #ddd;
+}
+.civi-button {
+    display: inline-block;
+    background-color: var(--btn-color);
+    border: solid 1px var(--btn-color);
+    color: #fff ;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    padding: 10px 26px;
+    font-size: 16px;
+    -webkit-border-radius: 3em;
+    -moz-border-radius: 3em;
+    border-radius: 3em;
+    font-weight: 500;
+    cursor: pointer;
+}
+ .button-warpper .civi-button+.civi-button {
+    margin-left: 15px;
+}

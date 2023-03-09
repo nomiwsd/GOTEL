@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Navbar.css";
+import "./CompanyNavbar.css";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
@@ -14,13 +14,8 @@ import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom";
-import Companydetails from '../CompanyDetails/Companydetails';
-import Userdetails from '../UserDetails/Userdetails';
-import Managejobs from '../ManageJobs/Managejobs';
-import Message from '../MessagesPage/Message';
-import Settingspage from '../Settings/Settingspage';
 
-function Navbar() {
+function CompanyNavbar() {
   return (
     <div className="navbar p-2">
       <div className="wrapper p-2">
@@ -50,19 +45,19 @@ function Navbar() {
                         </Link> </li>
                    
                       <p className="title">LISTS</p>
-                      <Link to={Companydetails} style={{ textDecoration: "none" }}>
+                      <Link to='' style={{ textDecoration: "none" }}>
                         <li>
                           <IoIosPeople className="icon fs-4" />
                           <span>Companies Details</span>
                         </li>
                       </Link>
-                      <Link to={Userdetails} style={{ textDecoration: "none" }}>
+                      <Link to='' style={{ textDecoration: "none" }}>
                         <li>
                           <PersonOutlineIcon className="icon fs-4" />
                           <span>Users Details</span>
                         </li>
                       </Link>
-                      <Link to={Managejobs} style={{ textDecoration: "none" }}>
+                      <Link to='' style={{ textDecoration: "none" }}>
                         <li>
                           <WorkOutlineOutlinedIcon className="icon fs-4" />
                           <span>Manage Jobs</span>
@@ -76,12 +71,12 @@ function Navbar() {
                         <TfiWrite className="icon fs-4" />
                         <span>Conduct Test</span>
                       </li></Link>
-                      <Link to={Message} style={{ textDecoration: "none" }}>   <li>
+                      <Link to='' style={{ textDecoration: "none" }}>   <li>
                         <BiMessageDetail className="icon fs-4" />
                         <span>Messages</span>
                       </li>
                       </Link>
-                      <Link to={Settingspage} style={{ textDecoration: "none" }}> <li>
+                      <Link to='' style={{ textDecoration: "none" }}> <li>
                         <SettingsApplicationsIcon className="icon fs-4" />
                         <span>Settings</span>
                       </li></Link>
@@ -95,10 +90,9 @@ function Navbar() {
               </div>
             </div>
           </div>
-          <p className='topheading m-0 p-0 me-2'>Admin</p>
+          <p className='topheading m-0 p-0 me-2'>Company</p>
         </div>
         <div className="items">
-
           <div className="item d-none d-md-flex">
             <NotificationsNoneOutlinedIcon className="icon" />
             <div className="counter">1</div>
@@ -120,4 +114,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default CompanyNavbar
