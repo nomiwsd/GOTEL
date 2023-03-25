@@ -305,7 +305,7 @@ function Message() {
                                         </button>
                                     </div>
                                 </div>
-                                <div class="civi-loading-effect"><span class="civi-dual-ring"></span></div>
+                               
                             </div>
                         </div>
                     </div></div>

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import Sidebar from '../Sidebar/Sidebar'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import './Companydetails.css'
 function Companydetails() {
+    const [SearchBar, setSearchBar] = useState(false)
     return (
         <div className='companysection row d-flex m-0 p-0'>
             <div className=" d-none d-md-block col-md-3 col-lg-2  m-0 p-0"><Sidebar /></div>
@@ -14,9 +15,11 @@ function Companydetails() {
                         <div class="entry-title d-flex justify-content-between my-2">
                             <h4>Companies</h4>
                             <div className="search d-none d-md-block border-1 rounded-4 p-1">
-          <input type="text" placeholder="Search..." />
-          <SearchOutlinedIcon />
-        </div>
+                                <input type="text" placeholder="Search..." value={SearchBar} onChange={(e) => {
+                                    setSearchBar(e.target.value);
+                                }} />
+                                <SearchOutlinedIcon />
+                            </div>
                         </div>
                         <div class="table-dashboard-wapper">
                             <table class="table-dashboard" id="my-company">
@@ -60,7 +63,7 @@ function Companydetails() {
                                                 <ul class="dropdown-menu dropdownmenu">
                                                     <li><a class="dropdown-item" href="#sf">Edit</a></li>
                                                     <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                    
+
                                                 </ul>
                                             </div>
                                         </td>
@@ -96,7 +99,7 @@ function Companydetails() {
                                                 <ul class="dropdown-menu dropdownmenu">
                                                     <li><a class="dropdown-item" href="#sf">Edit</a></li>
                                                     <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                    
+
                                                 </ul>
                                             </div>
                                         </td>
@@ -132,7 +135,7 @@ function Companydetails() {
                                                 <ul class="dropdown-menu dropdownmenu">
                                                     <li><a class="dropdown-item" href="#sf">Edit</a></li>
                                                     <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                    
+
                                                 </ul>
                                             </div>
                                         </td>
@@ -168,7 +171,7 @@ function Companydetails() {
                                                 <ul class="dropdown-menu dropdownmenu">
                                                     <li><a class="dropdown-item" href="#sf">Edit</a></li>
                                                     <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                    
+
                                                 </ul>
                                             </div>
                                         </td>
@@ -204,7 +207,7 @@ function Companydetails() {
                                                 <ul class="dropdown-menu dropdownmenu">
                                                     <li><a class="dropdown-item" href="#sf">Edit</a></li>
                                                     <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                    
+
                                                 </ul>
                                             </div>
                                         </td>
@@ -240,7 +243,7 @@ function Companydetails() {
                                                 <ul class="dropdown-menu dropdownmenu">
                                                     <li><a class="dropdown-item" href="#sf">Edit</a></li>
                                                     <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                    
+
                                                 </ul>
                                             </div>
                                         </td>
@@ -276,7 +279,7 @@ function Companydetails() {
                                                 <ul class="dropdown-menu dropdownmenu">
                                                     <li><a class="dropdown-item" href="#sf">Edit</a></li>
                                                     <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                    
+
                                                 </ul>
                                             </div>
                                         </td>
@@ -312,7 +315,7 @@ function Companydetails() {
                                                 <ul class="dropdown-menu dropdownmenu">
                                                     <li><a class="dropdown-item" href="#sf">Edit</a></li>
                                                     <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                    
+
                                                 </ul>
                                             </div>
                                         </td>

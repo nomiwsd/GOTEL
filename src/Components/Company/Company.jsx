@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CompanyNavbar from './Navbar/CompanyNavbar'
 import CompanySidebar from './Sidebar/CompanySidebar'
 import Select from 'react-select';
-import MyStatefulEditor from "../Company/PostJob/rte_test";
+
 import './Company.css'
 const categoryoptions = [
   { value: 'Analytics', label: 'Analytics' },
@@ -20,12 +20,19 @@ const CompanySize = [
 ];
 
 function Company() {
+
+  const [CompanyName, setCompanyName] = useState(null);
+  const [CompanyUrl, setCompanyUrl] = useState(null);
+  const [WebsiteName, setWebsiteName] = useState(null);
+  const [PhoneNo, setPhoneNo] = useState(null);
+  const [CompanyEmail, setCompanyEmail] = useState(null);
+  const [TwitterLink, setTwitterLink] = useState(null);
+  const [InstagramLink, setInstagramLink] = useState(null);
+  const [FacebookLink, setFacebookLink] = useState(null);
+  const [LinkedInLink, setLinkedInLink] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [val, setVal] = useState("");
-  const onChange = (value) => {
-    console.log(value);
-    setVal(value);
-  };
+
+ 
   return (
     <div>
       <div className="home d-flex w-100 position-relative">
@@ -51,7 +58,9 @@ function Company() {
                 <div className="col-lg-6 p-2">
                   <label htmlFor="jobtitle"
                     className='labelheading'>Company Name:</label>
-                  <input type="text" id="jobs_title" name="jobs_title" placeholder="Name" value="" class="error" aria-invalid="true"></input>
+                  <input type="text" id="jobs_title" name="jobs_title" placeholder="Name"  class="error" aria-invalid="true" value={CompanyName}  onChange={(e)=> {
+                                    setCompanyName(e.target.value);
+                                }}/>
                 </div>
                 <div className="col-lg-6  p-2">
                   <label>Categories <sup>*</sup></label>
@@ -59,30 +68,38 @@ function Company() {
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={categoryoptions}
-                    classNames='categoryselect'
+                    classNames='categoryselect allselect'
                   />
 
                 </div>
                 <div className="col-lg-12 my-2">
                   <label>Company URL <sup>*</sup></label>
-                  <input type="text" id="jobs_title" name="jobs_title" placeholder="Company URL" value="" class="error" aria-invalid="true"></input>
+                  <input type="text" id="jobs_title" name="jobs_title" placeholder="Company URL" class="error" aria-invalid="true"  value={CompanyUrl}  onChange={(e)=> {
+                                    setCompanyUrl(e.target.value);
+                                }}/>
                 </div>
                 <div className="col-lg-12 my-3">
                   <label>About Company <sup>*</sup></label>
-                  <MyStatefulEditor markup="" onChange={onChange} className='texteditor' />
+                  <textarea name="about comapny" id="" cols="30" rows="10"></textarea>
                 </div>
                 <div className="col-lg-6 my-2">
                   <label>Website <sup>*</sup></label>
-                  <input type="text" id="jobs_title" name="jobs_title" placeholder="www.domain.com" value="" class="error" aria-invalid="true"></input>
+                  <input type="text" id="jobs_title" name="jobs_title" placeholder="www.domain.com" class="error" aria-invalid="true"  value={WebsiteName}  onChange={(e)=> {
+                                    setWebsiteName(e.target.value);
+                                }}/>
                 </div>
                 <div className="col-lg-6 my-2">
                   <label>Phone No<sup>*</sup></label>
-                  <input type='tel' id="jobs_title" name="jobs_title" placeholder="Phone No" value="" class="error" aria-invalid="true"></input>
+                  <input type='tel' id="jobs_title" name="jobs_title" placeholder="Phone No"  class="error" aria-invalid="true"  value={PhoneNo}  onChange={(e)=> {
+                                    setPhoneNo(e.target.value);
+                                }}/>
 
                 </div>
                 <div className="col-lg-6 my-2">
                   <label>Email<sup>*</sup></label>
-                  <input type='Email' id="jobs_title" name="jobs_title" placeholder="Email" value="" class="error" aria-invalid="true"></input>
+                  <input type='Email' id="jobs_title" name="jobs_title" placeholder="Email"  class="error" aria-invalid="true"  value={CompanyEmail}  onChange={(e)=> {
+                                    setCompanyEmail(e.target.value);
+                                }}/>
 
                 </div>
                 <div className="col-lg-6 my-2">
@@ -91,7 +108,7 @@ function Company() {
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={CompanySize}
-                    classNames='categoryselect'
+                    classNames='categoryselect allselect'
                   />
 
                 </div>
@@ -102,21 +119,29 @@ function Company() {
               <h4 className='basicheading'>Social Media</h4>
               <div className="col-lg-6 my-2 " >
                 <label>Twitter<sup>*</sup></label>
-                <input type="url" name="company_twitter" id="company_twitter" placeholder="twitter.com/company" />
+                <input type="url" name="company_twitter" id="company_twitter" placeholder="twitter.com/company"  value={TwitterLink}  onChange={(e)=> {
+                                    setTwitterLink(e.target.value);
+                                }}/>
               </div>
               <div className="col-lg-6 my-2">
                 <label>Instagram<sup>*</sup></label>
-                <input type="url" name="company_instagram" id="company_instagram" placeholder="instagram.com/company" />
+                <input type="url" name="company_instagram" id="company_instagram" placeholder="instagram.com/company"  value={InstagramLink}  onChange={(e)=> {
+                                    setInstagramLink(e.target.value);
+                                }}/>
               </div>
               <div className="col-lg-6 my-2">
              
                 <label>Facebook <sup>*</sup></label>
-                <input type="url" name="company_facebook" id="company_facebook" placeholder="facebook.com/company" />
+                <input type="url" name="company_facebook" id="company_facebook" placeholder="facebook.com/company"  value={FacebookLink}  onChange={(e)=> {
+                                    setFacebookLink(e.target.value);
+                                }} />
 
               </div>
               <div className="col-lg-6 my-2">
                 <label>LinkedIn <sup>*</sup></label>
-                <input type="url" name="company_linkedin" id="company_linkedin" placeholder="linkedin.com/company" />
+                <input type="url" name="company_linkedin" id="company_linkedin" placeholder="linkedin.com/company"   value={LinkedInLink}  onChange={(e)=> {
+                                    setLinkedInLink(e.target.value);
+                                }}/>
               </div>
             </div>
               </div>

@@ -1,10 +1,14 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './Login.css'
 // import { Button } from 'bootstrap'
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { Link } from 'react-router-dom'
+
 function Login() {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('');
+ 
     return (
         <div className='row m-0 p-0 loginpage d-flex justify-content-center align-items-center '>
             <div className='col-md-5 col-10 px-3  my-2 loginbg'>
@@ -12,10 +16,14 @@ function Login() {
                 <p className='logintxt text-muted'>Login with the Data you entered during your Registration</p>
 
                 <label for="ControlInput1" className="formlabel ">Email Address</label>
-                <input type="email" className="form-control" id="ControlInput1" placeholder="name@example.com" />
+                <input type="email" className="form-control" id="ControlInput1" placeholder="name@example.com"  value={email} onChange={(e)=> {
+                                    setEmail(e.target.value);
+                                }}/>
 
                 <label for="mControlInput2" className="formlabel">Password</label>
-                <input type="password" className="form-control" id="ControlInput2" placeholder="******" /> <div className="d-flex justify-content-center"><button className='btn civibtn  my-3 col-4'>Login</button></div>
+                <input type="password" className="form-control" id="ControlInput2" placeholder="******"  value={password} onChange={(e)=> {
+                                    setPassword(e.target.value);
+                                }}/> <div className="d-flex justify-content-center"><Link  className='btn civibtn  my-3 col-4'>Login</Link></div>
                 
                 <p className='forgetpswd'>Did you Forget your Password?</p>
                 <p className='text-center'>--------Or Login With--------</p>

@@ -28,7 +28,7 @@ function JobSeekerSidebar( ) {
               <span>User Profile</span>
             </li>
           </Link>
-          <Link to=''style={{ textDecoration: "none" }}>
+          <Link to='/UserFindJob'style={{ textDecoration: "none" }}>
             <li>
               <AiOutlineFileSearch className="icon fs-4" />
               <span>Find Jobs</span>

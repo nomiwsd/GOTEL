@@ -33,7 +33,7 @@ function Findjob() {
                             <option value="94">San Francisco</option>
                             <option value="96">Seatle</option>
                         </select>
-                    </div>
+                    </div   >
                     <div className="col-lg-3  col-12 formgroup">
                         <TbFolder className='mx-1 fs-4' />
                         <select name="jobs-categories" className="smalloptionselect"  >

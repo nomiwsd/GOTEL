@@ -26,6 +26,7 @@ import AppliedCandidate from './Components/Company/AppliedCandidates/AppliedCand
 import Postedjob from './Components/Company/Posted Jobs/Postedjob';
 import AppliedJobs from './Components/Job Seeker/Applied Jobs/AppliedJobs';
 import UserResume from './Components/Job Seeker/UserResume/UserResume';
+import UserFindJob from './Components/Job Seeker/FindJobpage/UserFindJob';
 function App() {
   return (
     
@@ -52,6 +53,7 @@ function App() {
         <Route exact path='/PostedJob' element={<Postedjob/>}/> 
         <Route exact path='/JobSeekerSidebar' element={<JobSeekerSidebar/>}/> 
         <Route exact path='/JobSeekerNavbar' element={<JobSeekerNavbar/>}/> 
+        <Route exact path='/UserFindJob' element={<UserFindJob/>}/> 
         <Route exact path="/Signup" element={<Signup/>}/> 
         {/* <Route exact path="/Usernavbar" element={<Usernavbar/>}/> */}
          <Route exact path="/Message" element={<Message/>}/>

@@ -1,10 +1,14 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Navbar from '../Navbar/Navbar'
 import Sidebar from '../Sidebar/Sidebar'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import './Managejobs.css'
 function Managejobs() {
+    const [SearchBar,setSearchBar]=useState(false)
+    const [AllJobs,setAllJobs]=useState(false)
+    const [OpenedJobs,setOpenedJobs]=useState(false)
+    const [ClosedJobs,setClosedJobs]=useState(false)
     return (
         <div>
             <div className='jobpostsection row d-flex m-0 p-0'>
@@ -18,15 +22,21 @@ function Managejobs() {
                             <div class="select-box  m-0 p-0 me-2 col-lg-6">
                                 <div class="select-box__current " tabindex="1">
                                     <div class="select-box__value">
-                                        <input class="select-box__input" type="radio" id="0" value="1" name="Ben" checked="checked" />
+                                        <input class="select-box__input" type="radio" id="0" name="Ben" checked="checked" value={AllJobs} onChange={(e)=> {
+                                    setAllJobs(e.target.value);
+                                }}/>
                                         <p class="select-box__input-text ">All Jobs</p>
                                     </div>
                                     <div class="select-box__value">
-                                        <input class="select-box__input" type="radio" id="1" value="2" name="Ben" />
+                                        <input class="select-box__input" type="radio" id="1"  name="Ben" value={OpenedJobs} onChange={(e)=> {
+                                    setOpenedJobs(e.target.value);
+                                }}/>
                                         <p class="select-box__input-text">Opened</p>
                                     </div>
                                     <div class="select-box__value">
-                                        <input class="select-box__input" type="radio" id="2" value="3" name="Ben" />
+                                        <input class="select-box__input" type="radio" id="2" name="Ben" value={ClosedJobs} onChange={(e)=> {
+                                    setClosedJobs(e.target.value);
+                                }}/>
                                         <p class="select-box__input-text">Closed</p>
                                     </div>
 
@@ -46,7 +56,9 @@ function Managejobs() {
                             </div>
                             <div className="searchdiv d-none d-md-flex col-3 border-1 rounded-1 p-0">
 
-                                <input type="text" placeholder="Find By Job" className='px-2 w-100 searchinput' />
+                                <input type="text" placeholder="Find By Job" className='px-2 w-100 searchinput' value={SearchBar} onChange={(e)=> {
+                                    setSearchBar(e.target.value);
+                                }}/>
                                 <SearchOutlinedIcon className='fs-3 mt-2 searchicon' />
                             </div>
 
@@ -142,7 +154,7 @@ function Managejobs() {
 
                                     </tbody>
                                 </table>
-                                <div class="civi-loading-effect"><span class="civi-dual-ring"></span></div>
+                            
                             </div>
                         </div>
                     </div>

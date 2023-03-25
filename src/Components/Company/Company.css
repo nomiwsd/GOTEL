@@ -52,3 +52,6 @@
  .button-warpper .civi-button+.civi-button {
     margin-left: 15px;
 }
+.submit-company-header input{
+    padding: 5px !important;
+}
