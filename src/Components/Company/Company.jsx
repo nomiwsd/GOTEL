@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CompanyNavbar from './Navbar/CompanyNavbar'
 import CompanySidebar from './Sidebar/CompanySidebar'
 import Select from 'react-select';
+import { useLocation } from "react-router-dom";
+import { firestore } from '../../firebase';
+import { setDoc,doc,getDoc } from "@firebase/firestore"
 
 import './Company.css'
 const categoryoptions = [
@@ -19,9 +22,10 @@ const CompanySize = [
   { value: '50-100', label: '50-100' },
 ];
 
-function Company() {
 
-  const [CompanyName, setCompanyName] = useState(null);
+function Company() {
+  const location = useLocation();
+  const [CompanyName, setCompanyName] = useState(location.state.user.Name);
   const [CompanyUrl, setCompanyUrl] = useState(null);
   const [WebsiteName, setWebsiteName] = useState(null);
   const [PhoneNo, setPhoneNo] = useState(null);
@@ -31,7 +35,68 @@ function Company() {
   const [FacebookLink, setFacebookLink] = useState(null);
   const [LinkedInLink, setLinkedInLink] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [companySize,setCompanySize] = useState(null);
+  const [CompanyAbout,setCompanyAbout] = useState(null)
+  const [loading,setLoading] = useState(false)
+  const [published,setPublished] = useState(false)
+  
+  const writeUserDetails = async () => {
+    await setDoc(doc(firestore, "users",location.state.user.uid), {
+      Name:CompanyName,
+      companyUrl:CompanyUrl,
+      email:CompanyEmail,
+      about:CompanyAbout,
+      websiteUrl:WebsiteName,
+      phoneNo:PhoneNo,
+      companySize:companySize.value,
+      twitterLink:TwitterLink,
+      instagramLink:InstagramLink,
+      facebookLink:FacebookLink,
+      linkedInLink:LinkedInLink,
+      categories:selectedOption.value,
+   })
+  .then((e)=>{
+      setLoading(false)
+      setPublished(true)
+      console.log('Company Created',e)
+  }
+  )
+  .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+  });
+    
+  }
+  const fetchUserDetails = async () => {
+    
+        await getDoc(doc(firestore,'users',location.state.user.uid))
+            .then((querySnapshot)=>{
+                if(querySnapshot.exists()){
+                    setCompanyName(querySnapshot.data().Name)
+                    setCompanyUrl(querySnapshot.data().companyUrl)
+                    setWebsiteName(querySnapshot.data().websiteUrl)
+                    setCompanyAbout(querySnapshot.data().about)
+                    setPhoneNo(querySnapshot.data().phoneNo)
+                    setTwitterLink(querySnapshot.data().twitterLink)
+                    setInstagramLink(querySnapshot.data().instagramLink)
+                    setFacebookLink(querySnapshot.data().facebookLink)
+                    setLinkedInLink(querySnapshot.data().linkedInLink)
+                    setSelectedOption(querySnapshot.data().categories)
+                    setCompanySize({label:querySnapshot.data().companySize,value:querySnapshot.data().companySize})
+                    setCompanyEmail(querySnapshot.data().email)
+                }
+                console.log('Company Data fetched')
+            })
+            .catch((e)=>{
+                console.log(e)
+            })
+    }
+    useEffect(()=>{
+      fetchUserDetails()
+    },[])
 
+  
  
   return (
     <div>
@@ -45,9 +110,13 @@ function Company() {
                   <h4>Submit company</h4>
                 </div>
                 <div class="button-warpper d-flex justify-content-center">
-                  <a href="https://civi.uxper.co/dashboard/employers/company-employer/" class="civi-button button-outline">
+                  <a href="https://civi.uxper.co/dashboard/employers/company-employer/" class="civi-button button-outline" onClick={()=>{
+                    fetchUserDetails()
+                  }}>
                     Cancel							</a>
-                  <button type="submit" class="btn-submit-company civi-button" name="submit_company">
+                  <button onClick={()=>{
+                    writeUserDetails()
+                  }} type="submit" class="btn-submit-company civi-button" name="submit_company">
                     Publish
                   
                   </button>
@@ -58,9 +127,7 @@ function Company() {
                 <div className="col-lg-6 p-2">
                   <label htmlFor="jobtitle"
                     className='labelheading'>Company Name:</label>
-                  <input type="text" id="jobs_title" name="jobs_title" placeholder="Name"  class="error" aria-invalid="true" value={CompanyName}  onChange={(e)=> {
-                                    setCompanyName(e.target.value);
-                                }}/>
+                  <input type="text" id="jobs_title" name="jobs_title" placeholder="Name"  class="error" aria-invalid="true" value={CompanyName}  onChange={(e)=> {setCompanyName(e.target.value)}}/>
                 </div>
                 <div className="col-lg-6  p-2">
                   <label>Categories <sup>*</sup></label>
@@ -80,7 +147,9 @@ function Company() {
                 </div>
                 <div className="col-lg-12 my-3">
                   <label>About Company <sup>*</sup></label>
-                  <textarea name="about comapny" id="" cols="30" rows="10"></textarea>
+                  <textarea name="about comapny" id="" cols="30" rows="10" value={CompanyAbout} onChange={(e)=> {
+                                    setCompanyAbout(e.target.value);
+                                }}></textarea>
                 </div>
                 <div className="col-lg-6 my-2">
                   <label>Website <sup>*</sup></label>
@@ -105,8 +174,8 @@ function Company() {
                 <div className="col-lg-6 my-2">
                   <label>Company Size<sup>*</sup></label>
                   <Select
-                    defaultValue={selectedOption}
-                    onChange={setSelectedOption}
+                    defaultValue={companySize}
+                    onChange={setCompanySize}
                     options={CompanySize}
                     classNames='categoryselect allselect'
                   />

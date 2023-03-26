@@ -1,9 +1,11 @@
 import './Jobpost.css';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from 'react-select';
 import MyStatefulEditor from "./rte_test";
 import CompanySidebar from '../Sidebar/CompanySidebar';
 import CompanyNavbar from '../Navbar/CompanyNavbar';
+import { firestore } from '../../../firebase';
+import { addDoc,collection } from "@firebase/firestore"
 const categoryoptions = [
   { value: 'Analytics', label: 'Analytics' },
   { value: 'Design & Creative', label: 'Design & Creative' },
@@ -25,13 +27,77 @@ const SkillsOptions = [
   { value: 'Content Writer', label: 'Content Writer' },
   { value: 'Product Manager', label: 'Product Manager' },
 ];
+
+var compnay = ''
+
 function Jobpost() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [val, setVal] = useState("");
   const onChange = (value) => {
-    console.log(value);
-    setVal(value);
+    setJobDescription(value);
   };
+    useEffect(()=>{
+      var company = localStorage.getItem('user')
+      company = JSON.parse(company)
+      compnay = company
+    },[])
+    const [jobTitle,setJobTitle] = useState('')
+    const [jobCategorie,setJobCategorie] = useState('')
+    const [jobType,setJobType] = useState('')
+    const [jobSkills,setJobSkills] = useState('')
+    const [jobDescription,setJobDescription] = useState('')
+    const [jobCareerLevel,setJobCareerLevel] = useState('')
+    const [jobExperience,setJobExperience] = useState('')
+    const [jobQualification,setJobQualification] = useState('')
+    const [jobClosingDays,setJobClosingDays] = useState('')
+    const [jobSalaryMax,setJobSalaryMax] = useState('')
+    const [jobSalaryRate,setJobSalaryRate] = useState('')
+    const [jobApplyType,setJobApplyType] = useState('')
+    const [jobTime,setJobTime] = useState('')
+    const [loading,setLoading] = useState('')
+    const [published,setPublished] = useState('')
+
+    function getCurrentDate(separator='-'){
+      let newDate = new Date()
+      let date = newDate.getDate();
+      let month = newDate.getMonth() + 1;
+      let year = newDate.getFullYear();
+      
+      return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`
+      }
+
+    const postJob= async () => {
+        await addDoc(collection(firestore, "jobs"), {
+            by:compnay.uid,
+            jobTitle:jobTitle,
+            jobCategorie:jobCategorie.value,
+            jobType:jobType.value,
+            jobSkills:jobSkills,
+            jobDescription:jobDescription,
+            jobCareerLevel:jobCareerLevel.value,
+            jobExperience:jobExperience.value,
+            jobQualification:jobQualification.value,
+            jobClosingDays:jobClosingDays.value,
+            jobSalaryMax:jobSalaryMax,
+            jobSalaryRate:jobSalaryRate.value,
+            jobApplyType:jobApplyType.value,
+            jobTime:jobTime.value,
+            Applicants:0,
+            status:'Pending',
+            posted:getCurrentDate()
+       })
+      .then((e)=>{
+          setLoading(false)
+          setPublished(true)
+          console.log('Job Posted')
+      }
+      )
+      .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+      });        
+    }
   return (
     <div>
       <div className='jobpostsection row d-flex m-0 p-0'>
@@ -42,7 +108,9 @@ function Jobpost() {
               <h4 className='col-12 col-md-6'> Create a Job Post</h4>
               <div className="d-flex col-12 col-md-6">
                 <button className='clearbtn my-1 '>Cancel</button>
-                <button className='mx-3 submitbtn'>
+                <button className='mx-3 submitbtn' onClick={()=>{
+                  postJob()
+                }}>
                   Post Job
                 </button>
               </div>
@@ -53,13 +121,13 @@ function Jobpost() {
                 <div className="d-flex flex-column form-group">
                   <label htmlFor="jobtitle"
                     className='labelheading'>Job title:</label>
-                  <input type="text" id="jobs_title" name="jobs_title" placeholder="Name" value="" class="error" aria-invalid="true"></input></div>
+                  <input type="text" id="jobs_title" name="jobs_title" placeholder="Name" class="error" aria-invalid="true"  value={jobTitle} onChange={(e)=> {setJobTitle(e.target.value)}}></input></div>
               </div>
               <div className="col-lg-6 my-2">
                 <label>Jobs Categories <sup>*</sup></label>
                 <Select
-                  defaultValue={selectedOption}
-                  onChange={setSelectedOption}
+                  defaultValue={jobCategorie}
+                  onChange={setJobCategorie}
                   options={categoryoptions}
                   classNames='categoryselect'
                 />
@@ -68,8 +136,8 @@ function Jobpost() {
               <div className="col-lg-6 my-2">
                 <label>Jobs Type <sup>*</sup></label>
                 <Select
-                  defaultValue={selectedOption}
-                  onChange={setSelectedOption}
+                  defaultValue={jobType}
+                  onChange={setJobType}
                   options={typeoptions}
                   classNames='categoryselect'
                 />
@@ -77,7 +145,8 @@ function Jobpost() {
               <div className="col-lg-12 my-2">
                 <label>Skills <sup>*</sup></label>
                 <Select
-                  defaultValue={[SkillsOptions[0]]}
+                  defaultValue={jobSkills}
+                  onChange={setJobSkills}
                   isMulti
                   name="Select Skills"
                   options={SkillsOptions}
@@ -92,8 +161,8 @@ function Jobpost() {
               <div className="col-lg-6 my-2">
                 <label>Career Level <sup>*</sup></label>
                 <Select
-                  defaultValue={selectedOption}
-                  onChange={setSelectedOption}
+                  defaultValue={jobCareerLevel}
+                  onChange={setJobCareerLevel}
                   options={categoryoptions}
                   classNames='categoryselect'
                 />
@@ -102,8 +171,8 @@ function Jobpost() {
               <div className="col-lg-6 my-2">
                 <label>Experience <sup>*</sup></label>
                 <Select
-                  defaultValue={selectedOption}
-                  onChange={setSelectedOption}
+                  defaultValue={jobExperience}
+                  onChange={setJobExperience}
                   options={typeoptions}
                   classNames='categoryselect'
                 />
@@ -111,8 +180,8 @@ function Jobpost() {
               <div className="col-lg-6 my-2">
                 <label>Qualification<sup>*</sup></label>
                 <Select
-                  defaultValue={selectedOption}
-                  onChange={setSelectedOption}
+                  defaultValue={jobQualification}
+                  onChange={setJobQualification}
                   options={categoryoptions}
                   classNames='categoryselect'
                 />
@@ -121,8 +190,8 @@ function Jobpost() {
               <div className="col-lg-6 my-2">
                 <label>Closing Days <sup>*</sup></label>
                 <Select
-                  defaultValue={selectedOption}
-                  onChange={setSelectedOption}
+                  defaultValue={jobClosingDays}
+                  onChange={setJobClosingDays}
                   options={typeoptions}
                   classNames='categoryselect'
                 />
@@ -133,13 +202,13 @@ function Jobpost() {
               <h4 className='basicheading'>Salary Info</h4>
               <div className="col-lg-6 my-2 " >
                 <label>Maximum<sup>*</sup></label>
-                <input type="text" name="salary" value="" class="error" aria-invalid="true" />
+                <input type="text" name="salary" class="error" aria-invalid="true"  value={jobSalaryMax} onChange={(e)=> {setJobSalaryMax(e.target.value)}} />
               </div>
               <div className="col-lg-6 my-2">
                 <label>Rate <sup>*</sup></label>
                 <Select
-                  defaultValue={selectedOption}
-                  onChange={setSelectedOption}
+                  defaultValue={jobSalaryRate}
+                  onChange={setJobSalaryRate}
                   options={typeoptions}
                   classNames='categoryselect'
                 />
@@ -148,8 +217,8 @@ function Jobpost() {
                 <h4 className='basicheading'>Job Apply Type</h4>
                 <label>Select Type <sup>*</sup></label>
                 <Select
-                  defaultValue={selectedOption}
-                  onChange={setSelectedOption}
+                  defaultValue={jobApplyType}
+                  onChange={setJobApplyType}
                   options={categoryoptions}
                   classNames='categoryselect'
                 />
@@ -159,14 +228,13 @@ function Jobpost() {
                 <h4 className='basicheading'>Company</h4>
                 <label>Select Company <sup>*</sup></label>
                 <Select
-                  defaultValue={selectedOption}
-                  onChange={setSelectedOption}
+                  defaultValue={jobTime}
+                  onChange={setJobTime}
                   options={typeoptions}
                   classNames='categoryselect'
                 />
               </div>
             </div>
-           
           </div>
         </div>
       </div>

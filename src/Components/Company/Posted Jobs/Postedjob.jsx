@@ -1,10 +1,38 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import CompanySidebar from '../Sidebar/CompanySidebar';
 import CompanyNavbar from '../Navbar/CompanyNavbar';
 import { BsChevronRight } from 'react-icons/bs'
+import { firestore } from '../../../firebase';
+import { collection,getDocs } from "@firebase/firestore"
+
 function Postedjob() {
+    const [Jobs,setJobs] = useState([])
+
+    const fetchJobDetails = async () => {
+        await getDocs(collection(firestore,'jobs'))
+            .then((querySnapshot)=>{    
+                const newData = querySnapshot.docs
+                .map((doc) => {
+                    const newDocData = {
+                        id: doc.id,
+                        title:doc.data().jobTitle,
+                        type:doc.data().type,
+                        applicants:doc.data().Applicants,
+                        posted:doc.data().posted,
+                        status:doc.data().status,
+                    } 
+                    setJobs((Jobs)=>[...Jobs,newDocData])
+                });
+            })
+            .catch((e)=>{
+                console.log(e)
+            })
+    }
+    useEffect(()=>{
+        fetchJobDetails()
+    },[])
     return (
         <div>
             <div className='jobpostsection row d-flex m-0 p-0'>
@@ -64,452 +92,49 @@ function Postedjob() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <h3 class="title-jobs-dashboard">
-                                                    Front End Developer
-                                                </h3>
-                                                <p>
-                                                    Customer Service                                                                                                                                / Full Time                                                                                                                   </p>
-                                            </td>
-                                            <td>
-                                                <div class="number-applicant">
-                                                    <span class="number">0</span>
-                                                    <span>  Application</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="label label-pending">Pending</span>
-                                            </td>
-                                            <td>
-                                                <span class="start-time">2023-03-02</span>
-                                            </td>
-                                            <td>
-                                                <span class="expires-time">
-                                                    2023-04-01                                                                            </span>
-                                            </td>
-                                            <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                <div class="btn-group dropend">
-                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <HiOutlineDotsHorizontal />
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdownmenu">
-                                                        <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="#sf">Delete</a></li>
+                                        {
+                                            Jobs.map((job,index)=>{
+                                                return(
+                                                <tr>
+                                                    <td>
+                                                        <h3 class="title-jobs-dashboard">
+                                                            {job.title}
+                                                        </h3>
+                                                        <p>
+                                                            {job.type}                                                                                                                                / Full Time                                                                                                                   </p>
+                                                    </td>
+                                                    <td>
+                                                        <div class="number-applicant">
+                                                            <span class="number">{job.applicants}</span>
+                                                            <span>  Application</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="label label-pending">{job.status}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="start-time">{job.posted}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="expires-time">
+                                                            2023-04-01                                                                            </span>
+                                                    </td>
+                                                    <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
+                                                        <div class="btn-group dropend">
+                                                            <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                <HiOutlineDotsHorizontal />
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdownmenu">
+                                                                <li><a class="dropdown-item" href="#sf">Edit</a></li>
+                                                                <li><a class="dropdown-item" href="#sf">Delete</a></li>
 
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="title-jobs-dashboard">
-                                                    Front End Developer
-                                                </h3>
-                                                <p>
-                                                    Customer Service                                                                                                                                / Full Time                                                                                                                   </p>
-                                            </td>
-                                            <td>
-                                                <div class="number-applicant">
-                                                    <span class="number">0</span>
-                                                    <span>  Application</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="label label-pending">Pending</span>
-                                            </td>
-                                            <td>
-                                                <span class="start-time">2023-03-02</span>
-                                            </td>
-                                            <td>
-                                                <span class="expires-time">
-                                                    2023-04-01                                                                            </span>
-                                            </td>
-                                            <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                <div class="btn-group dropend">
-                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <HiOutlineDotsHorizontal />
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdownmenu">
-                                                        <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="title-jobs-dashboard">
-                                                    Social Media Manager
-                                                </h3>
-                                                <p>
-                                                    Customer Service                            / Internship                                   </p>
-                                            </td>
-                                            <td>
-                                                <div class="number-applicant">
-                                                    <span class="number">0</span>
-                                                    <span>  Application</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="label label-pending">Pending</span>
-                                            </td>
-                                            <td>
-                                                <span class="start-time">2023-03-02</span>
-                                            </td>
-                                            <td>
-                                                <span class="expires-time">
-                                                    2023-04-01                                                                            </span>
-                                            </td>
-                                            <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                <div class="btn-group dropend">
-                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <HiOutlineDotsHorizontal />
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdownmenu">
-                                                        <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="title-jobs-dashboard">
-                                                    Social Media Manager
-                                                </h3>
-                                                <p>
-                                                    Customer Service                            / Internship                                   </p>
-                                            </td>
-                                            <td>
-                                                <div class="number-applicant">
-                                                    <span class="number">0</span>
-                                                    <span>  Application</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="label label-pending">Pending</span>
-                                            </td>
-                                            <td>
-                                                <span class="start-time">2023-03-02</span>
-                                            </td>
-                                            <td>
-                                                <span class="expires-time">
-                                                    2023-04-01                                                                            </span>
-                                            </td>
-                                            <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                <div class="btn-group dropend">
-                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <HiOutlineDotsHorizontal />
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdownmenu">
-                                                        <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="title-jobs-dashboard">
-                                                    Social Media Manager
-                                                </h3>
-                                                <p>
-                                                    Customer Service                            / Internship                                   </p>
-                                            </td>
-                                            <td>
-                                                <div class="number-applicant">
-                                                    <span class="number">0</span>
-                                                    <span>  Application</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="label label-pending">Pending</span>
-                                            </td>
-                                            <td>
-                                                <span class="start-time">2023-03-02</span>
-                                            </td>
-                                            <td>
-                                                <span class="expires-time">
-                                                    2023-04-01                                                                            </span>
-                                            </td>
-                                            <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                <div class="btn-group dropend">
-                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <HiOutlineDotsHorizontal />
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdownmenu">
-                                                        <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="title-jobs-dashboard">
-                                                    Social Media Manager
-                                                </h3>
-                                                <p>
-                                                    Customer Service                            / Internship                                   </p>
-                                            </td>
-                                            <td>
-                                                <div class="number-applicant">
-                                                    <span class="number">0</span>
-                                                    <span>  Application</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="label label-pending">Pending</span>
-                                            </td>
-                                            <td>
-                                                <span class="start-time">2023-03-02</span>
-                                            </td>
-                                            <td>
-                                                <span class="expires-time">
-                                                    2023-04-01                                                                            </span>
-                                            </td>
-                                            <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                <div class="btn-group dropend">
-                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <HiOutlineDotsHorizontal />
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdownmenu">
-                                                        <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="title-jobs-dashboard">
-                                                    Social Media Manager
-                                                </h3>
-                                                <p>
-                                                    Customer Service                            / Internship                                   </p>
-                                            </td>
-                                            <td>
-                                                <div class="number-applicant">
-                                                    <span class="number">0</span>
-                                                    <span>  Application</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="label label-pending">Pending</span>
-                                            </td>
-                                            <td>
-                                                <span class="start-time">2023-03-02</span>
-                                            </td>
-                                            <td>
-                                                <span class="expires-time">
-                                                    2023-04-01                                                                            </span>
-                                            </td>
-                                            <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                <div class="btn-group dropend">
-                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <HiOutlineDotsHorizontal />
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdownmenu">
-                                                        <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="title-jobs-dashboard">
-                                                    Social Media Manager
-                                                </h3>
-                                                <p>
-                                                    Customer Service                            / Internship                                   </p>
-                                            </td>
-                                            <td>
-                                                <div class="number-applicant">
-                                                    <span class="number">0</span>
-                                                    <span>  Application</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="label label-pending">Pending</span>
-                                            </td>
-                                            <td>
-                                                <span class="start-time">2023-03-02</span>
-                                            </td>
-                                            <td>
-                                                <span class="expires-time">
-                                                    2023-04-01                                                                            </span>
-                                            </td>
-                                            <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                <div class="btn-group dropend">
-                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <HiOutlineDotsHorizontal />
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdownmenu">
-                                                        <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="title-jobs-dashboard">
-                                                    Social Media Manager
-                                                </h3>
-                                                <p>
-                                                    Customer Service                            / Internship                                   </p>
-                                            </td>
-                                            <td>
-                                                <div class="number-applicant">
-                                                    <span class="number">0</span>
-                                                    <span>  Application</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="label label-pending">Pending</span>
-                                            </td>
-                                            <td>
-                                                <span class="start-time">2023-03-02</span>
-                                            </td>
-                                            <td>
-                                                <span class="expires-time">
-                                                    2023-04-01                                                                            </span>
-                                            </td>
-                                            <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                <div class="btn-group dropend">
-                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <HiOutlineDotsHorizontal />
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdownmenu">
-                                                        <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="title-jobs-dashboard">
-                                                    Social Media Manager
-                                                </h3>
-                                                <p>
-                                                    Customer Service                            / Internship                                   </p>
-                                            </td>
-                                            <td>
-                                                <div class="number-applicant">
-                                                    <span class="number">0</span>
-                                                    <span>  Application</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="label label-pending">Pending</span>
-                                            </td>
-                                            <td>
-                                                <span class="start-time">2023-03-02</span>
-                                            </td>
-                                            <td>
-                                                <span class="expires-time">
-                                                    2023-04-01                                                                            </span>
-                                            </td>
-                                            <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                <div class="btn-group dropend">
-                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <HiOutlineDotsHorizontal />
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdownmenu">
-                                                        <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="title-jobs-dashboard">
-                                                    Social Media Manager
-                                                </h3>
-                                                <p>
-                                                    Customer Service                            / Internship                                   </p>
-                                            </td>
-                                            <td>
-                                                <div class="number-applicant">
-                                                    <span class="number">0</span>
-                                                    <span>  Application</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="label label-pending">Pending</span>
-                                            </td>
-                                            <td>
-                                                <span class="start-time">2023-03-02</span>
-                                            </td>
-                                            <td>
-                                                <span class="expires-time">
-                                                    2023-04-01                                                                            </span>
-                                            </td>
-                                            <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                <div class="btn-group dropend">
-                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <HiOutlineDotsHorizontal />
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdownmenu">
-                                                        <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="title-jobs-dashboard">
-                                                    Social Media Manager
-                                                </h3>
-                                                <p>
-                                                    Customer Service                            / Internship                                   </p>
-                                            </td>
-                                            <td>
-                                                <div class="number-applicant">
-                                                    <span class="number">0</span>
-                                                    <span>  Application</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="label label-pending">Pending</span>
-                                            </td>
-                                            <td>
-                                                <span class="start-time">2023-03-02</span>
-                                            </td>
-                                            <td>
-                                                <span class="expires-time">
-                                                    2023-04-01                                                                            </span>
-                                            </td>
-                                            <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                <div class="btn-group dropend">
-                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <HiOutlineDotsHorizontal />
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdownmenu">
-                                                        <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                )
+                                            })
+                                        }
                                     </tbody>
                                 </table>
                                 <div class="civi-loading-effect"><span class="civi-dual-ring"></span></div>
