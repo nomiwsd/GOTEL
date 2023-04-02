@@ -4,25 +4,17 @@ import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@material-ui/icons/ListOutlined";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
-import { IoIosPeople } from 'react-icons/io'
-import { SiCoursera } from 'react-icons/si'
-import { BiMessageDetail } from 'react-icons/bi'
-import { TfiWrite } from 'react-icons/tfi'
-import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { BiMessageDetail } from 'react-icons/bi'
 import { Link } from "react-router-dom";
-
+import { BsPeopleFill } from 'react-icons/bs'
+import { MdWorkOutline, MdPostAdd } from 'react-icons/md'
+import { FaUserPlus } from 'react-icons/fa'
 function CompanyNavbar() {
   return (
     <div className="navbar p-2">
       <div className="wrapper p-2">
-        <div className="search d-none d-md-block">
-          <input type="text" placeholder="Search..." />
-          <SearchOutlinedIcon />
-        </div>
         <div className="moduleName d-flex justfy-content-center">
           <div className="">
             <ListOutlinedIcon className="icon d-block d-md-none" data-bs-toggle="offcanvas" data-bs-target="#smalloffcanvas" aria-controls="smalloffcanvas" />
@@ -33,58 +25,48 @@ function CompanyNavbar() {
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div class="offcanvas-body">
-                <div className="sidebar smallsidebar border-0" >
-                  <div className="center">
-                    <ul>
-                      <p className="title">MAIN</p>
-                     
-                      <li>
-                      <Link to='/Admin' className='routerlinks'> 
-                        <DashboardIcon className="icon fs-4" />
-                        <span >Dashboard</span>
-                        </Link> </li>
-                   
-                      <p className="title">LISTS</p>
-                      <Link to='' style={{ textDecoration: "none" }}>
-                        <li>
-                          <IoIosPeople className="icon fs-4" />
-                          <span>Companies Details</span>
+                <div className=" smallsidebar border-0" >
+                  <div className="sidebar" >
+                    <hr />
+                    <div className="center">
+                      <ul>
+                        <Link to="./Company" style={{ textDecoration: "none" }}>
+                          <li>
+                            <BsPeopleFill className="icon fs-4" />
+                            <span>Company Profile</span>
+                          </li>
+                        </Link>
+                        <Link to="./Jobpost" style={{ textDecoration: "none" }}>
+                          <li>
+                            <MdWorkOutline className="icon fs-4" />
+                            <span>Post a Job</span>
+                          </li>
+                        </Link>
+                        <Link to='./PostedJob' style={{ textDecoration: "none" }}>
+                          <li>
+                            <MdPostAdd className="icon fs-4" />
+                            <span>Posted Jobs</span>
+                          </li></Link>
+                        <Link to='./AppliedCandidate' style={{ textDecoration: "none" }}>
+                          <li>
+                            <FaUserPlus className="icon fs-4" />
+                            <span>Applied Candidates</span>
+                          </li></Link>
+                        <Link to='./CompanyMessage' style={{ textDecoration: "none" }}>   <li>
+                          <BiMessageDetail className="icon fs-4" />
+                          <span>Messages</span>
                         </li>
-                      </Link>
-                      <Link to='' style={{ textDecoration: "none" }}>
-                        <li>
-                          <PersonOutlineIcon className="icon fs-4" />
-                          <span>Users Details</span>
-                        </li>
-                      </Link>
-                      <Link to='' style={{ textDecoration: "none" }}>
-                        <li>
-                          <WorkOutlineOutlinedIcon className="icon fs-4" />
-                          <span>Manage Jobs</span>
+                        </Link>
+                        <Link to='./CompanySettingspage' style={{ textDecoration: "none" }}> <li>
+                          <SettingsApplicationsIcon className="icon fs-4" />
+                          <span>Settings</span>
                         </li></Link>
-                      <Link style={{ textDecoration: "none" }}>
-                        <li>
-                          <SiCoursera className="icon fs-4" />
-                          <span>Upload Courses</span>
+                        <Link to='/Login' style={{ textDecoration: "none" }}> <li>
+                          <ExitToAppIcon className="icon fs-4" />
+                          <span>Logout</span>
                         </li></Link>
-                      <Link style={{ textDecoration: "none" }}><li>
-                        <TfiWrite className="icon fs-4" />
-                        <span>Conduct Test</span>
-                      </li></Link>
-                      <Link to='' style={{ textDecoration: "none" }}>   <li>
-                        <BiMessageDetail className="icon fs-4" />
-                        <span>Messages</span>
-                      </li>
-                      </Link>
-                      <Link to='' style={{ textDecoration: "none" }}> <li>
-                        <SettingsApplicationsIcon className="icon fs-4" />
-                        <span>Settings</span>
-                      </li></Link>
-                      <Link style={{ textDecoration: "none" }}> <li>
-                        <ExitToAppIcon className="icon fs-4" />
-                        <span>Logout</span>
-                      </li></Link>
-                    </ul>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>

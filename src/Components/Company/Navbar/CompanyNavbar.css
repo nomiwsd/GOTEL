@@ -93,6 +93,7 @@
   width: 70vw !important;
   height: 100vh !important;
   background-color: var(--background-color) !important;
+  z-index:99999 !important;
 }
 
 .smoffcannvas::-webkit-scrollbar {

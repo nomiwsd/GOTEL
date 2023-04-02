@@ -1,15 +1,79 @@
 import React from 'react'
-import JobSeekerSidebar from '../Sidebar/JobSeekerSidebar';
+import Table from 'react-bootstrap/Table';
 import JobSeekerNavbar from '../Navbar/JobSeekerNavbar';
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import { BsChevronRight } from 'react-icons/bs'
 import './AppliedJobs.css'
+import {ImUser} from 'react-icons/im'
+import {SiCoursera} from 'react-icons/si'
+import {BiMessageDetail} from 'react-icons/bi'
+import {BsBookmarkCheckFill} from 'react-icons/bs'
+import {AiOutlineFileSearch} from 'react-icons/ai'
+import {MdOutlineDocumentScanner} from 'react-icons/md'
+import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Link } from "react-router-dom";
+
 function AppliedJobs() {
     return (
         <div>
             <div className="home d-flex w-100 position-relative">
-                <div className=" d-none d-md-block col-md-3 col-lg-2 "><JobSeekerSidebar /></div>
+            <div className=" d-none d-md-block sidebar col-md-3 col-lg-2 ">
+      <div className="sidebar  p-0" >
+      <div className="top">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">GOTEL</span>
+        </Link>
+      </div>
+      <hr />
+      <div className="center">
+        <ul>
+          <Link to="/JobSeeker" style={{ textDecoration: "none" }}>
+            <li>
+              <ImUser className="icon fs-4" />
+              <span>User Profile</span>
+            </li>
+          </Link>
+          <Link to='/UserFindJob'style={{ textDecoration: "none" }}>
+            <li>
+              <AiOutlineFileSearch className="icon fs-4" />
+              <span>Find Jobs</span>
+            </li>
+          </Link>
+          <Link to='/AppliedJobs' style={{ textDecoration: "none" }}>
+          <li>
+            <BsBookmarkCheckFill className="icon fs-4" />
+            <span>Jobs Applied</span>
+          </li></Link>
+          <Link to='/UserResume' style={{ textDecoration: "none" }}>
+          <li>
+            <MdOutlineDocumentScanner className="icon fs-4" />
+            <span>Create Your Resume</span>
+          </li></Link>
+          <Link style={{ textDecoration: "none" }}>
+          <li>
+            <SiCoursera className="icon fs-4" />
+            <span>Applied Courses</span>
+          </li></Link>
+        
+          <Link to='/JobSeekerMessage'style={{ textDecoration: "none" }}>   <li>
+            <BiMessageDetail className="icon fs-4" />
+            <span>Messages</span>
+          </li>
+          </Link>
+          <Link to='/JobSeekerSettingspage'style={{ textDecoration: "none" }}> <li>
+            <SettingsApplicationsIcon className="icon fs-4" />
+            <span>Settings</span>
+          </li></Link>
+          <Link style={{ textDecoration: "none" }}> <li>
+            <ExitToAppIcon className="icon fs-4" />
+            <span>Logout</span>
+          </li></Link>
+        </ul>
+      </div>
+      </div>
+      </div>
                 <div className="col-12 col-md-9 col-lg-10 h-100"><JobSeekerNavbar />
                     <div className="row m-0 p-0 mb-5">
                         <div class="entry-title">
@@ -31,7 +95,7 @@ function AppliedJobs() {
 
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-Applied" role="tabpanel" aria-labelledby="nav-Applied-tab">
-                                    <table class="table-dashboard" id="my-apply" >
+                                <Table className='postedjobtable table-dashboard ' responsive>
                                         <thead>
                                             <tr>
                                                 <th>Job Title</th>
@@ -39,7 +103,8 @@ function AppliedJobs() {
                                                 <th>Date Applied</th>
                                             </tr>
                                         </thead>
-                                        <tbody >                    <tr>
+                                        <tbody >                 
+                                               <tr>
                                             <td>
                                                 <div class="company-header">
                                                     <div class="img-comnpany">
@@ -164,507 +229,12 @@ function AppliedJobs() {
                                                         </ul></div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <div class="logo-comnpany"><i class="far fa-camera"></i></div>
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/applicants/product-manager/">
-                                                                    Product Manager                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-pending">Pending</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-05</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/10up-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/development-it/integration-engineer/">
-                                                                    Integration Engineer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                    / Remote                                                                                                                                    / California                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-pending">Pending</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-05</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/descript-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/product-management/vp-of-product/">
-                                                                    VP of Product                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Product Management                                                                                                                                    / Full Time                                                                                                                                    / Seatle                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-pending">Pending</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-04</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/descript-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/development-it/senior-frontend-engineer/">
-                                                                    Senior Frontend Engineer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                    / Full Time                                                                                                                                    / Chicago                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-pending">Pending</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-04</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/superside-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/development-it/sourcing-manager/">
-                                                                    Sourcing Manager                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                    / Remote                                                                                                                                    / Seatle                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-pending">Pending</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-03</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/descript-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/marketing-sales/senior-product-marketing-manager/">
-                                                                    Senior Product Marketing Manager                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Marketing &amp; Sales                                                                                                                                    / Full Time                                                                                                                                    / Chicago                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-pending">Pending</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-03</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/nightfall-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/design-creative/ux-ui-designer/">
-                                                                    UX/UI Designer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Design &amp; Creative                                                                                                                                    / Remote                                                                                                                                    / California                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-pending">Pending</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-01</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/development-it/sr-backend-go-developer-crypto-industry/">
-                                                                    Sr. Backend Go Developer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                                                            / San Francisco                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-open">Approved</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-25</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/?post_type=jobs&amp;p=2264">
-                                                                    Blockchain Engineer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                    / Full Time                                                                                                                                    / New York                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-close">Rejected</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-24</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/legal-finance/head-of-analytics-engineering-2/">
-                                                                    Head of Analytics Engineering                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Legal &amp; Finance                                                                                                                                    / Full Time                                                                                                                                    / Chicago                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-open">Approved</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-24</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/?post_type=jobs&amp;p=2264">
-                                                                    Blockchain Engineer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                    / Full Time                                                                                                                                    / New York                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-open">Approved</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-24</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/descript-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/marketing-sales/senior-product-marketing-manager/">
-                                                                    Senior Product Marketing Manager                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Marketing &amp; Sales                                                                                                                                    / Full Time                                                                                                                                    / Chicago                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-pending">Pending</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-23</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/superside-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/development-it/backend-engineer-devops/">
-                                                                    Backend Engineer, DevOps                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                    / Full Time                                                                                                                                    / Seatle                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-pending">Pending</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-20</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/cleo-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/legal-finance/field-marketing-manager/">
-                                                                    Field Marketing Manager                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Legal &amp; Finance                                                                                                                                    / Remote                                                                                                                                    / Seatle                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-pending">Pending</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-20</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/mercury-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/design-creative/senior-website-product-manager/">
-                                                                    Senior Website Product Manager                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Design &amp; Creative                                                                                                                                    / Remote                                                                                                                                    / San Francisco                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-pending">Pending</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-20</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/development-it/sr-backend-go-developer-crypto-industry/">
-                                                                    Sr. Backend Go Developer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                               / San Francisco             </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span class="label label-close">Rejected</span>                        </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-18</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
+                                           
                                         </tbody>
-                                    </table>
+                                        </Table>
                                 </div>
                                 <div class="tab-pane fade show active" id="nav-Wishlist" role="tabpanel" aria-labelledby="nav-Wishlist-tab">
-                                <table class="table-dashboard" id="my-apply" >
+                                <Table className='postedjobtable table-dashboard mt-5' responsive>
                                         <thead>
                                             <tr>
                                                 <th>Job Title</th>
@@ -823,457 +393,9 @@ function AppliedJobs() {
                                                         </ul></div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/10up-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/development-it/integration-engineer/">
-                                                                    Integration Engineer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                / Remote              / California         </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-05</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/descript-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/product-management/vp-of-product/">
-                                                                    VP of Product                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Product Management                                                                                                                                    / Full Time                                                                                                                                    / Seatle                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                          
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-04</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/descript-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/development-it/senior-frontend-engineer/">
-                                                                    Senior Frontend Engineer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                    / Full Time                                                                                                                                    / Chicago                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-04</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/superside-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/development-it/sourcing-manager/">
-                                                                    Sourcing Manager                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                    / Remote                                                                                                                                    / Seatle                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-03</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/descript-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/marketing-sales/senior-product-marketing-manager/">
-                                                                    Senior Product Marketing Manager                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Marketing &amp; Sales                                                                                                                                    / Full Time                                                                                                                                    / Chicago                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                              
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-03</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/nightfall-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/design-creative/ux-ui-designer/">
-                                                                    UX/UI Designer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Design &amp; Creative                                                                                                                                    / Remote                                                                                                                                    / California                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-03-01</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/development-it/sr-backend-go-developer-crypto-industry/">
-                                                                    Sr. Backend Go Developer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                                                            / San Francisco                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                              
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-25</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/?post_type=jobs&amp;p=2264">
-                                                                    Blockchain Engineer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                    / Full Time                                                                                                                                    / New York                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                               
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-24</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/legal-finance/head-of-analytics-engineering-2/">
-                                                                    Head of Analytics Engineering                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Legal &amp; Finance                                                                                                                                    / Full Time                                                                                                                                    / Chicago                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                               
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-24</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/?post_type=jobs&amp;p=2264">
-                                                                    Blockchain Engineer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                    / Full Time                                                                                                                                    / New York                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                              
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-24</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/descript-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/marketing-sales/senior-product-marketing-manager/">
-                                                                    Senior Product Marketing Manager                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Marketing &amp; Sales                                                                                                                                    / Full Time                                                                                                                                    / Chicago                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-23</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/superside-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/development-it/backend-engineer-devops/">
-                                                                    Backend Engineer, DevOps                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                                                                                                    / Full Time                                                                                                                                    / Seatle                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                               
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-20</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/cleo-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/legal-finance/field-marketing-manager/">
-                                                                    Field Marketing Manager                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Legal &amp; Finance                                                                                                                                    / Remote                                                                                                                                    / Seatle                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                               
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-20</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/10/mercury-logo.webp" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/design-creative/senior-website-product-manager/">
-                                                                    Senior Website Product Manager                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Design &amp; Creative                                                                                                                                    / Remote                                                                                                                                    / San Francisco                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                               
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-20</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="company-header">
-                                                        <div class="img-comnpany">
-                                                            <img class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                                        </div>
-                                                        <div class="info-jobs">
-                                                            <h3 class="title-jobs-dashboard">
-                                                                <a href="https://civi.uxper.co/jobs/development-it/sr-backend-go-developer-crypto-industry/">
-                                                                    Sr. Backend Go Developer                                        </a>
-                                                            </h3>
-                                                            <p>
-                                                                Development &amp; IT                                                               / San Francisco             </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                              
-                                                <td class="table-time">
-                                                    <span class="start-time">2023-02-18</span>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
-                                                        </ul></div>
-                                                </td>
-                                            </tr>
+                                        
                                         </tbody>
-                                    </table>
+                                        </Table>
 
                                 </div></div>
                                 <div class="civi-pagination dashboard d-flex justify-content-between" data-type="number">

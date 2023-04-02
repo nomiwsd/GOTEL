@@ -1,6 +1,5 @@
 import React from 'react'
 import "./Navbar.css";
-import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@material-ui/icons/ListOutlined";
@@ -24,10 +23,6 @@ function Navbar() {
   return (
     <div className="navbar p-2">
       <div className="wrapper p-2">
-        <div className="search d-none d-md-block">
-          <input type="text" placeholder="Search..." />
-          <SearchOutlinedIcon />
-        </div>
         <div className="moduleName d-flex justfy-content-center">
           <div className="">
             <ListOutlinedIcon className="icon d-block d-md-none" data-bs-toggle="offcanvas" data-bs-target="#smalloffcanvas" aria-controls="smalloffcanvas" />
@@ -41,15 +36,12 @@ function Navbar() {
                 <div className="sidebar smallsidebar border-0" >
                   <div className="center">
                     <ul>
-                      <p className="title">MAIN</p>
-                     
                       <li>
                       <Link to='/Admin' className='routerlinks'> 
                         <DashboardIcon className="icon fs-4" />
                         <span >Dashboard</span>
                         </Link> </li>
                    
-                      <p className="title">LISTS</p>
                       <Link to={Companydetails} style={{ textDecoration: "none" }}>
                         <li>
                           <IoIosPeople className="icon fs-4" />

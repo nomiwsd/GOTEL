@@ -42,6 +42,9 @@
     right: 25px;
     cursor: pointer;
 }
+.formgroup input{
+    border: 1px solid var(--border-color) !important;
+}
 .civi-button {
     display: inline-block;
     background-color: var(--btn-color);

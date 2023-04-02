@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import CompanyNavbar from './Navbar/CompanyNavbar'
-import CompanySidebar from './Sidebar/CompanySidebar'
 import Select from 'react-select';
 import { useLocation } from "react-router-dom";
 import { firestore } from '../../firebase';
 import { setDoc,doc,getDoc } from "@firebase/firestore"
-
+import {BsPeopleFill} from 'react-icons/bs'
+import {MdWorkOutline,MdPostAdd} from 'react-icons/md'
+import {FaUserPlus} from 'react-icons/fa'
+import {FiCamera} from 'react-icons/fi'
+import {BiMessageDetail} from 'react-icons/bi'
+import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Link } from "react-router-dom";
 import './Company.css'
 const categoryoptions = [
   { value: 'Analytics', label: 'Analytics' },
@@ -25,7 +31,13 @@ const CompanySize = [
 
 function Company() {
   const location = useLocation();
-  const [CompanyName, setCompanyName] = useState(location.state.user.Name);
+  const [user,setUser] = useState('')
+  useEffect(()=>{
+    var company = localStorage.getItem('user')
+    company = JSON.parse(company)
+    setUser(company)
+  },[])
+  const [CompanyName, setCompanyName] = useState(user.Name);
   const [CompanyUrl, setCompanyUrl] = useState(null);
   const [WebsiteName, setWebsiteName] = useState(null);
   const [PhoneNo, setPhoneNo] = useState(null);
@@ -101,11 +113,59 @@ function Company() {
   return (
     <div>
       <div className="home d-flex w-100 position-relative">
-        <div className=" d-none d-md-block col-md-3 col-lg-2 "><CompanySidebar /></div>
+        <div className="d-none d-md-block col-md-3 col-lg-2 sidebar">
+        <div className="sidebar" >
+      <div className="top">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">GOTEL</span>
+        </Link>
+      </div>
+      <hr />
+      <div className="center">
+        <ul>
+          <Link to="/Company" style={{ textDecoration: "none" }}>
+            <li>
+              <BsPeopleFill className="icon fs-4" />
+              <span>Company Profile</span>
+            </li>
+          </Link>
+          <Link to="/Jobpost" style={{ textDecoration: "none" }}>
+            <li>
+              <MdWorkOutline className="icon fs-4" />
+              <span>Post a Job</span>
+            </li>
+          </Link>
+          <Link to='/PostedJob' style={{ textDecoration: "none" }}>
+          <li>
+            <MdPostAdd className="icon fs-4" />
+            <span>Posted Jobs</span>
+          </li></Link>
+          <Link  to='/AppliedCandidate'style={{ textDecoration: "none" }}>
+          <li>
+            <FaUserPlus className="icon fs-4" />
+            <span>Applied Candidates</span>
+          </li></Link>
+          <Link to='/CompanyMessage'style={{ textDecoration: "none" }}>   <li>
+            <BiMessageDetail className="icon fs-4" />
+            <span>Messages</span>
+          </li>
+          </Link>
+          <Link to='/CompanySettingspage'style={{ textDecoration: "none" }}> <li>
+            <SettingsApplicationsIcon className="icon fs-4" />
+            <span>Settings</span>
+          </li></Link>
+          <Link to='/Login'style={{ textDecoration: "none" }}> <li>
+            <ExitToAppIcon className="icon fs-4" />
+            <span>Logout</span>
+          </li></Link>
+        </ul>
+      </div>
+      </div>
+        </div>
         <div className="col-12 col-md-9 col-lg-10 h-100"><CompanyNavbar />
-          <div className="row m-0 p-0 form-dasboard">
-            <div className="col-lg-8 col-md-7">
-              <div class="submit-company-header civi-submit-header d-flex justify-content-between">
+          <div className="row m-0 p-0 form-dasboard d-flex flex-column flex-md-row">
+            <div className="col-lg-8 col-md-7 col-12">
+              <div class="submit-company-header civi-submit-header d-flex flex-lg-row flex-column justify-content-between sticky">
                 <div class="entry-title">
                   <h4>Submit company</h4>
                 </div>
@@ -213,7 +273,34 @@ function Company() {
                                 }}/>
               </div>
             </div>
+            <div className="imageupload border-1 rounded-2 d-flex flex-lg-row flex-column justify-content-center mb-5 p-2 gap-2">
+                            <div className="col-6 col-lg-4  rounded-2 d-flex flex-column justify-content-center coverimgdiv align-items-center p-4 p-lg-2">
+                            <p>Profile Image</p>
+                            <button type="file" name='Upload' className='uploadimgbtn mb-2'>Upload</button>
+                            <img src="" className='profileimg' alt="" />
+                            </div>
+                            <div className="col-12 col-lg-7 coverimgdiv rounded-2 d-flex flex-column justify-content-center align-items-center p-4 p-lg-2">
+                            <p>Cover Image</p>
+                            <button type="file" name='Upload'className='uploadimgbtn mb-2'>Upload</button>
+                            <img src="" className='cover' alt="" />
+                            </div>
+                        </div>
               </div>
+              <div class="about-company-dashboard block-archive-sidebar col-lg-3 col-md-3 col-11 mx-2 ">
+							<h3 class="title-company-about">
+								Preview</h3>
+							<div class="info-company">
+								<div class="img-company"><FiCamera/> </div>
+								<div class="company-right">
+									<div class="title-wapper">
+										<h4 class="title-about" data-title="Company name">Company name</h4>
+																				
+																				</div>
+									<i class="fas fa-map-marker-alt"></i><span class="location-about" data-location="Location">Location</span>
+								</div>
+							</div>
+							<div class="des-about"></div>
+						</div>
             </div>
           </div>
         </div>

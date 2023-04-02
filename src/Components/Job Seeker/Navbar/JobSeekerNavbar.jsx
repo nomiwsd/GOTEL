@@ -4,13 +4,12 @@ import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@material-ui/icons/ListOutlined";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
-import { IoIosPeople } from 'react-icons/io'
+import {ImUser} from 'react-icons/im'
 import { SiCoursera } from 'react-icons/si'
 import { BiMessageDetail } from 'react-icons/bi'
-import { TfiWrite } from 'react-icons/tfi'
-import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
+import {BsBookmarkCheckFill} from 'react-icons/bs'
+import {AiOutlineFileSearch} from 'react-icons/ai'
+import {MdOutlineDocumentScanner} from 'react-icons/md'
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom";
@@ -18,10 +17,6 @@ function JobSeekerNavbar() {
   return (
     <div className="navbar p-2">
       <div className="wrapper p-2">
-        <div className="search d-none d-md-block">
-          <input type="text" placeholder="Search..." />
-          <SearchOutlinedIcon />
-        </div>
         <div className="moduleName d-flex justfy-content-center">
           <div className="">
             <ListOutlinedIcon className="icon d-block d-md-none" data-bs-toggle="offcanvas" data-bs-target="#smalloffcanvas" aria-controls="smalloffcanvas" />
@@ -33,57 +28,55 @@ function JobSeekerNavbar() {
               </div>
               <div class="offcanvas-body">
                 <div className="sidebar smallsidebar border-0" >
-                  <div className="center">
-                    <ul>
-                      
-                      <li>
-                      <Link to='/Admin' className='routerlinks'> 
-                        <DashboardIcon className="icon fs-4" />
-                        <span >Dashboard</span>
-                        </Link> </li>
-                   
-                      <p className="title">LISTS</p>
-                      <Link to=''style={{ textDecoration: "none" }}>
-                        <li>
-                          <IoIosPeople className="icon fs-4" />
-                          <span>Companies Details</span>
-                        </li>
-                      </Link>
-                      <Link to='' style={{ textDecoration: "none" }}>
-                        <li>
-                          <PersonOutlineIcon className="icon fs-4" />
-                          <span>Users Details</span>
-                        </li>
-                      </Link>
-                      <Link to='' style={{ textDecoration: "none" }}>
-                        <li>
-                          <WorkOutlineOutlinedIcon className="icon fs-4" />
-                          <span>Manage Jobs</span>
-                        </li></Link>
-                      <Link style={{ textDecoration: "none" }}>
-                        <li>
-                          <SiCoursera className="icon fs-4" />
-                          <span>Upload Courses</span>
-                        </li></Link>
-                      <Link style={{ textDecoration: "none" }}><li>
-                        <TfiWrite className="icon fs-4" />
-                        <span>Conduct Test</span>
-                      </li></Link>
-                      <Link to='' style={{ textDecoration: "none" }}>   <li>
-                        <BiMessageDetail className="icon fs-4" />
-                        <span>Messages</span>
-                      </li>
-                      </Link>
-                      <Link to='' style={{ textDecoration: "none" }}> <li>
-                        <SettingsApplicationsIcon className="icon fs-4" />
-                        <span>Settings</span>
-                      </li></Link>
-                      <Link style={{ textDecoration: "none" }}> <li>
-                        <ExitToAppIcon className="icon fs-4" />
-                        <span>Logout</span>
-                      </li></Link>
-                    </ul>
-                  </div>
+                <div className="center">
+        <ul>
+          <Link to="/JobSeeker" style={{ textDecoration: "none" }}>
+            <li>
+              <ImUser className="icon fs-4" />
+              <span>User Profile</span>
+            </li>
+          </Link>
+          <Link to='/UserFindJob'style={{ textDecoration: "none" }}>
+            <li>
+              <AiOutlineFileSearch className="icon fs-4" />
+              <span>Find Jobs</span>
+            </li>
+          </Link>
+          <Link to='/AppliedJobs' style={{ textDecoration: "none" }}>
+          <li>
+            <BsBookmarkCheckFill className="icon fs-4" />
+            <span>Jobs Applied</span>
+          </li></Link>
+          <Link to='/UserResume' style={{ textDecoration: "none" }}>
+          <li>
+            <MdOutlineDocumentScanner className="icon fs-4" />
+            <span>Create Your Resume</span>
+          </li></Link>
+          <Link style={{ textDecoration: "none" }}>
+          <li>
+            <SiCoursera className="icon fs-4" />
+            <span>Applied Courses</span>
+          </li></Link>
+          <Link to='/Jobseekerpage' style={{ textDecoration: "none" }}>
+          <li>
+            <SiCoursera className="icon fs-4" />
+            <span>Applied Courses</span>
+          </li></Link>
+          <Link to='/JobSeekerMessage'style={{ textDecoration: "none" }}>   <li>
+            <BiMessageDetail className="icon fs-4" />
+            <span>Messages</span>
+          </li>
+          </Link>
+          <Link to='/JobSeekerSettingspage'style={{ textDecoration: "none" }}> <li>
+            <SettingsApplicationsIcon className="icon fs-4" />
+            <span>Settings</span>
+          </li></Link>
+          <Link style={{ textDecoration: "none" }}> <li>
+            <ExitToAppIcon className="icon fs-4" />
+            <span>Logout</span>
+          </li></Link>
+        </ul>
+      </div>
                 </div>
               </div>
             </div>

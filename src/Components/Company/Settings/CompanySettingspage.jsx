@@ -1,7 +1,14 @@
 import React,{useState} from 'react'
 import './Settingspage.css'
 import {BsEyeFill} from 'react-icons/bs'
-import CompanySidebar from '../Sidebar/CompanySidebar'
+import {BsPeopleFill} from 'react-icons/bs'
+import {MdWorkOutline,MdPostAdd} from 'react-icons/md'
+import {FaUserPlus} from 'react-icons/fa'
+import {BiMessageDetail} from 'react-icons/bi'
+import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Link } from "react-router-dom";
+
 import CompanyNavbar from '../Navbar/CompanyNavbar'
 function CompanySettingspage() {
     const [CurrentPassword, setCurrentPassword] = useState(false)
@@ -10,10 +17,56 @@ function CompanySettingspage() {
 	return (
 		<div>
 			<div className="row m-0 p-0">
-				<div className="col-lg-2 p-0 d-none d-md-block">
-					<CompanySidebar />
-				</div>
-				<div className="col-lg-10">
+			<div className="d-none d-md-block col-md-3 col-lg-2 p-0">
+        <div className="sidebar" >
+      <div className="top">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">GOTEL</span>
+        </Link>
+      </div>
+      <hr />
+      <div className="center">
+        <ul>
+          <Link to="/Company" style={{ textDecoration: "none" }}>
+            <li>
+              <BsPeopleFill className="icon fs-4" />
+              <span>Company Profile</span>
+            </li>
+          </Link>
+          <Link to="/Jobpost" style={{ textDecoration: "none" }}>
+            <li>
+              <MdWorkOutline className="icon fs-4" />
+              <span>Post a Job</span>
+            </li>
+          </Link>
+          <Link to='/PostedJob' style={{ textDecoration: "none" }}>
+          <li>
+            <MdPostAdd className="icon fs-4" />
+            <span>Posted Jobs</span>
+          </li></Link>
+          <Link  to='/AppliedCandidate'style={{ textDecoration: "none" }}>
+          <li>
+            <FaUserPlus className="icon fs-4" />
+            <span>Applied Candidates</span>
+          </li></Link>
+          <Link to='/CompanyMessage'style={{ textDecoration: "none" }}>   <li>
+            <BiMessageDetail className="icon fs-4" />
+            <span>Messages</span>
+          </li>
+          </Link>
+          <Link to='/CompanySettingspage'style={{ textDecoration: "none" }}> <li>
+            <SettingsApplicationsIcon className="icon fs-4" />
+            <span>Settings</span>
+          </li></Link>
+          <Link to='/Login'style={{ textDecoration: "none" }}> <li>
+            <ExitToAppIcon className="icon fs-4" />
+            <span>Logout</span>
+          </li></Link>
+        </ul>
+      </div>
+      </div>
+        </div>
+				<div className="col-lg-9 col-md-8 col-12">
 					<CompanyNavbar />
 					<div className="col-lg-8">
 						<form class="block-from form-password form-change-password form-dashboard">

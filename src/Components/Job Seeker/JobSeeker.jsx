@@ -1,15 +1,23 @@
 import React, { useState,useEffect } from 'react'
-import JobSeekerSidebar from './Sidebar/JobSeekerSidebar';
+
 import JobSeekerNavbar from './Navbar/JobSeekerNavbar';
 import './JobSeeker.css'
 import Select from 'react-select';
 import MyStatefulEditor from "../Company/PostJob/rte_test";
 
 import { ref,getDownloadURL,uploadBytes } from "firebase/storage"
-import { useLocation } from "react-router-dom";
 import { firestore,storage } from '../../firebase';
-import { setDoc,doc,getDoc, collection } from "@firebase/firestore"
+import { setDoc,doc,getDoc, collection } from "@firebase/firestore";
 import { async } from '@firebase/util';
+import {ImUser} from 'react-icons/im'
+import {SiCoursera} from 'react-icons/si'
+import {BiMessageDetail} from 'react-icons/bi'
+import {BsBookmarkCheckFill} from 'react-icons/bs'
+import {AiOutlineFileSearch} from 'react-icons/ai'
+import {MdOutlineDocumentScanner} from 'react-icons/md'
+import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Link } from "react-router-dom";
 
 const categoryoptions = [
   { value: 'Analytics', label: 'Analytics' },
@@ -340,17 +348,71 @@ await getDoc(doc(firestore,`users/${uid}/Awards`,uid))
   } 
   return (
     <div className="home d-flex w-100 position-relative">
-      <div className=" d-none d-md-block col-md-3 col-lg-2 "><JobSeekerSidebar /></div>
+      <div className=" d-none d-md-block sidebar col-md-3 col-lg-2 ">
+      <div className="sidebar  p-0" >
+      <div className="top">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">GOTEL</span>
+        </Link>
+      </div>
+      <hr />
+      <div className="center">
+        <ul>
+          <Link to="/JobSeeker" style={{ textDecoration: "none" }}>
+            <li>
+              <ImUser className="icon fs-4" />
+              <span>User Profile</span>
+            </li>
+          </Link>
+          <Link to='/UserFindJob'style={{ textDecoration: "none" }}>
+            <li>
+              <AiOutlineFileSearch className="icon fs-4" />
+              <span>Find Jobs</span>
+            </li>
+          </Link>
+          <Link to='/AppliedJobs' style={{ textDecoration: "none" }}>
+          <li>
+            <BsBookmarkCheckFill className="icon fs-4" />
+            <span>Jobs Applied</span>
+          </li></Link>
+          <Link to='/UserResume' style={{ textDecoration: "none" }}>
+          <li>
+            <MdOutlineDocumentScanner className="icon fs-4" />
+            <span>Create Your Resume</span>
+          </li></Link>
+          <Link style={{ textDecoration: "none" }}>
+          <li>
+            <SiCoursera className="icon fs-4" />
+            <span>Applied Courses</span>
+          </li></Link>
+      
+          <Link to='/JobSeekerMessage'style={{ textDecoration: "none" }}>   <li>
+            <BiMessageDetail className="icon fs-4" />
+            <span>Messages</span>
+          </li>
+          </Link>
+          <Link to='/JobSeekerSettingspage'style={{ textDecoration: "none" }}> <li>
+            <SettingsApplicationsIcon className="icon fs-4" />
+            <span>Settings</span>
+          </li></Link>
+          <Link style={{ textDecoration: "none" }}> <li>
+            <ExitToAppIcon className="icon fs-4" />
+            <span>Logout</span>
+          </li></Link>
+        </ul>
+      </div>
+      </div>
+      </div>
       <div className="col-12 col-md-9 col-lg-10 h-100"><JobSeekerNavbar />
         <div className="row m-0 p-0 mb-5">
           <div class="entry-title">
             <h4>Profile Settings</h4>
           </div>
-          <div className="col-lg-7 ">
+          <div className="col-lg-7 col-12 ">
             <nav>
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Basic Info</button>
-                <button class="nav-link" id="nav-Eduaction-tab" data-bs-toggle="tab" data-bs-target="#nav-Eduaction" type="button" role="tab" aria-controls="nav-Eduaction" aria-selected="false">Education</button>
+                <button class="nav-link" id="nav-Education-tab" data-bs-toggle="tab" data-bs-target="#nav-Education" type="button" role="tab" aria-controls="nav-Education" aria-selected="false">Education</button>
                 <button class="nav-link" id="nav-Experience-tab" data-bs-toggle="tab" data-bs-target="#nav-Experience" type="button" role="tab" aria-controls="nav-Experience" aria-selected="false">Experience</button>
                 <button class="nav-link" id="nav-Skills-tab" data-bs-toggle="tab" data-bs-target="#nav-Skills" type="button" role="tab" aria-controls="nav-Skills" aria-selected="false">Skills</button>
                 <button class="nav-link" id="nav-Projects-tab" data-bs-toggle="tab" data-bs-target="#nav-Projects" type="button" role="tab" aria-controls="nav-Projects" aria-selected="false">Projects</button>
@@ -394,14 +456,11 @@ await getDoc(doc(firestore,`users/${uid}/Awards`,uid))
                     <div class="field-note">Maximum file size: 1400kb.</div>
                   </div>
                   <div class="row m-0 p-0 form-dashboard">
-                    <div class="col-md-6 col-6 ">
+                    <div class="col-md-12 col-6 ">
                       <label for="candidate_first_name">Username</label>
                       <input class="point-mark point-active" type="text" name="candidate_first_name" placeholder="Username"  value={name}  onChange={(e)=> {setName(e.target.value)}}/>
                     </div>
-                    <div class=" col-md-6 col-6" >
-                      {/* <label for="candidate_last_name">Last name</label>
-                      <input class="point-mark point-active" type="text" name="candidate_last_name" placeholder="Last name" value="Demo" /> */}
-                    </div>
+                    
                     <div class="col-md-6">
                       <label for="candidate_email">Email address</label>
                       <input class="point-mark point-active" type="email" id="user_email" name="candidate_email" placeholder="Email"  value={email}  onChange={(e)=> {setEmail(e.target.value)}} />
@@ -787,6 +846,176 @@ await getDoc(doc(firestore,`users/${uid}/Awards`,uid))
                   Publish
                 </button>
               </div> </div>
+          </div>
+          <div className="col-lg-4 col-12 my-3">
+          <div className='my-lg-4 mt-4 px-0 '>
+                    <div className="d-flex justify-content-center">
+                        <div className="editprofile border-1 rounded-2 col-10 col-md-12  py-2">
+                            <div className="d-flex justify-content-center">
+                                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style={{ width: "100px" }}
+                                    alt="Avatar" />
+                            </div>
+                            <p className='text-center pt-2 m-0 textef'>User Name</p>
+                            <p className='text-center m-0 py-1 textds text-muted'>Designation</p>
+                            <div className="col-12 col-md-12  px-2">
+                            <div className=" d-flex pt-2  m-0 justify-content-center">
+                                <p className='mainhead fw-bold mb-2 mb-md-0'>Bio</p>                              
+                            </div>
+                            <div className="col-12 d-flex justify-content-between mb-2 px-3">
+                                <p className='m-0 textloc text-muted text-justify'>
+                                    
+                                </p>
+                            </div>
+
+                        </div>
+                            <div className="d-flex justify-content-center">
+                                <button className='btn createbtn my-3 w-75'>Edit Profile</button>
+                            </div>
+
+                            {/* Personal Info Section */}
+                            <div className="col-12 col-md-12 px-2">
+                            <div className="d-flex justify-content-center m-0">
+                                <p className='mainhead fw-bold mb-2'>Personal Information</p>
+                            </div>
+                            <div className=" d-flex justify-content-between px-3">
+                                <p className='m-0 textlang fw-bold'>CNIC No</p>
+                                <p className='m-0 textloc text-muted'>38303-1136704-9</p>
+                            </div>
+                            <div className=" d-flex justify-content-between px-3 mt-2">
+                                <p className='m-0 textlang fw-bold'>Date of Birth</p>
+                                <p className='m-0 textloc text-muted'>05-04-2001</p>
+                            </div>
+                            <div className=" d-flex justify-content-between mt-2 px-3">
+                                <p className='m-0 textlang fw-bold'>Gender</p>
+                                <p className='m-0 textloc text-muted'>Male</p>
+                            </div>
+                            <div className=" d-flex justify-content-between my-2 px-3">
+                                <p className='m-0 textlang fw-bold'>Languages</p>
+                                <p className='m-0 textloc text-muted'>Urdu,English</p>
+                            </div>
+                        </div>
+                                      {/* Educational Section */}
+
+                                      <div className="col-12 col-md-12 px-2 mt-2 ">
+                            <div className=" d-flex justify-content-center">
+                                <p className='mainhead fw-bold mb-2'>Education</p>
+                         
+                            </div>
+                            <div className=" d-flex justify-content-between px-1">
+                                <div className="info d-inline-flex me-3">
+                                    <div>
+                                        <p className='m-0 textcom'>University of Wah</p>
+                                        <p className='m-0 textloc text-muted'>Wah Cantt,Pakistan</p>
+                                    </div>
+                                </div>
+                                <p className='m-0 textloc text-muted'>2019-23</p>
+                            </div>
+                            <div className="  d-flex justify-content-between mt-2 px-1">
+                                <div className="info d-inline-flex me-3">
+                                    <div>
+                                        <p className='m-0 textcom'>Superior College for Boys</p>
+                                        <p className='m-0 textloc text-muted'>Bhakkar,Pakistan</p>
+                                    </div>
+                                </div>
+                                <p className='m-0 textloc text-muted'>2017-19</p>
+                            </div>
+                          
+
+                        </div>
+
+                          {/* Skills Section */}
+                          <div className="col-12 col-md-12  px-2">
+                            <div className="col-12 d-flex justify-content-center pt-2">
+                                <p className='mainhead fw-bold mb-0'>Skills</p>
+                                
+                            </div>
+
+                            <div className="col-12 col-md-12 d-flex justify-content-between mb-2">
+                                <ul className='ps-4' style={{
+                                    listStyleType: 'Square'
+                                }}>
+                                    <li> </li>
+                                    <li></li>
+                                    <li></li>
+                                    <li> </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+                                {/* Awards Section */}
+                                <div className="col-12 col-md-12  px-2">
+                            <div className="col-12 d-flex justify-content-center pt-2">
+                                <p className='mainhead fw-bold mb-0'>Awards</p>
+                                
+                            </div>
+
+                            <div className="col-12 col-md-12 d-flex justify-content-between mb-2">
+                                <ul className='ps-4' style={{
+                                    listStyleType: 'Square'
+                                }}>
+                                    <li> </li>
+                                    <li></li>
+                                    <li></li>
+                                    <li> </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            {/* Experiences Section */}
+                            <div className="col-md-12 col-10 px-2 ">
+                            <div className="d-flex  justify-content-center m-0">
+                                <p className='fw-bold mainhead mb-2'>Work Experience</p>
+                            </div>
+                            <div className=" d-flex justify-content-between">
+                                <div className="info d-inline-flex me-3">
+                                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle me-2" style={{ width: "40px" }}
+                                        alt="Avatar" />
+                                    <div>
+                                        <p className='m-0 textcom'>BetterLogics</p>
+                                        <p className='m-0 textloc text-muted'>Lahore</p>
+                                    </div>
+                                </div>
+                                <p className='m-0 textloc text-muted text-md-center'>2+ Years</p>
+                            </div>
+                            <div className="  d-flex justify-content-between my-2">
+                                <div className="info d-inline-flex me-3">
+                                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle me-2" style={{ width: "40px" }}
+                                        alt="Avatar" />
+                                    <div>
+                                        <p className='m-0 textcom'>BetterLogics</p>
+                                        <p className='m-0 textloc text-muted '>Karachi</p>
+                                    </div>
+                                </div>
+                                <p className='m-0 textloc text-muted text-md-center'>2+ Years</p>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                    
+                        
+                   
+
+                
+                        
+
+
+                </div>
           </div>
         </div>
       </div>

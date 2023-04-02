@@ -18,20 +18,37 @@ input:focus {
     box-shadow: none !important;
 }
 
-.signupimg {
-    background-image: url('../Assets/Signupimg.jpg');
-    background-size: cover;
-    height: 780px;
-    background-repeat: no-repeat;
+@media screen and (min-width:425px) and (max-width:768px)   {
+    .signupimg {
+        background-image: url('../Assets/Signupimg.jpg');
+        background-size: cover;
+        height: 175vh !important;
+        background-repeat: no-repeat;
+    }
 }
+@media screen and (min-width:1024px)  {
+    .signupimg {
+        background-image: url('../Assets/Signupimg.jpg');
+        background-size: cover;
+        height: 155vh !important;
+        background-repeat: no-repeat;
+    }
+}
+
+
 @media screen and (max-width:425px) {
     .signupimg {
         background-image: url('../Assets/Signupimg.jpg');
         background-size: cover;
-       height: 160vh;
+        height: 215vh !important;
         background-repeat: no-repeat;
     }
 }
+
+.comname {
+    padding: 10px !important;
+}
+
 .Tabbtns {
     display: inline-flex;
     padding-left: 0.5rem;

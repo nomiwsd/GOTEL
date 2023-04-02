@@ -50,6 +50,7 @@
     border-radius: 4px;
     width: 100%;
 }
+
 .Jobinfo,.salaryinfo{
     background-color:#fff;
     border-radius: 10px;
@@ -146,4 +147,60 @@
 .css-1nmdiq5-menu,
 .select__menu{
     z-index: 99999 !important;
+}
+.about-jobs-dashboard .img-company {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 54px;
+    height: 54px;
+    background-color: #f9f9f9;
+    line-height: 54px;
+    text-align: center;
+    color: var(--civi-color-secondary);
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+.block-archive-sidebar h4, .candidate-sidebar .name h2 {
+    font-size: 24px;
+}
+.about-jobs-dashboard h4 {
+    font-size: 18px;
+    margin-bottom: 7px;
+}
+.about-jobs-dashboard .info-jobs-warpper {
+    line-height: 1.5;
+}
+.about-jobs-dashboard .name-company {
+    font-weight: 500;
+    color: var(--primary-color);
+    
+}
+.about-jobs-dashboard .cate-about {
+    font-weight: 500;
+    color: var(--btn-color);
+}
+.about-jobs-dashboard .label-warpper {
+    margin-top: 18px;
+}
+.label-price {
+    background: rgba(0,116,86,.05);
+    color: var(--btn-color);
+}
+@media screen and (max-width:425px) {
+    .about-jobs-dashboard{
+        position: relative; 
+    }  
+    .table{
+        width: 30vh !important;
+        height: 50vh !important;
+        overflow-x: auto;
+    }
+}
+@media screen and (min-width:1024px) {
+    .about-jobs-dashboard{
+        position: fixed; 
+        top: 100px;
+        right: 20px;
+    }  
 }

@@ -12,12 +12,11 @@ import Managejobs from './Components/Admin/ManageJobs/Managejobs';
 import Settingspage from './Components/Admin/Settings/Settingspage';
 import Message from './Components/Admin/MessagesPage/Message';
 import Company from './Components/Company/Company';
-import CompanySidebar from './Components/Company/Sidebar/CompanySidebar';
 import CompanyNavbar from './Components/Company/Navbar/CompanyNavbar';
 import CompanySettingspage from './Components/Company/Settings/CompanySettingspage';
 import Jobpost from './Components/Company/PostJob/Jobpost';
 import CompanyMessage from './Components/Company/MessagesPage/CompanyMessage';
-import JobSeekerSidebar from './Components/Job Seeker/Sidebar/JobSeekerSidebar';
+
 import JobSeekerNavbar from './Components/Job Seeker/Navbar/JobSeekerNavbar';
 import JobSeeker from './Components/Job Seeker/JobSeeker';
 import JobSeekerMessage from './Components/Job Seeker/MessagesPage/JobSeekerMessage';
@@ -27,35 +26,40 @@ import Postedjob from './Components/Company/Posted Jobs/Postedjob';
 import AppliedJobs from './Components/Job Seeker/Applied Jobs/AppliedJobs';
 import UserResume from './Components/Job Seeker/UserResume/UserResume';
 import UserFindJob from './Components/Job Seeker/FindJobpage/UserFindJob';
+
+import Forgetpassword from './Components/Loginpage/Forgetpassword';
+import Courses from './Components/Admin/Coursespage/Courses';
 function App() {
   return (
     
     <div className="App">
         <BrowserRouter> 
         <Routes>
-        <Route exact path="/" element={<Homepage/>}/>
+        {/* <Route exact path="/" element={<Homepage/>}/> */}
         <Route exact path="/Homepage" element={<Homepage/>}/>
         <Route exact path="/Login" element={<Login/>}/>
-        <Route exact path='/Admin' element={<Admin/>}/>
+        <Route exact path="/Forgetpassword" element={<Forgetpassword/>}/>
+        <Route exact path='/' element={<Admin/>}/>
         <Route exact path='/Companydetails' element={<Companydetails/>}/>
         <Route exact path='/Userdetails' element={<Userdetails/>}/>
-        <Route exact path='/Jobpost' element={<Jobpost/>}/>
+        
+        <Route exact path='/Courses' element={<Courses/>}/>
         <Route exact path='/Managejobs' element={<Managejobs/>}/>
         <Route exact path='/Settingspage' element={<Settingspage/>}/> 
         <Route exact path='/Company' element={<Company/>}/> 
-        <Route exact path='/CompanySidebar' element={<CompanySidebar/>}/> 
+       
         <Route exact path='/CompanyNavbar' element={<CompanyNavbar/>}/> 
         <Route exact path='/CompanyMessage' element={<CompanyMessage/>}/> 
         <Route exact path='/CompanySettingspage' element={<CompanySettingspage/>}/> 
-        <Route exact path='/CompanySidebar' element={<CompanySidebar/>}/> 
+         
         <Route exact path='/CompanyNavbar' element={<CompanyNavbar/>}/> 
         <Route exact path='/AppliedCandidate' element={<AppliedCandidate/>}/> 
         <Route exact path='/PostedJob' element={<Postedjob/>}/> 
-        <Route exact path='/JobSeekerSidebar' element={<JobSeekerSidebar/>}/> 
+   
         <Route exact path='/JobSeekerNavbar' element={<JobSeekerNavbar/>}/> 
         <Route exact path='/UserFindJob' element={<UserFindJob/>}/> 
         <Route exact path="/Signup" element={<Signup/>}/> 
-        {/* <Route exact path="/Usernavbar" element={<Usernavbar/>}/> */}
+         
          <Route exact path="/Message" element={<Message/>}/>
          <Route exact path="/JobSeeker" element={<JobSeeker/>}/>
          <Route exact path="/JobSeekerMessage" element={<JobSeekerMessage/>}/>

@@ -2,7 +2,15 @@ import './Jobpost.css';
 import React, { useEffect, useState } from "react";
 import Select from 'react-select';
 import MyStatefulEditor from "./rte_test";
-import CompanySidebar from '../Sidebar/CompanySidebar';
+import {BsPeopleFill} from 'react-icons/bs'
+import {MdWorkOutline,MdPostAdd} from 'react-icons/md'
+import {FaUserPlus} from 'react-icons/fa'
+import {BiMessageDetail} from 'react-icons/bi'
+import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
+import {FiCamera} from 'react-icons/fi'
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Link } from "react-router-dom";
+
 import CompanyNavbar from '../Navbar/CompanyNavbar';
 import { firestore } from '../../../firebase';
 import { addDoc,collection } from "@firebase/firestore"
@@ -20,6 +28,18 @@ const typeoptions = [
   { value: 'Remote', label: 'Remote' },
   { value: 'Internship', label: 'Internship' },
 ];
+const careerleveloptions = [
+  { value: 'Fresher', label: 'Fresher' },
+  { value: 'Junior', label: 'Junior' },
+  { value: 'Middle', label: 'Middle' },
+  { value: 'Senior', label: 'Senior' },
+];
+const experienceoptions = [
+  { value: '1-2 Years', label: '1-2 Years' },
+  { value: '3-5 Years', label: '3-5 Years' },
+  { value: '6-9 Years', label: '6-9 Years' },
+  { value: '10+ Years', label: '10+ Years' },
+];
 
 const SkillsOptions = [
   { value: 'BackEND Developer', label: 'BackEnd Developer' },
@@ -27,12 +47,19 @@ const SkillsOptions = [
   { value: 'Content Writer', label: 'Content Writer' },
   { value: 'Product Manager', label: 'Product Manager' },
 ];
-
+const Qualificationoptions = [
+  { value: 'Associate', label: 'Associate Degree' },
+  { value: 'Bachelor', label: 'Bachelor Degree' },
+  { value: 'Certificate', label: 'Certificate' },
+  { value: 'Bachelor', label: 'Master"s Degree' },
+  { value: 'Associate', label: 'Doctrate Degree' },
+  { value: 'Bachelor', label: 'Bachelor Degree' },
+];
 var compnay = ''
 
 function Jobpost() {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [val, setVal] = useState("");
+  // const [selectedOption, setSelectedOption] = useState(null);
+  // const [val, setVal] = useState("");
   const onChange = (value) => {
     setJobDescription(value);
   };
@@ -77,7 +104,7 @@ function Jobpost() {
             jobCareerLevel:jobCareerLevel.value,
             jobExperience:jobExperience.value,
             jobQualification:jobQualification.value,
-            jobClosingDays:jobClosingDays.value,
+            jobClosingDays:jobClosingDays,
             jobSalaryMax:jobSalaryMax,
             jobSalaryRate:jobSalaryRate.value,
             jobApplyType:jobApplyType.value,
@@ -99,14 +126,62 @@ function Jobpost() {
       });        
     }
   return (
-    <div>
+   
       <div className='jobpostsection row d-flex m-0 p-0'>
-        <div className=" d-none d-md-block col-md-3 col-lg-2  m-0 p-0"><CompanySidebar /></div>
-        <div className="col-12 col-md-9 col-lg-10 h-100"><CompanyNavbar />
-          <div className="bg-color py-2 px-3 rounded-3">
-            <div class="entry-title d-flex justify-content-between my-2 col-md-12 col-12 row">
-              <h4 className='col-12 col-md-6'> Create a Job Post</h4>
-              <div className="d-flex col-12 col-md-6">
+      <div className="d-none d-md-block col-md-3 col-lg-2 p-0 sidebar">
+        <div className="sidebar" >
+      <div className="top">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">GOTEL</span>
+        </Link>
+      </div>
+      <hr />
+      <div className="center">
+        <ul>
+          <Link to="/Company" style={{ textDecoration: "none" }}>
+            <li>
+              <BsPeopleFill className="icon fs-4" />
+              <span>Company Profile</span>
+            </li>
+          </Link>
+          <Link to="/Jobpost" style={{ textDecoration: "none" }}>
+            <li>
+              <MdWorkOutline className="icon fs-4" />
+              <span>Post a Job</span>
+            </li>
+          </Link>
+          <Link to='/PostedJob' style={{ textDecoration: "none" }}>
+          <li>
+            <MdPostAdd className="icon fs-4" />
+            <span>Posted Jobs</span>
+          </li></Link>
+          <Link  to='/AppliedCandidate'style={{ textDecoration: "none" }}>
+          <li>
+            <FaUserPlus className="icon fs-4" />
+            <span>Applied Candidates</span>
+          </li></Link>
+          <Link to='/CompanyMessage'style={{ textDecoration: "none" }}>   <li>
+            <BiMessageDetail className="icon fs-4" />
+            <span>Messages</span>
+          </li>
+          </Link>
+          <Link to='/CompanySettingspage'style={{ textDecoration: "none" }}> <li>
+            <SettingsApplicationsIcon className="icon fs-4" />
+            <span>Settings</span>
+          </li></Link>
+          <Link to='/Login'style={{ textDecoration: "none" }}> <li>
+            <ExitToAppIcon className="icon fs-4" />
+            <span>Logout</span>
+          </li></Link>
+        </ul>
+      </div>
+      </div>
+        </div>
+        <div className="col-12 col-md-9 col-lg-10 h-100 bg-color row m-0 p-0"><CompanyNavbar />
+          <div className="bg-color py-2 px-2 rounded-3 col-md-12 col-lg-8 col-12 ">
+            <div class="entry-title d-flex justify-content-between my-2  row m-0 p-0">
+              <h4 className='col-12 col-lg-6 col-md-12'> Create a Job Post</h4>
+              <div className="d-flex col-12 col-md-8 col-lg-6">
                 <button className='clearbtn my-1 '>Cancel</button>
                 <button className='mx-3 submitbtn' onClick={()=>{
                   postJob()
@@ -163,7 +238,7 @@ function Jobpost() {
                 <Select
                   defaultValue={jobCareerLevel}
                   onChange={setJobCareerLevel}
-                  options={categoryoptions}
+                  options={careerleveloptions}
                   classNames='categoryselect'
                 />
 
@@ -173,7 +248,7 @@ function Jobpost() {
                 <Select
                   defaultValue={jobExperience}
                   onChange={setJobExperience}
-                  options={typeoptions}
+                  options={experienceoptions}
                   classNames='categoryselect'
                 />
               </div>
@@ -182,19 +257,14 @@ function Jobpost() {
                 <Select
                   defaultValue={jobQualification}
                   onChange={setJobQualification}
-                  options={categoryoptions}
+                  options={Qualificationoptions}
                   classNames='categoryselect'
                 />
 
               </div>
               <div className="col-lg-6 my-2">
                 <label>Closing Days <sup>*</sup></label>
-                <Select
-                  defaultValue={jobClosingDays}
-                  onChange={setJobClosingDays}
-                  options={typeoptions}
-                  classNames='categoryselect'
-                />
+               <input type="Date" value={jobClosingDays} onChange={(e)=> {setJobClosingDays(e.target.value)}}/>
               </div>
 
             </div>
@@ -224,21 +294,30 @@ function Jobpost() {
                 />
 
               </div>
-              <div className="col-lg-6 my-2">
-                <h4 className='basicheading'>Company</h4>
-                <label>Select Company <sup>*</sup></label>
-                <Select
-                  defaultValue={jobTime}
-                  onChange={setJobTime}
-                  options={typeoptions}
-                  classNames='categoryselect'
-                />
-              </div>
+             
             </div>
+          </div>
+          <div className="col-md-12 col-12 col-lg-4">
+                <h3>About This Page</h3>
+                <div class="about-jobs-dashboard block-archive-sidebar col-3">
+                                <div class="img-company">
+                                <FiCamera/>
+                                </div>
+                                <h4 class="title-about" data-title="Title of job">Title of job</h4>
+                                <div class="info-jobs-warpper">
+                                    by                                    <span class="name-company mx-2" data-name="Company Name">Company Name</span>
+                                      in                                    <span class="cate-about" data-cate="Category">Category</span>
+                                    <div class="label-warpper">
+                                        <span class="label-type-inner"></span>
+                                        <span class="label-location-inner"></span>
+                                    </div>
+                                    <div class="label label-price" data-text-min="Minimum:" data-text-max="Maximum:" data-text-agree="Negotiable Price"><i class="fas fa-usd-circle"></i><span class="salary-currency">$</span><span class="salary-minimum"></span> - <span class="salary-currency">$</span><span class="salary-maximum"></span> / <span class="salary-rate">hours</span></div>
+                                </div>
+                            </div>
           </div>
         </div>
       </div>
-    </div>
+   
 
   )
 }

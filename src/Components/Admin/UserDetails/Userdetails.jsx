@@ -1,6 +1,5 @@
 import React from 'react'
 import Navbar from '../Navbar/Navbar'
-import Sidebar from '../Sidebar/Sidebar'
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,6 +8,17 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
+import {IoIosPeople} from 'react-icons/io'
+import {SiCoursera} from 'react-icons/si'
+import {BiMessageDetail} from 'react-icons/bi'
+import {TfiWrite} from 'react-icons/tfi'
+import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
+import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Link } from "react-router-dom";
+
 
 const columns = [
   { id: 'ID', label: 'ID', minWidth: 100 },
@@ -74,7 +84,65 @@ function Userdetails() {
 
     <div>
       <div className='Usersection row d-flex m-0 p-0'>
-        <div className=" d-none d-md-block col-md-3 col-lg-2  m-0 p-0"><Sidebar /></div>
+        <div className=" d-none d-md-block col-md-3 col-lg-2 sidebar m-0 p-0">
+        <div className="sidebar  p-0" >
+      <div className="top">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">GOTEL</span>
+        </Link>
+      </div>
+      <hr />
+      <div className="center">
+        <ul>
+          <p className="title">MAIN</p>
+          <Link to='/Admin' className='routerlinks'> <li>
+            <DashboardIcon className="icon fs-4" />
+            <span className='d-none d-md-block'>Dashboard</span>
+            </li></Link>
+          <p className="title">LISTS</p>
+          <Link to="/Companydetails" style={{ textDecoration: "none" }}>
+            <li>
+              <IoIosPeople className="icon fs-4" />
+              <span>Companies Details</span>
+            </li>
+          </Link>
+          <Link to="/Userdetails" style={{ textDecoration: "none" }}>
+            <li>
+              <PersonOutlineIcon className="icon fs-4" />
+              <span>Users Details</span>
+            </li>
+          </Link>
+          <Link to='/Managejobs' style={{ textDecoration: "none" }}>
+          <li>
+            <WorkOutlineOutlinedIcon className="icon fs-4" />
+            <span>Manage Jobs</span>
+          </li></Link>
+          <Link style={{ textDecoration: "none" }}>
+          <li>
+            <SiCoursera className="icon fs-4" />
+            <span>Upload Courses</span>
+          </li></Link>
+          <Link style={{ textDecoration: "none" }}><li>
+            <TfiWrite className="icon fs-4" />
+            <span>Conduct Test</span>
+          </li></Link>
+          <Link to='/Message'style={{ textDecoration: "none" }}>   <li>
+            <BiMessageDetail className="icon fs-4" />
+            <span>Messages</span>
+          </li>
+          </Link>
+          <Link to='/Settingspage'style={{ textDecoration: "none" }}> <li>
+            <SettingsApplicationsIcon className="icon fs-4" />
+            <span>Settings</span>
+          </li></Link>
+          <Link style={{ textDecoration: "none" }}> <li>
+            <ExitToAppIcon className="icon fs-4" />
+            <span>Logout</span>
+          </li></Link>
+        </ul>
+      </div>
+      </div>
+        </div>
         <div className="col-12 col-md-9 col-lg-10 h-100"><Navbar />
           <Paper sx={{ width: '100%', overflow: 'hidden' }}>
             <TableContainer sx={{ maxHeight: 440 }}>

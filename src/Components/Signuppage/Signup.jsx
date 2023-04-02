@@ -6,6 +6,8 @@ import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { Link} from 'react-router-dom';
 import { Email } from '@material-ui/icons';
+import { HalfMalf } 
+from 'react-spinner-animated';
 
 import {  createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth,firestore } from '../../firebase';
@@ -95,7 +97,7 @@ function Signup() {
     return (
         <div className='signupimg ' >
         <div className='d-flex justify-content-center align-items-center pb-5' >
-            <div className="col-md-8  col-10 col-lg-6 loginbg align-items-center my-5 bg-light px-md-3 pt-2 px-2">
+            <div className="col-md-8  col-11 col-lg-6 loginbg align-items-center my-5 bg-light px-md-3 pt-2 ">
                 <p className="loginhead my-3">Register</p>
                 <p className='logintxt text-muted'>Enter your details to get Registered</p>
                 <nav className="d-flex navtab justify-content-center px-3">
@@ -112,12 +114,12 @@ function Signup() {
                         Job Seeker
                     </TabSelector>
                 </nav>
-                <div className="col-12 col-lg-12 d-grid justify-content-center m-0 px-4 px-lg-0">
+                <div className="col-12 col-lg-12 d-grid justify-content-center m-0 px-lg-0 px-2">
                     
                     <TabPanel hidden={selectedTab !== "Company"}>
                     <div className="row my-3">
                             <div className="col-md-6  col-12"> <label for="ControlInput1" className="formlabel ">Company Name</label>
-                                <input type="text" className="form-control" id="ControlInput1" placeholder="FullName" value={CompanyName}  onChange={(e)=> {
+                                <input type="text" className="form-control comname" id="ControlInput1" placeholder="Company Name" value={CompanyName}  onChange={(e)=> {
                                     setCompanyName(e.target.value);
                                 }} />
                             </div>
@@ -125,7 +127,7 @@ function Signup() {
                                 <label for="mControlInput2" className="formlabel">Email Address</label>
                                 <input type="email" value={email} onChange={(e)=> {
                                     setEmail(e.target.value);
-                                }} className="form-control" id="ControlInput2" placeholder="Email" />
+                                }} className="form-control" id="ControlInput2" placeholder="companyname@gmail.com" />
                             </div>
                         </div>
                         <div className="row ">
@@ -141,9 +143,16 @@ function Signup() {
                                 }}   />
                             </div>
                         </div>
-                        <div className="d-flex justify-content-center"><Link to='../Company' className='btn civibtn col-lg-6 col-6 my-3' onClick={()=>{
+                        <div className="d-flex justify-content-center"><Link to='../Company' className=' submitbtn col-lg-6 col-6 my-3' onClick={()=>{
                             onSubmit();
                         }}>Register</Link></div>
+                          <HalfMalf text={"Loading..."} bgColor={"#F0A500"} center={false} width={"100px"} height={"100px"}/>
+                        <div className="d-flex justify-content-center align-items-center">
+                            <div className="">
+                                <p className='text-success'>Account Created Successfully</p>
+                                <p className='text-danger'>Please Fill out Your Details First*</p>
+                            </div>
+                        </div>
                         <p className='text-center'>--------Or Signup With--------</p>
 
                         <div className='d-flex justify-content-center mb-3'>
@@ -160,7 +169,7 @@ function Signup() {
 
                     <div className="row my-3">
                             <div className="col-md-6  col-12"> <label for="ControlInput1" className="formlabel ">User Name</label>
-                                <input type="text" className="form-control" id="ControlInput1" placeholder="User Name" value={UserName} onChange={(e)=> {
+                                <input type="text" className="form-control comname" id="ControlInput1" placeholder="User Name" value={UserName} onChange={(e)=> {
                                     setUserName(e.target.value);
                                 }}   />
                             </div>
@@ -184,7 +193,14 @@ function Signup() {
                                 }}  />
                             </div>
                         </div>
-                        <div className="d-flex justify-content-center"><Link to='../JobSeeker' className='btn civibtn col-lg-6 col-6 my-3' onClick={()=>{onSubmit()}}>Register</Link></div>
+                        <div className="d-flex justify-content-center"><Link to='../JobSeeker' className='submitbtn col-lg-6 col-6 my-3' onClick={()=>{onSubmit()}}>Register</Link></div>
+                        <HalfMalf text={"Loading..."} bgColor={"#F0A500"} center={false} width={"100px"} height={"100px"}/>
+                        <div className="d-flex justify-content-center align-items-center">
+                            <div className="">
+                                <p className='text-success'>Account Created Successfully</p>
+                                <p className='text-danger'>Please Fill out Your Details First*</p>
+                            </div>
+                        </div>
                         <p className='text-center'>--------Or Signup With--------</p>
 
                         <div className='d-flex justify-content-center mb-3'>

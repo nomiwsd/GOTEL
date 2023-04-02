@@ -50,12 +50,17 @@ height: 54px !important;}
 word-wrap: break-word;
 }
 .list-item{
+    margin-bottom: 5px !important;
     font-size: 16px;
     font-family: var(--font-family);
 }
 .list-cate a,.details-info a{
     text-decoration: none;
     color: #007456 !important;
+    margin-bottom: 0 !important;
+}
+.details-info{
+    margin-bottom: 5px !important;
 }
 .civi-button.button-block {
     display: block;
@@ -104,4 +109,7 @@ width: 100%;
 }
 .listdesc{
     list-style-type: circle;
+}
+.coverimg{
+    width:100%;
 }

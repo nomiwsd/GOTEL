@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
 :root {
     --font-family: 'Inter', sans-serif;
     --background-color: #eee;
@@ -11,102 +10,32 @@
     --option-color: #007456;
     --bg-color: #f9f9f9;
 }
-
-.findjob {
-    background-color: var(--bg-color);
+.findjob{
+    background-color:#D3D3D3 !important;
 }
-
-.searchbar {
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    background-color: white;
-    width: 100%;
-    height: 45px;
-}
-
-.mainheading {
-    font-size: 34px;
-    font-family: var(--font-family);
-    font-weight: 500;
-    text-align: center;
-    color: #111111 !important;
-}
-
-.formgroup {
-    background-color: white;
-    display: flex;
-    border: 0;
-    border-right: 1px solid var(--border-color);
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
-}
-
-.rightgroup {
-    display: flex;
-    justify-content: center;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
-}
-
-.formgroup select {
-    width: 250px !important;
-    background-color: white;
-    color: black;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-
-}
-
-.clearbtn {
-    width: 30%;
-    font-size: 16px;
-    font-family: var(--font-family);
-}
-
-.submitbtn {
-    display: inline-block;
-    background-color: var(--btn-color);
-    border: solid 1px var(--btn-color);
-    width: 50%;
-    color: #fff !important;
-    text-align: center !important;
-    transition: all .3s;
-    font-size: 16px;
-    padding: 4px 10px;
-    -webkit-border-radius: 3em;
-    -moz-border-radius: 3em;
-    border-radius: 3em;
-    font-weight: 500;
-    cursor: pointer;
-}
-
 .inner-filter {
     width: 330px;
     margin-right: 70px;
 }
-
 .nav-filter {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 .nav-filter span {
     font-size: 18px;
     font-family: var(--font-family);
 }
-
 .clear-filter span {
     font-size: 14px;
     color: #007456;
     font-family: var(--font-family);
 }
-
 .inner-filter .entry-filter {
     padding-top: 24px;
     border-top: 1px solid var(--border-color);
     margin-top: 24px;
 }
-
 .inner-filter .entry-filter h4 {
     font-size: 16px;
     font-weight: 600;
@@ -115,7 +44,6 @@
     text-transform: uppercase;
     margin-bottom: 17px;
 }
-
 inner-filter .entry-filter ul.custom-scrollbar {
     padding-left: 0;
     list-style: none;
@@ -124,9 +52,6 @@ inner-filter .entry-filter ul.custom-scrollbar {
     overflow: auto;
 }
 
-li {
-    line-height: 1.8;
-}
 
 .inner-filter .entry-filter ul.custom-scrollbar input {
     border: 2px solid var(--border-color);
@@ -204,8 +129,8 @@ input[type="checkbox"] {
 }
 
 a {
-    text-decoration: none;
-    color: #111111;
+    text-decoration: none !important;
+    
 }
 
 .bordericon,
@@ -337,6 +262,10 @@ a.label {
     margin-left: 5px;
 }
 .offcanvasbtn{
+    width: 100% !important;
+    border-radius: 50px;
+    background-color: #007456;
+    color:white;
     position: fixed;
     bottom: 0;
     padding: 10px;
@@ -344,4 +273,4 @@ a.label {
 }
 .offcanvas-body{
     padding: 10px !important;
-}
+} 

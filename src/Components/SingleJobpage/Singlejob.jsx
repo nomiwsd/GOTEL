@@ -8,13 +8,14 @@ import { HiOutlineExternalLink } from 'react-icons/hi'
 import { BsCheck2Circle } from 'react-icons/bs'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { TbSend } from 'react-icons/tb'
-import Header from '../Homepage/Header/Header';
+import Header from '../Homepage/Header';
+
 function Singlejob() {
     return (
         <div>
-            {/* <Usernavbar /> */}
+             <Header />
             <div className="container">
-               <Header/>
+              
                 <div className="row m-0 p-0">
                     <div className="col-lg-7 col-12 ">
                         <Breadcrumb>
@@ -169,23 +170,25 @@ function Singlejob() {
                                 <h4>Overview</h4>
                                 <p>We are Uxper. With a presence in more than 60 countries, we’re a growing global organization that helps amazing companies engage with customers through mobile messaging, email, voice and video.</p>
                                 <h4>Requirements</h4>
-                                <ul className='listdesc'>
+                                <ul className='listdesc text-align--justify'>
                                     <li>Be heavily involved in turning user stories into testable, maintainable and high-quality code. This is a hands-on code design and coding role!</li>
                                     <li>Be a valued member of an autonomous, cross-functional team delivering our messaging experience to businesses around the world</li>
                                     <li>Promote and share knowledge for improvement of methodologies and best practices</li>
                                  <li>Close-knitted collaboration with equally passionate team members having fun at work and feeling proud that you are a key part of creating world-class solutions for customer engagement</li>
                                 </ul>
                                 <h4>Skill &amp; Experience</h4>
-                                <ul className='listdes '>
-                                    <li>You have at least 3 years of experience working as a Product Designer.</li>
-                                    <li>You have experience using Sketch and InVision or Framer X</li>
-                                    <li>You have some previous experience working in an agile environment – Think two-week sprints.</li>
-                                    <li>You are familiar with using Jira and Confluence in your workflow</li>
-                                </ul>
+                                
                             </div>
                           
                         </div>
                         </div>
+                        </div>
+                        <div className="imageupload border-1 rounded-2">
+                            <div className="col-12 border-1 rounded-2 d-flex flex-column justify-content-center align-items-center">
+                            <button type="file" name='Upload'>Upload</button>
+                            <img src="" className='coverimg' alt="" />
+                            </div>
+
                         </div>
                     </div>
                     <div className="col-12 col-lg-5">
@@ -221,7 +224,7 @@ function Singlejob() {
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-info-company" id="tab-sidebar-overview" >
-                                    <div class="content d-none">
+                                    <div class=" ">
                                         <p>Uxper is the first design and hosting platform built from the ground up for the mobile age. It is the only hosted service that allows designers to create websites that work on every device, and push it live to production without a developer.</p>
                                         <p>Uxper empowers designers to create beautiful, responsive websites—without writing a single line of code, or relying on a developer. Its drag-and-drop interface looks, feels, and works like familiar desktop design tools, and writes clean, semantic code any developer would be proud of.</p>
                                         <p>Get started today—for free—but brace yourself: your workflow's about to be transformed.</p>
