@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CompanyNavbar from './Navbar/CompanyNavbar'
 import Select from 'react-select';
 import { useLocation } from "react-router-dom";
-import { firestore } from '../../firebase';
+import { firestore,storage } from '../../firebase';
 import { setDoc,doc,getDoc } from "@firebase/firestore"
 import {BsPeopleFill} from 'react-icons/bs'
 import {MdWorkOutline,MdPostAdd} from 'react-icons/md'
@@ -12,6 +12,8 @@ import {BiMessageDetail} from 'react-icons/bi'
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom";
+import { ref,getDownloadURL,uploadBytes } from "firebase/storage"
+
 import './Company.css'
 const categoryoptions = [
   { value: 'Analytics', label: 'Analytics' },
@@ -31,11 +33,13 @@ const CompanySize = [
 
 function Company() {
   const location = useLocation();
-  const [user,setUser] = useState('')
+  const [user,setUser] = useState({name:''})
   useEffect(()=>{
     var company = localStorage.getItem('user')
     company = JSON.parse(company)
     setUser(company)
+    setCompanyName(company.Name)
+    fetchUserDetails(company.uid)
   },[])
   const [CompanyName, setCompanyName] = useState(user.Name);
   const [CompanyUrl, setCompanyUrl] = useState(null);
@@ -51,10 +55,18 @@ function Company() {
   const [CompanyAbout,setCompanyAbout] = useState(null)
   const [loading,setLoading] = useState(false)
   const [published,setPublished] = useState(false)
+  const [selectedImage, setSelectedImage] = useState(null);
+
   
+  const uploadImage = async (image)=>{
+    const buffer = await image.arrayBuffer();
+    const result = await uploadBytes(ref(storage,`images/${user.uid}/profile`),buffer)
+    setSelectedImage(await getDownloadURL(ref(storage,`images/${user.uid}/profile`)))
+  }
   const writeUserDetails = async () => {
     await setDoc(doc(firestore, "users",location.state.user.uid), {
       Name:CompanyName,
+      userType:'Company',
       companyUrl:CompanyUrl,
       email:CompanyEmail,
       about:CompanyAbout,
@@ -80,9 +92,10 @@ function Company() {
   });
     
   }
-  const fetchUserDetails = async () => {
+  const fetchUserDetails = async (uid) => {
     
-        await getDoc(doc(firestore,'users',location.state.user.uid))
+      setSelectedImage(await getDownloadURL(ref(storage,`images/${uid}/profile`)))
+        await getDoc(doc(firestore,'users',uid))
             .then((querySnapshot)=>{
                 if(querySnapshot.exists()){
                     setCompanyName(querySnapshot.data().Name)
@@ -104,9 +117,7 @@ function Company() {
                 console.log(e)
             })
     }
-    useEffect(()=>{
-      fetchUserDetails()
-    },[])
+    
 
   
  
@@ -162,7 +173,7 @@ function Company() {
       </div>
       </div>
         </div>
-        <div className="col-12 col-md-9 col-lg-10 h-100"><CompanyNavbar />
+        <div className="col-12 col-md-9 col-lg-10 h-100"><CompanyNavbar userProfileImg={selectedImage} />
           <div className="row m-0 p-0 form-dasboard d-flex flex-column flex-md-row">
             <div className="col-lg-8 col-md-7 col-12">
               <div class="submit-company-header civi-submit-header d-flex flex-lg-row flex-column justify-content-between sticky">
@@ -290,11 +301,26 @@ function Company() {
 							<h3 class="title-company-about">
 								Preview</h3>
 							<div class="info-company">
-								<div class="img-company"><FiCamera/> </div>
+								{selectedImage == null ? 
+                <>
+                <label for="files" id="civi_select_avatar" class="img-company p-4" style={{ position: 'relative', zIndex: '1', }}><FiCamera/></label>
+                          <input
+                              type="file"
+                              id='files'
+                              placeholder='Upload'
+                              onChange={(event) => {
+                                uploadImage(event.target.files[0])
+                                console.log(event.target.files[0]);
+                              }}
+                              style={{ visibility: 'hidden'}}
+                            />
+                </>
+                :
+                <img src={selectedImage} class="rounded-circle aspect-auto" style={{ width: "70px",height: "70px",overflow: 'hidden' }}
+                                    alt="Avatar" />}
 								<div class="company-right">
 									<div class="title-wapper">
-										<h4 class="title-about" data-title="Company name">Company name</h4>
-																				
+										<h4 class="title-about" data-title="Company name">{CompanyName == null ? user.Name : CompanyName}</h4>																				
 																				</div>
 									<i class="fas fa-map-marker-alt"></i><span class="location-about" data-location="Location">Location</span>
 								</div>

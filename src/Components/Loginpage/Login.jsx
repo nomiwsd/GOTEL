@@ -111,7 +111,7 @@ function Login() {
     }
 
     return (
-        <div className='row m-0 p-0 loginpage d-flex justify-content-center align-items-center '>
+        <div className=' relative row m-0 p-0 loginpage d-flex justify-content-center align-items-center '>
             <div className='col-md-5 col-10 px-3  my-2 loginbg'>
                 <p className="loginhead pt-3">Login</p>
                 <p className='logintxt text-muted'>Login with the Data you entered during your Registration</p>
@@ -127,7 +127,6 @@ function Login() {
                 }} /> <div className="d-flex justify-content-center"><Link onClick={() => {
                     onSubmit()
                 }} className='submitbtn  my-3 col-4'>Login</Link></div>
-                <HalfMalf text={"Loading..."} bgColor={"#F0A500"} center={false} width={"100px"} height={"100px"} />
                  <div className="d-flex justify-content-center align-items-center">
                     <div className="">
                         <p className='text-success'>Account Created Successfully</p>
@@ -151,6 +150,12 @@ function Login() {
                 </div>
 
             </div>
+            {
+                loading ? 
+                <div className=' absolute w-full h-full left-0 top-0 bg-black bg-opacity-25 flex justify-center items-center'>
+                    <HalfMalf text={"Loading..."} bgColor={"#F0A500"} center={false} width={"100px"} height={"100px"} />
+                </div> : <></>
+            }
         </div>
     )
 }

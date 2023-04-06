@@ -47,6 +47,7 @@ function App() {
         <Route exact path='/Managejobs' element={<Managejobs/>}/>
         <Route exact path='/Settingspage' element={<Settingspage/>}/> 
         <Route exact path='/Company' element={<Company/>}/> 
+        <Route exact path='/Jobpost' element={<Jobpost/>}/> 
        
         <Route exact path='/CompanyNavbar' element={<CompanyNavbar/>}/> 
         <Route exact path='/CompanyMessage' element={<CompanyMessage/>}/> 

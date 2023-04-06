@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import CompanyNavbar from '../Navbar/CompanyNavbar';
 import { firestore } from '../../../firebase';
 import { addDoc,collection } from "@firebase/firestore"
+import userEvent from '@testing-library/user-event';
 const categoryoptions = [
   { value: 'Analytics', label: 'Analytics' },
   { value: 'Design & Creative', label: 'Design & Creative' },
@@ -55,7 +56,6 @@ const Qualificationoptions = [
   { value: 'Associate', label: 'Doctrate Degree' },
   { value: 'Bachelor', label: 'Bachelor Degree' },
 ];
-var compnay = ''
 
 function Jobpost() {
   // const [selectedOption, setSelectedOption] = useState(null);
@@ -63,11 +63,12 @@ function Jobpost() {
   const onChange = (value) => {
     setJobDescription(value);
   };
-    useEffect(()=>{
-      var company = localStorage.getItem('user')
-      company = JSON.parse(company)
-      compnay = company
-    },[])
+  const [user,setUser] = useState('')
+  useEffect(()=>{
+    var company = localStorage.getItem('user')
+    company = JSON.parse(company)
+    setUser(company)
+  },[])
     const [jobTitle,setJobTitle] = useState('')
     const [jobCategorie,setJobCategorie] = useState('')
     const [jobType,setJobType] = useState('')
@@ -80,7 +81,7 @@ function Jobpost() {
     const [jobSalaryMax,setJobSalaryMax] = useState('')
     const [jobSalaryRate,setJobSalaryRate] = useState('')
     const [jobApplyType,setJobApplyType] = useState('')
-    const [jobTime,setJobTime] = useState('')
+    // const [jobTime,setJobTime] = useState('')
     const [loading,setLoading] = useState('')
     const [published,setPublished] = useState('')
 
@@ -95,7 +96,7 @@ function Jobpost() {
 
     const postJob= async () => {
         await addDoc(collection(firestore, "jobs"), {
-            by:compnay.uid,
+            by:user.uid,
             jobTitle:jobTitle,
             jobCategorie:jobCategorie.value,
             jobType:jobType.value,
@@ -108,7 +109,7 @@ function Jobpost() {
             jobSalaryMax:jobSalaryMax,
             jobSalaryRate:jobSalaryRate.value,
             jobApplyType:jobApplyType.value,
-            jobTime:jobTime.value,
+            // jobTime:jobTime.value,
             Applicants:0,
             status:'Pending',
             posted:getCurrentDate()
@@ -303,15 +304,15 @@ function Jobpost() {
                                 <div class="img-company">
                                 <FiCamera/>
                                 </div>
-                                <h4 class="title-about" data-title="Title of job">Title of job</h4>
+                                <h4 class="title-about" data-title="Title of job">{jobTitle}</h4>
                                 <div class="info-jobs-warpper">
-                                    by                                    <span class="name-company mx-2" data-name="Company Name">Company Name</span>
-                                      in                                    <span class="cate-about" data-cate="Category">Category</span>
+                                    by                                    <span class="name-company mx-2" data-name="Company Name">{user.Name}</span>
+                                      in                                    <span class="cate-about" data-cate="Category">{jobCategorie.value}</span>
                                     <div class="label-warpper">
                                         <span class="label-type-inner"></span>
                                         <span class="label-location-inner"></span>
                                     </div>
-                                    <div class="label label-price" data-text-min="Minimum:" data-text-max="Maximum:" data-text-agree="Negotiable Price"><i class="fas fa-usd-circle"></i><span class="salary-currency">$</span><span class="salary-minimum"></span> - <span class="salary-currency">$</span><span class="salary-maximum"></span> / <span class="salary-rate">hours</span></div>
+                                    <div class="label label-price" data-text-min="Minimum:" data-text-max="Maximum:" data-text-agree="Negotiable Price"><i class="fas fa-usd-circle"></i><span class="salary-currency">$</span><span class="salary-minimum">{jobSalaryMax}</span> / <span class="salary-rate">hours</span></div>
                                 </div>
                             </div>
           </div>

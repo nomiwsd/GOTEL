@@ -32,6 +32,8 @@ function Signup() {
         if(selectedTab == 'Company'){
             await setDoc(doc(firestore, "users",user.uid), {
                 Name:CompanyName,
+                email:email,
+                ph:'',
                 userType:selectedTab
              })
             .then((e)=>{

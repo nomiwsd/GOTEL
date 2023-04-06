@@ -1,16 +1,141 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { BsBookmarkCheckFill, BsHeart, BsHeartFill } from 'react-icons/bs'
 import './Singlejob.css'
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import img1 from '../Assets/jobimage.jpg'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { HiOutlineExternalLink } from 'react-icons/hi'
 import { BsCheck2Circle } from 'react-icons/bs'
+
+import { firestore,storage } from '../../firebase';
+import { ref,getDownloadURL,uploadBytes } from "firebase/storage"
+import { setDoc, doc as Doc, getDocs, docR, getDoc, collection, deleteDoc } from "@firebase/firestore";
+
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { TbSend } from 'react-icons/tb'
 import Header from '../Homepage/Header';
 
 function Singlejob() {
+    var location = useLocation()
+    location = location.state
+    const [liked,setLiked] = useState(location.liked)
+    const [company,setCompany] = useState([])
+    useEffect(()=>{
+        var compan = localStorage.getItem('user')
+        compan = JSON.parse(compan)
+        setUser(compan)
+        fetchCompanyDetails()
+      },[])
+      const fetchCompanyDetails = async ()=>{
+        await getDoc(Doc(firestore,'users',location.job.by))
+            .then((querySnapshot)=>{
+                setCompany((company)=>[...company,querySnapshot.data()])
+                console.log('Company Data fetched')
+            })
+            .catch((e)=>{
+                console.log(e)
+            })
+      }
+      function getCurrentDate(separator = '-') {
+        let newDate = new Date()
+        let date = newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let year = newDate.getFullYear();
+        return `${year}${separator}${month < 10 ? `0${month}` : `${month}`}${separator}${date}`
+    }
+      var [user,setUser] = useState({})      
+  const [loading,setLoading] = useState(false)
+  const [published,setPublished] = useState(false)
+
+    const applyForJob = async (jobId) => {
+        await setDoc(Doc(firestore, `jobs/${jobId}/Applications/${user.uid}`), {
+          data:getCurrentDate(),
+          status:'pending'
+       })
+      .then(async (e)=>{
+            await setDoc(Doc(firestore, `users/${user.uid}/JobsApplied/${jobId}`), {
+                data:getCurrentDate()
+            })
+            .then((e)=>{
+                setLoading(false)
+                setPublished(true)
+                console.log('Applyed For Job '+jobId,e)
+            }
+            )
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
+      }
+      )
+      .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+      });
+        
+      }
+      const LikeJob = async (jobId,index) => {
+        setLiked(true)
+        location.liked = true
+        await setDoc(Doc(firestore, `jobs/${jobId}/LikedBy/${user.uid}`), {
+          liked:true,
+       })
+      .then(async (e)=>{
+            await setDoc(Doc(firestore, `users/${user.uid}/WishList/${jobId}`), {
+                liked:true,
+            })
+            .then((e)=>{
+                setLoading(false)
+                setPublished(true)
+                console.log('Liked Job '+jobId)
+            }
+            )
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
+      }
+      )
+      .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+      });
+        
+      }
+      const DisLikeJob = async (jobId,index) => {
+        location.liked = false
+        setLiked(false)
+        await deleteDoc(Doc(firestore, `jobs/${jobId}/LikedBy/${user.uid}`))
+      .then(async (e)=>{
+            await deleteDoc(Doc(firestore, `users/${user.uid}/WishList/${jobId}`), null)
+            .then((e)=>{
+                setLoading(false)
+                setPublished(true)
+                console.log('DisLiked Job '+jobId)
+            }
+            )
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
+      }
+      )
+      .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+      });
+        
+      }
+    useEffect(()=>{
+        
+    },[])
     return (
         <div>
              <Header />
@@ -31,22 +156,31 @@ function Singlejob() {
                             <div className="d-flex my-2">
                                 <div class="jobs-archive-header d-lg-flex justify-content-between ">
                                     <div class="jobs-header-left d-flex justify-content-between">
-                                        <img width="80px" height="80px" class="logo-comnpany" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
+                                        <img width="80px" height="80px" class="logo-comnpany rounded-full" src={location.img} alt="" />
                                         <div class="jobs-left-inner mx-lg-3 mx-0">
-                                            <h3 class="jobs-title"><Link to='../Singlejob'>Sr. Backend Go Developer</Link>
+                                            <h3 class="jobs-title"><a>{location.job.jobTitle}</a>
                                             </h3>
                                             <div class="info-company d-flex">
                                                 by <a class="authour civi-link-bottom mx-2" href="#f">Uxper</a>  in  <div class="categories-warpper mx-2">
                                                     <div class="cate-warpper">
                                                         <a href="#dsf" class="cate civi-link-bottom">
-                                                            Development &amp; IT </a>
+                                                        {location.job.jobCategorie}  </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="jobs-header-right d-flex justify-content-end my-3 mx-5">
-                                        <AiOutlineHeart className='fs-3' />
+                                    {
+                                                                liked ?
+                                                                    <BsHeartFill className=' text-xl mt-2' onClick={() => {
+                                                                        DisLikeJob(location.id, location.index)
+                                                                    }} />
+                                                                    :
+                                                                    <BsHeart className=' text-xl mt-2' onClick={() => {
+                                                                        LikeJob(location.id, location.index)
+                                                                    }} />
+                                                            }
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +195,7 @@ function Singlejob() {
                                         </div>
                                         <div class="info">
                                             <p class="title-info">Date posted</p>
-                                            <p class="details-info">2022-12-08</p>
+                                            <p class="details-info">{location.job.posted}</p>
                                         </div>
                                     </li>
                                     <li class="list-item col-lg-4 col-sm-6">
@@ -97,7 +231,7 @@ function Singlejob() {
                                         <div class="info">
                                             <p class="title-info">Offered salary</p>
                                             <p class="details-info salary-info">
-                                                $100 - $200/month                    </p>
+                                                ${location.job.jobSalaryMax}/month                    </p>
                                         </div>
                                     </li>
                                     <li class="list-item col-lg-4 col-sm-6">
@@ -109,7 +243,7 @@ function Singlejob() {
                                         <div class="info">
                                             <p class="title-info">Career level</p>
                                             <p class="details-info">
-                                                <span>Senior</span>
+                                                <span>{location.job.jobCareerLevel}</span>
                                             </p>
                                         </div>
                                     </li>
@@ -122,7 +256,7 @@ function Singlejob() {
                                         <div class="info">
                                             <p class="title-info">Qualification</p>
                                             <p class="details-info">
-                                                <span>Bachelor Degree</span>
+                                                <span>{location.job.jobQualification}</span>
                                             </p>
                                         </div>
                                     </li>
@@ -135,7 +269,7 @@ function Singlejob() {
                                         <div class="info">
                                             <p class="title-info">Experience</p>
                                             <p class="details-info">
-                                                <span>3 - 5 Years</span>
+                                                <span>{location.job.jobExperience}</span>
                                             </p>
                                         </div>
                                     </li>
@@ -167,17 +301,9 @@ function Singlejob() {
                             <div class="block-archive-inner jobs-description-details civi-description-details on">
                             <h4 class="title-jobs">Description</h4>
                             <div class="civi-description">
-                                <h4>Overview</h4>
-                                <p>We are Uxper. With a presence in more than 60 countries, we’re a growing global organization that helps amazing companies engage with customers through mobile messaging, email, voice and video.</p>
-                                <h4>Requirements</h4>
-                                <ul className='listdesc text-align--justify'>
-                                    <li>Be heavily involved in turning user stories into testable, maintainable and high-quality code. This is a hands-on code design and coding role!</li>
-                                    <li>Be a valued member of an autonomous, cross-functional team delivering our messaging experience to businesses around the world</li>
-                                    <li>Promote and share knowledge for improvement of methodologies and best practices</li>
-                                 <li>Close-knitted collaboration with equally passionate team members having fun at work and feeling proud that you are a key part of creating world-class solutions for customer engagement</li>
-                                </ul>
-                                <h4>Skill &amp; Experience</h4>
-                                
+                                {
+                                    <iframe srcDoc={location.job.jobDescription} className=' w-full h-screen'></iframe>
+                                }                                                                
                             </div>
                           
                         </div>
@@ -196,18 +322,19 @@ function Singlejob() {
                             <div className="d-grid justify-content-center">
                                 <h4 className='applyjobheading'>Interested in this job?</h4>
                                 <p class="days text-center">
-                                    <span> 142 </span>days left to apply</p>
+                                    <span> {location.job.posted} </span>last date to apply</p>
                             </div>
                             <button className='applybtn py-2 px-2'>Apply Now</button>
                         </div>
-                        <div class="jobs-company-sidebar block-archive-sidebar  border-1 rounded-2 px-3 py-3 mx-2">
+                        {
+                            company.length > 0 ? 
+                            <div class="jobs-company-sidebar block-archive-sidebar  border-1 rounded-2 px-3 py-3 mx-2">
                             <div class="company-header d-flex">
-                                <img src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" className='companyimage' />
+                                <img src={location.img} alt="" className='companyimage' />
                                 <div class="name mx-2">
                                     <div className="d-flex">
-                                        <h2 > <a href="#ff">Uxper</a></h2>
+                                        <h2 > <a href="#ff">{company[0].Name}</a></h2>
                                         <div class=" tip active">
-
                                             <BsCheck2Circle id='checked-company' style={{ backgroundColor: "#fff", color: '#007456' }} className='mt-2 mx-2 fs-4' />
                                             <ReactTooltip
                                                 anchorId="checked-company"
@@ -225,21 +352,24 @@ function Singlejob() {
                             <div class="tab-content">
                                 <div class="tab-info-company" id="tab-sidebar-overview" >
                                     <div class=" ">
-                                        <p>Uxper is the first design and hosting platform built from the ground up for the mobile age. It is the only hosted service that allows designers to create websites that work on every device, and push it live to production without a developer.</p>
+                                        {
+                                            company[0].about
+                                        }
+                                        {/* <p>Uxper is the first design and hosting platform built from the ground up for the mobile age. It is the only hosted service that allows designers to create websites that work on every device, and push it live to production without a developer.</p>
                                         <p>Uxper empowers designers to create beautiful, responsive websites—without writing a single line of code, or relying on a developer. Its drag-and-drop interface looks, feels, and works like familiar desktop design tools, and writes clean, semantic code any developer would be proud of.</p>
-                                        <p>Get started today—for free—but brace yourself: your workflow's about to be transformed.</p>
+                                        <p>Get started today—for free—but brace yourself: your workflow's about to be transformed.</p> */}
                                     </div>
                                     <div class="info">
                                         <p class="title-info">Categories</p>
                                         <div class="list-cate">
                                             <a href="https://civi.uxper.co/company-categories/software/" class="cate civi-link-bottom">
-                                                Software								</a>
+                                                {company[0].categories}								</a>
                                         </div>
                                     </div>
                                     <div class="info">
                                         <p class="title-info">Company size</p>
                                         <div class="list-cate">
-                                            10-50						</div>
+                                            {company[0].companySize}						</div>
                                     </div>
                                     <div class="info">
                                         <p class="title-info">Founded in</p>
@@ -253,11 +383,11 @@ function Singlejob() {
                                     </div>
                                     <div class="info">
                                         <p class="title-info">Phone</p>
-                                        <p class="details-info"><a href="tel:1234567890">1234567890</a></p>
+                                        <p class="details-info"><a href={`tel:${company[0].phoneNo}`}>{company[0].phoneNo}</a></p>
                                     </div>
                                     <div class="info">
                                         <p class="title-info">Email</p>
-                                        <p class="details-info email"><a href="mailto:hello@uxper.co">hello@uxper.co</a></p>
+                                        <p class="details-info email"><a href={`mailto:${company[0].email}`}>{company[0].email}</a></p>
                                     </div>
                                     <a href="https://uxper.co" class="civi-button button-outline button-visit d-flex justify-content-center">Visit uxper.co<HiOutlineExternalLink className='fs-4' /></a>
                                     <div class="logged-out d-flex">
@@ -268,6 +398,8 @@ function Singlejob() {
                                 </div>
                             </div>
                         </div>
+                        : <></>
+                        }
                     </div>
                 </div>
             </div>

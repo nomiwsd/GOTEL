@@ -7,7 +7,7 @@ import MyStatefulEditor from "../Company/PostJob/rte_test";
 
 import { ref,getDownloadURL,uploadBytes } from "firebase/storage"
 import { firestore,storage } from '../../firebase';
-import { setDoc,doc,getDoc, collection } from "@firebase/firestore";
+import { setDoc,updateDoc,doc,getDoc, collection } from "@firebase/firestore";
 import { async } from '@firebase/util';
 import {ImUser} from 'react-icons/im'
 import {SiCoursera} from 'react-icons/si'
@@ -18,6 +18,7 @@ import {MdOutlineDocumentScanner} from 'react-icons/md'
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom";
+import { Height } from '@material-ui/icons';
 
 const categoryoptions = [
   { value: 'Analytics', label: 'Analytics' },
@@ -107,6 +108,18 @@ function JobSeeker() {
   const [award2JobTitle,setAward2JobTitle] = useState(null)
   const [award2Description,setAward2Description] = useState(null)
 
+  const [eduTitle,setEduTitle] = useState(null)
+  const [eduLevel,setEduLevel] = useState(null)
+  const [eduFrom,setEduFrom] = useState(null)
+  const [eduTo,setEduTo] = useState(null)
+  const [eduDescription,setEduDescription] = useState(null)
+
+  const [edu2Title,setEdu2Title] = useState(null)
+  const [edu2Level,setEdu2Level] = useState(null)
+  const [edu2From,setEdu2From] = useState(null)
+  const [edu2To,setEdu2To] = useState(null)
+  const [edu2Description,setEdu2Description] = useState(null)
+
   const [skills,setSkills] = useState(null)
 
   const writeAllDetails = async ()=>{
@@ -115,6 +128,7 @@ function JobSeeker() {
     writeSkills()
     writeUserAwards()
     writeUserProjects()
+    writeUserEducation()
   }
   const fetchAllDetails = async (uid)=>{
     fetchUserDetails(uid)
@@ -122,11 +136,13 @@ function JobSeeker() {
     fetchSkills(uid)
     fetchProjectDetails(uid)
     fetchAwardDetails(uid)
+    fetchEducationDetails(uid)
   }
   const writeUserDetails = async () => {
     await setDoc(doc(firestore, "users",user.uid), {
       Name:name,
       position:position,
+      userType:'Job Seeker',
       categories:categories.value,
       discription:discription,
       dob:dob,
@@ -179,7 +195,7 @@ function JobSeeker() {
             })
     }
   const writeUserExperiance = async () => {
-      await setDoc(doc(firestore, `users/${user.uid}/Experiance/${user.uid}`), {
+      await updateDoc(doc(firestore, `users/${user.uid}/Experiance/${user.uid}`), {
         first : {
           jobTitle:expJobTitle,
           company:expCompanyName,
@@ -291,7 +307,7 @@ await getDoc(doc(firestore,`users/${uid}/Projects`,uid))
             setProject2JobTitle(querySnapshot.data().second.projectTitle)
             setProject2Description(querySnapshot.data().second.description)
         }
-        console.log('User Experiance fetched')
+        console.log('User Project fetched')
     })
     .catch((e)=>{
         console.log(e)
@@ -311,7 +327,7 @@ const writeUserAwards = async () => {
 .then((e)=>{
     setLoading(false)
     setPublished(true)
-    console.log('User Project Updated',e)
+    console.log('User Awards Updated',e)
 }
 )
 .catch((error) => {
@@ -330,12 +346,64 @@ await getDoc(doc(firestore,`users/${uid}/Awards`,uid))
             setAward2JobTitle(querySnapshot.data().second.awardTitle)
             setAward2Description(querySnapshot.data().second.description)
         }
-        console.log('User Experiance fetched')
+        console.log('User Awards fetched')
     })
     .catch((e)=>{
         console.log(e)
     })
 }
+const writeUserEducation = async () => {
+  await setDoc(doc(firestore, `users/${user.uid}/Education/${user.uid}`), {
+    first : {
+      eduTitle:eduTitle,
+      eduLevel:eduLevel,
+      eduDescription:eduDescription,
+      eduFrom:eduFrom,
+      eduTo:eduTo
+    },
+    second : {
+      eduTitle:edu2Title,
+      eduLevel:edu2Level,
+      eduDescription:edu2Description,
+      eduFrom:edu2From,
+      eduTo:edu2To
+    },
+ })
+.then((e)=>{
+    setLoading(false)
+    setPublished(true)
+    console.log('User Education Updated',e)
+}
+)
+.catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+});
+  
+}
+const fetchEducationDetails = async (uid) => {
+  await getDoc(doc(firestore,`users/${uid}/Education/`,uid))
+      .then((querySnapshot)=>{
+          if(querySnapshot.exists()){
+              setEduTitle(querySnapshot.data().first.eduTitle)
+              setEduDescription(querySnapshot.data().first.eduDescription)
+              setEduLevel(querySnapshot.data().first.eduLevel)
+              setEduFrom(querySnapshot.data().first.eduFrom)
+              setEduTo(querySnapshot.data().first.eduTo)
+
+              setEdu2Title(querySnapshot.data().second.eduTitle)
+              setEdu2Description(querySnapshot.data().second.eduDescription)
+              setEdu2Level(querySnapshot.data().second.eduLevel)
+              setEdu2From(querySnapshot.data().second.eduFrom)
+              setEdu2To(querySnapshot.data().second.eduTo)
+          }
+          console.log('User Education fetched')
+      })
+      .catch((e)=>{
+          console.log(e)
+      })
+  }
   const uploadImage = async (image)=>{
     const buffer = await image.arrayBuffer();
     const result = await uploadBytes(ref(storage,`images/${user.uid}/profile`),buffer)
@@ -595,25 +663,25 @@ await getDoc(doc(firestore,`users/${uid}/Awards`,uid))
                       </div>
                       <div class="col-md-6 col-6 ">
                         <label for="candidate_first_name">Title</label>
-                        <input class="point-mark point-active" type="text" name="candidate_first_name" placeholder="Instituite Name" />
+                        <input class="point-mark point-active" type="text" name="candidate_first_name" placeholder="Instituite Name"  value={eduTitle}  onChange={(e)=> {setEduTitle(e.target.value)}} />
                       </div>
                       <div class=" col-md-6 col-6" >
                         <label for="candidate_last_name">Level of Education</label>
-                        <input class="point-mark point-active" type="text" name="candidate_last_name" placeholder="Degree" />
+                        <input class="point-mark point-active" type="text" name="candidate_last_name" placeholder="Degree"   value={eduLevel}  onChange={(e)=> {setEduLevel(e.target.value)}} />
                       </div>
 
                       <div class="col-md-6">
                         <label>From</label>
-                        <input type="date" name="candidate_education_from[]" value="2020-06-01" class="point-mark point-active" />
+                        <input type="date" name="candidate_education_from[]" class="point-mark point-active"  value={eduFrom}  onChange={(e)=> {setEduFrom(e.target.value)}} />
                       </div>
                       <div class="col-md-6">
                         <label>To</label>
-                        <input type="date" name="candidate_education_to[]" value="2022-01-01" class="point-mark point-active" />
+                        <input type="date" name="candidate_education_to[]" class="point-mark point-active"   value={eduTo}  onChange={(e)=> {setEduTo(e.target.value)}} />
                       </div>
 
                       <div class="form-group col-md-12">
                         <label>Description</label>
-                        <textarea name="candidate_education_description[]" cols="30" placeholder="Short description" rows="7" class="point-mark point-active">Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie</textarea>
+                        <textarea name="candidate_education_description[]" cols="30" placeholder="Short description" rows="7" class="point-mark point-active"   value={eduDescription}  onChange={(e)=> {setEduDescription(e.target.value)}}>Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie</textarea>
                       </div>
                     </div>
                     <div class="row m-0 p-0 form-dashboard">
@@ -625,25 +693,25 @@ await getDoc(doc(firestore,`users/${uid}/Awards`,uid))
                       </div>
                       <div class="col-md-6 col-6 ">
                         <label for="candidate_first_name">Title</label>
-                        <input class="point-mark point-active" type="text" name="candidate_first_name" placeholder="Instituite Name" />
+                        <input class="point-mark point-active" type="text" name="candidate_first_name"   value={edu2Title}  onChange={(e)=> {setEdu2Title(e.target.value)}} placeholder="Instituite Name" />
                       </div>
                       <div class=" col-md-6 col-6" >
                         <label for="candidate_last_name">Level of Education</label>
-                        <input class="point-mark point-active" type="text" name="candidate_last_name" placeholder="Degree" />
+                        <input class="point-mark point-active" type="text" name="candidate_last_name"   value={edu2Level}  onChange={(e)=> {setEdu2Level(e.target.value)}} placeholder="Degree" />
                       </div>
 
                       <div class="col-md-6">
                         <label>From</label>
-                        <input type="date" name="candidate_education_from[]" value="2020-06-01" class="point-mark point-active" />
+                        <input type="date" name="candidate_education_from[]"  value={edu2From}  onChange={(e)=> {setEdu2From(e.target.value)}} class="point-mark point-active" />
                       </div>
                       <div class="col-md-6">
                         <label>To</label>
-                        <input type="date" name="candidate_education_to[]" value="2022-01-01" class="point-mark point-active" />
+                        <input type="date" name="candidate_education_to[]"   value={edu2To}  onChange={(e)=> {setEdu2To(e.target.value)}} class="point-mark point-active" />
                       </div>
 
                       <div class="form-group col-md-12">
                         <label>Description</label>
-                        <textarea name="candidate_education_description[]" cols="30" placeholder="Short description" rows="7" class="point-mark point-active">Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie</textarea>
+                        <textarea name="candidate_education_description[]"   value={edu2Description}  onChange={(e)=> {setEdu2Description(e.target.value)}} cols="30" placeholder="Short description" rows="7" class="point-mark point-active">Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie</textarea>
                       </div>
                     </div>
                   </div>
@@ -852,14 +920,14 @@ await getDoc(doc(firestore,`users/${uid}/Awards`,uid))
                     <div className="d-flex justify-content-center">
                         <div className="editprofile border-1 rounded-2 col-10 col-md-12  py-2">
                             <div className="d-flex justify-content-center">
-                                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style={{ width: "100px" }}
+                                <img src={selectedImage} class="rounded-circle aspect-auto" style={{ width: "100px",height: "100px",overflow: 'hidden' }}
                                     alt="Avatar" />
                             </div>
-                            <p className='text-center pt-2 m-0 textef'>User Name</p>
-                            <p className='text-center m-0 py-1 textds text-muted'>Designation</p>
+                            <p className='text-center pt-2 m-0 textef'>{name}</p>
+                            <p className='text-center m-0 py-1 textds text-muted'>{position}</p>
                             <div className="col-12 col-md-12  px-2">
                             <div className=" d-flex pt-2  m-0 justify-content-center">
-                                <p className='mainhead fw-bold mb-2 mb-md-0'>Bio</p>                              
+                                <p className='mainhead fw-bold mb-2 mb-md-0'>{discription}</p>                              
                             </div>
                             <div className="col-12 d-flex justify-content-between mb-2 px-3">
                                 <p className='m-0 textloc text-muted text-justify'>
@@ -883,15 +951,15 @@ await getDoc(doc(firestore,`users/${uid}/Awards`,uid))
                             </div>
                             <div className=" d-flex justify-content-between px-3 mt-2">
                                 <p className='m-0 textlang fw-bold'>Date of Birth</p>
-                                <p className='m-0 textloc text-muted'>05-04-2001</p>
+                                <p className='m-0 textloc text-muted'>{dob}</p>
                             </div>
                             <div className=" d-flex justify-content-between mt-2 px-3">
                                 <p className='m-0 textlang fw-bold'>Gender</p>
-                                <p className='m-0 textloc text-muted'>Male</p>
+                                <p className='m-0 textloc text-muted'>{gender}</p>
                             </div>
                             <div className=" d-flex justify-content-between my-2 px-3">
                                 <p className='m-0 textlang fw-bold'>Languages</p>
-                                <p className='m-0 textloc text-muted'>Urdu,English</p>
+                                <p className='m-0 textloc text-muted'>{language}</p>
                             </div>
                         </div>
                                       {/* Educational Section */}
@@ -904,20 +972,20 @@ await getDoc(doc(firestore,`users/${uid}/Awards`,uid))
                             <div className=" d-flex justify-content-between px-1">
                                 <div className="info d-inline-flex me-3">
                                     <div>
-                                        <p className='m-0 textcom'>University of Wah</p>
-                                        <p className='m-0 textloc text-muted'>Wah Cantt,Pakistan</p>
+                                        <p className='m-0 textcom'>{eduTitle}</p>
+                                        <p className='m-0 textloc text-muted'>{eduLevel}</p>
                                     </div>
                                 </div>
-                                <p className='m-0 textloc text-muted'>2019-23</p>
+                                <p className='m-0 textloc text-muted'>{eduFrom + ' - ' + eduTo}</p>
                             </div>
                             <div className="  d-flex justify-content-between mt-2 px-1">
                                 <div className="info d-inline-flex me-3">
                                     <div>
-                                        <p className='m-0 textcom'>Superior College for Boys</p>
-                                        <p className='m-0 textloc text-muted'>Bhakkar,Pakistan</p>
+                                        <p className='m-0 textcom'>{edu2Title}</p>
+                                        <p className='m-0 textloc text-muted'>{edu2Level}</p>
                                     </div>
                                 </div>
-                                <p className='m-0 textloc text-muted'>2017-19</p>
+                                <p className='m-0 textloc text-muted'>{edu2From  + ' - ' + edu2To}</p>
                             </div>
                           
 
@@ -934,10 +1002,15 @@ await getDoc(doc(firestore,`users/${uid}/Awards`,uid))
                                 <ul className='ps-4' style={{
                                     listStyleType: 'Square'
                                 }}>
-                                    <li> </li>
-                                    <li></li>
-                                    <li></li>
-                                    <li> </li>
+                                    {
+                                      skills != null ?
+                                      skills.map((skill)=>{
+                                        return(
+                                          <li>{skill.value}</li>
+                                        )
+                                      })
+                                      :<></>
+                                    }
                                 </ul>
 
                             </div>
@@ -954,10 +1027,8 @@ await getDoc(doc(firestore,`users/${uid}/Awards`,uid))
                                 <ul className='ps-4' style={{
                                     listStyleType: 'Square'
                                 }}>
-                                    <li> </li>
-                                    <li></li>
-                                    <li></li>
-                                    <li> </li>
+                                    <li>{awardJobTitle}</li>
+                                    <li>{award2JobTitle}</li>
                                 </ul>
 
                             </div>
@@ -983,25 +1054,25 @@ await getDoc(doc(firestore,`users/${uid}/Awards`,uid))
                             </div>
                             <div className=" d-flex justify-content-between">
                                 <div className="info d-inline-flex me-3">
-                                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle me-2" style={{ width: "40px" }}
+                                    <img src={selectedImage} class="rounded-circle me-2" style={{ width: "40px",height: "40px" }}
                                         alt="Avatar" />
                                     <div>
-                                        <p className='m-0 textcom'>BetterLogics</p>
-                                        <p className='m-0 textloc text-muted'>Lahore</p>
+                                        <p className='m-0 textcom'>{exp2JobTitle}</p>
+                                        <p className='m-0 textloc text-muted'>{expCompanyName}</p>
                                     </div>
                                 </div>
-                                <p className='m-0 textloc text-muted text-md-center'>2+ Years</p>
+                                <p className='m-0 textloc text-muted text-md-center'>{expFrom + ' - ' + expTo}</p>
                             </div>
                             <div className="  d-flex justify-content-between my-2">
                                 <div className="info d-inline-flex me-3">
-                                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle me-2" style={{ width: "40px" }}
+                                    <img src={selectedImage} class="rounded-circle me-2" style={{ width: "40px",height: "40px" }}
                                         alt="Avatar" />
                                     <div>
-                                        <p className='m-0 textcom'>BetterLogics</p>
-                                        <p className='m-0 textloc text-muted '>Karachi</p>
+                                        <p className='m-0 textcom'>{exp2JobTitle}</p>
+                                        <p className='m-0 textloc text-muted '>{exp2CompanyName}</p>
                                     </div>
                                 </div>
-                                <p className='m-0 textloc text-muted text-md-center'>2+ Years</p>
+                                <p className='m-0 textloc text-muted text-md-center'>{exp2From + ' - '+ exp2To}</p>
                             </div>
                         </div>
 

@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Homepage.css'
 import Header from './Header'
 import videobg from '../../Images/videobg.mp4'
 import { TbFolder } from 'react-icons/tb'
 import { SlLocationPin } from 'react-icons/sl'
 import { TfiSearch } from 'react-icons/tfi'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import icon1 from '../../Images/prototype.png'
 import icon2 from '../../Images/coding.png'
 import icon3 from '../../Images/sales.png'
@@ -17,14 +17,140 @@ import icon8 from '../../Images/content-writing.png'
 import ScrollTrigger from 'react-scroll-trigger';
 import { AiOutlineHeart } from 'react-icons/ai'
 import { GrLocation } from 'react-icons/gr'
-import {ImUserCheck} from 'react-icons/im'
-import {FaSearch} from 'react-icons/fa'
-import {AiOutlineFileSearch} from 'react-icons/ai'
+import { ImUserCheck } from 'react-icons/im'
+import { FaSearch } from 'react-icons/fa'
+import { AiOutlineFileSearch } from 'react-icons/ai'
 import CountUp from 'react-countup';
-import {BiCurrentLocation,BiPhoneCall} from 'react-icons/bi'
-import {MdOutlineMail} from 'react-icons/md'
+import { BiCurrentLocation, BiPhoneCall } from 'react-icons/bi'
+import { MdOutlineMail } from 'react-icons/md'
+import { firestore, storage } from '../../firebase';
+import { setDoc, doc as Doc, getDocs, docR, getDoc, collection, deleteDoc } from "@firebase/firestore";
+import { BsHeart, BsHeartFill } from 'react-icons/bs'
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage"
 function Homepage() {
+    const navigate = useNavigate()
     const [counterup, setcounterup] = useState(false);
+    const [Jobs, setJobs] = useState([])
+    useEffect(() => {
+        var company = localStorage.getItem('user')
+        company = JSON.parse(company)
+        setUser(company)
+        fetchJobDetails(company.uid)
+    }, [])
+    var [user, setUser] = useState({})
+    const [loading, setLoading] = useState(false)
+    const [published, setPublished] = useState(false)
+
+    const fetchJobDetails = async (uid) => {
+        setJobs([])
+        await getDocs(collection(firestore, 'jobs'))
+            .then((querySnapshot) => {
+                const newData = querySnapshot.docs
+                    .map(async (doc) => {
+                        await getDoc(Doc(firestore, `jobs/${doc.id}/LikedBy/${uid}`))
+                            .then(async (likedDoc) => {
+                                var UserImg = await getDownloadURL(ref(storage, `images/${doc.data().by}/profile`))
+                                setJobs((Jobs) => [...Jobs, { img: UserImg, id: doc.id, liked: likedDoc.exists(), job: doc.data() }])
+                            })
+                    });
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+    }
+    function getCurrentDate(separator = '-') {
+        let newDate = new Date()
+        let date = newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let year = newDate.getFullYear();
+
+        return `${year}${separator}${month < 10 ? `0${month}` : `${month}`}${separator}${date}`
+    }
+    const applyForJob = async (jobId) => {
+        await setDoc(Doc(firestore, `jobs/${jobId}/Applications/${user.uid}`), {
+            data: getCurrentDate(),
+            status: 'pending'
+        })
+            .then(async (e) => {
+                await setDoc(Doc(firestore, `users/${user.uid}/JobsApplied/${jobId}`), {
+                    data: getCurrentDate()
+                })
+                    .then((e) => {
+                        setLoading(false)
+                        setPublished(true)
+                        console.log('Applyed For Job ' + jobId, e)
+                    }
+                    )
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(errorCode, errorMessage);
+                    });
+            }
+            )
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
+
+    }
+    const LikeJob = async (jobId, index) => {
+        Jobs[index].liked = true
+        setJobs((Jobs) => [...Jobs])
+        await setDoc(Doc(firestore, `jobs/${jobId}/LikedBy/${user.uid}`), {
+            liked: true,
+        })
+            .then(async (e) => {
+                await setDoc(Doc(firestore, `users/${user.uid}/WishList/${jobId}`), {
+                    liked: true,
+                })
+                    .then((e) => {
+                        setLoading(false)
+                        setPublished(true)
+                        console.log('Liked Job ' + jobId)
+                    }
+                    )
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(errorCode, errorMessage);
+                    });
+            }
+            )
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
+
+    }
+    const DisLikeJob = async (jobId, index) => {
+        Jobs[index].liked = false
+        setJobs((Jobs) => [...Jobs])
+        await deleteDoc(Doc(firestore, `jobs/${jobId}/LikedBy/${user.uid}`))
+            .then(async (e) => {
+                await deleteDoc(Doc(firestore, `users/${user.uid}/WishList/${jobId}`), null)
+                    .then((e) => {
+                        setLoading(false)
+                        setPublished(true)
+                        console.log('DisLiked Job ' + jobId)
+                    }
+                    )
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(errorCode, errorMessage);
+                    });
+            }
+            )
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
+
+    }
     return (
         <div className='m-0 p-0'>
             <Header />
@@ -118,7 +244,7 @@ function Homepage() {
                             <div className="col-lg-3 col-md-6  formgroup my-1">
                                 <SlLocationPin className='mt-1 mx-1 fs-4' />
                                 <select name="jobs-location" className="optionselect" >
-                                    <option value="">All Location</option>                          
+                                    <option value="">All Location</option>
                                     <option value="37">Boston</option>
                                     <option value="40">California</option>
                                     <option value="46">Chicago</option>
@@ -315,217 +441,68 @@ function Homepage() {
                                 </div>
                             </div>
                             <div className="row m-0 p-0 d-flex justify-content-center gy-4">
-                                <div class="jobs-item layout-list jobs-featured col-lg-8 col-12 ">
-                                    <div class="jobs-header d-flex justify-content-between p-0">
-                                        <div class="jobs-header-left d-flex justify-content-between p-0">
-                                            <img class="logo-company" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                            <div class="jobs-left-inner mx-3">
-                                                <h3 class="jobs-title"><Link to='../Singlejob'>Sr. Backend Go Developer</Link>
-                                                </h3>
-                                                <div class="info-company d-flex ">
-                                                    <p >by <a class="authour civi-link-bottom mx-2" href="https://civi.uxper.co/companies/software/uxper/">Uxper</a> in
-                                                        <a href="https://civi.uxper.co/jobs-categories/development-it/" class="cate civi-link-bottom mx-2">
-                                                            Development &amp; IT    </a> </p>
+                                {
+                                    Jobs.map(({ img, id, job, liked }, index) => {
+                                        return (
+                                            <div class="jobs-item layout-list jobs-featured col-lg-8 col-12 ">
+                                                <div class="jobs-header d-flex justify-content-between p-0">
+                                                    <div class="jobs-header-left d-flex justify-content-between p-0">
+                                                        <img class="logo-company rounded-full" src={img} alt="" />
+                                                        <div class="jobs-left-inner mx-3">
+                                                            <h3 class="jobs-title"><a onClick={() => {
+                                                                 navigate('../SingleJob', {
+                                                                    state: {
+                                                                        id:id,
+                                                                        img:img,
+                                                                        job: job,
+                                                                        liked:liked
+                                                                    }
+                                                                })
+                                                            }}>{job.jobTitle}</a>
+                                                            </h3>
+                                                            <div class="info-company d-flex ">
+                                                                <p >by <a class="authour civi-link-bottom mx-2" href="https://civi.uxper.co/companies/software/uxper/">Uxper</a> in
+                                                                    <a href="https://civi.uxper.co/jobs-categories/development-it/" class="cate civi-link-bottom mx-2">
+                                                                        {job.jobCategorie}   </a> </p>
 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="jobs-header-right d-flex justify-content-between">
+                                                        <div class="logged-out mx-2">
+                                                            {
+                                                                liked ?
+                                                                    <BsHeartFill className=' text-xl mt-2' onClick={() => {
+                                                                        DisLikeJob(id, index)
+                                                                    }} />
+                                                                    :
+                                                                    <BsHeart className=' text-xl mt-2' onClick={() => {
+                                                                        LikeJob(id, index)
+                                                                    }} />
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="jobsfooter row  p-0 d-flex justify-content-center ">
+                                                    <div class="jobs-footer-left col-12  col-lg-12 row ">
+                                                        <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-2 text-center mx-md-4 mx-lg-2 my-2">
+                                                            <a class="label" href="https://civi.uxper.co/jobs-type/remote/">
+                                                                {job.jobType} </a></div>
+                                                        <div className="label-location d-flex justify-content-center align-items-center col-6 jobs-location col-lg-2 col-md-3">
+                                                            <GrLocation className='fs-4' />
+                                                            <a class="  d-flex " href="https://civi.uxper.co/jobs-location/san-francisco/">
+                                                                Pakistan</a>
+                                                        </div>
+                                                        <div class=" label-price text-dark d-flex justify-content-center align-items-center col-6 col-lg-2 col-md-3 mx-2">
+                                                            ${job.jobSalaryMax}/month </div>
+                                                        <p class="days col-lg-5 col-8 col-md-4  d-flex justify-content-center align-items-center ">
+                                                            <span className='mx-2'> {job.posted} </span> last date to apply  </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="jobs-header-right d-flex justify-content-between">
-
-                                            <div class="logged-out mx-2">
-                                                <AiOutlineHeart className='fs-1 mt-2' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jobsfooter row  p-0 d-flex justify-content-center ">
-                                        <div class="jobs-footer-left col-12  col-lg-12 row ">
-                                            <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-2 text-center mx-md-4 mx-lg-2 my-2">
-                                                <a class="label" href="https://civi.uxper.co/jobs-type/remote/">
-                                                    Remote  </a></div>
-                                            <div className="label-location d-flex justify-content-center align-items-center col-6 jobs-location col-lg-2 col-md-3">
-                                                <GrLocation className='fs-4' />
-                                                <a class="  d-flex " href="https://civi.uxper.co/jobs-location/san-francisco/">
-                                                    Pakistan</a>
-                                            </div>
-                                            <div class=" label-price text-dark d-flex justify-content-center align-items-center col-6 col-lg-2 col-md-3 mx-2">
-                                                $200/month </div>
-
-
-                                            <p class="days col-lg-5 col-8 col-md-4  d-flex justify-content-center align-items-center ">
-                                                <span className='mx-2'> 142 </span> days left to apply  </p>
-                                        </div>
-                                    </div>
-                                </div>
-                             
-                                <div class="jobs-item layout-list jobs-featured col-lg-8 col-12 ">
-                                    <div class="jobs-header d-flex justify-content-between p-0">
-                                        <div class="jobs-header-left d-flex justify-content-between p-0">
-                                            <img class="logo-company" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                            <div class="jobs-left-inner mx-3">
-                                                <h3 class="jobs-title"><Link to='../Singlejob'>Sr. Backend Go Developer</Link>
-                                                </h3>
-                                                <div class="info-company d-flex ">
-                                                    <p >by <a class="authour civi-link-bottom mx-2" href="https://civi.uxper.co/companies/software/uxper/">Uxper</a> in
-                                                        <a href="https://civi.uxper.co/jobs-categories/development-it/" class="cate civi-link-bottom mx-2">
-                                                            Development &amp; IT    </a> </p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="jobs-header-right d-flex justify-content-between">
-
-                                            <div class="logged-out mx-2">
-                                                <AiOutlineHeart className='fs-1 mt-2' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jobsfooter row  p-0 d-flex justify-content-center ">
-                                        <div class="jobs-footer-left col-12  col-lg-12 row ">
-                                            <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-2 text-center mx-md-4 mx-lg-2 my-2">
-                                                <a class="label" href="https://civi.uxper.co/jobs-type/remote/">
-                                                    Remote  </a></div>
-                                            <div className="label-location d-flex justify-content-center align-items-center col-6 jobs-location col-lg-2 col-md-3">
-                                                <GrLocation className='fs-4' />
-                                                <a class="  d-flex " href="https://civi.uxper.co/jobs-location/san-francisco/">
-                                                    Pakistan</a>
-                                            </div>
-                                            <div class=" label-price text-dark d-flex justify-content-center align-items-center col-6 col-lg-2 col-md-3 mx-2">
-                                                $200/month </div>
-
-
-                                            <p class="days col-lg-5 col-8 col-md-4  d-flex justify-content-center align-items-center ">
-                                                <span className='mx-2'> 142 </span> days left to apply  </p>
-                                        </div>
-                                    </div>
-                                </div>
-                             
-                                <div class="jobs-item layout-list jobs-featured col-lg-8 col-12 ">
-                                    <div class="jobs-header d-flex justify-content-between p-0">
-                                        <div class="jobs-header-left d-flex justify-content-between p-0">
-                                            <img class="logo-company" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                            <div class="jobs-left-inner mx-3">
-                                                <h3 class="jobs-title"><Link to='../Singlejob'>Sr. Backend Go Developer</Link>
-                                                </h3>
-                                                <div class="info-company d-flex ">
-                                                    <p >by <a class="authour civi-link-bottom mx-2" href="https://civi.uxper.co/companies/software/uxper/">Uxper</a> in
-                                                        <a href="https://civi.uxper.co/jobs-categories/development-it/" class="cate civi-link-bottom mx-2">
-                                                            Development &amp; IT    </a> </p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="jobs-header-right d-flex justify-content-between">
-
-                                            <div class="logged-out mx-2">
-                                                <AiOutlineHeart className='fs-1 mt-2' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jobsfooter row  p-0 d-flex justify-content-center ">
-                                        <div class="jobs-footer-left col-12  col-lg-12 row ">
-                                            <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-2 text-center mx-md-4 mx-lg-2 my-2">
-                                                <a class="label" href="https://civi.uxper.co/jobs-type/remote/">
-                                                    Remote  </a></div>
-                                            <div className="label-location d-flex justify-content-center align-items-center col-6 jobs-location col-lg-2 col-md-3">
-                                                <GrLocation className='fs-4' />
-                                                <a class="  d-flex " href="https://civi.uxper.co/jobs-location/san-francisco/">
-                                                    Pakistan</a>
-                                            </div>
-                                            <div class=" label-price text-dark d-flex justify-content-center align-items-center col-6 col-lg-2 col-md-3 mx-2">
-                                                $200/month </div>
-
-
-                                            <p class="days col-lg-5 col-8 col-md-4  d-flex justify-content-center align-items-center ">
-                                                <span className='mx-2'> 142 </span> days left to apply  </p>
-                                        </div>
-                                    </div>
-                                </div>
-                             
-                                <div class="jobs-item layout-list jobs-featured col-lg-8 col-12 ">
-                                    <div class="jobs-header d-flex justify-content-between p-0">
-                                        <div class="jobs-header-left d-flex justify-content-between p-0">
-                                            <img class="logo-company" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                            <div class="jobs-left-inner mx-3">
-                                                <h3 class="jobs-title"><Link to='../Singlejob'>Sr. Backend Go Developer</Link>
-                                                </h3>
-                                                <div class="info-company d-flex ">
-                                                    <p >by <a class="authour civi-link-bottom mx-2" href="https://civi.uxper.co/companies/software/uxper/">Uxper</a> in
-                                                        <a href="https://civi.uxper.co/jobs-categories/development-it/" class="cate civi-link-bottom mx-2">
-                                                            Development &amp; IT    </a> </p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="jobs-header-right d-flex justify-content-between">
-
-                                            <div class="logged-out mx-2">
-                                                <AiOutlineHeart className='fs-1 mt-2' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jobsfooter row  p-0 d-flex justify-content-center ">
-                                        <div class="jobs-footer-left col-12  col-lg-12 row ">
-                                            <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-2 text-center mx-md-4 mx-lg-2 my-2">
-                                                <a class="label" href="https://civi.uxper.co/jobs-type/remote/">
-                                                    Remote  </a></div>
-                                            <div className="label-location d-flex justify-content-center align-items-center col-6 jobs-location col-lg-2 col-md-3">
-                                                <GrLocation className='fs-4' />
-                                                <a class="  d-flex " href="https://civi.uxper.co/jobs-location/san-francisco/">
-                                                    Pakistan</a>
-                                            </div>
-                                            <div class=" label-price text-dark d-flex justify-content-center align-items-center col-6 col-lg-2 col-md-3 mx-2">
-                                                $200/month </div>
-
-
-                                            <p class="days col-lg-5 col-8 col-md-4  d-flex justify-content-center align-items-center ">
-                                                <span className='mx-2'> 142 </span> days left to apply  </p>
-                                        </div>
-                                    </div>
-                                </div>
-                             
-                                <div class="jobs-item layout-list jobs-featured col-lg-8 col-12 ">
-                                    <div class="jobs-header d-flex justify-content-between p-0">
-                                        <div class="jobs-header-left d-flex justify-content-between p-0">
-                                            <img class="logo-company" src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="" />
-                                            <div class="jobs-left-inner mx-3">
-                                                <h3 class="jobs-title"><Link to='../Singlejob'>Sr. Backend Go Developer</Link>
-                                                </h3>
-                                                <div class="info-company d-flex ">
-                                                    <p >by <a class="authour civi-link-bottom mx-2" href="https://civi.uxper.co/companies/software/uxper/">Uxper</a> in
-                                                        <a href="https://civi.uxper.co/jobs-categories/development-it/" class="cate civi-link-bottom mx-2">
-                                                            Development &amp; IT    </a> </p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="jobs-header-right d-flex justify-content-between">
-
-                                            <div class="logged-out mx-2">
-                                                <AiOutlineHeart className='fs-1 mt-2' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jobsfooter row  p-0 d-flex justify-content-center ">
-                                        <div class="jobs-footer-left col-12  col-lg-12 row ">
-                                            <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-2 text-center mx-md-4 mx-lg-2 my-2">
-                                                <a class="label" href="https://civi.uxper.co/jobs-type/remote/">
-                                                    Remote  </a></div>
-                                            <div className="label-location d-flex justify-content-center align-items-center col-6 jobs-location col-lg-2 col-md-3">
-                                                <GrLocation className='fs-4' />
-                                                <a class="  d-flex " href="https://civi.uxper.co/jobs-location/san-francisco/">
-                                                    Pakistan</a>
-                                            </div>
-                                            <div class=" label-price text-dark d-flex justify-content-center align-items-center col-6 col-lg-2 col-md-3 mx-2">
-                                                $200/month </div>
-
-
-                                            <p class="days col-lg-5 col-8 col-md-4  d-flex justify-content-center align-items-center ">
-                                                <span className='mx-2'> 142 </span> days left to apply  </p>
-                                        </div>
-                                    </div>
-                                </div>
-                             
-                              
+                                        )
+                                    })
+                                }
                                 <div className="d-flex justify-content-center mt-3">
                                     <button className='col-md-4 col-lg-2 col-6 btn browsebtn'>Browse All Jobs</button>
                                 </div>
@@ -580,34 +557,34 @@ function Homepage() {
             </ScrollTrigger>
             {/* Candidates Section */}
             <div>
-            <section class="ftco-candidates py-5">
-                <div class="container">
-                    <div class="row justify-content-center pb-3">
-                        <div class="col-md-10 heading-section text-center mt-3">
-                            <h3 class="Browseheading">Top Candidates</h3>
-                            <h2 class="mb-4 exploreheading">Latest Candidates</h2>
+                <section class="ftco-candidates py-5">
+                    <div class="container">
+                        <div class="row justify-content-center pb-3">
+                            <div class="col-md-10 heading-section text-center mt-3">
+                                <h3 class="Browseheading">Top Candidates</h3>
+                                <h2 class="mb-4 exploreheading">Latest Candidates</h2>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="carddetails px-lg-5 px-3">
-                    <div class="d-flex flex-row cardoverflow gap-2">
-                        <div class="card col-lg-4 col-md-6 col-12 p-0">
-                            <div class="card-container my-4">
-                                <span class="pro">PRO</span>
-                                <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
-                                <h3 className='cardhead'>Ricky Park</h3>
-                                <h6 className='cardhead2'>New York</h6>
-                                <p className='cardtext'>User interface designer and <br /> front-end developer</p>
-                                <div class="buttons d-flex justify-content-between gap-2">
-                                    <button class="primary">
-                                        Message
-                                    </button>
-                                    <button class="primary ghost">
-                                        Hire
-                                    </button>
-                                </div>
+                    <div class="carddetails px-lg-5 px-3">
+                        <div class="d-flex flex-row cardoverflow gap-2">
+                            <div class="card col-lg-4 col-md-6 col-12 p-0">
+                                <div class="card-container my-4">
+                                    <span class="pro">PRO</span>
+                                    <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+                                    <h3 className='cardhead'>Ricky Park</h3>
+                                    <h6 className='cardhead2'>New York</h6>
+                                    <p className='cardtext'>User interface designer and <br /> front-end developer</p>
+                                    <div class="buttons d-flex justify-content-between gap-2">
+                                        <button class="primary">
+                                            Message
+                                        </button>
+                                        <button class="primary ghost">
+                                            Hire
+                                        </button>
+                                    </div>
                                     <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
-                                    <h6 className='fs-3 mx-2'>Skills</h6>
+                                        <h6 className='fs-3 mx-2'>Skills</h6>
                                         <li>UI / UX</li>
                                         <li>Front End Development</li>
                                         <li>HTML</li>
@@ -616,240 +593,240 @@ function Homepage() {
                                         <li>React</li>
                                         <li>Node</li>
                                     </ul>
-                               
-                            </div>
-                        </div>
-                        <div class="card col-lg-4 col-md-6 col-12 p-0">
-                            <div class="card-container my-4">
-                                <span class="pro">PRO</span>
-                                <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
-                                <h3 className='cardhead'>Ricky Park</h3>
-                                <h6 className='cardhead2'>New York</h6>
-                                <p className='cardtext'>User interface designer and <br /> front-end developer</p>
-                                <div class="buttons d-flex justify-content-between gap-2">
-                                    <button class="primary">
-                                        Message
-                                    </button>
-                                    <button class="primary ghost">
-                                        Hire
-                                    </button>
-                                </div>
-                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
-                                    <h6 className='fs-3 mx-2'>Skills</h6>
-                                        <li>UI / UX</li>
-                                        <li>Front End Development</li>
-                                        <li>HTML</li>
-                                        <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
-                                    </ul>
-                               
-                            </div>
-                        </div>
-                        <div class="card col-lg-4 col-md-6 col-12 p-0">
-                            <div class="card-container my-4">
-                                <span class="pro">PRO</span>
-                                <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
-                                <h3 className='cardhead'>Ricky Park</h3>
-                                <h6 className='cardhead2'>New York</h6>
-                                <p className='cardtext'>User interface designer and <br /> front-end developer</p>
-                                <div class="buttons d-flex justify-content-between gap-2">
-                                    <button class="primary">
-                                        Message
-                                    </button>
-                                    <button class="primary ghost">
-                                        Hire
-                                    </button>
-                                </div>
-                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
-                                    <h6 className='fs-3 mx-2'>Skills</h6>
-                                        <li>UI / UX</li>
-                                        <li>Front End Development</li>
-                                        <li>HTML</li>
-                                        <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
-                                    </ul>
-                               
-                            </div>
-                        </div>
-                        <div class="card col-lg-4 col-md-6 col-12 p-0">
-                            <div class="card-container my-4">
-                                <span class="pro">PRO</span>
-                                <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
-                                <h3 className='cardhead'>Ricky Park</h3>
-                                <h6 className='cardhead2'>New York</h6>
-                                <p className='cardtext'>User interface designer and <br /> front-end developer</p>
-                                <div class="buttons d-flex justify-content-between gap-2">
-                                    <button class="primary">
-                                        Message
-                                    </button>
-                                    <button class="primary ghost">
-                                        Hire
-                                    </button>
-                                </div>
-                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
-                                    <h6 className='fs-3 mx-2'>Skills</h6>
-                                        <li>UI / UX</li>
-                                        <li>Front End Development</li>
-                                        <li>HTML</li>
-                                        <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
-                                    </ul>
-                               
-                            </div>
-                        </div>
-                        <div class="card col-lg-4 col-md-6 col-12 p-0">
-                            <div class="card-container my-4">
-                                <span class="pro">PRO</span>
-                                <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
-                                <h3 className='cardhead'>Ricky Park</h3>
-                                <h6 className='cardhead2'>New York</h6>
-                                <p className='cardtext'>User interface designer and <br /> front-end developer</p>
-                                <div class="buttons d-flex justify-content-between gap-2">
-                                    <button class="primary">
-                                        Message
-                                    </button>
-                                    <button class="primary ghost">
-                                        Hire
-                                    </button>
-                                </div>
-                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
-                                    <h6 className='fs-3 mx-2'>Skills</h6>
-                                        <li>UI / UX</li>
-                                        <li>Front End Development</li>
-                                        <li>HTML</li>
-                                        <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
-                                    </ul>
-                               
-                            </div>
-                        </div>
-                        <div class="card col-lg-4 col-md-6 col-12 p-0">
-                            <div class="card-container my-4">
-                                <span class="pro">PRO</span>
-                                <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
-                                <h3 className='cardhead'>Ricky Park</h3>
-                                <h6 className='cardhead2'>New York</h6>
-                                <p className='cardtext'>User interface designer and <br /> front-end developer</p>
-                                <div class="buttons d-flex justify-content-between gap-2">
-                                    <button class="primary">
-                                        Message
-                                    </button>
-                                    <button class="primary ghost">
-                                        Hire
-                                    </button>
-                                </div>
-                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
-                                    <h6 className='fs-3 mx-2'>Skills</h6>
-                                        <li>UI / UX</li>
-                                        <li>Front End Development</li>
-                                        <li>HTML</li>
-                                        <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
-                                    </ul>
-                               
-                            </div>
-                        </div>
-                        <div class="card col-lg-4 col-md-6 col-12 p-0">
-                            <div class="card-container my-4">
-                                <span class="pro">PRO</span>
-                                <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
-                                <h3 className='cardhead'>Ricky Park</h3>
-                                <h6 className='cardhead2'>New York</h6>
-                                <p className='cardtext'>User interface designer and <br /> front-end developer</p>
-                                <div class="buttons d-flex justify-content-between gap-2">
-                                    <button class="primary">
-                                        Message
-                                    </button>
-                                    <button class="primary ghost">
-                                        Hire
-                                    </button>
-                                </div>
-                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
-                                    <h6 className='fs-3 mx-2'>Skills</h6>
-                                        <li>UI / UX</li>
-                                        <li>Front End Development</li>
-                                        <li>HTML</li>
-                                        <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
-                                    </ul>
-                               
-                            </div>
-                        </div>
-                       
 
-                    </div>
-                </div>
-            </section>
-            <div class="apply-process-area apply-bg pt-150 pb-150">
-                <div class="container">
-                    <div class="row m-0 p-0">
-                        <div class="col-lg-12">
-                            <div class="section-tittle text-white text-center">
-                                <h3 className='Browseheading'>Apply process</h3>
-                                <h2 className='exploreheading'> How it works</h2>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            <div class="card col-lg-4 col-md-6 col-12 p-0">
+                                <div class="card-container my-4">
+                                    <span class="pro">PRO</span>
+                                    <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+                                    <h3 className='cardhead'>Ricky Park</h3>
+                                    <h6 className='cardhead2'>New York</h6>
+                                    <p className='cardtext'>User interface designer and <br /> front-end developer</p>
+                                    <div class="buttons d-flex justify-content-between gap-2">
+                                        <button class="primary">
+                                            Message
+                                        </button>
+                                        <button class="primary ghost">
+                                            Hire
+                                        </button>
+                                    </div>
+                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
+                                        <h6 className='fs-3 mx-2'>Skills</h6>
+                                        <li>UI / UX</li>
+                                        <li>Front End Development</li>
+                                        <li>HTML</li>
+                                        <li>CSS</li>
+                                        <li>JavaScript</li>
+                                        <li>React</li>
+                                        <li>Node</li>
+                                    </ul>
 
-                    <div class="row p-0 m-0 py-3">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-process text-center mb-30">
-                                <div class="process-ion d-flex justify-content-center my-2">
-                                    <FaSearch className='fs-4'/>
                                 </div>
-                                <div class="process-cap">
-                                    <h5>1. Search a job</h5>
-                                    <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                            </div>
+                            <div class="card col-lg-4 col-md-6 col-12 p-0">
+                                <div class="card-container my-4">
+                                    <span class="pro">PRO</span>
+                                    <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+                                    <h3 className='cardhead'>Ricky Park</h3>
+                                    <h6 className='cardhead2'>New York</h6>
+                                    <p className='cardtext'>User interface designer and <br /> front-end developer</p>
+                                    <div class="buttons d-flex justify-content-between gap-2">
+                                        <button class="primary">
+                                            Message
+                                        </button>
+                                        <button class="primary ghost">
+                                            Hire
+                                        </button>
+                                    </div>
+                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
+                                        <h6 className='fs-3 mx-2'>Skills</h6>
+                                        <li>UI / UX</li>
+                                        <li>Front End Development</li>
+                                        <li>HTML</li>
+                                        <li>CSS</li>
+                                        <li>JavaScript</li>
+                                        <li>React</li>
+                                        <li>Node</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="card col-lg-4 col-md-6 col-12 p-0">
+                                <div class="card-container my-4">
+                                    <span class="pro">PRO</span>
+                                    <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+                                    <h3 className='cardhead'>Ricky Park</h3>
+                                    <h6 className='cardhead2'>New York</h6>
+                                    <p className='cardtext'>User interface designer and <br /> front-end developer</p>
+                                    <div class="buttons d-flex justify-content-between gap-2">
+                                        <button class="primary">
+                                            Message
+                                        </button>
+                                        <button class="primary ghost">
+                                            Hire
+                                        </button>
+                                    </div>
+                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
+                                        <h6 className='fs-3 mx-2'>Skills</h6>
+                                        <li>UI / UX</li>
+                                        <li>Front End Development</li>
+                                        <li>HTML</li>
+                                        <li>CSS</li>
+                                        <li>JavaScript</li>
+                                        <li>React</li>
+                                        <li>Node</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="card col-lg-4 col-md-6 col-12 p-0">
+                                <div class="card-container my-4">
+                                    <span class="pro">PRO</span>
+                                    <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+                                    <h3 className='cardhead'>Ricky Park</h3>
+                                    <h6 className='cardhead2'>New York</h6>
+                                    <p className='cardtext'>User interface designer and <br /> front-end developer</p>
+                                    <div class="buttons d-flex justify-content-between gap-2">
+                                        <button class="primary">
+                                            Message
+                                        </button>
+                                        <button class="primary ghost">
+                                            Hire
+                                        </button>
+                                    </div>
+                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
+                                        <h6 className='fs-3 mx-2'>Skills</h6>
+                                        <li>UI / UX</li>
+                                        <li>Front End Development</li>
+                                        <li>HTML</li>
+                                        <li>CSS</li>
+                                        <li>JavaScript</li>
+                                        <li>React</li>
+                                        <li>Node</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="card col-lg-4 col-md-6 col-12 p-0">
+                                <div class="card-container my-4">
+                                    <span class="pro">PRO</span>
+                                    <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+                                    <h3 className='cardhead'>Ricky Park</h3>
+                                    <h6 className='cardhead2'>New York</h6>
+                                    <p className='cardtext'>User interface designer and <br /> front-end developer</p>
+                                    <div class="buttons d-flex justify-content-between gap-2">
+                                        <button class="primary">
+                                            Message
+                                        </button>
+                                        <button class="primary ghost">
+                                            Hire
+                                        </button>
+                                    </div>
+                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
+                                        <h6 className='fs-3 mx-2'>Skills</h6>
+                                        <li>UI / UX</li>
+                                        <li>Front End Development</li>
+                                        <li>HTML</li>
+                                        <li>CSS</li>
+                                        <li>JavaScript</li>
+                                        <li>React</li>
+                                        <li>Node</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="card col-lg-4 col-md-6 col-12 p-0">
+                                <div class="card-container my-4">
+                                    <span class="pro">PRO</span>
+                                    <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+                                    <h3 className='cardhead'>Ricky Park</h3>
+                                    <h6 className='cardhead2'>New York</h6>
+                                    <p className='cardtext'>User interface designer and <br /> front-end developer</p>
+                                    <div class="buttons d-flex justify-content-between gap-2">
+                                        <button class="primary">
+                                            Message
+                                        </button>
+                                        <button class="primary ghost">
+                                            Hire
+                                        </button>
+                                    </div>
+                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
+                                        <h6 className='fs-3 mx-2'>Skills</h6>
+                                        <li>UI / UX</li>
+                                        <li>Front End Development</li>
+                                        <li>HTML</li>
+                                        <li>CSS</li>
+                                        <li>JavaScript</li>
+                                        <li>React</li>
+                                        <li>Node</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </section>
+                <div class="apply-process-area apply-bg pt-150 pb-150">
+                    <div class="container">
+                        <div class="row m-0 p-0">
+                            <div class="col-lg-12">
+                                <div class="section-tittle text-white text-center">
+                                    <h3 className='Browseheading'>Apply process</h3>
+                                    <h2 className='exploreheading'> How it works</h2>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-process text-center mb-30">
-                                <div class="process-ion d-flex justify-content-center">
-                                   <AiOutlineFileSearch className='fs-2'/>
-                                </div>
-                                <div class="process-cap">
-                                    <h5>2. Apply for job</h5>
-                                    <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+
+                        <div class="row p-0 m-0 py-3">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-process text-center mb-30">
+                                    <div class="process-ion d-flex justify-content-center my-2">
+                                        <FaSearch className='fs-4' />
+                                    </div>
+                                    <div class="process-cap">
+                                        <h5>1. Search a job</h5>
+                                        <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-process text-center mb-30">
-                                <div class="process-ion d-flex justify-content-center">
-                                <ImUserCheck className='fs-3'/>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-process text-center mb-30">
+                                    <div class="process-ion d-flex justify-content-center">
+                                        <AiOutlineFileSearch className='fs-2' />
+                                    </div>
+                                    <div class="process-cap">
+                                        <h5>2. Apply for job</h5>
+                                        <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                                    </div>
                                 </div>
-                                <div class="process-cap">
-                                    <h5>3. Get your job</h5>
-                                    <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-process text-center mb-30">
+                                    <div class="process-ion d-flex justify-content-center">
+                                        <ImUserCheck className='fs-3' />
+                                    </div>
+                                    <div class="process-cap">
+                                        <h5>3. Get your job</h5>
+                                        <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {/* footer section */}
-        <footer class="footer footer-bg-dark p-2 p-lg-3">
+            {/* footer section */}
+            <footer class="footer footer-bg-dark p-2 p-lg-3">
                 <div class="container">
                     <div class="row mb-5 p-0 m-0">
                         <div class="col-md-3 col-12">
                             <div class="footer-widget mb-4">
                                 <h2 class="footer-heading text-left">GOTEL</h2>
                                 <p className='footertext'>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                               
+
                             </div>
                         </div>
                         <div class="col-md-2 col-12">
@@ -871,7 +848,7 @@ function Homepage() {
                                     <li><a href="#sf" class="pb-1 d-block">Submit Resume</a></li>
                                     <li><a href="#sdf" class="pb-1 d-block">Dashboard</a></li>
                                     <li><a href="#sfd" class="pb-1 d-block">Browse Categories</a></li>
-                                   
+
                                 </ul>
                             </div>
                         </div>
@@ -890,10 +867,10 @@ function Homepage() {
                                 <h2 class="footer-heading text-start">Have a Questions?</h2>
                                 <div class="block-23 mb-3">
                                     <ul className='p-0'>
-                                        <li className='d-flex'><BiCurrentLocation className='fs-3 mx-2'/><p class="text">California, USA</p></li>
-                                        <li className='d-flex'><BiPhoneCall className='fs-4 mx-2'/><p class="text">+2 392 3929 210</p></li>
+                                        <li className='d-flex'><BiCurrentLocation className='fs-3 mx-2' /><p class="text">California, USA</p></li>
+                                        <li className='d-flex'><BiPhoneCall className='fs-4 mx-2' /><p class="text">+2 392 3929 210</p></li>
                                         <li className='d-flex'>
-                                            <MdOutlineMail className='fs-4 mx-2'/>
+                                            <MdOutlineMail className='fs-4 mx-2' />
                                             <p class="text">info@yourdomain.com</p></li>
                                     </ul>
                                 </div>
@@ -902,7 +879,7 @@ function Homepage() {
                     </div>
                     <div class="row m-0 p-0">
                         <div class="col-md-12 text-center">
-                          <p>Copyright © 2023 All Rights Reserved</p>
+                            <p>Copyright © 2023 All Rights Reserved</p>
                         </div>
                     </div>
                 </div>

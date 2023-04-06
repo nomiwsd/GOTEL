@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { BsPeopleFill } from 'react-icons/bs'
 import { MdWorkOutline, MdPostAdd } from 'react-icons/md'
 import { FaUserPlus } from 'react-icons/fa'
-function CompanyNavbar() {
+function CompanyNavbar({userProfileImg}) {
   return (
     <div className="navbar p-2">
       <div className="wrapper p-2">
@@ -85,7 +85,8 @@ function CompanyNavbar() {
           </div>
           <div className="item">
             <img
-              src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              // src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              src={userProfileImg}
               alt=""
               className="avatar"
             />
