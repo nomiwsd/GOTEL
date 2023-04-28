@@ -1,0 +1,110 @@
+/* :root {
+  --font-family: 'Inter', sans-serif;
+  --background-color: #eee;
+  --border-color: #eee;
+  --btn-color: #007456;
+  --primary-color: #111111;
+  --filter-heading: #999;
+  --text-color: #555555;
+  --option-color: #007456;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  padding: 4px 0px !important;
+}
+
+.navbar .wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topheading {
+  font-size: 18px;
+  font-family: var(--font-family);
+  font-weight: 500;
+}
+
+.navbar .wrapper .search {
+  display: flex;
+  align-items: center;
+  border: 0.5px solid lightgray;
+  padding: 3px;
+  border-radius: 20px;
+}
+
+.search input {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.search input::placeholder {
+  font-size: 12px;
+}
+
+.wrapper .items {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .items .item {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-right: 20px;
+  position: relative;
+}
+
+.item .icon {
+  font-size: 20px;
+}
+
+.item .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.counter {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  top: -5px;
+
+}
+
+.modal-backdrop,
+.smoffcannvas {
+  width: 70vw !important;
+  height: 100vh !important;
+  background-color: var(--background-color) !important;
+}
+
+.smoffcannvas::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.Jobpostbtn {
+  border-radius: 20px;
+  background-color: #007456;
+  color: white !important;
+  text-decoration: none;
+  font-size: 10px;
+  font-family: var(--font-family);
+  font-weight: 700;
+} */

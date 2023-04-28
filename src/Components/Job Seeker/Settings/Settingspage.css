@@ -1,0 +1,64 @@
+:root {
+    --font-family: 'Inter', sans-serif;
+    --background-color: #eee;
+    --border-color: #eee;
+    --btn-color: #007456;
+    --primary-color: #111111;
+    --filter-heading: #999;
+    --text-color: #555555;
+    --option-color: #007456;
+}
+.form-dashboard .block-from {
+    padding: 24px 32px 8px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+.form-dashboard h6 {
+    font-size: 20px;
+    margin-bottom: 28px;
+}
+.form-dashboard .formgroup label {
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+.form-dashboard .formgroup{
+    border: 0 !important;
+}
+.form-dashboard .formgroup input[type="password"] {
+    font: small-caption;
+    font-size: 16px;
+    font-size: 16px;
+    padding: 10.5px 16px;
+    color: var(--text-color);
+    border-radius: 4px;
+    width: 100%;
+    outline: none !important;
+}
+*:focus {outline:none !important}
+.civi-toggle-password {
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
+    cursor: pointer;
+}
+.formgroup input{
+    border: 1px solid var(--border-color) !important;
+}
+.civi-button {
+    display: inline-block;
+    background-color: var(--btn-color);
+    border: solid 1px var(--btn-color);
+    color: #fff;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    padding: 10px 26px;
+    font-size: 16px;
+    -webkit-border-radius: 3em;
+    -moz-border-radius: 3em;
+    border-radius: 3em;
+    font-weight: 500;
+    cursor: pointer;
+}

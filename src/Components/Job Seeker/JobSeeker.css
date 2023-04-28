@@ -1,0 +1,376 @@
+:root {
+	--font-family: 'Inter', sans-serif;
+	--background-color: #eee;
+	--border-color: #eee;
+	--btn-color: #007456;
+	--primary-color: #111111;
+	--filter-heading: #999;
+	--text-color: #555555;
+	--option-color: #007456;
+  }
+  .coursesearchbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+  }
+.form-dashboard label {
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.civi-fields-avatar #civi_avatar_errors {
+    font-size: 10px;
+    color: red;
+    margin-bottom: 5px;
+}
+.civi-fields-avatar #civi_avatar_container {
+    border-radius: 6px;
+    border: 1px dashed #ddd;
+    background-color: #f9f9f9;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin-right: 16px;
+    overflow: hidden;
+}
+.civi-fields-avatar #civi_avatar_view, .civi-fields-avatar .media-thumb {
+    height: 100%;
+    width: 100%;
+}
+.civi-fields-avatar #civi_add_avatar {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    left: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+.uploadimagecontainer{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    z-index: 0;
+}
+.uploadbtn{    font-size: 999px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+.nav-tabs {
+    --bs-nav-tabs-link-active-color: white !important;
+   
+}
+.nav {
+    --bs-nav-link-padding-x: 1rem;
+    --bs-nav-link-padding-y: 0.5rem;
+    --bs-nav-link-font-weight: ;
+    --bs-nav-link-color: var(--btn-color) !important;  
+}
+.nav-tabs .nav-link.active {
+    color: white !important;
+    background-color: var(--btn-color) !important;
+    border-color: var(--border-color) !important;}
+    .form-dashboard .form-group {
+        padding-left: 8px;
+        padding-right: 8px;
+        margin-bottom: 24px;
+    }
+   .form-dashboard input[type="text"], input[type="url"], input[type="tel"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="date"], input[type="file"], textarea {
+        font-size: 16px;
+        border: 1px solid #ddd;
+        padding: 10.5px 16px;
+        color: var(--text-color);
+        border-radius: 4px;
+        width: 100%;
+   }
+   .form-group{
+    border: 0 !important;
+   }
+   
+
+.css-13cymwt-control{
+    padding: 4px !important;
+}
+.form-dashboard .block-from {
+    padding: 24px 32px 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+}
+.form-dashboard h6 {
+    font-size: 20px;
+    margin-bottom: 28px;
+}
+.candidate-profile .resume .file-type {
+    color: var(--text-color);
+}
+.block-from {
+    padding: 24px 32px 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+}
+.sub-head {
+    color: var(--text-color);
+    margin-top: 8px;
+}
+
+.candidate-profile .result-notify, .sub-head, .uxper-messages .mess-content.empty p {
+    margin-bottom: 24px;
+}
+.candidate-profile .group-title {
+    display: flex;
+    flex-direction: row;
+    column-gap: 14px;
+    position: relative;
+    margin-bottom: 28px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+}
+.candidate-profile .group-title i:before {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fa-times:before {
+    content: "\f00d";
+}
+.fa-times:before {
+    content: "\f00d";
+}
+.candidate-profile .group-title h6 {
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 0;
+}
+.form-dashboard h6 {
+    font-size: 20px;
+    margin-bottom: 28px;
+}
+.candidate-profile .group-title i:before {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fa-angle-up:before {
+    content: "\f106";
+}
+.fa-angle-up:before {
+    content: "\f106";
+}
+.civi-candidate-wrapper input[type="text"], input[type="url"], input[type="tel"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="date"], input[type="file"], textarea {
+    font-size: 16px;
+    border: 1px solid #ddd;
+    padding: 10.5px 16px;
+    color: var(--text-color);
+    border-radius: 4px;
+    width: 100%;
+}
+ .button-warpper {
+    margin-top: 24px;
+    text-align: right;
+}
+
+.sidebar {
+    min-height: 120vh;
+    background-color: var(--background-color);
+    position: fixed; 
+    margin: 0;
+}
+@media screen and (min-width:1024px) and (max-width:1440px) {
+    .sidebar {
+        background-color: var(--background-color); 
+        margin: 0;
+        position: relative;
+    }
+}
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .sidebar {
+        background-color: var(--background-color); 
+        margin: 0;
+        position: relative;
+    }
+    .sidebar::-webkit-scrollbar {
+        width: 6px !important;
+        background-color: #bbb6b6;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translate3d(0,0,0);
+    
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+    
+        width: 6px !important;
+        background-color: var(--text-color) !important;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translate3d(0,0,0);
+    }
+    .sidebar::-webkit-scrollbar-track {
+        background-color: #fff;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translate3d(0,0,0);
+        
+    }
+}
+.sidebar .top {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top .logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--btn-color);
+}
+
+.sidebar hr {
+    height: 0;
+    border: 0.5px solid rgb(230, 227, 227);
+}
+
+.sidebar .center {
+    padding-left: 10px;
+}
+
+.sidebar .center ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar .center .title {
+    font-size: 14px;
+    font-family:var(--font-family);
+    font-weight: bold;
+    color: #999;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.sidebar span{
+    font-size: 14px;
+    font-family: var(--font-family);
+    font-weight: 500;
+text-decoration: none !important;    
+}
+.sidebar .center li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.center li:hover {
+    background-color: #ece8ff;
+}
+
+.icon {
+    font-size: 18px;
+    color: var(--option-color);
+}
+
+
+.sidebar .bottom {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.colorOption {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #7451f8;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.colorOption:nth-child(1) {
+    background-color: whitesmoke;
+}
+
+.colorOption:nth-child(2) {
+    background-color: #333;
+}
+
+.colorOption:nth-child(3) {
+    background-color: darkblue;
+}
+.modal-backdrop.show {
+    opacity: 0 !important;
+}
+.routerlinks{
+    text-decoration: none !important;
+}
+*:focus {
+    outline: none !important
+}
+
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.userpage ,.background{
+    background-color: #EFF7F3;
+}
+#dropdownMenuButton2{
+    background-color: #1F51FF !important;
+    border: 0px !important;
+}
+.textef {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+}
+.mainhead{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
+
+.textds,
+.textloc {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+}
+.textedit {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #0536e7 !important;
+    text-decoration: none !important;
+}
+
+.textcom {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.textlang {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+}

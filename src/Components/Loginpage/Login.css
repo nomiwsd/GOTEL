@@ -1,0 +1,117 @@
+:root {
+    --font-family: 'Inter', sans-serif;
+    --background-color: #eee;
+    --border-color: #eee;
+    --btn-color: #007456;
+    --primary-color: #111111;
+    --filter-heading: #999;
+    --text-color: #555555;
+    --option-color: #007456;
+}
+
+*:focus {
+    outline: none !important
+}
+@media screen and (max-width:425px) {
+    .loginpage {
+        background-image: url('../Assets/Loginimg.jpg');
+        background-size: cover;
+        height: 215vh !important;
+        background-repeat: no-repeat;
+    }
+}
+@media screen and (min-width:425px) and (max-width:768px)   {
+    .loginpage {
+        background-image: url('../Assets/Loginimg.jpg');
+        background-size: cover;
+        height: 175vh !important;
+        background-repeat: no-repeat;
+    }
+}
+@media screen and (min-width:1024px)  {
+    .loginpage {
+        background-image: url('../Assets/Loginimg.jpg');
+        background-size: cover;
+        height: 155vh !important;
+        background-repeat: no-repeat;
+    }
+}
+
+.forgetpage {
+    background-image: url('../Assets/Loginimg.jpg');
+    background-size: cover;
+    height: 100vh !important;
+    background-repeat: no-repeat;
+}
+
+
+  
+.loginbg{
+    background-color: var(--background-color);
+    border-radius: 20px;
+}
+
+p {
+
+    font-family: var(--font-family);
+}
+
+input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.loginhead,
+.logintxt {
+    text-align: center !important;
+    font-family: var(--font-family);
+}
+
+.loginhead {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: var(--font-family);
+}
+
+.formlabel {
+    text-align: left !important;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: var(--font-family);
+}
+
+.forgetpswd {
+    color: black;
+    text-align: end;
+    font-family: var(--font-family);
+}
+
+.socialicon {
+    border: 0px;
+    border-radius: 5px;
+    margin: 5px;
+    background-color: transparent;
+}
+
+.fbicon {
+    color: #1778f2;
+}
+
+.signup {
+    border-radius: 10px;
+}
+
+.signuptxt {
+    font-size: 12px;
+    font-family: var(--font-family);
+}
+
+.createbtn {
+    color: var(--btn-color) !important;
+    background-color: #E6E6FA !important;
+}

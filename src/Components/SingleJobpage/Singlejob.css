@@ -1,0 +1,115 @@
+:root {
+    --font-family: 'Inter', sans-serif;
+    --background-color: #eee;
+    --border-color: #eee;
+    --btn-color: #007456;
+    --primary-color:#111111;
+    --filter-heading: #999;
+    --text-color:#555555;
+    --option-color:#007456;
+}
+ol li a{
+    text-decoration: none !important;
+    color: black !important;
+}
+.companyimage{width: 54px !important;
+height: 54px !important;}
+.applyjobheading{
+    font-size: 24px;
+    font-family: var(--font-family);
+    text-align: center;
+}
+.days {
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+.applybtn{
+    background-color: #007456 ;
+    width: 100%;
+    border-radius: 50px;
+    color: white;
+}
+.list-item {
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 24px;
+}
+.info{
+    margin-left: 10px;
+}
+.info .title-info {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 16px;
+    font-family: var(--font-family);
+    margin-bottom: 0;
+}
+.content{
+    font-size: 16px;
+    font-family: var(--font-family);
+word-wrap: break-word;
+}
+.list-item{
+    margin-bottom: 5px !important;
+    font-size: 16px;
+    font-family: var(--font-family);
+}
+.list-cate a,.details-info a{
+    text-decoration: none;
+    color: #007456 !important;
+    margin-bottom: 0 !important;
+}
+.details-info{
+    margin-bottom: 5px !important;
+}
+.civi-button.button-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.civi-button.button-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: #ddd;
+}
+a{
+    text-decoration: none !important;
+}
+ul a{
+    text-decoration: none;
+    color: #007456 !important;
+}
+.jobs-company-sidebar .button-visit {
+    margin-top: 20px;
+}
+.civi-button {
+    display: inline-block;
+    background-color: var(--btn-color);
+    border: solid 1px var(--btn-color);
+    color: #fff;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    padding: 10px 26px;
+    font-size: 16px;
+    -webkit-border-radius: 3em;
+    -moz-border-radius: 3em;
+    border-radius: 3em;
+width: 100%;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content:center ;
+}
+.civi-button:hover{
+    color:white !important;
+}
+.listdesc{
+    list-style-type: circle;
+}
+.coverimg{
+    width:100%;
+}

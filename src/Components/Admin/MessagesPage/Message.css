@@ -1,0 +1,262 @@
+:root {
+	--font-family: 'Inter', sans-serif;
+	--background-color: #eee;
+	--border-color: #eee;
+	--btn-color: #007456;
+	--primary-color: #111111;
+	--filter-heading: #999;
+	--text-color: #555555;
+	--option-color: #007456;
+    --bs-dropdown-min-width: 70px;
+  }
+.uxper-messages {
+    display: -ms-flexbox;
+    display: flex;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+}
+.table-dashboard-wapper {
+    background-color: #fff;
+    position: relative;
+}
+.bg-overlay {
+    background: rgba(17,17,17,0.8);
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all .3s ease 0s;
+    -moz-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+}
+.uxper-messages .mess-list {
+    -ms-flex: 0 0 370px;
+    flex: 0 0 300px;
+    border-right: 1px solid var(--border-color);
+}
+.uxper-messages .mess-tab-head {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 32px;
+}
+.uxper-messages .tab-mess .tab-list-mess {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+.uxper-messages .tab-mess .tab-item {
+    position: relative;
+}
+.uxper-messages .tab-mess .tab-item+.tab-item {
+    margin-left: 32px;
+}
+.uxper-messages .mess-tab-head .mess-refresh {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--btn-color);
+    cursor: pointer;
+}
+.uxper-messages .tab-content {
+    height: 500px;
+    overflow: auto;
+}
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f5f5f5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
+
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #eee;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
+    
+}
+.uxper-messages .tab-info ul li.active {
+    background: rgba(0,116,86,.05);
+}
+.uxper-messages .tab-info ul li {
+    position: relative;
+    display: flex;
+    color: #999;
+    padding: 16px 32px;
+}
+.uxper-messages .tab-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.uxper-messages .tab-info ul li.active:before {
+    content: "";
+    width: 2px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: var(--btn-color);
+}
+.uxper-messages .tab-info .thumb {
+    flex: 0 0 36px;
+}
+.uxper-messages .thumb {
+    position: relative;
+}
+.uxper-messages .thumb img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.uxper-messages .tab-info .detail {
+    padding-left: 12px;
+    width: 100%;
+}
+.uxper-messages .mess-content {
+    width: 100%;
+    -ms-flex: 1;
+    flex: 1;
+}
+.uxper-messages .mess-content__head {
+    padding: 32px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.uxper-messages .mess-content__head, .uxper-messages .tab-info .name {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.uxper-messages .mess-content__head .left {
+    display: -ms-flexbox;
+    display: flex;
+}
+.uxper-messages .mess-content__head .thumb {
+    flex: 0 0 48px;
+}
+.uxper-messages .thumb {
+    position: relative;
+}
+.uxper-messages .mess-content__head .detail {
+    padding-left: 12px;
+}
+.uxper-messages .uname {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+.uxper-messages .mess-content__head .info {
+    font-size: 14px;
+}
+.civi-payment-completed-wrap .list-group li, .uxper-messages .mess-content__head .right {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.uxper-messages .mess-content__body {
+    padding: 64px;
+    height: 350px;
+    overflow: auto;
+}
+.uxper-messages .mess-content__action {
+    position: relative;
+    border-top: 1px solid var(--border-color);
+}
+.uxper-messages .mess-content__action textarea {
+    padding: 45px 110px 45px 32px;
+    height: 120px;
+    border: 0;
+}
+.uxper-messages .mess-content__action button {
+    position: absolute;
+    border: 0;
+    padding: 9px 24px;
+    border-radius: 30px;
+    top: 40px;
+    right: 32px;
+    cursor: pointer;
+}
+.uxper-messages .mess-content__action button, .uxper-messages .mess-content__body .card-send .detail .desc {
+    background-color: var(--btn-color);
+    color: #fff;
+}
+.uxper-messages .mess-content__body .card-mess {
+    display: -ms-flexbox;
+    display: flex;
+}
+.uxper-messages .mess-content__body .card-mess .thumb {
+    flex: 0 0 36px;
+}
+.uxper-messages .thumb {
+    position: relative;
+}
+.uxper-messages .mess-content__body .card-send .detail {
+    padding-left: 0;
+    padding-right: 12px;
+}
+.uxper-messages .mess-content__body .card-mess .detail {
+    padding-left: 12px;
+    max-width: 320px;
+}
+.uxper-messages .mess-content__body .card-send {
+    flex-direction: row-reverse;
+}
+.page-dashboard, .uxper-messages .mess-content__body .card-mess {
+    display: -ms-flexbox;
+    display: flex;
+}
+.uxper-messages .mess-content__body .card-send .detail .uname {
+    padding-left: 20px;
+}
+.uxper-messages .mess-content__body .card-mess .detail span, .uxper-messages .tab-mess .tab-item {
+    position: relative;
+}
+.uxper-messages .uname {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+.uxper-messages .mess-content__body .card-send .detail .date {
+    padding-left: 0;
+}
+.uxper-messages .mess-content__body .card-mess .detail .date {
+    padding-left: 20px;
+}
+.uxper-messages .mess-content__body .card-send .detail .desc {
+    background-color: var(--btn-color) !important;
+    color: #fff;
+}
+.uxper-messages .mess-content__body .card-mess .detail .desc {
+    padding: 16px 24px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 5px;
+}
