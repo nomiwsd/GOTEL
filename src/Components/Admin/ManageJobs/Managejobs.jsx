@@ -79,10 +79,7 @@ function Managejobs() {
                                         <SiCoursera className="icon fs-4" />
                                         <span>Upload Courses</span>
                                     </li></Link>
-                                <Link to='/Testpage' style={{ textDecoration: "none" }}><li>
-                                    <TfiWrite className="icon fs-4" />
-                                    <span>Conduct Test</span>
-                                </li></Link>
+                             
                                 <Link to='/Message' style={{ textDecoration: "none" }}>   <li>
                                     <BiMessageDetail className="icon fs-4" />
                                     <span>Messages</span>
@@ -102,6 +99,7 @@ function Managejobs() {
                 </div>
                 <div className=" col-12 col-md-9 col-lg-10 h-100 p-0 m-0"><Navbar />
                     <div className="bg-color px-3 py-2">
+                        <div className='my-5'>
                         <div class="entry-title d-flex my-2">
                             <h4>Manage Jobs</h4>
                         </div>
@@ -252,7 +250,7 @@ function Managejobs() {
                             <input type="hidden" name="type_term" value="" />
                         </div>
                     </div>
-                </div>
+                    </div> </div>
             </div>
         </div>
     )

@@ -9,7 +9,8 @@ import {MdOutlineDocumentScanner} from 'react-icons/md'
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom"
-
+import { TfiWrite } from 'react-icons/tfi';
+import img1 from '../../../Images/React js.jpg'
 function Usercoursespage() {
     return (
         <div>
@@ -41,21 +42,21 @@ function Usercoursespage() {
             <BsBookmarkCheckFill className="icon fs-4" />
             <span>Jobs Applied</span>
           </li></Link>
-          <Link to='/UserResume' style={{ textDecoration: "none" }}>
+          {/* <Link to='/UserResume' style={{ textDecoration: "none" }}>
           <li>
             <MdOutlineDocumentScanner className="icon fs-4" />
             <span>Create Your Resume</span>
-          </li></Link>
-          <Link style={{ textDecoration: "none" }}>
+          </li></Link> */}
+           <Link to='/Testpage' style={{ textDecoration: "none" }}><li>
+                <TfiWrite className="icon fs-4" />
+                <span>Conduct Test</span>
+              </li></Link>
+          <Link to='/Usercoursespage' style={{ textDecoration: "none" }}>
           <li>
             <SiCoursera className="icon fs-4" />
             <span>Applied Courses</span>
           </li></Link>
-          <Link to='/Jobseekerpage' style={{ textDecoration: "none" }}>
-          <li>
-            <SiCoursera className="icon fs-4" />
-            <span>Applied Courses</span>
-          </li></Link>
+        
           <Link to='/JobSeekerMessage'style={{ textDecoration: "none" }}>   <li>
             <BiMessageDetail className="icon fs-4" />
             <span>Messages</span>
@@ -83,7 +84,7 @@ function Usercoursespage() {
                     </div>
             <div class="col-md-4 col-12">
           <div class="card col-12 p-0 m-0" style={{padding:'22px'}}>
-                 <img class="card-img" style={{padding: '22px'}} src="./Images/FoundPet(1).png" alt=""/>
+                 <img class="card-img"  src={img1} alt=""/>
                  <div class="card-body m-0">
                   <h3 class="card-title">React Crash Course</h3>
                   <p class="card-text">Cursus malesuada maecenas magna et eget. Lobortis tellus aliquet posuere amet dignissim nulla ultrices. Aliquam commodo ultricies aliquam sit egestas justo pulvinar lacus.</p>

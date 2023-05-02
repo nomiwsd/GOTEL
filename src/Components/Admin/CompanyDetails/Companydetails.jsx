@@ -103,10 +103,7 @@ function Companydetails() {
                                     <SiCoursera className="icon fs-4" />
                                     <span>Upload Courses</span>
                                 </li></Link>
-                            <Link to='/Testpage' style={{ textDecoration: "none" }}><li>
-                                <TfiWrite className="icon fs-4" />
-                                <span>Conduct Test</span>
-                            </li></Link>
+                       
                             <Link to='/Message' style={{ textDecoration: "none" }}>   <li>
                                 <BiMessageDetail className="icon fs-4" />
                                 <span>Messages</span>
@@ -126,7 +123,7 @@ function Companydetails() {
             </div>
             <div className="col-12 col-md-9 col-lg-10 h-100"><Navbar />
                 <div id="main" class="site-main" role="main">
-                    <div class="entry-my-page company-dashboard">
+                    <div class="entry-my-page company-dashboard my-5">
                         <div class="entry-title d-flex justify-content-between my-2">
                             <h4>Companies</h4>
                             <div className="search d-none d-md-block border-1 rounded-4 p-1">
@@ -137,14 +134,15 @@ function Companydetails() {
                             </div>
                         </div>
                         <div class="table-dashboard-wapper">
-                            <table class="table-dashboard" id="my-company">
+                            <table class="table-dashboard companytable" id="my-company">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Status</th>
+                                        
                                         <th>Category</th>
                                         <th>Active Jobs</th>
-                                    </tr>
+                                        <th>Registered Date</th>
+                                        </tr>
                                 </thead>
                                 <tbody>
                                     {
@@ -153,9 +151,9 @@ function Companydetails() {
                                                 return (
                                                     <tr>
                                                         <td class="info-user">
-                                                            <a href="">
+                                                            <Link >
                                                                 <img src={C.img} className=' rounded-full object-cover mr-5' alt={C.companyName} />
-                                                            </a>
+                                                            </Link>
                                                             <div class="info-details">
                                                                 <h4 className='companyname text-center m-0'><a href="">{C.companyName}</a></h4>
                                                                 <p>
@@ -163,9 +161,7 @@ function Companydetails() {
                                                                 </p>
                                                             </div>
                                                         </td>
-                                                        <td>
-                                                            <span class="label label-open">Opening</span>
-                                                        </td>
+                                                        
                                                         <td>
                                                             <span class="cate">
                                                                 <span>{C.categorie}</span>
@@ -174,6 +170,7 @@ function Companydetails() {
                                                         <td>
                                                             <span class="active-jobs">{C.jobs }</span>
                                                         </td>
+                                                        <td>04-10-2023</td>
                                                         <td class="action-setting company-control">
                                                             <div class="btn-group dropend">
                                                                 <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
@@ -195,8 +192,7 @@ function Companydetails() {
                             </table>
                             <div class="civi-loading-effect"><span class="civi-dual-ring"></span></div>
                         </div>
-                        <a href="https://civi.uxper.co/submit-company/" class="civi-button col-lg-3">
-                            Add new company        </a>
+                    
                     </div>
 
                 </div>

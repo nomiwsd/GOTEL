@@ -51,34 +51,34 @@ const fetchUsersDetails = async (uid)=>{
                     <hr />
                     <div className="center">
                       <ul>
-                        <Link to="./Company" style={{ textDecoration: "none" }}>
+                        <Link to="/Company" style={{ textDecoration: "none" }}>
                           <li>
                             <BsPeopleFill className="icon fs-4" />
                             <span>Company Profile</span>
                           </li>
                         </Link>
-                        <Link to="./Jobpost" style={{ textDecoration: "none" }}>
+                        <Link to="/Jobpost" style={{ textDecoration: "none" }}>
                           <li>
                             <MdWorkOutline className="icon fs-4" />
                             <span>Post a Job</span>
                           </li>
                         </Link>
-                        <Link to='./PostedJob' style={{ textDecoration: "none" }}>
+                        <Link to='/PostedJob' style={{ textDecoration: "none" }}>
                           <li>
                             <MdPostAdd className="icon fs-4" />
                             <span>Posted Jobs</span>
                           </li></Link>
-                        <Link to='./AppliedCandidate' style={{ textDecoration: "none" }}>
+                        <Link to='/AppliedCandidate' style={{ textDecoration: "none" }}>
                           <li>
                             <FaUserPlus className="icon fs-4" />
                             <span>Applied Candidates</span>
                           </li></Link>
-                        <Link to='./CompanyMessage' style={{ textDecoration: "none" }}>   <li>
+                        <Link to='/CompanyMessage' style={{ textDecoration: "none" }}>   <li>
                           <BiMessageDetail className="icon fs-4" />
                           <span>Messages</span>
                         </li>
                         </Link>
-                        <Link to='./CompanySettingspage' style={{ textDecoration: "none" }}> <li>
+                        <Link to='/CompanySettingspage' style={{ textDecoration: "none" }}> <li>
                           <SettingsApplicationsIcon className="icon fs-4" />
                           <span>Settings</span>
                         </li></Link>

@@ -1,5 +1,15 @@
-.bgfindjob{
-    background-color: var(--background-color);
+:root {
+	--font-family: 'Inter', sans-serif;
+	--background-color: #eee;
+	--border-color: #eee;
+	--btn-color: #007456;
+	--primary-color: #111111;
+	--filter-heading: #999;
+	--text-color: #555555;
+	--option-color: #007456;
+  }
+.userfindjob{
+    background-color: #007456 !important;
 }
 .offcanvas {
     position: fixed;
@@ -14,4 +24,11 @@
     background-clip: padding-box;
     outline: 0;
     transition: transform .3s ease-in-out;
+}
+.jobs-featured{
+    border: 1px solid black !important;
+}
+.btncl{
+    background-color:#007456 !important;
+    color:white !important;
 }

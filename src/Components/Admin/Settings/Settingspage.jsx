@@ -59,10 +59,7 @@ function Settingspage() {
             <SiCoursera className="icon fs-4" />
             <span>Upload Courses</span>
           </li></Link>
-          <Link to='/Testpage'  style={{ textDecoration: "none" }}><li>
-            <TfiWrite className="icon fs-4" />
-            <span>Conduct Test</span>
-          </li></Link>
+       
           <Link to='/Message'style={{ textDecoration: "none" }}>   <li>
             <BiMessageDetail className="icon fs-4" />
             <span>Messages</span>

@@ -1,12 +1,12 @@
 import React from 'react'
 import Navbar from '../Navbar/JobSeekerNavbar'
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
-import { IoIosPeople } from 'react-icons/io'
+
 import { SiCoursera } from 'react-icons/si'
 import { BiMessageDetail } from 'react-icons/bi'
 import { TfiWrite } from 'react-icons/tfi'
-import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
+import {ImUser} from 'react-icons/im'
+import {BsBookmarkCheckFill} from 'react-icons/bs'
+import {AiOutlineFileSearch} from 'react-icons/ai'
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom";
@@ -17,6 +17,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Mcqs from '../../../Data/testQuestions.json'
 import { update } from 'firebase/database';
+import JobSeekerNavbar from '../Navbar/JobSeekerNavbar';
 function Testpage() {    
     const [user,setUser] = useState({})
     const [testQuestions,setTestQuestions] = useState(null)
@@ -61,67 +62,67 @@ function Testpage() {
     return (
         <div>
             <div className="row m-0 p-0">
-                <div className="col-lg-2 sidebar p-0 d-none d-md-block">
-                    <div className="sidebar  p-0" >
-                        <div className="top">
-                            <Link to="/" style={{ textDecoration: "none" }}>
-                                <span className="logo">GOTEL</span>
-                            </Link>
-                        </div>
-                        <hr />
-                        <div className="center">
-                            <ul>
-                                <p className="title">MAIN</p>
-                                <Link to='/Admin' className='routerlinks'> <li>
-                                    <DashboardIcon className="icon fs-4" />
-                                    <span className='d-none d-md-block'>Dashboard</span>
-                                </li></Link>
-                                <p className="title">LISTS</p>
-                                <Link to="/Companydetails" style={{ textDecoration: "none" }}>
-                                    <li>
-                                        <IoIosPeople className="icon fs-4" />
-                                        <span>Companies Details</span>
-                                    </li>
-                                </Link>
-                                <Link to="/Userdetails" style={{ textDecoration: "none" }}>
-                                    <li>
-                                        <PersonOutlineIcon className="icon fs-4" />
-                                        <span>Users Details</span>
-                                    </li>
-                                </Link>
-                                <Link to='/Managejobs' style={{ textDecoration: "none" }}>
-                                    <li>
-                                        <WorkOutlineOutlinedIcon className="icon fs-4" />
-                                        <span>Manage Jobs</span>
-                                    </li></Link>
-                                <Link to='/Courses'  style={{ textDecoration: "none" }}>
-                                    <li>
-                                        <SiCoursera className="icon fs-4" />
-                                        <span>Upload Courses</span>
-                                    </li></Link>
-                                <Link  to='/Testpage' style={{ textDecoration: "none" }}><li>
-                                    <TfiWrite className="icon fs-4" />
-                                    <span>Conduct Test</span>
-                                </li></Link>
-                                <Link to='/Message' style={{ textDecoration: "none" }}>   <li>
-                                    <BiMessageDetail className="icon fs-4" />
-                                    <span>Messages</span>
-                                </li>
-                                </Link>
-                                <Link to='/Settingspage' style={{ textDecoration: "none" }}> <li>
-                                    <SettingsApplicationsIcon className="icon fs-4" />
-                                    <span>Settings</span>
-                                </li></Link>
-                                <Link style={{ textDecoration: "none" }}> <li>
-                                    <ExitToAppIcon className="icon fs-4" />
-                                    <span>Logout</span>
-                                </li></Link>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <div className=" d-none d-md-block sidebar col-md-3 col-lg-2 ">
+      <div className="sidebar  p-0" >
+      <div className="top">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">GOTEL</span>
+        </Link>
+      </div>
+      <hr />
+      <div className="center">
+        <ul>
+          <Link to="/JobSeeker" style={{ textDecoration: "none" }}>
+            <li>
+              <ImUser className="icon fs-4" />
+              <span>User Profile</span>
+            </li>
+          </Link>
+          <Link to='/UserFindJob'style={{ textDecoration: "none" }}>
+            <li>
+              <AiOutlineFileSearch className="icon fs-4" />
+              <span>Find Jobs</span>
+            </li>
+          </Link>
+          <Link to='/AppliedJobs' style={{ textDecoration: "none" }}>
+          <li>
+            <BsBookmarkCheckFill className="icon fs-4" />
+            <span>Jobs Applied</span>
+          </li></Link>
+          {/* <Link to='/UserResume' style={{ textDecoration: "none" }}>
+          <li>
+            <MdOutlineDocumentScanner className="icon fs-4" />
+            <span>Create Your Resume</span>
+          </li></Link> */}
+          <Link to='/Testpage' style={{ textDecoration: "none" }}><li>
+                <TfiWrite className="icon fs-4" />
+                <span>Conduct Test</span>
+              </li></Link>
+          <Link to='/Usercoursespage' style={{ textDecoration: "none" }}>
+          <li>
+            <SiCoursera className="icon fs-4" />
+            <span>Applied Courses</span>
+          </li></Link>
+      
+          <Link to='/JobSeekerMessage'style={{ textDecoration: "none" }}>   <li>
+            <BiMessageDetail className="icon fs-4" />
+            <span>Messages</span>
+          </li>
+          </Link>
+          <Link to='/JobSeekerSettingspage'style={{ textDecoration: "none" }}> <li>
+            <SettingsApplicationsIcon className="icon fs-4" />
+            <span>Settings</span>
+          </li></Link>
+          <Link style={{ textDecoration: "none" }}> <li>
+            <ExitToAppIcon className="icon fs-4" />
+            <span>Logout</span>
+          </li></Link>
+        </ul>
+      </div>
+      </div>
+      </div>
                 <div className="col-lg-10">
-                    <Navbar />
+                    <JobSeekerNavbar />
                     <div className="col-lg-12">
                         <form class="block-from form-password form-change-password form-dashboard">
                             <h6 className='basicheading'>Test</h6>

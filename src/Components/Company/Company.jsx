@@ -177,10 +177,10 @@ function Company() {
                   <h4>Submit company</h4>
                 </div>
                 <div class="button-warpper d-flex justify-content-center">
-                  <a href="https://civi.uxper.co/dashboard/employers/company-employer/" class="civi-button button-outline" onClick={()=>{
+                  <Link  class="civi-button button-outline" onClick={()=>{
                     fetchUserDetails()
                   }}>
-                    Cancel							</a>
+                    Cancel							</Link>
                   <button onClick={()=>{
                     writeUserDetails()
                   }} type="submit" class="btn-submit-company civi-button" name="submit_company">
@@ -318,7 +318,7 @@ function Company() {
 									<div class="title-wapper">
 										<h4 class="title-about" data-title="Company name">{CompanyName == null ? user.Name : CompanyName}</h4>																				
 																				</div>
-									<i class="fas fa-map-marker-alt"></i><span class="location-about" data-location="Location">Location</span>
+							
 								</div>
 							</div>
 							<div class="des-about"></div>

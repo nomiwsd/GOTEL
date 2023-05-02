@@ -35,13 +35,13 @@ function Signup() {
                 email:email,
                 ph:'',
                 userType:selectedTab,
-                date:Date().now
+                // date:new Date().now
              })
             .then((e)=>{
                 setAccountCreated(true)
                 setLoading(false)
                 console.log('Company Created',e)
-                user.sendEmailVerification()
+                // user.sendEmailVerification()
             }
             )
             .catch((error) => {
@@ -55,13 +55,13 @@ function Signup() {
             await setDoc(doc(firestore, "users",user.uid), {
                 Name:UserName,
                 userType:selectedTab,
-                date:Date().now
+                // date:new Date().now
              })
             .then((e)=>{
                 setAccountCreated(true)
                 setLoading(false)
                 console.log('User Created',e)
-                user.sendEmailVerification()
+                // user.sendEmailVerification()
             }
             )
             .catch((error) => {
@@ -147,10 +147,10 @@ function Signup() {
                                 }}   />
                             </div>
                         </div>
-                        <div className="d-flex justify-content-center"><Link to='../Company' className=' submitbtn col-lg-6 col-6 my-3' onClick={()=>{
+                        <div className="d-flex justify-content-center"><Link  className=' submitbtn col-lg-6 col-6 my-3' onClick={()=>{
                             onSubmit();
                         }}>Register</Link></div>
-                          <HalfMalf text={"Loading..."} bgColor={"#F0A500"} center={false} width={"100px"} height={"100px"}/>
+                         
                         <div className="d-flex justify-content-center align-items-center">
                             <div className="">
                                 <p className='text-success'>Account Created Successfully</p>
@@ -197,8 +197,8 @@ function Signup() {
                                 }}  />
                             </div>
                         </div>
-                        <div className="d-flex justify-content-center"><Link to='../JobSeeker' className='submitbtn col-lg-6 col-6 my-3' onClick={()=>{onSubmit()}}>Register</Link></div>
-                        <HalfMalf text={"Loading..."} bgColor={"#F0A500"} center={false} width={"100px"} height={"100px"}/>
+                        <div className="d-flex justify-content-center"><Link className='submitbtn col-lg-6 col-6 my-3' onClick={()=>{onSubmit()}}>Register</Link></div>
+                       
                         <div className="d-flex justify-content-center align-items-center">
                             <div className="">
                                 <p className='text-success'>Account Created Successfully</p>
@@ -219,7 +219,7 @@ function Signup() {
 
 
             </div>
-            
+          
 
         </div>
         </div>

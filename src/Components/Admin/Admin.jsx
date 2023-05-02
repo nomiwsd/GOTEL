@@ -186,7 +186,7 @@ function Admin() {
         </div>
       </div>
       <div className="col-12 col-md-9 col-lg-10 h-100"><Navbar />
-        <h2 class="entry-title mx-3 my-2">Welcome back! Admin</h2>
+        <h2 class="entry-title mx-3 mt-4 mb-2">Welcome back! Admin</h2>
         <div class="total-action">
           <ul class="action-wrapper row m-0 p-0 d-flex flex-wrap">
             <li class="col-md-6 col-lg-3 col-12 my-2">

@@ -12,7 +12,7 @@ import {MdOutlineDocumentScanner} from 'react-icons/md'
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom";
-
+import { TfiWrite } from 'react-icons/tfi';
 function JobSeekerSettingspage() {
 	const [CurrentPassword, setCurrentPassword] = useState(false)
 	const [NewPassword, setNewPassword] = useState(false)
@@ -47,12 +47,16 @@ function JobSeekerSettingspage() {
             <BsBookmarkCheckFill className="icon fs-4" />
             <span>Jobs Applied</span>
           </li></Link>
-          <Link to='/UserResume' style={{ textDecoration: "none" }}>
+          {/* <Link to='/UserResume' style={{ textDecoration: "none" }}>
           <li>
             <MdOutlineDocumentScanner className="icon fs-4" />
             <span>Create Your Resume</span>
-          </li></Link>
-          <Link style={{ textDecoration: "none" }}>
+          </li></Link> */}
+            <Link to='/Testpage' style={{ textDecoration: "none" }}><li>
+                <TfiWrite className="icon fs-4" />
+                <span>Conduct Test</span>
+              </li></Link>
+          <Link to='/Usercoursespage'style={{ textDecoration: "none" }}>
           <li>
             <SiCoursera className="icon fs-4" />
             <span>Applied Courses</span>

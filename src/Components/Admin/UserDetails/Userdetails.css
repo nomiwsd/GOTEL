@@ -1,0 +1,10 @@
+.userdetailtable tr{
+    margin-top: 30px;
+    border: 1px solid black;
+}
+.testbtn{
+    background-color: var(--btn-color);
+    color:white;
+    padding: 5px;
+    border-radius: 20px;
+}

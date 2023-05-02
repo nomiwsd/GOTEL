@@ -13,7 +13,7 @@ import { AiOutlineFileSearch } from 'react-icons/ai'
 import { MdOutlineDocumentScanner } from 'react-icons/md'
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
+import { TfiWrite } from 'react-icons/tfi';
 import { firestore,storage } from '../../../firebase';
 import { ref,getDownloadURL,uploadBytes } from "firebase/storage"
 import { setDoc, doc as Doc, getDocs, docR, getDoc, collection, deleteDoc } from "@firebase/firestore";
@@ -107,12 +107,16 @@ function AppliedJobs() {
                                         <BsBookmarkCheckFill className="icon fs-4" />
                                         <span>Jobs Applied</span>
                                     </li></Link>
-                                <Link to='/UserResume' style={{ textDecoration: "none" }}>
+                                {/* <Link to='/UserResume' style={{ textDecoration: "none" }}>
                                     <li>
                                         <MdOutlineDocumentScanner className="icon fs-4" />
                                         <span>Create Your Resume</span>
-                                    </li></Link>
-                                <Link style={{ textDecoration: "none" }}>
+                                    </li></Link> */}
+                                     <Link to='/Testpage' style={{ textDecoration: "none" }}><li>
+                <TfiWrite className="icon fs-4" />
+                <span>Conduct Test</span>
+              </li></Link>
+                                <Link to='/Usercoursespage' style={{ textDecoration: "none" }}>
                                     <li>
                                         <SiCoursera className="icon fs-4" />
                                         <span>Applied Courses</span>
@@ -215,7 +219,7 @@ function AppliedJobs() {
                                         </tbody>
                                     </Table>
                                 </div>
-                                <div class="tab-pane fade show active" id="nav-Wishlist" role="tabpanel" aria-labelledby="nav-Wishlist-tab">
+                               <div class="tab-pane fade show " id="nav-Wishlist" role="tabpanel" aria-labelledby="nav-Wishlist-tab">
                                     <Table className='postedjobtable table-dashboard mt-5' responsive>
                                         <thead>
                                             <tr>
@@ -379,7 +383,8 @@ function AppliedJobs() {
                                         </tbody>
                                     </Table>
 
-                                </div></div>
+                                </div> 
+                                </div>
                             <div class="civi-pagination dashboard d-flex justify-content-between" data-type="number">
                                 <div class="items-pagination" data-max-number="11">
                                     <select class="search-control select-pagination nice-select" name="item_amount" data-value="1">
@@ -396,9 +401,9 @@ function AppliedJobs() {
 
                                     <span class="page-numbers current">1</span>
 
-                                    <a class="page-numbers" href="https://civi.uxper.co/dashboard/employers/applicants/page/2/">2</a>
+                                    <Link class="page-numbers">2</Link>
 
-                                    <a class="next page-numbers" href="https://civi.uxper.co/dashboard/employers/applicants/page/2/"><BsChevronRight /></a>
+                                    <Link to=''class="next page-numbers"><BsChevronRight /></Link>
 
                                 </div>
 

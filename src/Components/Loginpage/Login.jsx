@@ -22,10 +22,11 @@ function Login() {
     const [signedIn, setSignedIn] = useState(false)
 
     const fetchUserDetails = async (userFB) => {
+        console.log(userFB.uid);
         await getDoc(doc(firestore, 'users', userFB.uid))
-            .then((querySnapshot) => {
+            .then(async(querySnapshot) => {
                 if (querySnapshot.exists()) {
-                    getDownloadURL(ref(storage, `images/${userFB.uid}/profile`))
+                   await getDownloadURL(ref(storage, `images/${userFB.uid}/profile`))
                         .then((imgurl) => {
 
                             console.log('Signed In with profile pic')
@@ -98,7 +99,9 @@ function Login() {
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
-                fetchUserDetails(user)
+                fetchUserDetails(user);
+                
+
 
             })
             .catch((error) => {

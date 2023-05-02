@@ -15,7 +15,6 @@ import icon6 from '../../Images/accounts.png'
 import icon7 from '../../Images/prevention.png'
 import icon8 from '../../Images/content-writing.png'
 import ScrollTrigger from 'react-scroll-trigger';
-import { AiOutlineHeart } from 'react-icons/ai'
 import { GrLocation } from 'react-icons/gr'
 import { ImUserCheck } from 'react-icons/im'
 import { FaSearch } from 'react-icons/fa'
@@ -153,12 +152,12 @@ function Homepage() {
     }
     return (
         <div className='m-0 p-0'>
-            <Header />
+            <Header/>
             <div className='Landingpage position-relative'>
                 <div className="colorsection d-block d-lg-none">
                     <div className="smallcontent">
                         <div className='py-3 px-3 d-flex flex-column justify-content-center align-items-center'>
-                            <h2 className="mainheading text-white">Find your Dream Job Here</h2>
+                            <h2 className="mainheading text-white mb-3">Find your Dream Job Here</h2>
                             <div className="row m-0 p-0 smallsearchbar py-2">
                                 <div className="col-12 d-flex formgroup p-0">
                                     <TfiSearch className='mx-3 mt-2 fs-3' />
@@ -235,7 +234,7 @@ function Homepage() {
                 <video src={videobg} autoPlay loop muted className='d-none d-lg-block' />
                 <div className="content d-none d-lg-block">
                     <div className=' container py-5 px-3 landingpage'>
-                        <h2 className="mainheading">Find your Dream Job Here</h2>
+                        <h2 className="mainheading mb-5">Find your Dream Job Here</h2>
                         <div className="row m-0 p-0 searchbar ">
                             <div className="col-lg-3 col-md-6 formgroup searchinput my-1">
                                 <TfiSearch className='mt-2 mx-1 fs-4' />
@@ -419,7 +418,7 @@ function Homepage() {
                     setcounterup(false)
                 }}>
                 <div className='p-0 m-0 bg-light'>
-                    <div class="online-cv cv-bg section-overly pt-90 pb-120 my-2" >
+                    {/* <div class="online-cv cv-bg section-overly pt-90 pb-120 my-2" >
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-xl-10">
@@ -431,7 +430,7 @@ function Homepage() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <section className="py-4">
                         <div className="container">
                             <div className="row justify-content-center mb-3 pb-3">
@@ -449,7 +448,7 @@ function Homepage() {
                                                     <div class="jobs-header-left d-flex justify-content-between p-0">
                                                         <img class="logo-company rounded-full" src={img} alt="" />
                                                         <div class="jobs-left-inner mx-3">
-                                                            <h3 class="jobs-title"><a onClick={() => {
+                                                            <h3 class="jobs-title"><Link onClick={() => {
                                                                  navigate('../SingleJob', {
                                                                     state: {
                                                                         id:id,
@@ -458,12 +457,12 @@ function Homepage() {
                                                                         liked:liked
                                                                     }
                                                                 })
-                                                            }}>{job.jobTitle}</a>
+                                                            }}>{job.jobTitle}</Link>
                                                             </h3>
                                                             <div class="info-company d-flex ">
                                                                 <p >by <a class="authour civi-link-bottom mx-2" href="https://civi.uxper.co/companies/software/uxper/">Uxper</a> in
-                                                                    <a href="https://civi.uxper.co/jobs-categories/development-it/" class="cate civi-link-bottom mx-2">
-                                                                        {job.jobCategorie}   </a> </p>
+                                                                    <Link to=''  class="cate civi-link-bottom mx-2">
+                                                                        {job.jobCategorie}   </Link> </p>
 
                                                             </div>
                                                         </div>
@@ -485,17 +484,19 @@ function Homepage() {
                                                 </div>
                                                 <div class="jobsfooter row  p-0 d-flex justify-content-center ">
                                                     <div class="jobs-footer-left col-12  col-lg-12 row ">
-                                                        <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-2 text-center mx-md-4 mx-lg-2 my-2">
-                                                            <a class="label" href="https://civi.uxper.co/jobs-type/remote/">
-                                                                {job.jobType} </a></div>
-                                                        <div className="label-location d-flex justify-content-center align-items-center col-6 jobs-location col-lg-2 col-md-3">
-                                                            <GrLocation className='fs-4' />
-                                                            <a class="  d-flex " href="https://civi.uxper.co/jobs-location/san-francisco/">
-                                                                Pakistan</a>
-                                                        </div>
-                                                        <div class=" label-price text-dark d-flex justify-content-center align-items-center col-6 col-lg-2 col-md-3 mx-2">
-                                                            ${job.jobSalaryMax}/month </div>
-                                                        <p class="days col-lg-5 col-8 col-md-4  d-flex justify-content-center align-items-center ">
+                                                        <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
+                                                            <Link to='' class="label" >
+                                                                {job.jobType} </Link></div>
+                                                        <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
+                                                            <Link to='' class="label" >
+                                                
+                                                                   <GrLocation className='fs-5' />Pakistan</Link></div>
+
+                                                                   <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
+                                                            <Link to='' class="label" >
+                                                            ${job.jobSalaryMax}/month  
+                                                                   </Link></div>
+                                                        <p class="days col-lg-5 col-12 col-md-4  d-flex justify-content-center align-items-center ">
                                                             <span className='mx-2'> {job.posted} </span> last date to apply  </p>
                                                     </div>
                                                 </div>
@@ -504,7 +505,7 @@ function Homepage() {
                                     })
                                 }
                                 <div className="d-flex justify-content-center mt-3">
-                                    <button className='col-md-4 col-lg-2 col-6 btn browsebtn'>Browse All Jobs</button>
+                                    <Link to='/Findjob' className='col-md-4 col-lg-2 col-6 btn browsebtn'>Browse All Jobs</Link>
                                 </div>
                             </div>
                         </div>
@@ -568,8 +569,8 @@ function Homepage() {
                     </div>
                     <div class="carddetails px-lg-5 px-3">
                         <div class="d-flex flex-row cardoverflow gap-2">
-                            <div class="card col-lg-4 col-md-6 col-12 p-0">
-                                <div class="card-container my-4">
+                            <div class="card col-lg-3 col-md-6 col-12 p-0">
+                                <div class="card-container ">
                                     <span class="pro">PRO</span>
                                     <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
                                     <h3 className='cardhead'>Ricky Park</h3>
@@ -589,15 +590,13 @@ function Homepage() {
                                         <li>Front End Development</li>
                                         <li>HTML</li>
                                         <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
                                     </ul>
 
                                 </div>
                             </div>
-                            <div class="card col-lg-4 col-md-6 col-12 p-0">
-                                <div class="card-container my-4">
+                        
+                            <div class="card col-lg-3 col-md-6 col-12 p-0">
+                                <div class="card-container ">
                                     <span class="pro">PRO</span>
                                     <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
                                     <h3 className='cardhead'>Ricky Park</h3>
@@ -617,15 +616,13 @@ function Homepage() {
                                         <li>Front End Development</li>
                                         <li>HTML</li>
                                         <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
                                     </ul>
 
                                 </div>
                             </div>
-                            <div class="card col-lg-4 col-md-6 col-12 p-0">
-                                <div class="card-container my-4">
+                        
+                            <div class="card col-lg-3 col-md-6 col-12 p-0">
+                                <div class="card-container ">
                                     <span class="pro">PRO</span>
                                     <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
                                     <h3 className='cardhead'>Ricky Park</h3>
@@ -645,15 +642,13 @@ function Homepage() {
                                         <li>Front End Development</li>
                                         <li>HTML</li>
                                         <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
                                     </ul>
 
                                 </div>
                             </div>
-                            <div class="card col-lg-4 col-md-6 col-12 p-0">
-                                <div class="card-container my-4">
+                        
+                            <div class="card col-lg-3 col-md-6 col-12 p-0">
+                                <div class="card-container ">
                                     <span class="pro">PRO</span>
                                     <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
                                     <h3 className='cardhead'>Ricky Park</h3>
@@ -673,15 +668,13 @@ function Homepage() {
                                         <li>Front End Development</li>
                                         <li>HTML</li>
                                         <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
                                     </ul>
 
                                 </div>
                             </div>
-                            <div class="card col-lg-4 col-md-6 col-12 p-0">
-                                <div class="card-container my-4">
+                        
+                            <div class="card col-lg-3 col-md-6 col-12 p-0">
+                                <div class="card-container ">
                                     <span class="pro">PRO</span>
                                     <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
                                     <h3 className='cardhead'>Ricky Park</h3>
@@ -701,15 +694,13 @@ function Homepage() {
                                         <li>Front End Development</li>
                                         <li>HTML</li>
                                         <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
                                     </ul>
 
                                 </div>
                             </div>
-                            <div class="card col-lg-4 col-md-6 col-12 p-0">
-                                <div class="card-container my-4">
+                        
+                            <div class="card col-lg-3 col-md-6 col-12 p-0">
+                                <div class="card-container ">
                                     <span class="pro">PRO</span>
                                     <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
                                     <h3 className='cardhead'>Ricky Park</h3>
@@ -729,41 +720,11 @@ function Homepage() {
                                         <li>Front End Development</li>
                                         <li>HTML</li>
                                         <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
                                     </ul>
 
                                 </div>
                             </div>
-                            <div class="card col-lg-4 col-md-6 col-12 p-0">
-                                <div class="card-container my-4">
-                                    <span class="pro">PRO</span>
-                                    <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
-                                    <h3 className='cardhead'>Ricky Park</h3>
-                                    <h6 className='cardhead2'>New York</h6>
-                                    <p className='cardtext'>User interface designer and <br /> front-end developer</p>
-                                    <div class="buttons d-flex justify-content-between gap-2">
-                                        <button class="primary">
-                                            Message
-                                        </button>
-                                        <button class="primary ghost">
-                                            Hire
-                                        </button>
-                                    </div>
-                                    <ul className='Skills d-flex flex-column p-0 w-100 mt-2'>
-                                        <h6 className='fs-3 mx-2'>Skills</h6>
-                                        <li>UI / UX</li>
-                                        <li>Front End Development</li>
-                                        <li>HTML</li>
-                                        <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>React</li>
-                                        <li>Node</li>
-                                    </ul>
-
-                                </div>
-                            </div>
+                        
 
 
                         </div>
@@ -833,10 +794,9 @@ function Homepage() {
                             <div class="footer-widget mb-4">
                                 <h2 class="footer-heading text-left">Employers</h2>
                                 <ul class="list-unstyled">
-                                    <li><a href="#sdf" class="pb-1 d-block">Browse Candidates</a></li>
-                                    <li><a href="#af" class="pb-1 d-block">Post a Job</a></li>
-                                    <li><a href="#af" class="pb-1 d-block">Employer Listing</a></li>
-                                    <li><a href="#fsd" class="pb-1 d-block">Dashboard</a></li>
+                                    <li><Link to='/Login'  class="pb-1 d-block">Browse Candidates</Link></li>
+                                    <li><Link to='/Signup'  class="pb-1 d-block">Post a Job</Link></li>
+                                    <li><Link to='/Login'  class="pb-1 d-block">Dashboard</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -844,11 +804,9 @@ function Homepage() {
                             <div class="footer-widget mb-4 ml-md-4">
                                 <h2 class="footer-heading text-left">Candidate</h2>
                                 <ul class="list-unstyled">
-                                    <li><a href="#sfd" class="pb-1 d-block">Browse Jobs</a></li>
-                                    <li><a href="#sf" class="pb-1 d-block">Submit Resume</a></li>
-                                    <li><a href="#sdf" class="pb-1 d-block">Dashboard</a></li>
-                                    <li><a href="#sfd" class="pb-1 d-block">Browse Categories</a></li>
-
+                                    <li><Link to='/Findjob' class="pb-1 d-block">Browse Jobs</Link></li>                              
+                                    <li><Link to='/Login' class="pb-1 d-block">Dashboard</Link></li>
+                                    <li><Link to='/Findjob' class="pb-1 d-block">Browse Categories</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -856,9 +814,9 @@ function Homepage() {
                             <div class="footer-widget mb-4 ml-md-4">
                                 <h2 class="footer-heading text-left">Account</h2>
                                 <ul class="list-unstyled">
-                                    <li><a href="#fsd" class="pb-1 d-block">My Account</a></li>
-                                    <li><a href="#sdf" class="pb-1 d-block">Sign In</a></li>
-                                    <li><a href="#sdf" class="pb-1 d-block">Create Account</a></li>
+                                    <li><Link to='/Login' class="pb-1 d-block">My Account</Link></li>
+                                    <li><Link to='/Login' class="pb-1 d-block">Sign In</Link></li>
+                                    <li><Link to='/Signup' class="pb-1 d-block">Create Account</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -867,8 +825,8 @@ function Homepage() {
                                 <h2 class="footer-heading text-start">Have a Questions?</h2>
                                 <div class="block-23 mb-3">
                                     <ul className='p-0'>
-                                        <li className='d-flex'><BiCurrentLocation className='fs-3 mx-2' /><p class="text">California, USA</p></li>
-                                        <li className='d-flex'><BiPhoneCall className='fs-4 mx-2' /><p class="text">+2 392 3929 210</p></li>
+                                        <li className='d-flex'><BiCurrentLocation className='fs-3 mx-2' /><p class="text">Islamabad, Pakistan</p></li>
+                                        <li className='d-flex'><BiPhoneCall className='fs-4 mx-2' /><p class="text">+92 300 123456789</p></li>
                                         <li className='d-flex'>
                                             <MdOutlineMail className='fs-4 mx-2' />
                                             <p class="text">info@yourdomain.com</p></li>

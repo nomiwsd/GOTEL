@@ -7,11 +7,10 @@ import { SiCoursera } from 'react-icons/si'
 import { BiMessageDetail } from 'react-icons/bi'
 import { BsBookmarkCheckFill } from 'react-icons/bs'
 import { AiOutlineFileSearch } from 'react-icons/ai'
-import { MdOutlineDocumentScanner } from 'react-icons/md'
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom";
-
+import { TfiWrite } from 'react-icons/tfi';
 import { firestore, storage } from '../../../firebase';
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage"
 import { setDoc, doc as Doc, addDoc, getDocs,updateDoc, docR, getDoc, collection, deleteDoc,orderBy,query } from "@firebase/firestore";
@@ -131,21 +130,21 @@ function JobSeekerMessage() {
                                         <BsBookmarkCheckFill className="icon fs-4" />
                                         <span>Jobs Applied</span>
                                     </li></Link>
-                                <Link to='/UserResume' style={{ textDecoration: "none" }}>
+                                {/* <Link to='/UserResume' style={{ textDecoration: "none" }}>
                                     <li>
                                         <MdOutlineDocumentScanner className="icon fs-4" />
                                         <span>Create Your Resume</span>
-                                    </li></Link>
-                                <Link style={{ textDecoration: "none" }}>
+                                    </li></Link> */}
+                                      <Link to='/Testpage' style={{ textDecoration: "none" }}><li>
+                <TfiWrite className="icon fs-4" />
+                <span>Conduct Test</span>
+              </li></Link>
+                                <Link to='/Usercoursespage' style={{ textDecoration: "none" }}>
                                     <li>
                                         <SiCoursera className="icon fs-4" />
                                         <span>Applied Courses</span>
                                     </li></Link>
-                                <Link to='/Jobseekerpage' style={{ textDecoration: "none" }}>
-                                    <li>
-                                        <SiCoursera className="icon fs-4" />
-                                        <span>Applied Courses</span>
-                                    </li></Link>
+                              
                                 <Link to='/JobSeekerMessage' style={{ textDecoration: "none" }}>   <li>
                                     <BiMessageDetail className="icon fs-4" />
                                     <span>Messages</span>

@@ -444,16 +444,16 @@ const fetchEducationDetails = async (uid) => {
             <BsBookmarkCheckFill className="icon fs-4" />
             <span>Jobs Applied</span>
           </li></Link>
-          <Link to='/UserResume' style={{ textDecoration: "none" }}>
+          {/* <Link to='/UserResume' style={{ textDecoration: "none" }}>
           <li>
             <MdOutlineDocumentScanner className="icon fs-4" />
             <span>Create Your Resume</span>
-          </li></Link>
+          </li></Link> */}
           <Link to='/Testpage' style={{ textDecoration: "none" }}><li>
                 <TfiWrite className="icon fs-4" />
                 <span>Conduct Test</span>
               </li></Link>
-          <Link style={{ textDecoration: "none" }}>
+          <Link to='/Usercoursespage' style={{ textDecoration: "none" }}>
           <li>
             <SiCoursera className="icon fs-4" />
             <span>Applied Courses</span>
@@ -529,9 +529,13 @@ const fetchEducationDetails = async (uid) => {
                     <div class="field-note">Maximum file size: 1400kb.</div>
                   </div>
                   <div class="row m-0 p-0 form-dashboard">
-                    <div class="col-md-12 col-6 ">
+                    <div class="col-md-6 col-6 ">
                       <label for="candidate_first_name">Username</label>
                       <input class="point-mark point-active" type="text" name="candidate_first_name" placeholder="Username"  value={name}  onChange={(e)=> {setName(e.target.value)}}/>
+                    </div>
+                    <div class="col-md-6 col-6 ">
+                      <label for="candidate_first_name">CNIC</label>
+                      <input class="point-mark point-active" type="text" name="CNIC" placeholder="Username"  value={name}  onChange={(e)=> {setName(e.target.value)}}/>
                     </div>
                     
                     <div class="col-md-6">
@@ -941,9 +945,7 @@ const fetchEducationDetails = async (uid) => {
                             </div>
 
                         </div>
-                            <div className="d-flex justify-content-center">
-                                <button className='btn createbtn my-3 w-75'>Edit Profile</button>
-                            </div>
+                           
 
                             {/* Personal Info Section */}
                             <div className="col-12 col-md-12 px-2">

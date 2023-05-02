@@ -1,4 +1,4 @@
-/* Navbar */
+Navbar
 *:focus {
     outline: none !important
 }
@@ -309,7 +309,7 @@ select:focus {
 .section-overly::before {
     position: absolute;
     content: "";
-    background-color: rgba(31, 43, 123, 0.8);
+    background-color: #007456;
     width: 100%;
     height: 100%;
     left: 0;
@@ -317,6 +317,8 @@ select:focus {
     bottom: 0;
     right: 0;
     z-index: -1;
+    opacity: 0.8;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
     background-repeat: no-repeat;
 }
 
@@ -387,7 +389,7 @@ select:focus {
 .bg-light {
     background-color: var(--background-color);
 }
-
+/* 
 .jobs-featured {
     border-color: #ffd75e;
 }
@@ -409,9 +411,7 @@ select:focus {
     position: relative;
 }
 
-.jobs-item .jobsfooter {
-    margin-top: 24px;
-}
+
 
 .jobs-item .label {
 
@@ -427,6 +427,9 @@ select:focus {
     background-color: #f5ecff !important;
 }
 
+.jobtype .label{
+    padding: 20px;
+} */
 @media screen and (min-width:1024px) and (max-width:1440px) {
     .jobs-item .jobtype a {
         padding: 8px 26px !important;
@@ -460,31 +463,37 @@ select:focus {
     font-size: 16px;
     font-family: var(--font-family);
 }
+.jobs-item .jobsfooter {
+    margin-top: 10px !important;
+}
+.jobs-footer-left .jobtype{
+    background-color: var(--background-color);
+    border-radius: 20px;
+}
 
-.label-price {
+.jobs-footer-left .label-price {
     font-size: 14px;
     font-weight: 500;
     font-family: var(--font-family) !important;
-    padding: 10px 24px;
     background-color: #f5ecff !important;
     border-radius: 20px;
 }
 
-.label-location {
-    font-size: 14px;
+.jobs-footer-left .jobtype a {
+    display: flex;
+    font-size: 13px;
     font-weight: 500;
     font-family: var(--font-family) !important;
-    padding: 10px 24px;
     background-color: #f5ecff !important;
     border-radius: 20px;
 }
-
+/*
 .jobs-left-inner h3 a {
     text-decoration: none !important;
     font-size: 18px;
     font-family: var(--font-family);
     font-weight: 600;
-}
+} */
 
 .info-company a,
 .info-company p {
@@ -567,13 +576,15 @@ select:focus {
 
 }
 
-
+.usercard{
+    height: 70vh !important;
+}
 .card-container {
     background-color: #ffffff;
     border-radius: 5px;
     box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
     color: black;
-    padding-top: 30px;
+    padding-top: 15px;
     position: relative;
     text-align: center;
     display: flex;

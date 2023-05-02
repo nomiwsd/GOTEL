@@ -107,7 +107,7 @@ function Jobpost() {
             jobQualification:jobQualification.value,
             jobClosingDays:jobClosingDays,
             jobSalaryMax:jobSalaryMax,
-            jobSalaryRate:jobSalaryRate.value,
+            // jobSalaryRate:jobSalaryRate.value,
             jobApplyType:jobApplyType.value,
             // jobTime:jobTime.value,
             Applicants:0,
@@ -276,16 +276,6 @@ function Jobpost() {
                 <input type="text" name="salary" class="error" aria-invalid="true"  value={jobSalaryMax} onChange={(e)=> {setJobSalaryMax(e.target.value)}} />
               </div>
               <div className="col-lg-6 my-2">
-                <label>Rate <sup>*</sup></label>
-                <Select
-                  defaultValue={jobSalaryRate}
-                  onChange={setJobSalaryRate}
-                  options={typeoptions}
-                  classNames='categoryselect'
-                />
-              </div>
-              <div className="col-lg-6 my-2">
-                <h4 className='basicheading'>Job Apply Type</h4>
                 <label>Select Type <sup>*</sup></label>
                 <Select
                   defaultValue={jobApplyType}
@@ -300,7 +290,7 @@ function Jobpost() {
           </div>
           <div className="col-md-12 col-12 col-lg-4">
                 <h3>About This Page</h3>
-                <div class="about-jobs-dashboard block-archive-sidebar col-3">
+                <div class="about-jobs-dashboard block-archive-sidebar col-lg-3">
                                 <div class="img-company">
                                 <FiCamera/>
                                 </div>

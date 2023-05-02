@@ -1,0 +1,22 @@
+.savebtn,.courseuploadbtn{
+    background-color: var(--btn-color);
+    color:white;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+.courseheading{
+    font-size: 14px;
+    font-family: var(--font-family);
+}
+.coursesdetails input{
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100% !important;
+}
+.cancelbtn{
+    color:var(--btn-color) !important;
+}
+.coursecard{
+    border:1px solid black;
+}

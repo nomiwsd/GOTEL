@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../Assets/GOTEL.png'
+
 import {Link} from "react-router-dom";
 import Navbar from '../Navbar/Navbar'
 import DashboardIcon from "@material-ui/icons/Dashboard";
@@ -7,10 +7,10 @@ import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import { IoIosPeople } from 'react-icons/io'
 import { SiCoursera } from 'react-icons/si'
 import { BiMessageDetail } from 'react-icons/bi'
-import { TfiWrite } from 'react-icons/tfi'
 import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import './Courses.css'
 function Courses() {
    
   return (
@@ -54,10 +54,7 @@ function Courses() {
                                         <SiCoursera className="icon fs-4" />
                                         <span>Upload Courses</span>
                                     </li></Link>
-                                <Link  to='/Testpage' style={{ textDecoration: "none" }}><li>
-                                    <TfiWrite className="icon fs-4" />
-                                    <span>Conduct Test</span>
-                                </li></Link>
+                          
                                 <Link to='/Message' style={{ textDecoration: "none" }}>   <li>
                                     <BiMessageDetail className="icon fs-4" />
                                     <span>Messages</span>
@@ -77,21 +74,55 @@ function Courses() {
                 </div>
                 <div className=" col-12 col-md-9 col-lg-10 h-100 p-0 m-0"><Navbar />
                 <div className="bg-color px-3 py-2">
-                        <div class="entry-title d-flex justify-content-between my-2">
+                        <div class="entry-title d-flex justify-content-between mt-3">
                             <h4>Manage Courses</h4>
-                            <button className='addnewbtn'>Add New</button>
+                            <div className='d-flex justify-content-between gap-2'>
+                                <button className='cancelbtn'>Cancel</button>
+                                <button className='savebtn'>Save </button>
+                            </div>
                         </div>
-                        <div class="row m-0 p-0 gy-4">
+                        
+        <div className=" m-0 p-0 row ">
+           <h4 className='courseheading'>Course All Details</h4>
+           <div className="col-12">
+                <button className='courseuploadbtn'>Upload Cover image</button></div>
+                <div className="col-6"> 
+                 <div className=" coursesdetails">
+                <h6 className='courseheading'>Course Heading:</h6>
+                <input type="text" />
+            </div>
+         
+            <div className=" coursesdetails">
+                <h6 className='courseheading'>Course level:</h6>
+           <input type="text" />
+            </div>
+            <div className=" coursesdetails">
+                <h6 className='courseheading'>Time to Complete</h6>
+           <input type="text" />
+            </div>
+            <div className=" coursesdetails">
+                <h6 className='courseheading'>Click The Link Below:</h6>
+          <input type="text" />
+            </div></div>
+           
+            <div className="col-6 coursesdetails">
+                <h6 className='courseheading'>Course Details:</h6>
+                <textarea name="coursedetails" id="" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="row m-0 p-0 gy-4">
             <div class="col-md-4 col-12">
-          <div class="card col-12 p-0 m-0" style={{padding:'22px'}}>
-                 <img class="card-img" style={{padding: '22px'}} src="./Images/FoundPet(1).png" alt=""/>
+          <div class="card col-12 p-0 m-0 coursecard" style={{padding:'22px'}}>
+                 <img class="card-img"  alt=""/>
                  <div class="card-body m-0">
-                  <h3 class="card-title">React Crash Course</h3>
+                 <h6 className='courseheading'>Course Title:</h6>
+                  <h3 class="card-title courseheading">React Crash Course</h3>
+                  <h6 className='courseheading'>Course Details:</h6>
                   <p class="card-text">Cursus malesuada maecenas magna et eget. Lobortis tellus aliquet posuere amet dignissim nulla ultrices. Aliquam commodo ultricies aliquam sit egestas justo pulvinar lacus.</p>
-                  <h3 class="card-Subtitle">Level : Beginner</h3>
-                  <p class="lostcard-Subtext ">Estimated Time: </p>
+                  <h3 class="card-Subtitle courseheading">Level : Beginner</h3>
+                  <p class="lostcard-Subtext courseheading'">Estimated Time: </p>
                   <div class="d-flex justify-content-end seeDetails">
-                      <a href="#fd">Course Link</a>
+                      <p className='courseheading'></p>
                     </div>
                   </div>
                   <div class="secondcarddiv"></div>
@@ -100,30 +131,6 @@ function Courses() {
           
            
           
-        </div>
-        <div className=" m-0 p-0 col-6">
-           <h4>Course All Details</h4>
-                <img src={logo} alt="" className="col-8" />
-            <div className="col-6">
-                <h6>Course Heading:</h6>
-                <input type="text" />
-            </div>
-            <div className="col-6">
-                <h6>Course Details:</h6>
-                <textarea name="coursedetails" id="" cols="30" rows="10"></textarea>
-            </div>
-            <div className="col-6">
-                <h6>Course level:</h6>
-           <input type="text" />
-            </div>
-            <div className="col-6">
-                <h6>Time to Complete</h6>
-           <input type="text" />
-            </div>
-            <div className="col-6">
-                <h6>Click The Link Below:</h6>
-          <a href="youtube.com"> React Link</a>
-            </div>
         </div>
         
                     </div>

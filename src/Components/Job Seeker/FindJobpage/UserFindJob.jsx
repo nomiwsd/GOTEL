@@ -21,7 +21,7 @@ import { firestore,storage } from '../../../firebase';
 import { setDoc,doc as Doc,getDocs,docR,getDoc, collection,deleteDoc } from "@firebase/firestore";
 import { LinkedCameraRounded } from '@material-ui/icons'
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage"
-
+import { TfiWrite } from 'react-icons/tfi';
 function UserFindJob() {
     const [Jobs, setJobs] = useState([])
     useEffect(()=>{
@@ -174,12 +174,16 @@ function UserFindJob() {
                                         <BsBookmarkCheckFill className="icon fs-4" />
                                         <span>Jobs Applied</span>
                                     </li></Link>
-                                <Link to='/UserResume' style={{ textDecoration: "none" }}>
+                                {/* <Link to='/UserResume' style={{ textDecoration: "none" }}>
                                     <li>
                                         <MdOutlineDocumentScanner className="icon fs-4" />
                                         <span>Create Your Resume</span>
-                                    </li></Link>
-                                <Link style={{ textDecoration: "none" }}>
+                                    </li></Link> */}
+                                      <Link to='/Testpage' style={{ textDecoration: "none" }}><li>
+                <TfiWrite className="icon fs-4" />
+                <span>Conduct Test</span>
+              </li></Link>
+                                <Link to='/Usercoursespage' style={{ textDecoration: "none" }}>
                                     <li>
                                         <SiCoursera className="icon fs-4" />
                                         <span>Applied Courses</span>
@@ -208,7 +212,7 @@ function UserFindJob() {
                             <div className="d-block d-lg-none">
                                 <div className="smallcontent">
                                     <div className='py-3 px-3 d-flex flex-column justify-content-center align-items-center'>
-                                        <h2 className="mainheading text-dark">Find your Dream Job Here</h2>
+                                        <h2 className="mainheading text-white">Find your Dream Job Here</h2>
                                         <div className="row m-0 p-0 smallsearchbar py-2">
                                             <div className="col-12 d-flex formgroup p-0">
                                                 <TfiSearch className='mx-3 mt-2 fs-3' />
@@ -252,9 +256,9 @@ function UserFindJob() {
                                 </div>
 
                             </div>
-                            <div className="findjob d-none d-lg-block">
+                            <div className="userfindjob d-none d-lg-block">
                                 <div className='container py-3 mb-5 '>
-                                    <h2 className="mainheading text-center text-dark">Find your Dream Job Here</h2>
+                                    <h2 className="mainheading text-center text-white">Find your Dream Job Here</h2>
                                     <div className="row m-0 p-0 searchbar ">
                                         <div className="col-lg-3 col-md-6 formgroup searchinput my-1">
                                             <TfiSearch className='mt-2 mx-1 fs-4' />
@@ -395,7 +399,7 @@ function UserFindJob() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="jobsfooter row  p-0 d-flex justify-content-center ">
+                                            {/* <div class="jobsfooter row  p-0 d-flex justify-content-center ">
                                                 <div class="jobs-footer-left col-12  col-lg-12 row ">
                                                     <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-2 text-center mx-md-4 mx-lg-2 my-2">
                                                         <a class="label" href="https://civi.uxper.co/jobs-type/remote/">
@@ -415,7 +419,28 @@ function UserFindJob() {
                                                             applyForJob(id)
                                                         }}>Apply</button>
                                                 </div>
-                                            </div>
+                                            </div> */}
+                                                <div class="jobsfooter row  p-0 d-flex justify-content-center ">
+                                                    <div class="jobs-footer-left col-12  col-lg-12 row ">
+                                                        <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
+                                                            <Link to='' class="label" >
+                                                                {job.jobType} </Link></div>
+                                                        <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
+                                                            <Link to='' class="label" >
+                                                
+                                                                   <GrLocation className='fs-5' />Pakistan</Link></div>
+
+                                                                   <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
+                                                            <Link to='' class="label" >
+                                                            ${job.jobSalaryMax}/month  
+                                                                   </Link></div>
+                                                        <p class="days col-lg-5 col-12 col-md-4  d-flex justify-content-center align-items-center ">
+                                                            <span className='mx-2'> {job.posted} </span> last date to apply  </p>
+                                                            <button  className='btn btncl text-white col-lg-2' onClick={()=>{
+                                                            applyForJob(id)
+                                                        }}>Apply</button>
+                                                    </div>
+                                                </div>
                                         </div>
                                         )
                                     })

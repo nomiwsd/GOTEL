@@ -95,15 +95,12 @@ function Userdetails() {
                     <WorkOutlineOutlinedIcon className="icon fs-4" />
                     <span>Manage Jobs</span>
                   </li></Link>
-                <Link style={{ textDecoration: "none" }}>
+                <Link to='/Courses' style={{ textDecoration: "none" }}>
                   <li>
                     <SiCoursera className="icon fs-4" />
                     <span>Upload Courses</span>
                   </li></Link>
-                <Link style={{ textDecoration: "none" }}><li>
-                  <TfiWrite className="icon fs-4" />
-                  <span>Conduct Test</span>
-                </li></Link>
+              
                 <Link to='/Message' style={{ textDecoration: "none" }}>   <li>
                   <BiMessageDetail className="icon fs-4" />
                   <span>Messages</span>
@@ -122,7 +119,8 @@ function Userdetails() {
           </div>
         </div>
         <div className="col-12 col-md-9 col-lg-10 h-100"><Navbar />
-          <div className='usertable'>
+          <div className='usertable my-5'>
+            <h5>User Details</h5>
             <table className='userdetailtable'>
               <tr>
                 <th>Name</th>
