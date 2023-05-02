@@ -17,15 +17,14 @@ import { Link } from "react-router-dom";
 
 import { firestore, storage } from '../../../firebase';
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage"
-import { setDoc, doc as Doc, getDocs, docR, getDoc, collection, deleteDoc,updateDoc } from "@firebase/firestore";
+import { setDoc, doc as Doc, getDocs, docR, getDoc, collection, deleteDoc, updateDoc } from "@firebase/firestore";
 
 
 import './AppliedCandidate.css'
 const JobCategoryOptions = [
-    { value: 'BackEND Developer', label: 'BackEnd Developer' },
-    { value: 'Software Engineer', label: 'Software Engineer' },
-    { value: 'Content Writer', label: 'Content Writer' },
-    { value: 'Product Manager', label: 'Product Manager' },
+    { value: 'All', label: 'All' },
+    { value: 'Design & Creative', label: 'Design & Creative' },
+    { value: 'Development & IT', label: 'Development & IT' },
 ];
 
 
@@ -53,8 +52,8 @@ function AppliedCandidate() {
                                         await getDoc(Doc(firestore, `users/${applicant.id}`))
                                             .then(async (profile) => {
                                                 var UserImg = await getDownloadURL(ref(storage, `images/${profile.id}/profile`))
-                                                setJobs((Jobs) => [...Jobs, { applicantid:applicant.id,id: job.id, img: UserImg, status: applicant.data(), job: job.data(), profile: profile.data() }])
-                                                console.log('UserFetched')
+                                                setJobs((Jobs) => [...Jobs, { jobCategorie: job.data().jobCategorie, applicantid: applicant.id, id: job.id, img: UserImg, status: applicant.data(), job: job.data(), profile: profile.data() }])
+                                                
                                             })
                                     })
                                 })
@@ -65,40 +64,46 @@ function AppliedCandidate() {
                 console.log(e)
             })
     }
-    const RejectJob = async (jobId,userid, index) => {
+    const RejectJob = async (jobId, userid, index) => {
         Jobs[index].status.status = 'Rejected'
-                setJobs((Jobs)=>[...Jobs])
-        await updateDoc(Doc(firestore, `jobs/${jobId}/Applications/${userid}`),{
-            status:'Rejected'
+        setJobs((Jobs) => [...Jobs])
+        await updateDoc(Doc(firestore, `jobs/${jobId}/Applications/${userid}`), {
+            status: 'Rejected'
         })
-        .then(async (e) => {
-                
+            .then(async (e) => {
+
                 console.log('Rejected')
             }
             )
-        .catch((error) => {
+            .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage);
             });
     }
-    const ApprovedJob = async (jobId,userid, index) => {
+    const ApprovedJob = async (jobId, userid, index) => {
         Jobs[index].status.status = 'Approved'
-                setJobs((Jobs)=>[...Jobs])
-        await updateDoc(Doc(firestore, `jobs/${jobId}/Applications/${userid}`),{
-            status:'Approved'
+        setJobs((Jobs) => [...Jobs])
+        await updateDoc(Doc(firestore, `jobs/${jobId}/Applications/${userid}`), {
+            status: 'Approved'
         })
-        .then(async (e) => {
+            .then(async (e) => {
                 console.log('Approved')
             }
             )
-        .catch((error) => {
+            .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage);
             });
     }
-    const [selectedOption, setSelectedOption] = useState(null);
+    const addCanidateToChat = async (canidateUid) => {
+        await setDoc(Doc(firestore, `users/${user.uid}/chat/${canidateUid}`), {
+
+        })
+    }
+    const [selectedOption, setSelectedOption] = useState({ value: 'All', label: 'All' });
+    const [search, setSearch] = useState('')
     const [val, setVal] = useState("");
     const onChange = (value) => {
         console.log(value);
@@ -171,7 +176,7 @@ function AppliedCandidate() {
                                 /></div>
                             <div className=" searchdiv d-none d-md-flex col-3 border-1 rounded-1 p-0">
 
-                                <input type="text" placeholder="Find By Job" className='px-2 w-100 searchinput' />
+                                <input type="text" placeholder="Find By Job" className='px-2 w-100 searchinput' value={search} onChange={(e) => { setSearch(e.target.value) }} />
                                 <SearchOutlinedIcon className='fs-3 mt-2 searchicon' />
                             </div>
 
@@ -188,54 +193,119 @@ function AppliedCandidate() {
                                     </thead>
                                     <tbody>
                                         {
-                                            Jobs.map(({ applicantid,id, img, job, profile, status }, index) => {
-                                                return (
-                                                    <tr>
-                                                        <td class="info-user">
-                                                            <div class="image-applicants"><img class="image-candidates" src={img} alt="" /></div>
-                                                            <div class="info-details mx-1">
-                                                                <h3><a href="https://civi.uxper.co/candidates/designer/candidate/">{profile.Name}</a></h3>
-                                                                <div class="applied d-flex">Applied:                                        <a href="https://civi.uxper.co/applicants/sr-backend-go-developer-5/">
-                                                                    <div className="d-flex mt-1">   <span>{job.jobTitle}</span>
-                                                                        <FiExternalLink className='fs-5 text-dark' />
-                                                                    </div></a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="status">
-                                                            <div class="approved">
-                                                                <span class="label label-close">{status.status}</span>                                <span class="applied-time">Applied:{status.data}</span>
-                                                            </div>
-                                                        </td>
-                                                        <td class="info">
-                                                            <span class="gmail">{profile.email}</span>
-                                                            <span class="phone">{profile.ph}</span>
-                                                        </td>
-                                                        <td class="applicants-control action-setting">
-                                                            <div class="list-action d-flex ">
-                                                                <a href="https://civi.uxper.co/wp-content/uploads/2022/12/Cv-Candidate.pdf" class="action icon-video btn-reschedule-meetings mx-2" data-id="7761" data-title="Video"> <AiOutlineDownload className='fs-4 text-dark' /> </a>
-                                                                <a href="https://civi.uxper.co/wp-content/uploads/2022/12/Cv-Candidate.pdf" class="action icon-video btn-reschedule-meetings" data-id="7761" data-title="Video"> <AiOutlineMessage className='fs-4 text-dark' /> </a>
-                                                                <div class="actiondiv mx-2">
-                                                                    <div class="btn-group dropend">
-                                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                            <HiOutlineDotsHorizontal />
-                                                                        </button>
-                                                                        <ul class="dropdown-menu dropdownmenu">
-                                                                            <li><a class="dropdown-item" href="#sf" onClick={()=>{
-                                                                                ApprovedJob(id,applicantid,index)
-                                                                            }}>Approved</a></li>
-                                                                            <li><a class="dropdown-item" href="#sf" onClick={()=>{
-                                                                                RejectJob(id,applicantid,index)
-                                                                            }}>Rejected</a></li>
-
-                                                                        </ul>
+                                            Jobs.map(({ applicantid, id, img, job, profile, status }, index) => {
+                                                if (selectedOption.value == 'All') {
+                                                    if (job.jobTitle.includes(search)) {
+                                                        return (
+                                                            <tr>
+                                                                <td class="info-user">
+                                                                    <div class="image-applicants"><img class="image-candidates object-cover" src={img} alt="" /></div>
+                                                                    <div class="info-details mx-1">
+                                                                        <h3><a href="https://civi.uxper.co/candidates/designer/candidate/">{profile.Name}</a></h3>
+                                                                        <div class="applied d-flex">Applied:                                        <a href="https://civi.uxper.co/applicants/sr-backend-go-developer-5/">
+                                                                            <div className="d-flex mt-1">   <span>{job.jobTitle}</span>
+                                                                                <FiExternalLink className='fs-5 text-dark' />
+                                                                            </div></a>
+                                                                        </div>
                                                                     </div>
+                                                                </td>
+                                                                <td class="status">
+                                                                    <div class="approved">
+                                                                        <span class="label label-close">{status.status}</span>                                <span class="applied-time">Applied:{status.data}</span>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="info">
+                                                                    <span class="gmail">{profile.email}</span>
+                                                                    <span class="phone">{profile.ph}</span>
+                                                                </td>
+                                                                <td class="applicants-control action-setting">
+                                                                    <div class="list-action d-flex ">
+                                                                        <a href="https://civi.uxper.co/wp-content/uploads/2022/12/Cv-Candidate.pdf" class="action icon-video btn-reschedule-meetings mx-2" data-id="7761" data-title="Video"> <AiOutlineDownload className='fs-4 text-dark' /> </a>
+                                                                        <a onClick={() => {
+                                                                            addCanidateToChat(applicantid)
+                                                                        }} class="action icon-video btn-reschedule-meetings" data-id="7761" data-title="Video">
+                                                                            <AiOutlineMessage className='fs-4 text-dark' />
+                                                                        </a>
+                                                                        <div class="actiondiv mx-2">
+                                                                            <div class="btn-group dropend">
+                                                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                    <HiOutlineDotsHorizontal />
+                                                                                </button>
+                                                                                <ul class="dropdown-menu dropdownmenu">
+                                                                                    <li><a class="dropdown-item" href="#sf" onClick={() => {
+                                                                                        ApprovedJob(id, applicantid, index)
+                                                                                    }}>Approved</a></li>
+                                                                                    <li><a class="dropdown-item" href="#sf" onClick={() => {
+                                                                                        RejectJob(id, applicantid, index)
+                                                                                    }}>Rejected</a></li>
 
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                )
+                                                                                </ul>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    }
+                                                }
+                                                if(selectedOption != null){
+                                                    if (selectedOption.value == job.jobCategorie) {
+                                                        if (job.jobTitle.includes(search)) {
+                                                            return (
+                                                                <tr>
+                                                                    <td class="info-user">
+                                                                        <div class="image-applicants"><img class="image-candidates object-cover" src={img} alt="" /></div>
+                                                                        <div class="info-details mx-1">
+                                                                            <h3><a href="https://civi.uxper.co/candidates/designer/candidate/">{profile.Name}</a></h3>
+                                                                            <div class="applied d-flex">Applied:                                        <a href="https://civi.uxper.co/applicants/sr-backend-go-developer-5/">
+                                                                                <div className="d-flex mt-1">   <span>{job.jobTitle}</span>
+                                                                                    <FiExternalLink className='fs-5 text-dark' />
+                                                                                </div></a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="status">
+                                                                        <div class="approved">
+                                                                            <span class="label label-close">{status.status}</span>                                <span class="applied-time">Applied:{status.data}</span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="info">
+                                                                        <span class="gmail">{profile.email}</span>
+                                                                        <span class="phone">{profile.ph}</span>
+                                                                    </td>
+                                                                    <td class="applicants-control action-setting">
+                                                                        <div class="list-action d-flex ">
+                                                                            <a href="https://civi.uxper.co/wp-content/uploads/2022/12/Cv-Candidate.pdf" class="action icon-video btn-reschedule-meetings mx-2" data-id="7761" data-title="Video"> <AiOutlineDownload className='fs-4 text-dark' /> </a>
+                                                                            <a onClick={() => {
+                                                                                addCanidateToChat(applicantid)
+                                                                            }} class="action icon-video btn-reschedule-meetings" data-id="7761" data-title="Video">
+                                                                                <AiOutlineMessage className='fs-4 text-dark' />
+                                                                            </a>
+                                                                            <div class="actiondiv mx-2">
+                                                                                <div class="btn-group dropend">
+                                                                                    <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                        <HiOutlineDotsHorizontal />
+                                                                                    </button>
+                                                                                    <ul class="dropdown-menu dropdownmenu">
+                                                                                        <li><a class="dropdown-item" href="#sf" onClick={() => {
+                                                                                            ApprovedJob(id, applicantid, index)
+                                                                                        }}>Approved</a></li>
+                                                                                        <li><a class="dropdown-item" href="#sf" onClick={() => {
+                                                                                            RejectJob(id, applicantid, index)
+                                                                                        }}>Rejected</a></li>
+    
+                                                                                    </ul>
+                                                                                </div>
+    
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            )
+                                                        }
+                                                    }
+                                                }
                                             })
                                         }
 

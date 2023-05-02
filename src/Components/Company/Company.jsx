@@ -117,10 +117,6 @@ function Company() {
                 console.log(e)
             })
     }
-    
-
-  
- 
   return (
     <div>
       <div className="home d-flex w-100 position-relative">

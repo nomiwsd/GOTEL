@@ -19,6 +19,7 @@ import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom";
 import { Height } from '@material-ui/icons';
+import { TfiWrite } from 'react-icons/tfi';
 
 const categoryoptions = [
   { value: 'Analytics', label: 'Analytics' },
@@ -448,6 +449,10 @@ const fetchEducationDetails = async (uid) => {
             <MdOutlineDocumentScanner className="icon fs-4" />
             <span>Create Your Resume</span>
           </li></Link>
+          <Link to='/Testpage' style={{ textDecoration: "none" }}><li>
+                <TfiWrite className="icon fs-4" />
+                <span>Conduct Test</span>
+              </li></Link>
           <Link style={{ textDecoration: "none" }}>
           <li>
             <SiCoursera className="icon fs-4" />
@@ -920,7 +925,7 @@ const fetchEducationDetails = async (uid) => {
                     <div className="d-flex justify-content-center">
                         <div className="editprofile border-1 rounded-2 col-10 col-md-12  py-2">
                             <div className="d-flex justify-content-center">
-                                <img src={selectedImage} class="rounded-circle aspect-auto" style={{ width: "100px",height: "100px",overflow: 'hidden' }}
+                                <img src={selectedImage} class="rounded-circle aspect-auto object-cover" style={{ width: "100px",height: "100px",overflow: 'hidden' }}
                                     alt="Avatar" />
                             </div>
                             <p className='text-center pt-2 m-0 textef'>{name}</p>

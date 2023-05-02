@@ -5,78 +5,124 @@ import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import './Companydetails.css'
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
-import {IoIosPeople} from 'react-icons/io'
-import {SiCoursera} from 'react-icons/si'
-import {BiMessageDetail} from 'react-icons/bi'
-import {TfiWrite} from 'react-icons/tfi'
+import { IoIosPeople } from 'react-icons/io'
+import { SiCoursera } from 'react-icons/si'
+import { BiMessageDetail } from 'react-icons/bi'
+import { TfiWrite } from 'react-icons/tfi'
 import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom";
 
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage"
+import { firestore, storage } from '../../../firebase';
+import { setDoc, updateDoc, doc, getDoc, getDocs, collection, onSnapshot } from "@firebase/firestore";
+import { useEffect } from 'react';
+
 
 function Companydetails() {
     const [SearchBar, setSearchBar] = useState(false)
+    const [jobCount, setJob] = useState(new Map([]))
+    const [jobseekers, setJobseekers] = useState([])
+    const [company, setCompany] = useState([])
+    useEffect(() => {
+        fetchAllJobs()
+    }, [])
+    const fetchAllJobs = async () => {
+        var jobs = new Map([])
+        await getDocs(collection(firestore, 'jobs'))
+            .then((j) => {
+                j.docs.map(async (job, index) => {
+                    if (jobs.has(job.data().by)) {
+                        jobs.set(job.data().by, jobs.get(job.data().by) + 1)
+                    }
+                    else {
+                        jobs.set(job.data().by, 1)
+                    }
+                })
+                fetchAllData(jobs)
+            })
+    }
+    const fetchAllData = (jobs) => {
+        setCompany([])
+        onSnapshot(collection(firestore, 'users'), (users) => {
+            users.docs.map(async (user, index) => {
+                if (user.data().userType == 'Company') {
+
+                    const profileImage = await getDownloadURL(ref(storage, `images/${user.id}/profile`))
+                    if (jobs.has(user.id)) {
+                        setCompany((company) => [...company, { img: profileImage, companyName: user.data().Name, Status: 'Approved', categorie: user.data().categories, jobs: jobs.get(user.id) }])
+                    }
+                    else {
+                        setCompany((company) => [...company, { img: profileImage, companyName: user.data().Name, Status: 'Approved', categorie: user.data().categories, jobs: 0 }])
+                    }
+                }
+                else {
+                    setJobseekers((jobseekers) => [...jobseekers, user])
+                }
+            })
+        })
+    }
     return (
         <div className='companysection row d-flex m-0 p-0'>
             <div className=" d-none d-md-block col-md-3 col-lg-2  m-0 p-0">
-            <div className="sidebar  p-0" >
-      <div className="top">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">GOTEL</span>
-        </Link>
-      </div>
-      <hr />
-      <div className="center">
-        <ul>
-          <p className="title">MAIN</p>
-          <Link to='/Admin' className='routerlinks'> <li>
-            <DashboardIcon className="icon fs-4" />
-            <span className='d-none d-md-block'>Dashboard</span>
-            </li></Link>
-          <p className="title">LISTS</p>
-          <Link to="/Companydetails" style={{ textDecoration: "none" }}>
-            <li>
-              <IoIosPeople className="icon fs-4" />
-              <span>Companies Details</span>
-            </li>
-          </Link>
-          <Link to="/Userdetails" style={{ textDecoration: "none" }}>
-            <li>
-              <PersonOutlineIcon className="icon fs-4" />
-              <span>Users Details</span>
-            </li>
-          </Link>
-          <Link to='/Managejobs' style={{ textDecoration: "none" }}>
-          <li>
-            <WorkOutlineOutlinedIcon className="icon fs-4" />
-            <span>Manage Jobs</span>
-          </li></Link>
-          <Link to='/Courses'  style={{ textDecoration: "none" }}>
-          <li>
-            <SiCoursera className="icon fs-4" />
-            <span>Upload Courses</span>
-          </li></Link>
-          <Link to='/Testpage'  style={{ textDecoration: "none" }}><li>
-            <TfiWrite className="icon fs-4" />
-            <span>Conduct Test</span>
-          </li></Link>
-          <Link to='/Message'style={{ textDecoration: "none" }}>   <li>
-            <BiMessageDetail className="icon fs-4" />
-            <span>Messages</span>
-          </li>
-          </Link>
-          <Link to='/Settingspage'style={{ textDecoration: "none" }}> <li>
-            <SettingsApplicationsIcon className="icon fs-4" />
-            <span>Settings</span>
-          </li></Link>
-          <Link style={{ textDecoration: "none" }}> <li>
-            <ExitToAppIcon className="icon fs-4" />
-            <span>Logout</span>
-          </li></Link>
-        </ul>
-      </div>
-      </div>
+                <div className="sidebar  p-0" >
+                    <div className="top">
+                        <Link to="/" style={{ textDecoration: "none" }}>
+                            <span className="logo">GOTEL</span>
+                        </Link>
+                    </div>
+                    <hr />
+                    <div className="center">
+                        <ul>
+                            <p className="title">MAIN</p>
+                            <Link to='/Admin' className='routerlinks'> <li>
+                                <DashboardIcon className="icon fs-4" />
+                                <span className='d-none d-md-block'>Dashboard</span>
+                            </li></Link>
+                            <p className="title">LISTS</p>
+                            <Link to="/Companydetails" style={{ textDecoration: "none" }}>
+                                <li>
+                                    <IoIosPeople className="icon fs-4" />
+                                    <span>Companies Details</span>
+                                </li>
+                            </Link>
+                            <Link to="/Userdetails" style={{ textDecoration: "none" }}>
+                                <li>
+                                    <PersonOutlineIcon className="icon fs-4" />
+                                    <span>Users Details</span>
+                                </li>
+                            </Link>
+                            <Link to='/Managejobs' style={{ textDecoration: "none" }}>
+                                <li>
+                                    <WorkOutlineOutlinedIcon className="icon fs-4" />
+                                    <span>Manage Jobs</span>
+                                </li></Link>
+                            <Link to='/Courses' style={{ textDecoration: "none" }}>
+                                <li>
+                                    <SiCoursera className="icon fs-4" />
+                                    <span>Upload Courses</span>
+                                </li></Link>
+                            <Link to='/Testpage' style={{ textDecoration: "none" }}><li>
+                                <TfiWrite className="icon fs-4" />
+                                <span>Conduct Test</span>
+                            </li></Link>
+                            <Link to='/Message' style={{ textDecoration: "none" }}>   <li>
+                                <BiMessageDetail className="icon fs-4" />
+                                <span>Messages</span>
+                            </li>
+                            </Link>
+                            <Link to='/Settingspage' style={{ textDecoration: "none" }}> <li>
+                                <SettingsApplicationsIcon className="icon fs-4" />
+                                <span>Settings</span>
+                            </li></Link>
+                            <Link style={{ textDecoration: "none" }}> <li>
+                                <ExitToAppIcon className="icon fs-4" />
+                                <span>Logout</span>
+                            </li></Link>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div className="col-12 col-md-9 col-lg-10 h-100"><Navbar />
                 <div id="main" class="site-main" role="main">
@@ -101,294 +147,50 @@ function Companydetails() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="info-user">
-                                            <a href="https://civi.uxper.co/companies/software/uxper/">
-                                                <img src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="Uxper" />
-                                            </a>
-                                            <div class="info-details">
-                                                <h4 className='companyname text-center m-0'><a href="https://civi.uxper.co/companies/software/uxper/">Uxper</a></h4>
-                                                <p>
-                                                    <span>New York</span>
-                                                </p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="label label-open">Opening</span>
-                                        </td>
-                                        <td>
-                                            <span class="cate">
-                                                <span>Software</span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="active-jobs">12</span>
-                                        </td>
-                                        <td class="action-setting company-control">
-                                            <div class="btn-group dropend">
-                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <HiOutlineDotsHorizontal />
-                                                </button>
-                                                <ul class="dropdown-menu dropdownmenu">
-                                                    <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
+                                    {
+                                        company != null ?
+                                            company.map((C, I) => {
+                                                return (
+                                                    <tr>
+                                                        <td class="info-user">
+                                                            <a href="">
+                                                                <img src={C.img} className=' rounded-full object-cover mr-5' alt={C.companyName} />
+                                                            </a>
+                                                            <div class="info-details">
+                                                                <h4 className='companyname text-center m-0'><a href="">{C.companyName}</a></h4>
+                                                                <p>
+                                                                    <span>{C.categorie}</span>
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <span class="label label-open">Opening</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="cate">
+                                                                <span>{C.categorie}</span>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="active-jobs">{C.jobs }</span>
+                                                        </td>
+                                                        <td class="action-setting company-control">
+                                                            <div class="btn-group dropend">
+                                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <HiOutlineDotsHorizontal />
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdownmenu">
+                                                                    <li><a class="dropdown-item" href="#sf">Edit</a></li>
+                                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
 
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-user">
-                                            <a href="https://civi.uxper.co/companies/software/uxper/">
-                                                <img src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="Uxper" />
-                                            </a>
-                                            <div class="info-details">
-                                                <h4 className='companyname text-center m-0'><a href="https://civi.uxper.co/companies/software/uxper/">Uxper</a></h4>
-                                                <p>
-                                                    <span>New York</span>
-                                                </p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="label label-open">Opening</span>
-                                        </td>
-                                        <td>
-                                            <span class="cate">
-                                                <span>Software</span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="active-jobs">12</span>
-                                        </td>
-                                        <td class="action-setting company-control">
-                                            <div class="btn-group dropend">
-                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <HiOutlineDotsHorizontal />
-                                                </button>
-                                                <ul class="dropdown-menu dropdownmenu">
-                                                    <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-user">
-                                            <a href="https://civi.uxper.co/companies/software/uxper/">
-                                                <img src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="Uxper" />
-                                            </a>
-                                            <div class="info-details">
-                                                <h4 className='companyname text-center m-0'><a href="https://civi.uxper.co/companies/software/uxper/">Uxper</a></h4>
-                                                <p>
-                                                    <span>New York</span>
-                                                </p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="label label-open">Opening</span>
-                                        </td>
-                                        <td>
-                                            <span class="cate">
-                                                <span>Software</span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="active-jobs">12</span>
-                                        </td>
-                                        <td class="action-setting company-control">
-                                            <div class="btn-group dropend">
-                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <HiOutlineDotsHorizontal />
-                                                </button>
-                                                <ul class="dropdown-menu dropdownmenu">
-                                                    <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-user">
-                                            <a href="https://civi.uxper.co/companies/software/uxper/">
-                                                <img src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="Uxper" />
-                                            </a>
-                                            <div class="info-details">
-                                                <h4 className='companyname text-center m-0'><a href="https://civi.uxper.co/companies/software/uxper/">Uxper</a></h4>
-                                                <p>
-                                                    <span>New York</span>
-                                                </p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="label label-open">Opening</span>
-                                        </td>
-                                        <td>
-                                            <span class="cate">
-                                                <span>Software</span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="active-jobs">12</span>
-                                        </td>
-                                        <td class="action-setting company-control">
-                                            <div class="btn-group dropend">
-                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <HiOutlineDotsHorizontal />
-                                                </button>
-                                                <ul class="dropdown-menu dropdownmenu">
-                                                    <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-user">
-                                            <a href="https://civi.uxper.co/companies/software/uxper/">
-                                                <img src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="Uxper" />
-                                            </a>
-                                            <div class="info-details">
-                                                <h4 className='companyname text-center m-0'><a href="https://civi.uxper.co/companies/software/uxper/">Uxper</a></h4>
-                                                <p>
-                                                    <span>New York</span>
-                                                </p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="label label-open">Opening</span>
-                                        </td>
-                                        <td>
-                                            <span class="cate">
-                                                <span>Software</span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="active-jobs">12</span>
-                                        </td>
-                                        <td class="action-setting company-control">
-                                            <div class="btn-group dropend">
-                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <HiOutlineDotsHorizontal />
-                                                </button>
-                                                <ul class="dropdown-menu dropdownmenu">
-                                                    <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-user">
-                                            <a href="https://civi.uxper.co/companies/software/uxper/">
-                                                <img src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="Uxper" />
-                                            </a>
-                                            <div class="info-details">
-                                                <h4 className='companyname text-center m-0'><a href="https://civi.uxper.co/companies/software/uxper/">Uxper</a></h4>
-                                                <p>
-                                                    <span>New York</span>
-                                                </p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="label label-open">Opening</span>
-                                        </td>
-                                        <td>
-                                            <span class="cate">
-                                                <span>Software</span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="active-jobs">12</span>
-                                        </td>
-                                        <td class="action-setting company-control">
-                                            <div class="btn-group dropend">
-                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <HiOutlineDotsHorizontal />
-                                                </button>
-                                                <ul class="dropdown-menu dropdownmenu">
-                                                    <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-user">
-                                            <a href="https://civi.uxper.co/companies/software/uxper/">
-                                                <img src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="Uxper" />
-                                            </a>
-                                            <div class="info-details">
-                                                <h4 className='companyname text-center m-0'><a href="https://civi.uxper.co/companies/software/uxper/">Uxper</a></h4>
-                                                <p>
-                                                    <span>New York</span>
-                                                </p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="label label-open">Opening</span>
-                                        </td>
-                                        <td>
-                                            <span class="cate">
-                                                <span>Software</span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="active-jobs">12</span>
-                                        </td>
-                                        <td class="action-setting company-control">
-                                            <div class="btn-group dropend">
-                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <HiOutlineDotsHorizontal />
-                                                </button>
-                                                <ul class="dropdown-menu dropdownmenu">
-                                                    <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-user">
-                                            <a href="https://civi.uxper.co/companies/software/uxper/">
-                                                <img src="https://civi.uxper.co/wp-content/uploads/2022/11/avatar_uxper.png" alt="Uxper" />
-                                            </a>
-                                            <div class="info-details">
-                                                <h4 className='companyname text-center m-0'><a href="https://civi.uxper.co/companies/software/uxper/">Uxper</a></h4>
-                                                <p>
-                                                    <span>New York</span>
-                                                </p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="label label-open">Opening</span>
-                                        </td>
-                                        <td>
-                                            <span class="cate">
-                                                <span>Software</span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="active-jobs">12</span>
-                                        </td>
-                                        <td class="action-setting company-control">
-                                            <div class="btn-group dropend">
-                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <HiOutlineDotsHorizontal />
-                                                </button>
-                                                <ul class="dropdown-menu dropdownmenu">
-                                                    <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            })
+                                            : <></>
+                                    }
                                 </tbody>
                             </table>
                             <div class="civi-loading-effect"><span class="civi-dual-ring"></span></div>

@@ -413,7 +413,7 @@ useEffect(()=>{
       </div>
                 <div className="col-lg-10 col-md-9">
                     <JobSeekerNavbar />
-                    {/* <div className="row m-0 p-0 py-5 resumebg rounded-3">
+                    <div className="row m-0 p-0 py-5 resumebg rounded-3">
                         <h3 className='text-center'>Create Your Resume Here</h3>
                         <div className="col-lg-12">
                        <Container>
@@ -947,7 +947,7 @@ useEffect(()=>{
       </Modal>
     </Row>
                         </div>
-                    </div> */}
+                    </div> 
                 </div>
             </div>
     </div>

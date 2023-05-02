@@ -34,7 +34,8 @@ function Signup() {
                 Name:CompanyName,
                 email:email,
                 ph:'',
-                userType:selectedTab
+                userType:selectedTab,
+                date:Date().now
              })
             .then((e)=>{
                 setAccountCreated(true)
@@ -53,7 +54,8 @@ function Signup() {
           else{   
             await setDoc(doc(firestore, "users",user.uid), {
                 Name:UserName,
-                userType:selectedTab
+                userType:selectedTab,
+                date:Date().now
              })
             .then((e)=>{
                 setAccountCreated(true)

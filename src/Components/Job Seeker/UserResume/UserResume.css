@@ -95,3 +95,6 @@
     object-fit: cover;
     border-radius: 50%;
   }
+  .modal-backdrop.show{
+    display: none !important;
+  }

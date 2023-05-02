@@ -29,7 +29,7 @@ import UserFindJob from './Components/Job Seeker/FindJobpage/UserFindJob';
 
 import Forgetpassword from './Components/Loginpage/Forgetpassword';
 import Courses from './Components/Admin/Coursespage/Courses';
-import Testpage from './Components/Admin/Testpage/Testpage';
+import Testpage from './Components/Job Seeker/Testpage/Testpage';
 import Usercoursespage from './Components/Job Seeker/Coursespage/Usercoursespage';
 function App() {
   return (

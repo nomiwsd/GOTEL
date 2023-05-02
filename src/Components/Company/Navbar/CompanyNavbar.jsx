@@ -11,7 +11,28 @@ import { Link } from "react-router-dom";
 import { BsPeopleFill } from 'react-icons/bs'
 import { MdWorkOutline, MdPostAdd } from 'react-icons/md'
 import { FaUserPlus } from 'react-icons/fa'
+import { setDoc, doc as Doc, addDoc, getDocs,updateDoc, docR, getDoc, collection,onSnapshot } from "@firebase/firestore";
+import { firestore, storage } from '../../../firebase';
+import { useEffect } from 'react';
+import { useState } from 'react';
+
 function CompanyNavbar({userProfileImg}) {
+  var [user, setUser] = useState({})
+  const [unReadMsgs,setUnReadMsgs] = useState(0)
+  useEffect(() => {
+    var company = localStorage.getItem('user')
+    company = JSON.parse(company)
+    setUser(company)
+    fetchUsersDetails(company.uid)
+}, [])  
+const fetchUsersDetails = async (uid)=>{
+    onSnapshot(collection(firestore,`users/${uid}/chat`),(msgs)=>{
+      setUnReadMsgs(0)
+      msgs.docs.map((msg,index)=>{
+        setUnReadMsgs(unReadMsgs => (unReadMsgs + msg.data().unreadcompany))
+      })
+    })
+}
   return (
     <div className="navbar p-2">
       <div className="wrapper p-2">
@@ -79,10 +100,10 @@ function CompanyNavbar({userProfileImg}) {
             <NotificationsNoneOutlinedIcon className="icon" />
             <div className="counter">1</div>
           </div>
-          <div className="item d-none d-md-flex">
+          <Link className="item d-none d-md-flex" to={'/CompanyMessage'} >
             <ChatBubbleOutlineOutlinedIcon className="icon" />
-            <div className="counter">2</div>
-          </div>
+            <div className="counter">{unReadMsgs}</div>
+          </Link>
           <div className="item">
             <img
               // src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"

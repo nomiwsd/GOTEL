@@ -15,12 +15,29 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom";
 import { BsChevronRight } from 'react-icons/bs'
 import Table from 'react-bootstrap/Table';
+import { useEffect } from 'react';
+
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage"
+import { firestore, storage } from '../../../firebase';
+import { setDoc, updateDoc, doc, getDoc, collection, onSnapshot } from "@firebase/firestore";
+
 function Managejobs() {
     const [Jobs, setJobs] = useState([])
-    const [SearchBar, setSearchBar] = useState(false)
-    const [AllJobs, setAllJobs] = useState(false)
-    const [OpenedJobs, setOpenedJobs] = useState(false)
-    const [ClosedJobs, setClosedJobs] = useState(false)
+    const [search, setSearch] = useState('')
+    const [selected, setSelected] = useState('Pending')
+
+    useEffect(() => {
+        fetchAllData()
+    }, [])
+
+    const fetchAllData = () => {
+        setJobs([])
+        onSnapshot(collection(firestore, 'jobs'), (users) => {
+            users.docs.map(async (user, index) => {
+                setJobs((Jobs) => [...Jobs, user])
+            })
+        })
+    }
     return (
         <div>
             <div className='jobpostsection row d-flex m-0 p-0'>
@@ -57,12 +74,12 @@ function Managejobs() {
                                         <WorkOutlineOutlinedIcon className="icon fs-4" />
                                         <span>Manage Jobs</span>
                                     </li></Link>
-                                <Link to='/Courses'  style={{ textDecoration: "none" }}>
+                                <Link to='/Courses' style={{ textDecoration: "none" }}>
                                     <li>
                                         <SiCoursera className="icon fs-4" />
                                         <span>Upload Courses</span>
                                     </li></Link>
-                                <Link to='/Testpage'  style={{ textDecoration: "none" }}><li>
+                                <Link to='/Testpage' style={{ textDecoration: "none" }}><li>
                                     <TfiWrite className="icon fs-4" />
                                     <span>Conduct Test</span>
                                 </li></Link>
@@ -84,20 +101,21 @@ function Managejobs() {
                     </div>
                 </div>
                 <div className=" col-12 col-md-9 col-lg-10 h-100 p-0 m-0"><Navbar />
-                <div className="bg-color px-3 py-2">
+                    <div className="bg-color px-3 py-2">
                         <div class="entry-title d-flex my-2">
                             <h4>Manage Jobs</h4>
                         </div>
                         <div className="row d-flex m-0 p-0 ">
-                            <select className="firstDropdown col-12 col-lg-3 me-2 p-lg-0">
-                                <option value="">All Jobs</option>
-                                <option value="">Opened</option>
-                                <option value="o">Closed</option>
-                                
+                            <select className="firstDropdown col-12 col-lg-3 me-2 p-lg-0" onChange={(e)=>{setSelected(e.target.value)}}>
+                                <option value="All">All Jobs</option>
+                                <option value="Opened">Opened</option>
+                                <option value="Closed">Closed</option>
+                                <option value="Pending">Pending</option>
+
                             </select>
                             <div className=" searchdiv d-flex col-12 col-lg-3 border-1 rounded-1 p-0 my-2 m-lg-0 ">
 
-                                <input type="text" placeholder="Find By Job" className='px-2 w-100 searchinput' />
+                                <input type="text" placeholder="Find By Job" className='px-2 w-100 searchinput' value={search} onChange={(e) => { setSearch(e.target.value) }} />
                                 <SearchOutlinedIcon className='fs-3 mt-2 searchicon' />
                             </div>
 
@@ -116,45 +134,92 @@ function Managejobs() {
                             <tbody>
                                 {
                                     Jobs.map((job, index) => {
-                                        return (
-                                            <tr>
-                                                <td>
-                                                    <h6 class="title-jobs-dashboard">
-                                                        {job.title}
-                                                    </h6>
-                                                    <p>
-                                                        {job.type}                                                                                                                                / Full Time                                                                                                                   </p>
-                                                </td>
-                                                <td>
-                                                    <div class="number-applicant">
-                                                        <p class="number me-1">{job.applicants}</p>
-                                                        <p>  Application</p>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="label label-pending">{job.status}</p>
-                                                </td>
-                                                <td>
-                                                    <p class="start-time">{job.posted}</p>
-                                                </td>
-                                                <td>
-                                                    <p class="expires-time">
-                                                        2023-04-01                                                                            </p>
-                                                </td>
-                                                <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
-                                                    <div class="btn-group dropend">
-                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <HiOutlineDotsHorizontal />
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdownmenu">
-                                                            <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
+                                        if (selected == 'All') {
+                                            if (job.data().jobTitle.includes(search)) {
+                                                return (
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="title-jobs-dashboard">
+                                                                {job.data().jobTitle}
+                                                            </h6>
+                                                            <p>
+                                                                {job.data().jobType}                                                                                                                                / Full Time                                                                                                                   </p>
+                                                        </td>
+                                                        <td>
+                                                            <div class="number-applicant">
+                                                                <p class="number me-1">{job.data().applicants}</p>
+                                                                <p>  Application</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <p class="label label-pending">{job.data().status}</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="start-time">{job.data().posted}</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="expires-time">
+                                                                2023-04-01                                                                            </p>
+                                                        </td>
+                                                        <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
+                                                            <div class="btn-group dropend">
+                                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <HiOutlineDotsHorizontal />
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdownmenu">
+                                                                    <li><a class="dropdown-item" href="#sf">Edit</a></li>
+                                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
 
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        )
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            }
+                                        }
+                                        else if(job.data().status == selected) {
+                                            if (job.data().jobTitle.includes(search)) {
+                                                return (
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="title-jobs-dashboard">
+                                                                {job.data().jobTitle}
+                                                            </h6>
+                                                            <p>
+                                                                {job.data().jobType}                                                                                                                                / Full Time                                                                                                                   </p>
+                                                        </td>
+                                                        <td>
+                                                            <div class="number-applicant">
+                                                                <p class="number me-1">{job.data().applicants}</p>
+                                                                <p>  Application</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <p class="label label-pending">{job.data().status}</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="start-time">{job.data().posted}</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="expires-time">
+                                                                2023-04-01                                                                            </p>
+                                                        </td>
+                                                        <td class="action-setting jobs-control" style={{ zIndex: '1' }}>
+                                                            <div class="btn-group dropend">
+                                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <HiOutlineDotsHorizontal />
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdownmenu">
+                                                                    <li><a class="dropdown-item" href="#sf">Edit</a></li>
+                                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            }
+                                        }
                                     })
                                 }
                             </tbody>

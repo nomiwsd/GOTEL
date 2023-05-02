@@ -1,0 +1,2458 @@
+[
+    {
+        "question": "Which of the following is used for implementing the late binding?",
+        "option1": "Operator Functions",
+        "option2": "Virtual Functions",
+        "option3": "Constant Functions",
+        "option4": "All of above",
+        "answer": "Virtual Functions"
+    },
+    {
+        "question": "Which one of the following cannot be used with the virtual keyword?",
+        "option1": "Destructor",
+        "option2": "Member function",
+        "option3": "Constructor",
+        "option4": "None of the above",
+        "answer": "Constructor"
+    },
+    {
+        "question": "Which of the following statement is not true about C++?",
+        "option1": "A class cannot have the private members",
+        "option2": "Members of a class are public by default",
+        "option3": "A structure can have the member functions",
+        "option4": "All of the above",
+        "answer": "A structure can have the member functions"
+    },
+    {
+        "question": "Which of the following is the correct syntax to add the header file in the C++ program?",
+        "option1": "#include \"userdefined.h\"",
+        "option2": "#include<userdefined>",
+        "option3": "<include> \"userdefined.h\"",
+        "option4": "Both A & B",
+        "answer": "Both A & B"
+    },
+    {
+        "question": "Which of the following statements is correct about the friend function in C++ programming language?",
+        "option1": "A friend function can access the private members of a class",
+        "option2": "A friend function is able to access private members of a class",
+        "option3": "A friend function is able to access the public members of a class",
+        "option4": "All of the above",
+        "answer": "All of the above"
+    },
+    {
+        "question": "Which of the following statements is correct about the class?",
+        "option1": "A class is an instance of its object",
+        "option2": "An object is the instance of the data type of that class",
+        "option3": "An object is an instance of its class",
+        "option4": "All of above",
+        "answer": "An object is an instance of its class"
+    },
+    {
+        "question": "Which of the following can be used to create an abstract class in the C++ programming language?",
+        "option1": "By using the pure virtual function in the class",
+        "option2": "By declaring a virtual function in the base class",
+        "option3": "By declaring the virtual keyword afterward, the class Declaration",
+        "option4": "None of the above",
+        "answer": "By using the pure virtual function in the class"
+    },
+    {
+        "question": "Which of the following can be considered as the members that can be inherited but not accessible in any class?",
+        "option1": "Protected",
+        "option2": "Public",
+        "option3": "Private",
+        "option4": "None of the above",
+        "answer": "Private"
+    },
+    {
+        "question": "Which of the following is the correct syntax to print the message in C++ language?",
+        "option1": "Out <<\"Hello world!;",
+        "option2": "cout <<\"Hello world!\";",
+        "option3": "Cout << Hello world! ;",
+        "option4": "None of the above",
+        "answer": "cout <<\"Hello world!\";"
+    },
+    {
+        "question": "Which of the following can be considered as the correct syntax for declaring an array of pointers of integers that has a size of 10 in C++?",
+        "option1": "int *arr = new int*[10]",
+        "option2": "int *arr = new int[10];",
+        "option3": "int arr = new int[10];",
+        "option4": "int **arr = new int*[10];",
+        "answer": "int **arr = new int*[10];"
+    },
+    {
+        "question": "Which one of the following statements correctly refers to the Delete and Delete[] in C++ programming language?",
+        "option1": "The \"Delete\" is used for deleting the standard objects, while on the other hand, the \"Delete[]\" is used to delete the pointer objects",
+        "option2": "The \"Delete\" is a type of keyword, whereas the \"Delete[]\" is a type of identifier",
+        "option3": "The \"Delete\" is used for deleting a single standard object, whereas the \"Delete[]\" is used for deleting an array of the multiple objects",
+        "option4": "Delete is syntactically correct although, if the Delete[] is used, it will obtain an error",
+        "answer": "The \"Delete\" is used for deleting a single standard object, whereas the \"Delete[]\" is used for deleting an array of the multiple objects"
+    },
+    {
+        "question": "Which of the following statement is correct about Virtual Inheritance?",
+        "option1": "It is a technique to ensure that a private member of a base class can be accessed",
+        "option2": "It is a C++ technique to avoid multiple copies of the base class into the derived or child classes",
+        "option3": "It is a technique to optimize the multiple inheritances",
+        "option4": "It is a technique to avoid the multiple inheritances of the classes",
+        "answer": "It is a C++ technique to avoid multiple copies of the base class into the derived or child classes"
+    },
+    {
+        "question": "Elements of a one-dimensional array are numbered as 0,1,2,3,4,5, and so on; these numbers are known as ____",
+        "option1": "Members of Array",
+        "option2": "Index values",
+        "option3": "Subscript of Array",
+        "option4": "None of Above",
+        "answer": "Both 2 & 3"
+    },
+    {
+        "question": "How many types of elements can an array store?",
+        "option1": "Same types of elements",
+        "option2": "Only char types",
+        "option3": "Char and int type",
+        "option4": "All of the above",
+        "answer": "Same types of elements"
+    },
+    {
+        "question": "Which of the following can be considered as the object of an array?",
+        "option1": "Elements of the Array",
+        "option2": "Index of an array",
+        "option3": "Functions of the Array",
+        "option4": "All of the above",
+        "answer": "Elements of the Array"
+    },
+    {
+        "question": "Which types of arrays are always considered as linear arrays?",
+        "option1": "Multi-dimensional",
+        "option2": "Single-dimensional",
+        "option3": "All of above",
+        "option4": "None of the above",
+        "answer": "Single-dimensional"
+    },
+    {
+        "question": "What did we call an array of the one-dimensional array?",
+        "option1": "Multi-Dimensional array",
+        "option2": "Single Dimensional array",
+        "option3": "2D Array (or 2-Dimensional array)",
+        "option4": "All of above",
+        "answer": "2D Array (or 2-Dimensional array)"
+    },
+    {
+        "question": "Which one of the following is the correct definition of the \"is_array();\" function in C++?",
+        "option1": "It checks that the specified array of single dimension or not",
+        "option2": "It checks that the array specified of multi-dimension or not",
+        "option3": "It checks that the specified variable is of the array or not",
+        "option4": "All of above",
+        "answer": "It checks that the specified variable is of the array or not"
+    },
+    {
+        "question": "In C++, for what purpose the \"rank()\" is used?",
+        "option1": "It returns the maximum number of elements that can be stored in the array",
+        "option2": "It returns the size of each dimension",
+        "option3": "It returns the dimension of the specified array",
+        "option4": "None of the above",
+        "answer": "It returns the dimension of the specified array"
+    },
+    {
+        "question": "How many types of the array are there in the C++ programming language?",
+        "option1": "In the C++ programming language, there are four types of arrays",
+        "option2": "In the C++ programming language, there are three types of arrays",
+        "option3": "In the C++ programming language, there are two types of arrays",
+        "option4": "All of above",
+        "answer": "In the C++ programming language, there are two types of arrays"
+    },
+    {
+        "question": "Which of the following is the correct definition of sorting?",
+        "option1": "Sorting information or data only in increasing order",
+        "option2": "Sorting is a type of process in which the data or information is ordered into a specific order. Example increasing orders, decreasing.",
+        "option3": "Sorting is a type of process in which data elements are modified or manipulated",
+        "option4": "None of the above",
+        "answer": "Sorting is a type of process in which the data or information is ordered into a specific order. Example increasing orders, decreasing."
+    },
+    {
+        "question": "Which type of memory is used by an Array in C++ programming language?",
+        "option1": "None-contiguous",
+        "option2": "Contiguous",
+        "option3": "All of above",
+        "option4": "None of above",
+        "answer": "Contiguous"
+    },
+    {
+        "question": "Which of the following gives the 4th element of the array?",
+        "option1": "Array[0];",
+        "option2": "Array[0];",
+        "option3": "Array[3];",
+        "option4": "None of the above",
+        "answer": "Array[3];"
+    },
+    {
+        "question": "Which of the following is the correct syntax for printing the address of the first element?",
+        "option1": "array[0];",
+        "option2": "array[2];",
+        "option3": "array[1];",
+        "option4": "None of the above",
+        "answer": "array[0];"
+    },
+    {
+        "question": "Which of the following is the correct identifier?",
+        "option1": "varname@",
+        "option2": "$var_name",
+        "option3": "VAR_123",
+        "option4": "None of the above",
+        "answer": "VAR_123"
+    },
+    {
+        "question": "Which of the following is the correct syntax for declaring the array?",
+        "option1": "int array [5];",
+        "option2": "init array []",
+        "option3": "Array[5];",
+        "option4": "None of the above",
+        "answer": "int array [5];"
+    },
+    {
+        "question": "If we stored five elements or data items in an array, what will be the index address or the index number of the array's last data item?",
+        "option1": "88",
+        "option2": "5",
+        "option3": "4",
+        "option4": "3",
+        "answer": "4"
+    },
+    {
+        "question": "Which of the following is the original creator of the C++ language?",
+        "option1": "Dennis Ritchie",
+        "option2": "Ken Thompson",
+        "option3": "Bjarne Stroustrup",
+        "option4": "Brian Kernighan",
+        "answer": "Bjarne Stroustrup"
+    },
+    {
+        "question": "The programming language that has the ability to create new data types is called_______________",
+        "option1": "Overloaded",
+        "option2": "Reprehensible",
+        "option3": "Extensible",
+        "option4": "Encapsulated",
+        "answer": "Extensible"
+    },
+    {
+        "question": "Which of the following refers to characteristics of an array?",
+        "option1": "An array is a set of distinct data items",
+        "option2": "An array is a set of similar data items",
+        "option3": "An array can hold different types of datatypes",
+        "option4": "None of the above",
+        "answer": "An array is a set of similar data items"
+    },
+    {
+        "question": "Which of the following features must be supported by any programming language to become a pure object-oriented programming language?",
+        "option1": "Inheritance",
+        "option2": "Encapsulation",
+        "option3": "Polymorphism",
+        "option4": "All of the above",
+        "answer": "All of the above"
+    },
+    {
+        "question": "Which one of the following represents the tab?",
+        "option1": "\\t",
+        "option2": "\\n",
+        "option3": "\\r",
+        "option4": "None of the above",
+        "answer": "\\t"
+    },
+    {
+        "question": "Which of the following is the address operator?",
+        "option1": "&",
+        "option2": "#",
+        "option3": "%",
+        "option4": "@",
+        "answer": "&"
+    },
+    {
+        "question": "Which of the following is the correct syntax to read the single character to console in the C++ language?",
+        "option1": "get(ch)",
+        "option2": "Scanf(ch)",
+        "option3": "Read ch()",
+        "option4": "Getline vh()",
+        "answer": "get(ch)"
+    },
+    {
+        "question": "For inserting a new line in C++ program, which one of the following statements can be used?",
+        "option1": "\\r",
+        "option2": "\\n",
+        "option3": "\\a",
+        "option4": "None of the above",
+        "answer": "\\n"
+    },
+    {
+        "question": "C++ is a ___ type of language.",
+        "option1": "Middle-level language",
+        "option2": "High-level Language",
+        "option3": "Low-level language",
+        "option4": "None of the above",
+        "answer": "Middle-level language"
+    },
+    {
+        "question": "Which of the following statements is correct about the formal parameters in C++?",
+        "option1": "Parameters which are used in the definition of the function",
+        "option2": "Variables other than passed parameters in a function",
+        "option3": "Variables that are never used in the function",
+        "option4": "Parameters with which functions are called",
+        "answer": "Parameters with which functions are called"
+    },
+    {
+        "question": "Which of the following comment syntax is correct to create a single-line comment in the C++ program?",
+        "option1": "/Comment/",
+        "option2": "Comment//",
+        "option3": "//Comment",
+        "option4": "None of the above",
+        "answer": "//Comment"
+    },
+    {
+        "question": "Which of the following features is required to be supported by the programming language to become a pure object-oriented programming language?",
+        "option1": "Inheritance",
+        "option2": "Polymorphism",
+        "option3": "Encapsulation",
+        "option4": "All of the above",
+        "answer": "All of the above"
+    },
+    {
+        "question": "The C++ language is ______ object-oriented language.",
+        "option1": "Not Object oriented",
+        "option2": "Semi Object-oriented or Partial Object-oriented",
+        "option3": "Pure Object oriented",
+        "option4": "None of the above",
+        "answer": "Semi Object-oriented or Partial Object-oriented"
+    },
+    {
+        "question": "Which of the following language is predecessor to C Programming Language?",
+        "option1": "A",
+        "option2": "B",
+        "option3": "BCPL",
+        "option4": "C++",
+        "answer": "c"
+    },
+    {
+        "question": "C programming language was developed by",
+        "option1": "Dennis Ritchie",
+        "option2": "Ken Thompson",
+        "option3": "Bill Gates",
+        "option4": "Peter Norton",
+        "answer": "a"
+    },
+    {
+        "question": "C was developed in the year ___",
+        "option1": "1970",
+        "option2": "1972",
+        "option3": "1976",
+        "option4": "1980",
+        "answer": "b"
+    },
+    {
+        "question": "C is a ___ language",
+        "option1": "High Level",
+        "option2": "Low Level",
+        "option3": "Middle Level",
+        "option4": "Machine Level",
+        "answer": "c"
+    },
+    {
+        "question": "C language is available for which of the following Operating Systems?",
+        "option1": "DOS",
+        "option2": "Windows",
+        "option3": "Unix",
+        "option4": "All of these",
+        "answer": "d"
+    },
+    {
+        "question": "Which of the following symbol is used to denote a pre-processor statement?",
+        "option1": "!",
+        "option2": "#",
+        "option3": "~",
+        "option4": ";",
+        "answer": "b"
+    },
+    {
+        "question": "Which of the following is a Scalar Data type",
+        "option1": "Float",
+        "option2": "Union",
+        "option3": "Array",
+        "option4": "Pointer",
+        "answer": "a"
+    },
+    {
+        "question": "Which of the following are tokens in C?",
+        "option1": "Keywords",
+        "option2": "Variables",
+        "option3": "Constants",
+        "option4": "All of the above",
+        "answer": "d"
+    },
+    {
+        "question": "Which of the following are tokens in C?",
+        "option1": "Keywords",
+        "option2": "Variables",
+        "option3": "Constants",
+        "option4": "All of the above",
+        "answer": "d"
+    },
+    {
+        "question": "Which symbol is used as a statement terminator in C?",
+        "option1": "!",
+        "option2": "#",
+        "option3": "~",
+        "option4": ";",
+        "answer": "d"
+    },
+    {
+        "question": "The size of a String variable is",
+        "option1": "1 byte",
+        "option2": "8 bytes",
+        "option3": "16 bytes",
+        "option4": "None of these",
+        "answer": "d"
+    },
+    {
+        "question": "Which of the following is an example of compounded assignment statement?",
+        "option1": "a=5",
+        "option2": "a+=5",
+        "option3": "a=b=c",
+        "option4": "a=b",
+        "answer": "b"
+    },
+    {
+        "question": "Character constants should be enclosed between ___",
+        "option1": "Single quotes",
+        "option2": "Double quotes",
+        "option3": "Both a and b",
+        "option4": "None of these",
+        "answer": "a"
+    },
+    {
+        "question": "String constants should be enclosed between ___",
+        "option1": "Single quotes",
+        "option2": "Double quotes",
+        "option3": "Both a and b",
+        "option4": "None of these",
+        "answer": "b"
+    },
+    {
+        "question": "Which of the following is invalid?",
+        "option1": "''",
+        "option2": "\"\"",
+        "option3": "'a'",
+        "option4": "'abc'",
+        "answer": "d"
+    },
+    {
+        "question": "The maximum length of a variable in C is ___",
+        "option1": "8",
+        "option2": "16",
+        "option3": "32",
+        "option4": "64",
+        "answer": "a"
+    },
+    {
+        "question": "What will be the maximum size of a float variable?",
+        "option1": "1 byte",
+        "option2": "2 bytes",
+        "option3": "4 bytes",
+        "option4": "8 bytes",
+        "answer": "c"
+    },
+    {
+        "question": "What will be the maximum size of a double variable?",
+        "option1": "1 byte",
+        "option2": "4 bytes",
+        "option3": "8 bytes",
+        "option4": "16 bytes",
+        "answer": "c"
+    },
+    {
+        "question": "A declaration float a,b; occupies ___ of memory",
+        "option1": "1 byte",
+        "option2": "4 bytes",
+        "option3": "8 bytes",
+        "option4": "16 bytes",
+        "answer": "c"
+    },
+    {
+        "question": "The size of a String variable is",
+        "option1": "1 byte",
+        "option2": "8 bytes",
+        "option3": "16 bytes",
+        "option4": "None of these",
+        "answer": "d"
+    },
+    {
+        "question": "Which of the following is an example of compounded assignment statement?",
+        "option1": "a=5",
+        "option2": "a+=5",
+        "option3": "a=b=c",
+        "option4": "a=b",
+        "answer": "b"
+    },
+    {
+        "question": "The operator && is an example for ___ operator.",
+        "option1": "Assignment",
+        "option2": "Increment",
+        "option3": "Logical",
+        "option4": "Rational",
+        "answer": "c"
+    },
+    {
+        "question": "The operator & is used for",
+        "option1": "Bitwise AND",
+        "option2": "Bitwise OR",
+        "option3": "Logical AND",
+        "option4": "Logical OR",
+        "answer": "a"
+    },
+    {
+        "question": "The operator / can be applied to",
+        "option1": "integer values",
+        "option2": "float values",
+        "option3": "double values",
+        "option4": "All of these",
+        "answer": "b"
+    },
+    {
+        "question": "The equality operator is represented by",
+        "option1": ":=",
+        "option2": ".EQ.",
+        "option3": "=",
+        "option4": "==",
+        "answer": "d"
+    },
+    {
+        "question": "Operators have hierarchy. It is useful to know which operator",
+        "option1": "is most important",
+        "option2": "is used first",
+        "option3": "is faster",
+        "option4": "operates on large numbers",
+        "answer": "b"
+    },
+    {
+        "question": "The bitwise AND operator is used for",
+        "option1": "Masking",
+        "option2": "Comparison",
+        "option3": "Division",
+        "option4": "Shifting bits",
+        "answer": "a"
+    },
+    {
+        "question": "The bitwise OR operator is used to",
+        "option1": "set the desired bits to 1",
+        "option2": "set the desired bits to 0",
+        "option3": "divide numbers",
+        "option4": "multiply numbers",
+        "answer": "a"
+    },
+    {
+        "question": "Which of the following operator has the highest precedence?",
+        "option1": "*",
+        "option2": "==",
+        "option3": "=>",
+        "option4": "+",
+        "answer": "d"
+    },
+    {
+        "question": "Operators have precedence. Precedence determines which operator is",
+        "option1": "faster",
+        "option2": "takes less memory",
+        "option3": "evaluated first",
+        "option4": "takes no arguments",
+        "answer": "c"
+    },
+    {
+        "question": "Integer Division results in",
+        "option1": "Rounding the fractional part",
+        "option2": "Truncating the fractional part",
+        "option3": "Floating value",
+        "option4": "An Error is generated",
+        "answer": "b"
+    },
+    {
+        "question": "Which of the following is a ternary operator?",
+        "option1": "?:",
+        "option2": "*",
+        "option3": "sizeof",
+        "option4": "^",
+        "answer": "a"
+    },
+    {
+        "question": "What will be the output of the expression 11 ^ 5?",
+        "option1": "5",
+        "option2": "6",
+        "option3": "11",
+        "option4": "None of these",
+        "answer": "d"
+    },
+    {
+        "question": "The size of a String variable is",
+        "option1": "1 byte",
+        "option2": "8 bytes",
+        "option3": "16 bytes",
+        "option4": "None of these",
+        "answer": "d"
+    },
+    {
+        "question": "Which of the following is an example of compounded assignment statement?",
+        "option1": "a=5",
+        "option2": "a+=5",
+        "option3": "a=b=c",
+        "option4": "a=b",
+        "answer": "b"
+    },
+    {
+        "question": "Header files in C contain",
+        "option1": "Compiler commands",
+        "option2": "Library functions",
+        "option3": "Header information of C programs",
+        "option4": "Operators for files",
+        "answer": "b"
+    },
+    {
+        "question": "The type cast operator is",
+        "option1": "(type)",
+        "option2": "cast()",
+        "option3": "(;;)",
+        "option4": "// \" \"",
+        "answer": "a"
+    },
+    {
+        "question": "Explicit type conversion is known as",
+        "option1": "Casting",
+        "option2": "Conversion",
+        "option3": "Disjunction",
+        "option4": "Separation",
+        "answer": "a"
+    },
+    {
+        "question": "The operator + in a+=4 means",
+        "option1": "a=a+4",
+        "option2": "a+4=a",
+        "option3": "a=4",
+        "option4": "a=4+4",
+        "answer": "a"
+    },
+    {
+        "question": "p++ executes faster than p+1 because",
+        "option1": "p uses registers",
+        "option2": "p++ is a single instruction",
+        "option3": "++ is faster than +",
+        "option4": "None of these",
+        "answer": "b"
+    },
+    {
+        "question": "Which of the following statements is true?",
+        "option1": "C Library functions provide I/O facilities",
+        "option2": "C inherent I/O facilities",
+        "option3": "C doesn\u2019t have I/O facilities",
+        "option4": "Both (a) and (c)",
+        "answer": "a"
+    },
+    {
+        "question": "Header files in C contain",
+        "option1": "Compiler commands",
+        "option2": "Library functions",
+        "option3": "Header information of C programs",
+        "option4": "Operators for files",
+        "answer": "b"
+    },
+    {
+        "question": "Which pair of functions below are used for single character I/O.",
+        "option1": "Getchar() and putchar()",
+        "option2": "Scanf() and printf()",
+        "option3": "Input() and output()",
+        "option4": "None of these",
+        "answer": "a"
+    },
+    {
+        "question": "The printf() function retunes which value when an error occurs?",
+        "option1": "Positive value",
+        "option2": "Zero",
+        "option3": "Negative value",
+        "option4": "None of these",
+        "answer": "c"
+    },
+    {
+        "question": "Identify the wrong statement",
+        "option1": "putchar(65)",
+        "option2": "putchar('x')",
+        "option3": "putchar(\"x\")",
+        "option4": "putchar('\\n')",
+        "answer": "c"
+    },
+    {
+        "question": "Which of the following is charecter oriented console I/O function?",
+        "option1": "getchar() and putchar()",
+        "option2": "gets() and puts()",
+        "option3": "scanf() and printf()",
+        "option4": "fgets() and fputs()",
+        "answer": "a"
+    },
+    {
+        "question": "The output of printf(\"%u\", -1) is",
+        "option1": "-1",
+        "option2": "minimum int value",
+        "option3": "maxium int value",
+        "option4": "Error message",
+        "answer": "c"
+    },
+    {
+        "question": "An Ampersand before the name of a variable denotes",
+        "option1": "Actual Value",
+        "option2": "Variable Name",
+        "option3": "Address",
+        "option4": "Data Type",
+        "answer": "c"
+    },
+    {
+        "question": "Symbolic constants can be defined using",
+        "option1": "# define",
+        "option2": "const",
+        "option3": "symbols",
+        "option4": "None of these",
+        "answer": "b"
+    },
+    {
+        "question": "Null character is represented by",
+        "option1": "\\n",
+        "option2": "\\0",
+        "option3": "\\o",
+        "option4": "\\e",
+        "answer": "b"
+    },
+    {
+        "question": "Which header file is essential for using strcmp() function?",
+        "option1": "string.h",
+        "option2": "strings.h",
+        "option3": "text.h",
+        "option4": "strcmp.h",
+        "answer": "a"
+    },
+    {
+        "question": "malloc() function used in dynamic allocation is available in which header file?",
+        "option1": "stdio.h",
+        "option2": "stdlib.h",
+        "option3": "conio.h",
+        "option4": "mem.h",
+        "answer": "b"
+    },
+    {
+        "question": "File manipulation functions in C are available in which header file?",
+        "option1": "streams.h",
+        "option2": "stdio.h",
+        "option3": "stdlib.h",
+        "option4": "files.h",
+        "answer": "d"
+    },
+    {
+        "question": "C supports how many basic looping constructs",
+        "option1": "2",
+        "option2": "3",
+        "option3": "4",
+        "option4": "6",
+        "answer": "b"
+    },
+    {
+        "question": "A statement differs from expression by terminating with a",
+        "option1": ";",
+        "option2": ":",
+        "option3": "NULL",
+        "option4": ".",
+        "answer": "a"
+    },
+    {
+        "question": "What should be the expression return value for a do-while to terminate",
+        "option1": "1",
+        "option2": "0",
+        "option3": "-1",
+        "option4": "NULL",
+        "answer": "b"
+    },
+    {
+        "question": "Which among the following is a unconditional control structure",
+        "option1": "do-while",
+        "option2": "if-else",
+        "option3": "goto",
+        "option4": "for",
+        "answer": "c"
+    },
+    {
+        "question": "Continue statement is used",
+        "option1": "to go to the next iteration in a loop",
+        "option2": "come out of a loop",
+        "option3": "exit and return to the main function",
+        "option4": "restarts iterations from beginning of loop",
+        "answer": "a"
+    },
+    {
+        "question": "Which operator in C is called a ternary operator",
+        "option1": "if..then",
+        "option2": "++",
+        "option3": "?:",
+        "option4": "()",
+        "answer": "c"
+    },
+    {
+        "question": "Which of the following header file is required for strcpy() function?",
+        "option1": "string.h",
+        "option2": "strings.h",
+        "option3": "files.h",
+        "option4": "strcsspy()",
+        "answer": "a"
+    },
+    {
+        "question": "The meaning of conversion character for data input is",
+        "option1": "Data item is a long integer",
+        "option2": "Data item is an unsigned decimal integer",
+        "option3": "Data item is a short integer",
+        "option4": "None of the above",
+        "answer": "c"
+    },
+    {
+        "question": "The conversion characters for data input means that the data item is",
+        "option1": "An unsigned decimal integer",
+        "option2": "A short integer",
+        "option3": "A hexadecimal integer",
+        "option4": "A string followed by white space",
+        "answer": "b"
+    },
+    {
+        "question": "An expression contains relational, assign. ment and arithmetic operators. If Parenthesis are not present, the order will be",
+        "option1": "Assignment, arithmetic, relational",
+        "option2": "Relational, arithmetic, assignment",
+        "option3": "Assignment, relational, arithmetic",
+        "option4": "Arithmetic, relational, assignment",
+        "answer": "d"
+    },
+    {
+        "question": "Which of the following is a key word is used for a storage class",
+        "option1": "printf",
+        "option2": "external",
+        "option3": "auto",
+        "option4": "scanf",
+        "answer": "c"
+    },
+    {
+        "question": "In the C language 'a' represents",
+        "option1": "a digit",
+        "option2": "an integer",
+        "option3": "a character",
+        "option4": "a word",
+        "answer": "c"
+    },
+    {
+        "question": "The number of the relational operators in the C language is",
+        "option1": "Four",
+        "option2": "Six",
+        "option3": "Three",
+        "option4": "One",
+        "answer": "b"
+    },
+    {
+        "question": "A compound statement is a group of statements included between a pair of",
+        "option1": "double quote",
+        "option2": "curly braces",
+        "option3": "parenthesis",
+        "option4": "a pair of /'s",
+        "answer": "a"
+    },
+    {
+        "question": "A Link is",
+        "option1": "a compiler",
+        "option2": "an active debugger",
+        "option3": "a C interpreter",
+        "option4": "a analyzing tool in C",
+        "answer": "d"
+    },
+    {
+        "question": "The continue command cannot be used with",
+        "option1": "for",
+        "option2": "switch",
+        "option3": "do",
+        "option4": "while",
+        "answer": "a"
+    },
+    {
+        "question": "In C, a Union is",
+        "option1": "memory location",
+        "option2": "memory store",
+        "option3": "memory screen",
+        "option4": "None of these",
+        "answer": "b"
+    },
+    {
+        "question": "When the main function is called, it is called with the arguments",
+        "option1": "argc",
+        "option2": "argv",
+        "option3": "None of these",
+        "option4": "both a & b",
+        "answer": "d"
+    },
+    {
+        "question": "A multidimensional array can be expressed in terms of",
+        "option1": "array of pointers rather than as pointers to a group of contiguous array",
+        "option2": "array without the group of contiguous array",
+        "option3": "data type arrays",
+        "option4": "None of these",
+        "answer": "a"
+    },
+    {
+        "question": "C allows arrays of greater than two dimensions, who will determined this",
+        "option1": "programmer",
+        "option2": "compiler",
+        "option3": "parameter",
+        "option4": "None of these",
+        "answer": "b"
+    },
+    {
+        "question": "A pointer to a pointer in a form of",
+        "option1": "multiple indirection",
+        "option2": "a chain of pointers",
+        "option3": "both a and b",
+        "option4": "None of these",
+        "answer": "c"
+    },
+    {
+        "question": "Pointers are of",
+        "option1": "integer data type",
+        "option2": "character data type",
+        "option3": "unsigned integer data types",
+        "option4": "None of these",
+        "answer": "d"
+    },
+    {
+        "question": "Maximum number of elements in the array declaration int a[5][8] is",
+        "option1": "28",
+        "option2": "32",
+        "option3": "35",
+        "option4": "40",
+        "answer": "d"
+    },
+    {
+        "question": "If the size of the array is less than the number of initializers then,",
+        "option1": "Extra values are being ignored",
+        "option2": "Generates an error message",
+        "option3": "Size of Array is increased",
+        "option4": "Size is neglected when values are given",
+        "answer": "a"
+    },
+    {
+        "question": "Array subscripts in C always start at",
+        "option1": "-1",
+        "option2": "1",
+        "option3": "0",
+        "option4": "Value provided by user",
+        "answer": "c"
+    },
+    {
+        "question": "A Structure",
+        "option1": "can be read as a single entity",
+        "option2": "cannot be read as a single entity",
+        "option3": "can be displayed as a single entity",
+        "option4": "has member variables that cannot be read individually",
+        "answer": "b"
+    },
+    {
+        "question": "Which is the correct way to declare a pointer?",
+        "option1": "int_ptr;",
+        "option2": "int *ptr;",
+        "option3": "*int ptr;",
+        "option4": "None of these.",
+        "answer": "b"
+    },
+    {
+        "question": "If you want to exchange two rows in a two dimensional array, the fastest way is to:",
+        "option1": "Exchange the elements of the 2rows",
+        "option2": "Exchange the address of each element in the two row",
+        "option3": "Silence the address of the rows in an array of pointer and exchange the pointer",
+        "option4": "None of these.",
+        "answer": "c"
+    },
+    {
+        "question": "A type cast is used to",
+        "option1": "Define a new data type",
+        "option2": "Force a value to be a particular variable type",
+        "option3": "Rename an old type",
+        "option4": "None of these.",
+        "answer": "b"
+    },
+    {
+        "question": "Operator precedence determines which operator",
+        "option1": "Operators on the largest number",
+        "option2": "Is used first",
+        "option3": "Is most important",
+        "option4": "None of these.",
+        "answer": "b"
+    },
+    {
+        "question": "If you don\u2019t initialize a static array, what will be the element set to?",
+        "option1": "Zero",
+        "option2": "A floating point",
+        "option3": "An undetermined value",
+        "option4": "None of these.",
+        "answer": "a"
+    },
+    {
+        "question": "Which is more appropriate for reading in a multi-word string?",
+        "option1": "gets( )",
+        "option2": "Printf( )",
+        "option3": "scanf( )",
+        "option4": "puts ( )",
+        "answer": "a"
+    },
+    {
+        "question": "The process of translating a source program into machine language is a function of:",
+        "option1": "Compiler",
+        "option2": "Translator",
+        "option3": "Assembler",
+        "option4": "None of these.",
+        "answer": "a"
+    },
+    {
+        "question": "Function argument can be",
+        "option1": "A structure member",
+        "option2": "A pointer variable",
+        "option3": "A complete structure",
+        "option4": "All of the above.",
+        "answer": "d"
+    },
+    {
+        "question": "A \u201cswitch\u201d statement is used to:",
+        "option1": "Switch between user defined functions in a program",
+        "option2": "Switch from one variable to another variable",
+        "option3": "Jump from one place to another in a program.",
+        "option4": "None of these.",
+        "answer": "d"
+    },
+    {
+        "question": "Consider the foll statement: \"using C language programmers can write their own library functions\".",
+        "option1": "True",
+        "option2": "False",
+        "option3": "May be",
+        "option4": "None of these.",
+        "answer": "a"
+    },
+    {
+        "question": "C is a ________ level programming language?",
+        "option1": "Low",
+        "option2": "High",
+        "option3": "Middle",
+        "option4": "None of these.",
+        "answer": "c"
+    },
+    {
+        "question": "A function is a subroutine that may include one or more ____________ designed to perform a specific task.",
+        "option1": "Functions",
+        "option2": "Statements",
+        "option3": "Libraries",
+        "option4": "Data types.",
+        "answer": "b"
+    },
+    {
+        "question": "What is used as a terminator in C?",
+        "option1": "?",
+        "option2": ";",
+        "option3": ":",
+        "option4": "_",
+        "answer": "b"
+    },
+    {
+        "question": "Which function is necessary to exist in each & every program?",
+        "option1": "void",
+        "option2": "sum",
+        "option3": "main",
+        "option4": "None of these.",
+        "answer": "c"
+    },
+    {
+        "question": "What is the answer of: 7%3",
+        "option1": "2.5",
+        "option2": "1",
+        "option3": "2",
+        "option4": "3",
+        "answer": "b"
+    },
+    {
+        "question": "The _______ chars have values from -128 to 127.",
+        "option1": "signed",
+        "option2": "unsigned",
+        "option3": "long",
+        "option4": "none",
+        "answer": "a"
+    },
+    {
+        "question": "What is the control character for \"a single character\".",
+        "option1": "%c",
+        "option2": "%d",
+        "option3": "%i",
+        "option4": "%p",
+        "answer": "a"
+    },
+    {
+        "question": "What is the control character for \"a decimal integer\".",
+        "option1": "%c",
+        "option2": "%d",
+        "option3": "%i",
+        "option4": "%p",
+        "answer": "b"
+    },
+    {
+        "question": "What is the control character for \"a floating point number\".",
+        "option1": "%c",
+        "option2": "%d",
+        "option3": "%i",
+        "option4": "%f",
+        "answer": "d"
+    },
+    {
+        "question": "C supports the ______ statement to branch unconditionally from one point to another in the program.",
+        "option1": "continue",
+        "option2": "goto",
+        "option3": "break",
+        "option4": "for",
+        "answer": "b"
+    },
+    {
+        "question": "The _______ is used to break out of the case statements.",
+        "option1": "continue",
+        "option2": "break",
+        "option3": "default",
+        "option4": "case",
+        "answer": "b"
+    },
+    {
+        "question": "There are ___ levels of heading in HTML",
+        "option1": "A) Three",
+        "option2": "Four",
+        "option3": "Five",
+        "option4": "Six",
+        "answer": "d)"
+    },
+    {
+        "question": "There are _____ level of heading in html",
+        "option1": "three",
+        "option2": "four",
+        "option3": "five",
+        "option4": "six",
+        "answer": "d)"
+    },
+    {
+        "question": "The purpose of markup is to",
+        "option1": "add hypertext capabilities",
+        "option2": "enhance the document",
+        "option3": "both A & B",
+        "option4": "none of the above",
+        "answer": "c)"
+    },
+    {
+        "question": "Which of the following tags do not require a terminator?",
+        "option1": "<u>",
+        "option2": "<br>",
+        "option3": "<b>",
+        "option4": "none of the above",
+        "answer": "b)"
+    },
+    {
+        "question": "To get the ordered list we use",
+        "option1": "<h1>",
+        "option2": "<ul>",
+        "option3": "<ol>",
+        "option4": "<ml>",
+        "answer": "c)"
+    },
+    {
+        "question": "For a particular font its size attribute can be an absolute value ranging form",
+        "option1": "1-10",
+        "option2": "1-9",
+        "option3": "1-8",
+        "option4": "1-7",
+        "answer": "a)"
+    },
+    {
+        "question": "The Major components of the Web browser are ___",
+        "option1": "Menu Bar.",
+        "option2": "ToolBar.",
+        "option3": "Location",
+        "option4": "All Of the Above.",
+        "answer": "d)"
+    },
+    {
+        "question": "Which one of the following tags is used to insert graphics in the webpage",
+        "option1": "<image>",
+        "option2": "<images>",
+        "option3": "<img>",
+        "option4": "<graphics>",
+        "answer": "c)"
+    },
+    {
+        "question": "The following html tag is used to display the content as a moving text",
+        "option1": "<marquee>",
+        "option2": "</img>",
+        "option3": "<a href>",
+        "option4": "none of the above",
+        "answer": "a)"
+    },
+    {
+        "question": "html comment should be enclosed between",
+        "option1": "<!-- and -- >",
+        "option2": "<! And !>",
+        "option3": "<!--- and \u2013\u201c\u201d",
+        "option4": "none of the above",
+        "answer": "a)"
+    },
+    {
+        "question": "_____ tag is used before beginning of the paragraph text",
+        "option1": "<textarea>",
+        "option2": "<sup>",
+        "option3": "<p>",
+        "option4": "<h1>",
+        "answer": "c)"
+    },
+    {
+        "question": "Example of picture editing software is",
+        "option1": "ms paint",
+        "option2": "photoshop",
+        "option3": "animator pro",
+        "option4": "none of the above",
+        "answer": "b)"
+    },
+    {
+        "question": "CD ROM stands for",
+        "option1": "computer disk read only memory",
+        "option2": "computer disk read out memory",
+        "option3": "compact disk read only memory",
+        "option4": "compact disk read out memory",
+        "answer": "c)"
+    },
+    {
+        "question": "html document have a extension ______",
+        "option1": ".htx or .htxl",
+        "option2": ".htm or .html",
+        "option3": ".hmt or hmtl",
+        "option4": "none of the above",
+        "answer": "b)"
+    },
+    {
+        "question": "The _____ element can be used to identify your html file to the outside world",
+        "option1": "title",
+        "option2": "body",
+        "option3": "head",
+        "option4": "none of the above",
+        "answer": "d)"
+    },
+    {
+        "question": "The decimal range of network address for class b network is between",
+        "option1": "127-190",
+        "option2": "128-190",
+        "option3": "128-191",
+        "option4": "127-255",
+        "answer": "c)"
+    },
+    {
+        "question": "Which of the following tags do not require a terminator",
+        "option1": "<u>",
+        "option2": "<br>",
+        "option3": "<b>",
+        "option4": "none of the above",
+        "answer": "b)"
+    },
+    {
+        "question": "CGI stand for",
+        "option1": "Command Gate Interface",
+        "option2": "Common Gateway Interface",
+        "option3": "Common Gate input",
+        "option4": "None of the above",
+        "answer": "B"
+    },
+    {
+        "question": "For a particular font its size attribute can be an absolute value ranging from",
+        "option1": "1-10",
+        "option2": "1-9",
+        "option3": "1-8",
+        "option4": "1-7",
+        "answer": "D"
+    },
+    {
+        "question": "Which of the following is true",
+        "option1": "In tables, header cells are centred by default and the data cells are right-aligned.",
+        "option2": "In the case of character formatting the tag <TW> is used for typewriter-like text",
+        "option3": "Unordered list starts with <UL> and ends with <UL>",
+        "option4": "<SUPR> tag is used for superscripts text",
+        "answer": "C"
+    },
+    {
+        "question": "Which of the following is true?",
+        "option1": "BR tag is used to have a blank line",
+        "option2": "In tables, the header cell is centred by default and the data cells are right-aligned",
+        "option3": "The <TR> is used to create a data cell",
+        "option4": "INPUT tag must have at least 4 attributes",
+        "answer": "A"
+    },
+    {
+        "question": "Example for bitmap application is",
+        "option1": "MS paint",
+        "option2": "Photoshop",
+        "option3": "Sound recorder",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "The ideal rate for animation is",
+        "option1": "30 Frames/second",
+        "option2": "20 Frames/second",
+        "option3": "40 Frames/second",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "The symbol that identities that HREF attribute as the name of a NAME anchor rather than an address or filename is",
+        "option1": "\u201c&\u201d",
+        "option2": "\u201c$\u201d",
+        "option3": "\u201c#\u201d",
+        "option4": "\u201c!\u201d",
+        "answer": "C"
+    },
+    {
+        "question": "The purpose of markup is to",
+        "option1": "Add hypertext capabilities",
+        "option2": "Enhance the document",
+        "option3": "Both a) & b)",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "to get the ordered list we use",
+        "option1": "<HI>",
+        "option2": "<UL>",
+        "option3": "<OL>",
+        "option4": "<ML>",
+        "answer": "C"
+    },
+    {
+        "question": "HTML is the method where ordinary text can be converted into",
+        "option1": "ASCII Text",
+        "option2": "EBCDIC Text",
+        "option3": "Hypertext",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": " OLE stands for",
+        "option1": "Object-level embedding",
+        "option2": "Object linking and embedding",
+        "option3": "Object-level extraction",
+        "option4": "None of the above",
+        "answer": "B"
+    },
+    {
+        "question": "Example of picture editing software is",
+        "option1": "MS paint",
+        "option2": "Photoshop",
+        "option3": "Sound recorder",
+        "option4": "None of the above",
+        "answer": "B"
+    },
+    {
+        "question": "Which of the following tags do not require a terminator?",
+        "option1": "<U>",
+        "option2": "<BR>",
+        "option3": "<B>",
+        "option4": "None of above",
+        "answer": "B"
+    },
+    {
+        "question": "The tag to give visual division between sections of the page and which causes the browser to draw an embossed line is",
+        "option1": "<HL>",
+        "option2": "<HR>",
+        "option3": "<UR>",
+        "option4": "None of the above",
+        "answer": "B"
+    },
+    {
+        "question": "Which one of the following tags is used to insert graphics on the web page?",
+        "option1": "<IMAGE>",
+        "option2": "<IMAGES>",
+        "option3": "<IMG>",
+        "option4": "<GRAPHICS>",
+        "answer": "C"
+    },
+    {
+        "question": "In HTML ______ tag contains the information about the current document such as title etc.",
+        "option1": "Body",
+        "option2": "TD",
+        "option3": "HEAD",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "Which of the following is false?",
+        "option1": "TYPE and NAME are the attributes of the INPUT tag",
+        "option2": "SCR is a must if UNPUT TYPE is image",
+        "option3": "POST allows the content of the forms to be passed one element at a time",
+        "option4": "GET allows accepting one element at a time",
+        "answer": "D"
+    },
+    {
+        "question": "The components of multimedia are",
+        "option1": "Text, pictures, video, sound",
+        "option2": "Text pictures, animation",
+        "option3": "Text, pictures, video, animation, sound",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "Which of the following NOT a sound property",
+        "option1": "Asterisk",
+        "option2": "Critical stop",
+        "option3": "Default beep",
+        "option4": "Frame grabber",
+        "answer": "C"
+    },
+    {
+        "question": "If you want to allow to play music on your web page with Internet Explorer; will not work with people browsing with Netscape.",
+        "option1": "<BGSOUND SRC=sounds.wav loop=infinite>",
+        "option2": "<Bgsound = abc.wav loop =infinite>",
+        "option3": "<background sound= sound.wav loop= infinite >",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "The application of creative mixer is",
+        "option1": "To control the only output of the audio signal",
+        "option2": "To control only input of the audio signal",
+        "option3": "To control both input and output of the audio signal",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "JPEG stands for",
+        "option1": "Joint photographic embedded group",
+        "option2": "Joint photographic extended group",
+        "option3": "Joint photographic experts group",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "Morphing is also related to",
+        "option1": "Text",
+        "option2": "Sound",
+        "option3": "Animation",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "Minimum main memory required to set up a multimedia computer is",
+        "option1": "4GB",
+        "option2": "4MB",
+        "option3": "200MB",
+        "option4": "8MB",
+        "answer": "D"
+    },
+    {
+        "question": "CD-ROM stands for",
+        "option1": "Computer disk read-only memory",
+        "option2": "Computer disk readout memory",
+        "option3": "Compact disk read-only memory",
+        "option4": "Compact disk readout memory",
+        "answer": "C"
+    },
+    {
+        "question": "MIDI stands for",
+        "option1": "Musical interface digital instrument",
+        "option2": "Musical instrument digital interfaces",
+        "option3": "Musical instrument digital input",
+        "option4": "Musical instrument digital instrument",
+        "answer": "B"
+    },
+    {
+        "question": "TIFF stands for",
+        "option1": "Tagged image file format",
+        "option2": "Textual images file format",
+        "option3": "Tagged image font file",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "WMF is a",
+        "option1": "Text format",
+        "option2": "Vector format",
+        "option3": "CompuServe",
+        "option4": "None of the above",
+        "answer": "B"
+    },
+    {
+        "question": "The application of wave studio is",
+        "option1": "Transfer sound information from analog to digital",
+        "option2": "It is used to record play and edits 8-bit or 16-bit wave data",
+        "option3": "Transfer sound information from waveform to avi form",
+        "option4": "None of the above",
+        "answer": "B"
+    },
+    {
+        "question": "The main factor in the rapid growth of net was the inclusion of ___ protocol in the Berkely versions of ___",
+        "option1": "TCP/IP, Xenix",
+        "option2": "TCP/IP, Linux",
+        "option3": "TCP/IP, Punix",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "For abbreviation we can use",
+        "option1": "<abbr> </abbr> tags",
+        "option2": "<acronym> </acronym>",
+        "option3": "Both of the Above.",
+        "option4": "None of the Above.",
+        "answer": "c)"
+    },
+    {
+        "question": "FTP applications are",
+        "option1": "Used to download and upload files",
+        "option2": "Internet browsers",
+        "option3": "Used to send E-mails",
+        "option4": "Used to chat with other people",
+        "answer": "A"
+    },
+    {
+        "question": "Which of the following FTP program found in all the windows system?",
+        "option1": "WFTP.EXE.",
+        "option2": "FTP.EXE.",
+        "option3": "WSFTP.EXE",
+        "option4": "TFTP.EXE",
+        "answer": "B"
+    },
+    {
+        "question": "The domain for India is",
+        "option1": "Ind",
+        "option2": "Indi",
+        "option3": "In",
+        "option4": "Indus",
+        "answer": "C"
+    },
+    {
+        "question": "Modem speeds are measured in",
+        "option1": "bsp",
+        "option2": "bps",
+        "option3": "bds",
+        "option4": "none of the above",
+        "answer": "B"
+    },
+    {
+        "question": "Which of the following is true?",
+        "option1": "TCP/IP account is less expensive than the shell account and does not allow graphics to download.",
+        "option2": "TCP/IP account is more expensive than the shell account and does allow graphics to download.",
+        "option3": "TCP/IP account is more expensive than the shell account and allow graphics to download",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "DNS server is used for",
+        "option1": "To translate the domain name of another computer into IP address only",
+        "option2": "To translate the domain name of another computer into IP address and vice versa on request",
+        "option3": "To translate the IP address to the domain name",
+        "option4": "None of the above",
+        "answer": "B"
+    },
+    {
+        "question": "The program which can be used to make your computer act as a terminal is",
+        "option1": "Terminal simulation program",
+        "option2": "Terminal emulation program",
+        "option3": "Terminal emulsion program",
+        "option4": "None of the above",
+        "answer": "B"
+    },
+    {
+        "question": "____is widely known as the father of the world wide web",
+        "option1": "Tom Berners-lee",
+        "option2": "Tom bruce-lee",
+        "option3": "Tim bruce-lee",
+        "option4": "Tim Berners-Lee",
+        "answer": "D"
+    },
+    {
+        "question": "The search engine, which lets you search across sites in many languages, ranging from greek to Hebrew to Estonian.",
+        "option1": "www.isleuth.com.",
+        "option2": "www.altavista.digital.com.",
+        "option3": "www.excite.com.",
+        "option4": "www.yahoo.com.",
+        "answer": "B"
+    },
+    {
+        "question": "The leading bit pattern for the class c network is",
+        "option1": "0",
+        "option2": "10",
+        "option3": "101",
+        "option4": "None of the above",
+        "answer": "D"
+    },
+    {
+        "question": "Which of the following is true",
+        "option1": "TCP/IP link allows your computer to function as an internet host",
+        "option2": "Local area network link allows your computer to function as an internet host",
+        "option3": "TCP/IP link does not allow the computer to the internet host",
+        "option4": "Local area network link cannot be used as intranet host",
+        "answer": "A"
+    },
+    {
+        "question": "URL is an acronym for",
+        "option1": "Universal research locator",
+        "option2": "Universal resource locator",
+        "option3": "Uniform research locator",
+        "option4": "Uniform resource locator",
+        "answer": "D"
+    },
+    {
+        "question": "The following is best suitable for remote administration of a computer",
+        "option1": "WAIS",
+        "option2": "Browsers",
+        "option3": "Telnet",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "Www.lycos.com was developed by",
+        "option1": "Cambridge university",
+        "option2": "California university",
+        "option3": "Carnegie-Mellon university",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "Which of the following is not a layer of the OSI reference models",
+        "option1": "Session",
+        "option2": "Data transmission",
+        "option3": "Network",
+        "option4": "Physical",
+        "answer": "B"
+    },
+    {
+        "question": "ARPA is the acronym for",
+        "option1": "Applied research project agency",
+        "option2": "Advanced remote project agency",
+        "option3": "Applied remote project agency",
+        "option4": "Advanced research project agency",
+        "answer": "D"
+    },
+    {
+        "question": "VSNL is an acronym for",
+        "option1": "Vishesh Samachar Nigam ltd",
+        "option2": "Virat Sanchar Nigam ltd",
+        "option3": "Videsh Sanchar Nigam ltd",
+        "option4": "Videsh Samachar Nigam ltd",
+        "answer": "C"
+    },
+    {
+        "question": "TCP is the acronym for",
+        "option1": "Transmission control protocol",
+        "option2": "Transit control protocol",
+        "option3": "Transmission calling protocol",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "The network address of all ones represents",
+        "option1": "This network",
+        "option2": "All network",
+        "option3": "This node",
+        "option4": "None of the above",
+        "answer": "B"
+    },
+    {
+        "question": "Most of the E-mail service providers use either ___ or ___ protocol for e-mail",
+        "option1": "X.25, X.500",
+        "option2": "X.50, X.400",
+        "option3": "X.25, X.400",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "IMAP is an acronym for",
+        "option1": "Internet mail access protocol",
+        "option2": "International mail access protocol",
+        "option3": "Interactive mail access protocol",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "URI is the acronym for",
+        "option1": "Universal resource identifier",
+        "option2": "Unified resource identifier",
+        "option3": "Universal reference identifier",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "HTML is acronym for",
+        "option1": "Hypertext marking language",
+        "option2": "Hypertext making language",
+        "option3": "Hypertext markup language",
+        "option4": "Hyper transport markup language",
+        "answer": "C"
+    },
+    {
+        "question": "The domain name \u201cgov.\u201d stands for",
+        "option1": "U.S.Governmet",
+        "option2": "Any Government",
+        "option3": "Developed nations government",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "BBS are ventured usually run by",
+        "option1": "Government",
+        "option2": "Institutes",
+        "option3": "Students",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "Which of the following is not correct in regard to the E-mail system",
+        "option1": "Using encryption you could electronically deliver confidential documents saving time and money",
+        "option2": "Limited only to local area network",
+        "option3": "Cost of sending messages across the world is the same as that of sending across the city",
+        "option4": "If the recipient is not around, the message is delivered to this mailbox",
+        "answer": "B"
+    },
+    {
+        "question": "Every resource available on the web has an address that may be encoded by a",
+        "option1": "URI",
+        "option2": "HTTP",
+        "option3": "BOTH A) & b)",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "The actual number of usable class a network is",
+        "option1": "127",
+        "option2": "128",
+        "option3": "126",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "In Microsoft Outlook Express, if the same e-mail has to be sent to many addresses what can be done?",
+        "option1": "The addresses are typed in the to box separated by a comma or a colon",
+        "option2": "E_Mail are sent one by one typing the addresses separately",
+        "option3": "Same messages cannot be sent to different users",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "While sending e-mail addresses typed against BCC receive________",
+        "option1": "Blank Carbon Copy",
+        "option2": "Block Carbon Copy",
+        "option3": "Blind Carbon Copy",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "In India E-mail through an Internet service provider is available since",
+        "option1": "August 15, 1994",
+        "option2": "August 14, 1995",
+        "option3": "August 15, 1995",
+        "option4": "August 14, 1996",
+        "answer": "C"
+    },
+    {
+        "question": "HTTP stands for",
+        "option1": "Hyper Text Transfer Protocol",
+        "option2": "Hyper Text Transfer Process",
+        "option3": "Higher Text Transfer Process",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "The class B network format is",
+        "option1": "Network. Node. Network. Node",
+        "option2": "Network. Node. Node. Node",
+        "option3": "Network. Network. Network. Node",
+        "option4": "Network. Network. Node. Node",
+        "answer": "D"
+    },
+    {
+        "question": "POP is an acronym for",
+        "option1": "Process Order Protocol",
+        "option2": "Post Order Protocol",
+        "option3": "Power Order Protocol",
+        "option4": "Post Office Protocol",
+        "answer": "D"
+    },
+    {
+        "question": "BBS based message can be echoed across the world through",
+        "option1": "Globalnet",
+        "option2": "Fidonet",
+        "option3": "Didonet",
+        "option4": "Internet",
+        "answer": "D"
+    },
+    {
+        "question": "E-mail works on",
+        "option1": "Forward and Backward Principle",
+        "option2": "Store and Retrieve Principle",
+        "option3": "Store and Forward Principle",
+        "option4": "Front and Back Principle",
+        "answer": "C"
+    },
+    {
+        "question": "The Web relies on the following mechanisms to make it resource readily available.",
+        "option1": "A uniform naming scheme",
+        "option2": "Protocols",
+        "option3": "Hypertext",
+        "option4": "All the above.",
+        "answer": "B"
+    },
+    {
+        "question": "WWW stands for",
+        "option1": "wide world web",
+        "option2": "web world wide",
+        "option3": "world wide web",
+        "option4": "world web wide",
+        "answer": "(c)"
+    },
+    {
+        "question": "WINS stands for",
+        "option1": "windows intranet named service",
+        "option2": "world internet name server",
+        "option3": "world intranet named service",
+        "option4": "windows internet name service",
+        "answer": "(d)"
+    },
+    {
+        "question": "SLIP is an acronym for",
+        "option1": "selected line input process",
+        "option2": "selected line inputs provider",
+        "option3": "serial line internet protocol",
+        "option4": "serial line input process",
+        "answer": "(c)"
+    },
+    {
+        "question": "PPP is an acronym for",
+        "option1": "process to process protocol",
+        "option2": "process to process pointing",
+        "option3": "point to point process",
+        "option4": "point to point protocol",
+        "answer": "(d)"
+    },
+    {
+        "question": "A modem is used for",
+        "option1": "to connect the local area network to TCP/IP network",
+        "option2": "to connect internet via telephone line",
+        "option3": "to connect internet via satellite",
+        "option4": "all the above",
+        "answer": "(d)"
+    },
+    {
+        "question": "Which of the following FTP program found in all the windows system?",
+        "option1": "wftp.exe",
+        "option2": "wsftp.exe",
+        "option3": "ftp.exe",
+        "option4": "tftp.exe",
+        "answer": "c)"
+    },
+    {
+        "question": "OSI stands for",
+        "option1": "open system interconnect",
+        "option2": "open system interface",
+        "option3": "other system interface",
+        "option4": "none of the above",
+        "answer": "b)"
+    },
+    {
+        "question": "The domain name for India is",
+        "option1": "ind",
+        "option2": "indi",
+        "option3": "in",
+        "option4": "India",
+        "answer": "c)"
+    },
+    {
+        "question": "Which of the following is not a layer of the OSI reference model.",
+        "option1": "Session",
+        "option2": "Data transmission",
+        "option3": "Network",
+        "option4": "Physical",
+        "answer": "b)"
+    },
+    {
+        "question": "SMTP stands for",
+        "option1": "simple mail transfer protocol",
+        "option2": "single mail transfer protocol",
+        "option3": "sequential mail transfer protocol",
+        "option4": "none of the above",
+        "answer": "a)"
+    },
+    {
+        "question": "Email works on",
+        "option1": "forward and backward principle",
+        "option2": "store and retrieve principle",
+        "option3": "store and forward principle",
+        "option4": "front and back principle",
+        "answer": "a)"
+    },
+    {
+        "question": "The domain name \u201cgov\u201d stands for",
+        "option1": "us government",
+        "option2": "any government",
+        "option3": "developed nations government",
+        "option4": "none of the above",
+        "answer": "b)"
+    },
+    {
+        "question": "ftp application is",
+        "option1": "internet browsers",
+        "option2": "used to send email",
+        "option3": "used to download and upload files",
+        "option4": "none of the above",
+        "answer": "c)"
+    },
+    {
+        "question": "http stands for",
+        "option1": "hyper text transfer process",
+        "option2": "hyper text transfer protocol",
+        "option3": "higher text transfer process",
+        "option4": "none of the above",
+        "answer": "b)"
+    },
+    {
+        "question": "url is the acronym for",
+        "option1": "Uniform research location.",
+        "option2": "Uniform resource locator",
+        "option3": "Uniform resource location.",
+        "option4": "Uniform resistor locator.",
+        "answer": "b)"
+    },
+    {
+        "question": "What is the maximum possible length of an identifier?",
+        "option1": "16",
+        "option2": "32",
+        "option3": "64",
+        "option4": "None of these above",
+        "answer": "(d) None of these above"
+    },
+    {
+        "question": "Who developed the Python language?",
+        "option1": "Zim Den",
+        "option2": "Guido van Rossum",
+        "option3": "Niene Stom",
+        "option4": "Wick van Rossum",
+        "answer": "(b) Guido van Rossum"
+    },
+    {
+        "question": "In which year was the Python language developed?",
+        "option1": "1995",
+        "option2": "1972",
+        "option3": "1981",
+        "option4": "1989",
+        "answer": "(d) 1989"
+    },
+    {
+        "question": "In which language is Python written?",
+        "option1": "English",
+        "option2": "PHP",
+        "option3": "C",
+        "option4": "All of the above",
+        "answer": "(b) C"
+    },
+    {
+        "question": "Which one of the following is the correct extension of the Python file?",
+        "option1": ".py",
+        "option2": ".python",
+        "option3": ".p",
+        "option4": "None of these",
+        "answer": "(a) .py"
+    },
+    {
+        "question": "In which year was the Python 3.0 version developed?",
+        "option1": "2008",
+        "option2": "2000",
+        "option3": "2010",
+        "option4": "2005",
+        "answer": "(a) 2008"
+    },
+    {
+        "question": "Which character is used in Python to make a single line comment?",
+        "option1": "/",
+        "option2": "//",
+        "option3": "#",
+        "option4": "!",
+        "answer": "(c) #"
+    },
+    {
+        "question": "Which of the following statements is correct regarding the object-oriented programming concept in Python?",
+        "option1": "Classes are real-world entities while objects are not real",
+        "option2": "Objects are real-world entities while classes are not real",
+        "option3": "Both objects and classes are real-world entities",
+        "option4": "All of the above",
+        "answer": "(b) Objects are real-world entities while classes are not real"
+    },
+    {
+        "question": "What is the method inside the class in python language?",
+        "option1": "Object",
+        "option2": "Function",
+        "option3": "Attribute",
+        "option4": "Argument",
+        "answer": "(b) Function"
+    },
+    {
+        "question": "Which of the following declarations is incorrect?",
+        "option1": "_x = 2",
+        "option2": "__x = 3",
+        "option3": "__xyz__ = 5",
+        "option4": "None of these",
+        "answer": "(d) None of these"
+    },
+    {
+        "question": "Why does the name of local variables start with an underscore discouraged?",
+        "option1": "To identify the variable",
+        "option2": "It confuses the interpreter",
+        "option3": "It indicates a private variable of a class",
+        "option4": "None of these",
+        "answer": "(c) It indicates a private variable of a class"
+    },
+    {
+        "question": "Which of the following is not a keyword in Python language?",
+        "option1": "val",
+        "option2": "raise",
+        "option3": "try",
+        "option4": "with",
+        "answer": "(a) val"
+    },
+    {
+        "question": "Which of the following statements is correct for variable names in Python language?",
+        "option1": "All variable names must begin with an underscore.",
+        "option2": "Unlimited length",
+        "option3": "The variable name length is a maximum of 2.",
+        "option4": "All of the above",
+        "answer": "(b) Unlimited length"
+    },
+    {
+        "question": "Which of the following declarations is incorrect in python language?",
+        "option1": "xyzp = 5,000,000",
+        "option2": "x y z p = 5000 6000 7000 8000",
+        "option3": "x,y,z,p = 5000, 6000, 7000, 8000",
+        "option4": "x_y_z_p = 5,000,000",
+        "answer": "(b) x y z p = 5000 6000 7000 8000"
+    },
+    {
+        "question": "Which of the following words cannot be a variable in python language?",
+        "option1": "_val",
+        "option2": "val",
+        "option3": "try",
+        "option4": "_try_",
+        "answer": "(c) try"
+    },
+    {
+        "question": "Which of the following operators is the correct option for power(ab)?",
+        "option1": "a ^ b",
+        "option2": "a**b",
+        "option3": "a ^ ^ b",
+        "option4": "a ^ * b",
+        "answer": "(b) a**b"
+    },
+    {
+        "question": "Which of the following precedence order is correct in Python?",
+        "option1": "Parentheses, Exponential, Multiplication, Division, Addition, Subtraction",
+        "option2": "Multiplication, Division, Addition, Subtraction, Parentheses, Exponential",
+        "option3": "Division, Multiplication, Addition, Subtraction, Parentheses, Exponential",
+        "option4": "Exponential, Parentheses, Multiplication, Division, Addition, Subtraction",
+        "answer": "(a) Parentheses, Exponential, Multiplication, Division, Addition, Subtraction"
+    },
+    {
+        "question": "Which one of the following has the same precedence level?",
+        "option1": "Division, Power, Multiplication, Addition and Subtraction",
+        "option2": "Division and Multiplication",
+        "option3": "Subtraction and Division",
+        "option4": "Power and Division",
+        "answer": "(b) Division and Multiplication"
+    },
+    {
+        "question": "Which one of the following has the highest precedence in the expression?",
+        "option1": "Division",
+        "option2": "Subtraction",
+        "option3": "Power",
+        "option4": "Parentheses",
+        "answer": "(d) Parentheses"
+    },
+    {
+        "question": "Which of the following functions is a built-in function in python language?",
+        "option1": "val()",
+        "option2": "print()",
+        "option3": "print()",
+        "option4": "None of these",
+        "answer": "(b) print()"
+    },
+    {
+        "question": "Study the following function:round(4.576) What will be the output of this function?",
+        "option1": "4",
+        "option2": "5",
+        "option3": "576",
+        "option4": "5",
+        "answer": "(d) 5"
+    },
+    {
+        "question": "Which of the following is correctly evaluated for this function?pow(x,y,z)",
+        "option1": "(x**y) / z",
+        "option2": "(x / y) * z",
+        "option3": "(x**y) % z",
+        "option4": "(x / y) / z",
+        "answer": "(c) (x**y) % z"
+    },
+    {
+        "question": "Which one of the following syntaxes is the correct syntax to read from a simple text file stored in ''d:\\java.txt''?",
+        "option1": "Infile = open(''d:\\\\java.txt'', ''r'')",
+        "option2": "Infile = open(file=''d:\\\\\\java.txt'', ''r'')",
+        "option3": "Infile = open(''d:\\java.txt'',''r'')",
+        "option4": "Infile = open.file(''d:\\\\java.txt'',''r'')",
+        "answer": "(a) Infile = open(''c:\\\\scores.txt'', ''r'')"
+    },
+    {
+        "question": "Study the following code:x = ['XX', 'YY'] for i in a:  i.lower() print(a) What will be the output of this program?",
+        "option1": "['XX', 'YY']",
+        "option2": "['xx', 'yy']",
+        "option3": "[XX, yy]",
+        "option4": "None of these",
+        "answer": "(a) ['XX', 'YY']"
+    },
+    {
+        "question": "Study the following function:import math abs(math.sqrt(36)) What will be the output of this code?",
+        "option1": "Error",
+        "option2": "-6",
+        "option3": "6",
+        "option4": "6.0",
+        "answer": "(d) 6.0"
+    },
+    {
+        "question": "Study the following function:any([5>8, 6>3, 3>1]) What will be the output of this code?",
+        "option1": "False",
+        "option2": "Ture",
+        "option3": "Invalid code",
+        "option4": "None of these",
+        "answer": "(b) True"
+    },
+    {
+        "question": "Study the following statement:>>>\"a\"+\"bc\" What will be the output of this statement?",
+        "option1": "a+bc",
+        "option2": "abc",
+        "option3": "a bc",
+        "option4": "a",
+        "answer": "(b) abc"
+    },
+    {
+        "question": "Study the following code:>>>\"javatpoint\"[5:] What will be the output of this code?",
+        "option1": "javatpoint",
+        "option2": "java",
+        "option3": "point",
+        "option4": "None of these",
+        "answer": "(c) point"
+    },
+    {
+        "question": "Which of the following option is not a core data type in the python language?",
+        "option1": "Dictionary",
+        "option2": "Lists",
+        "option3": "Class",
+        "option4": "All of the above",
+        "answer": "(c) Class"
+    },
+    {
+        "question": "What error will occur when you execute the following code? MANGO = APPLE",
+        "option1": "NameError",
+        "option2": "SyntaxError",
+        "option3": "TypeError",
+        "option4": "ValueError",
+        "answer": "(a) NamaError"
+    },
+    {
+        "question": "What happens when '2' == 2 is executed?",
+        "option1": "False",
+        "option2": "Ture",
+        "option3": "ValueError occurs",
+        "option4": "TypeError occurs",
+        "answer": "(a) False"
+    },
+    {
+        "question": "Python pandas was developed by?",
+        "option1": "Guido van Rossum",
+        "option2": "Travis Oliphant",
+        "option3": "Wes McKinney",
+        "option4": "Brendan Eich",
+        "answer": "C"
+    },
+    {
+        "question": "What will be correct syntax for pandas series?",
+        "option1": "pandas_Series( data, index, dtype, copy)",
+        "option2": "pandas.Series( data, index, dtype)",
+        "option3": "pandas.Series( data, index, dtype, copy)",
+        "option4": "pandas_Series( data, index, dtype)",
+        "answer": "C"
+    },
+    {
+        "question": "What will be syntax for pandas dataframe?",
+        "option1": "pandas.DataFrame( data, index, dtype, copy)",
+        "option2": "pandas.DataFrame( data, index, rows, dtype, copy)",
+        "option3": "pandas_DataFrame( data, index, columns, dtype, copy)",
+        "option4": "pandas.DataFrame( data, index, columns, dtype, copy)",
+        "answer": "D"
+    },
+    {
+        "question": "Axis 1, in panel represent?",
+        "option1": "minor_axis",
+        "option2": "major_axis",
+        "option3": "items",
+        "option4": "None of the above",
+        "answer": "B"
+    },
+    {
+        "question": "Which of the following thing can be data in Pandas?",
+        "option1": "a python dict",
+        "option2": "an ndarray",
+        "option3": "a scalar value",
+        "option4": "All of the above",
+        "answer": "D"
+    },
+    {
+        "question": "The ________ project builds on top of pandas and matplotlib to provide easy plotting of data.",
+        "option1": "yhat",
+        "option2": "Seaborn",
+        "option3": "Vincent",
+        "option4": "Pychart",
+        "answer": "B"
+    },
+    {
+        "question": "Why ndim is used?",
+        "option1": "Returns the number of elements in the underlying data.",
+        "option2": "Returns the Series as ndarray.",
+        "option3": "Returns the number of dimensions of the underlying data, by definition 1.",
+        "option4": "Returns a list of the axis labels",
+        "answer": "C"
+    },
+    {
+        "question": "Which of the following is false?",
+        "option1": "The integer format tracks only the locations and sizes of blocks of data.",
+        "option2": "Pandas follow the NumPy convention of raising an error when you try to convert something to a bool.",
+        "option3": "Two kinds of SparseIndex are implemented",
+        "option4": "The integer format keeps an arrays of all of the locations where the data are not equal to the fill value",
+        "answer": "A"
+    },
+    {
+        "question": "SciPy stands for?",
+        "option1": "science library",
+        "option2": "source library",
+        "option3": "significant library",
+        "option4": "scientific library",
+        "answer": "D"
+    },
+    {
+        "question": "Which of the following is not correct sub-packages of SciPy?",
+        "option1": "scipy.cluster",
+        "option2": "scipy.source",
+        "option3": "scipy.interpolate",
+        "option4": "scipy.signal",
+        "answer": "B"
+    },
+    {
+        "question": "Which of the following is true?",
+        "option1": "By default, all the NumPy functions have been available through the SciPy namespace",
+        "option2": "There is no need to import the NumPy functions explicitly, when SciPy is imported.",
+        "option3": "SciPy is built on top of NumPy arrays",
+        "option4": "All of the above",
+        "answer": "D"
+    },
+    {
+        "question": "What will be output for the following code?import numpy as np print np.linspace(1., 4., 6)",
+        "option1": "array([ 1. , 2.2, 2.8, 3.4, 4. ])",
+        "option2": "array([ 1. , 1.6, 2.8, 3.4, 4. ])",
+        "option3": "array([ 1. , 1.6, 2.2, 2.8, 3.4, 4. ])",
+        "option4": "array([ 1. , 1.6, 2.2, 2.8, 4. ])",
+        "answer": "C"
+    },
+    {
+        "question": "How to import Constants Package in SciPy?",
+        "option1": "import scipy.constants",
+        "option2": "from scipy.constants",
+        "option3": "import scipy.constants.package",
+        "option4": "from scipy.constants.package",
+        "answer": "B"
+    },
+    {
+        "question": "what is constant defined for Boltzmann constant in SciPy?",
+        "option1": "G",
+        "option2": "e",
+        "option3": "R",
+        "option4": "k",
+        "answer": "D"
+    },
+    {
+        "question": "In SciPy, determinant is computed using?",
+        "option1": "determinant()",
+        "option2": "SciPy.determinant()",
+        "option3": "det()",
+        "option4": "SciPy.det()",
+        "answer": "C"
+    },
+    {
+        "question": "Which of the following is false?",
+        "option1": "scipy.linalg also has some other advanced functions that are not in numpy.linalg",
+        "option2": "SciPy version might be faster depending on how NumPy was installed.",
+        "option3": "Both A and B",
+        "option4": "None of the above",
+        "answer": "D"
+    },
+    {
+        "question": "What relation is consider between Eigen value (lambda), square matrix (A) and Eign vector(v)?",
+        "option1": "Av = lambda*v",
+        "option2": "Av =Constant * lambda*v",
+        "option3": "Av =10 * lambda*v",
+        "option4": "Av != lambda*v",
+        "answer": "A"
+    },
+    {
+        "question": "What is true about Machine Learning?",
+        "option1": "Machine Learning (ML) is that field of computer science",
+        "option2": "ML is a type of artificial intelligence that extract patterns out of raw data by using an algorithm or method.",
+        "option3": "The main focus of ML is to allow computer systems learn from experience without being explicitly programmed or human intervention.",
+        "option4": "All of the above",
+        "answer": "D"
+    },
+    {
+        "question": "ML is a field of AI consisting of learning algorithms that?",
+        "option1": "Improve their performance",
+        "option2": "At executing some task",
+        "option3": "Over time with experience",
+        "option4": "All of the above",
+        "answer": "D"
+    },
+    {
+        "question": "p \u2192 0q is not a?",
+        "option1": "hack clause",
+        "option2": "horn clause",
+        "option3": "structural clause",
+        "option4": "system clause",
+        "answer": "B"
+    },
+    {
+        "question": "The action _______ of a robot arm specify to Place block A on block B.",
+        "option1": "STACK(A,B)",
+        "option2": "LIST(A,B)",
+        "option3": "QUEUE(A,B)",
+        "option4": "ARRAY(A,B)",
+        "answer": "A"
+    },
+    {
+        "question": "A__________ begins by hypothesizing a sentence (the symbol S) and successively predicting lower level constituents until individual preterminal symbols are written.",
+        "option1": "bottow-up parser",
+        "option2": "top parser",
+        "option3": "top-down parser",
+        "option4": "bottom parser",
+        "answer": "C"
+    },
+    {
+        "question": "A model of language consists of the categories which does not include ________.",
+        "option1": "System Unit",
+        "option2": "structural units.",
+        "option3": "data units",
+        "option4": "empirical units",
+        "answer": "B"
+    },
+    {
+        "question": "Different learning methods does not include?",
+        "option1": "Introduction",
+        "option2": "Analogy",
+        "option3": "Deduction",
+        "option4": "Memorization",
+        "answer": "A"
+    },
+    {
+        "question": "The model will be trained with data in one single batch is known as ?",
+        "option1": "Batch learning",
+        "option2": "Offline learning",
+        "option3": "Both A and B",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "Which of the following are ML methods?",
+        "option1": "based on human supervision",
+        "option2": "supervised Learning",
+        "option3": "semi-reinforcement Learning",
+        "option4": "All of the above",
+        "answer": "A"
+    },
+    {
+        "question": "In Model based learning methods, an iterative process takes place on the ML models that are built based on various model parameters, called ?",
+        "option1": "mini-batches",
+        "option2": "optimizedparameters",
+        "option3": "hyperparameters",
+        "option4": "superparameters",
+        "answer": "C"
+    },
+    {
+        "question": "Which of the following is a widely used and effective machine learning algorithm based on the idea of bagging?",
+        "option1": "Decision Tree",
+        "option2": "Regression",
+        "option3": "Classification",
+        "option4": "Random Forest",
+        "answer": "D"
+    },
+    {
+        "question": "To find the minimum or the maximum of a function, we set the gradient to zero because:",
+        "option1": "The value of the gradient at extrema of a function is always zero",
+        "option2": "Depends on the type of problem",
+        "option3": "Both A and B",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "Which of the following is a disadvantage of decision trees?",
+        "option1": "Factor analysis",
+        "option2": "Decision trees are robust to outliers",
+        "option3": "Decision trees are prone to be overfit",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "How do you handle missing or corrupted data in a dataset?",
+        "option1": "Drop missing rows or columns",
+        "option2": "Replace missing values with mean/median/mode",
+        "option3": "Assign a unique category to missing values",
+        "option4": "All of the above",
+        "answer": "D"
+    },
+    {
+        "question": "When performing regression or classification, which of the following is the correct way to preprocess the data?",
+        "option1": "Normalize the data -> PCA -> training",
+        "option2": "PCA -> normalize PCA output -> training",
+        "option3": "Normalize the data -> PCA -> normalize PCA output -> training",
+        "option4": "None of the above",
+        "answer": "A"
+    },
+    {
+        "question": "Which of the following statements about regularization is not correct?",
+        "option1": "Using too large a value of lambda can cause your hypothesis to underfit the data.",
+        "option2": "Using too large a value of lambda can cause your hypothesis to overfit the data",
+        "option3": "Using a very large value of lambda cannot hurt the performance of your hypothesis.",
+        "option4": "None of the above",
+        "answer": "D"
+    },
+    {
+        "question": "Which of the following techniques can not be used for normalization in text mining?",
+        "option1": "Stemming",
+        "option2": "Lemmatization",
+        "option3": "Stop Word Removal",
+        "option4": "None of the above",
+        "answer": "C"
+    },
+    {
+        "question": "Which of the following is a reasonable way to select the number of principal components \"k\"?",
+        "option1": "Choose k to be the smallest value so that at least 99% of the varinace is retained.",
+        "option2": "Choose k to be 99% of m (k = 0.99*m, rounded to the nearest integer).",
+        "option3": "Choose k to be the largest value so that 99% of the variance is retained.",
+        "option4": "Use the elbow method.",
+        "answer": "A"
+    },
+    {
+        "question": "What is a sentence parser typically used for?",
+        "option1": "It is used to parse sentences to check if they are utf-8 compliant.",
+        "option2": "It is used to parse sentences to derive their most likely syntax tree structures.",
+        "option3": "It is used to parse sentences to assign POS tags to all tokens.",
+        "option4": "It is used to check if sentences can be parsed into meaningful tokens.",
+        "answer": "B"
+    }
+]
