@@ -12,36 +12,52 @@ import Table from 'react-bootstrap/Table';
 import CompanyNavbar from '../Navbar/CompanyNavbar';
 import { BsChevronRight } from 'react-icons/bs'
 import { firestore } from '../../../firebase';
-import { collection, getDocs } from "@firebase/firestore"
+import { collection, getDocs,deleteDoc,doc as Doc } from "@firebase/firestore"
 
 function Postedjob() {
     const [Jobs, setJobs] = useState([])
     const [search, setSearch] = useState('')
     const [selected, setSelected] = useState('Pending')
+    
+    var [user, setUser] = useState({})
+    useEffect(() => {
+        var company = localStorage.getItem('user')
+        company = JSON.parse(company)
+        setUser(company)
+        fetchJobDetails(company.uid)
+    }, [])
 
-    const fetchJobDetails = async () => {
+    const fetchJobDetails = async (uid) => {
+        setJobs([])
         await getDocs(collection(firestore, 'jobs'))
             .then((querySnapshot) => {
                 const newData = querySnapshot.docs
                     .map((doc) => {
-                        const newDocData = {
-                            id: doc.id,
-                            title: doc.data().jobTitle,
-                            type: doc.data().type,
-                            applicants: doc.data().Applicants,
-                            posted: doc.data().posted,
-                            status: doc.data().status,
+                        if(doc.data().by == uid){
+                            const newDocData = {
+                                id: doc.id,
+                                title: doc.data().jobTitle,
+                                type: doc.data().type,
+                                applicants: doc.data().Applicants,
+                                posted: doc.data().posted,
+                                status: doc.data().status,
+                            }
+                            setJobs((Jobs) => [...Jobs, newDocData])
                         }
-                        setJobs((Jobs) => [...Jobs, newDocData])
                     });
             })
             .catch((e) => {
                 console.log(e)
             })
     }
-    useEffect(() => {
-        fetchJobDetails()
-    }, [])
+
+    const deletejob = async (jobid)=>{
+        await deleteDoc(Doc(firestore,`jobs/${jobid}`))
+        .then(()=>{
+            console.log('Job Delted')
+            fetchJobDetails(user.uid)
+        })
+    }
     return (
         <div>
             <div className='jobpostsection row d-flex m-0 p-0'>
@@ -205,7 +221,7 @@ function Postedjob() {
                                                                 </button>
                                                                 <ul class="dropdown-menu dropdownmenu">
                                                                     <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
+                                                                    <li><a class="dropdown-item" onClick={()=>{deletejob(job.id)}}>Delete</a></li>
             
                                                                 </ul>
                                                             </div>

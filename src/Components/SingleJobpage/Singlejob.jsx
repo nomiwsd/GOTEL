@@ -161,7 +161,7 @@ function Singlejob() {
                                             <h3 class="jobs-title"><a>{location.job.jobTitle}</a>
                                             </h3>
                                             <div class="info-company d-flex">
-                                                by <a class="authour civi-link-bottom mx-2" href="#f">Uxper</a>  in  <div class="categories-warpper mx-2">
+                                                by <a class="authour civi-link-bottom mx-2">{location.by}</a>  in  <div class="categories-warpper mx-2">
                                                     <div class="cate-warpper">
                                                         <a href="#dsf" class="cate civi-link-bottom">
                                                         {location.job.jobCategorie}  </a>
@@ -324,7 +324,11 @@ function Singlejob() {
                                 <p class="days text-center">
                                     <span> {location.job.posted} </span>last date to apply</p>
                             </div>
-                            <button className='applybtn py-2 px-2'>Apply Now</button>
+                            <button className='applybtn py-2 px-2' 
+                            onClick={()=>{
+                                applyForJob(location.id)
+                            }}
+                            >Apply Now</button>
                         </div>
                         {
                             company.length > 0 ? 

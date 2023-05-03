@@ -203,7 +203,7 @@ function CompanyMessage() {
                                                                     <div class="detail">
                                                                         <div class="name">
                                                                             <span class="uname">{user.name}</span>
-                                                                            <span class="date">4 days ago</span>
+                                                                            <span class="date"></span>
                                                                         </div>
                                                                         <div class="desc">
                                                                             test                </div>

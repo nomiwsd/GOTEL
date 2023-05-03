@@ -69,6 +69,7 @@ function JobSeeker() {
   };
   const [selectedImage, setSelectedImage] = useState(null);
   const [name, setName] = useState(user.Name);
+  const [cnic, setCnic] = useState(null);
   const [position, setPosition] = useState(null);
   const [categories, setCategories] = useState(null);
   const [phoneNo, setPhoneNo] = useState(null);
@@ -122,6 +123,7 @@ function JobSeeker() {
   const [edu2Description,setEdu2Description] = useState(null)
 
   const [skills,setSkills] = useState(null)
+  const [cvUploaded,setCvUploaded] = useState(false)
 
   const writeAllDetails = async ()=>{
     writeUserDetails()
@@ -142,6 +144,7 @@ function JobSeeker() {
   const writeUserDetails = async () => {
     await setDoc(doc(firestore, "users",user.uid), {
       Name:name,
+      cnic:cnic,
       position:position,
       userType:'Job Seeker',
       categories:categories.value,
@@ -176,6 +179,7 @@ function JobSeeker() {
             .then((querySnapshot)=>{
                 if(querySnapshot.exists()){
                     setName(querySnapshot.data().Name)
+                    setCnic(querySnapshot.data().cnic)
                     setPosition(querySnapshot.data().position)
                     setCategories(querySnapshot.data().categories)
                     setDob(querySnapshot.data().dob)
@@ -184,7 +188,7 @@ function JobSeeker() {
                     setInstagramLink(querySnapshot.data().instagramLink)
                     setFacebookLink(querySnapshot.data().facebookLink)
                     setLinkedInLink(querySnapshot.data().linkedInLink)
-                    setGender(querySnapshot.data().gender)
+                    setGender({value:querySnapshot.data().gender,label:querySnapshot.data().gender})
                     setLanguage(querySnapshot.data().language)
                     setQualification({label:querySnapshot.data().qualification,value:querySnapshot.data().qualification})
                     setEmail(querySnapshot.data().email)
@@ -413,6 +417,7 @@ const fetchEducationDetails = async (uid) => {
   const uploadCv = async (image)=>{
     const buffer = await image.arrayBuffer();
     const result = await uploadBytes(ref(storage,`images/${user.uid}/cv`),buffer)
+    setCvUploaded(true)
     // setSelectedImage(await getDownloadURL(ref(storage,`images/${user.uid}/cv`)))
   } 
   return (
@@ -535,7 +540,7 @@ const fetchEducationDetails = async (uid) => {
                     </div>
                     <div class="col-md-6 col-6 ">
                       <label for="candidate_first_name">CNIC</label>
-                      <input class="point-mark point-active" type="text" name="CNIC" placeholder="Username"  value={name}  onChange={(e)=> {setName(e.target.value)}}/>
+                      <input class="point-mark point-active" type="text" name="CNIC" placeholder="CNIC"  value={cnic}  onChange={(e)=> {setCnic(e.target.value)}}/>
                     </div>
                     
                     <div class="col-md-6">
@@ -626,7 +631,10 @@ const fetchEducationDetails = async (uid) => {
                   <div class="resume block-from">
                     <h6>Resume</h6>
                     <div class="candidate-resume">
-                      <div class="form-group col-md-12 civi-upload-cv">
+                      {
+                        cvUploaded ? 
+                        <p>Cv Uploaded</p> : 
+                        <div class="form-group col-md-12 civi-upload-cv">
                         <label>CV Attachment</label>
                         <div class="form-field">
                           <div id="cv_errors_log" class="errors-log"></div>
@@ -651,6 +659,7 @@ const fetchEducationDetails = async (uid) => {
                               <input id="html5_1gqv2udhadag15s51uj3f81d5df" className='uploadbtn' type="file" multiple accept="application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/pdf,.pdf" /></div></div>
                         </div>
                       </div>
+                      }
                     </div>
                   </div>
                 </div></div>
@@ -954,7 +963,7 @@ const fetchEducationDetails = async (uid) => {
                             </div>
                             <div className=" d-flex justify-content-between px-3">
                                 <p className='m-0 textlang fw-bold'>CNIC No</p>
-                                <p className='m-0 textloc text-muted'>38303-1136704-9</p>
+                                <p className='m-0 textloc text-muted'>{cnic}</p>
                             </div>
                             <div className=" d-flex justify-content-between px-3 mt-2">
                                 <p className='m-0 textlang fw-bold'>Date of Birth</p>
@@ -962,7 +971,7 @@ const fetchEducationDetails = async (uid) => {
                             </div>
                             <div className=" d-flex justify-content-between mt-2 px-3">
                                 <p className='m-0 textlang fw-bold'>Gender</p>
-                                <p className='m-0 textloc text-muted'>{gender}</p>
+                                <p className='m-0 textloc text-muted'>{gender != null ? gender.value : gender}</p>
                             </div>
                             <div className=" d-flex justify-content-between my-2 px-3">
                                 <p className='m-0 textlang fw-bold'>Languages</p>

@@ -56,12 +56,17 @@ function Company() {
   const [loading,setLoading] = useState(false)
   const [published,setPublished] = useState(false)
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedCover, setSelectedCover] = useState(null);
 
-  
   const uploadImage = async (image)=>{
     const buffer = await image.arrayBuffer();
     const result = await uploadBytes(ref(storage,`images/${user.uid}/profile`),buffer)
     setSelectedImage(await getDownloadURL(ref(storage,`images/${user.uid}/profile`)))
+  }
+  const uploadCover = async (image)=>{
+    const buffer = await image.arrayBuffer();
+    const result = await uploadBytes(ref(storage,`images/${user.uid}/cover`),buffer)
+    setSelectedCover(await getDownloadURL(ref(storage,`images/${user.uid}/cover`)))
   }
   const writeUserDetails = async () => {
     await setDoc(doc(firestore, "users",location.state.user.uid), {
@@ -95,6 +100,7 @@ function Company() {
   const fetchUserDetails = async (uid) => {
     
       setSelectedImage(await getDownloadURL(ref(storage,`images/${uid}/profile`)))
+      setSelectedCover(await getDownloadURL(ref(storage,`images/${uid}/cover`)))
         await getDoc(doc(firestore,'users',uid))
             .then((querySnapshot)=>{
                 if(querySnapshot.exists()){
@@ -288,12 +294,22 @@ function Company() {
                             </div>
                             <div className="col-12 col-lg-7 coverimgdiv rounded-2 d-flex flex-column justify-content-center align-items-center p-4 p-lg-2">
                             <p>Cover Image</p>
-                            <button type="file" name='Upload'className='uploadimgbtn mb-2'>Upload</button>
+                            {/* <button type="file" name='Upload'className='uploadimgbtn mb-2'>Upload</button> */}
+                            <label for="cover" id="civi_select_avatar" className='uploadimgbtn mb-2'>Upload</label>
+                          <input
+                              type="file"
+                              id='cover'
+                              placeholder='Upload'
+                              onChange={(event) => {
+                                uploadCover(event.target.files[0])
+                              }}
+                              style={{ visibility: 'hidden'}}
+                            />
                             <img src="" className='cover' alt="" />
                             </div>
                         </div>
               </div>
-              <div class="about-company-dashboard block-archive-sidebar col-lg-3 col-md-3 col-11 mx-2 ">
+              <div class="about-company-dashboard block-archive-sidebar col-lg-3 col-md-3 col-11 mx-2 relative">
 							<h3 class="title-company-about">
 								Preview</h3>
 							<div class="info-company">
@@ -318,11 +334,17 @@ function Company() {
 									<div class="title-wapper">
 										<h4 class="title-about" data-title="Company name">{CompanyName == null ? user.Name : CompanyName}</h4>																				
 																				</div>
+                    <p className=' m-0'>{CompanyEmail}</p>
+                    <p className=' m-0'>{WebsiteName}</p>
+                    <p className=' m-0'>{PhoneNo}</p>
 							
 								</div>
 							</div>
 							<div class="des-about"></div>
-						</div>
+						{
+              selectedCover != null ? <img src={selectedCover} className=' w-full h-full object-cover -z-10 absolute left-0 top-0 blur-[1px]' /> : <></>
+            }
+            </div>
             </div>
           </div>
         </div>

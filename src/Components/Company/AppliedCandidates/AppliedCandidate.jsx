@@ -12,7 +12,7 @@ import { FaUserPlus } from 'react-icons/fa'
 import { BiMessageDetail } from 'react-icons/bi'
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 import { firestore, storage } from '../../../firebase';
@@ -29,6 +29,7 @@ const JobCategoryOptions = [
 
 
 function AppliedCandidate() {
+    const navigate = useNavigate()
     const [Jobs, setJobs] = useState([])
     useEffect(() => {
         var company = localStorage.getItem('user')
@@ -101,6 +102,8 @@ function AppliedCandidate() {
         await setDoc(Doc(firestore, `users/${user.uid}/chat/${canidateUid}`), {
 
         })
+        navigate('/CompanyMessage')
+        
     }
     const [selectedOption, setSelectedOption] = useState({ value: 'All', label: 'All' });
     const [search, setSearch] = useState('')
