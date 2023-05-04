@@ -190,7 +190,7 @@ function Company() {
                   <button onClick={()=>{
                     writeUserDetails()
                   }} type="submit" class="btn-submit-company civi-button" name="submit_company">
-                    Publish
+                    Register
                   
                   </button>
                 </div>
@@ -342,7 +342,7 @@ function Company() {
 							</div>
 							<div class="des-about"></div>
 						{
-              selectedCover != null ? <img src={selectedCover} className=' w-full h-full object-cover -z-10 absolute left-0 top-0 blur-[1px]' /> : <></>
+              selectedCover != null ? <img src={selectedCover} className=' w-full h-full object-cover -z-10 absolute left-0 top-0 blur-[1px]' alt=''/> : <></>
             }
             </div>
             </div>

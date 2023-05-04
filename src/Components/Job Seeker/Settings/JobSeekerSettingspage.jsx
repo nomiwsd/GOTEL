@@ -8,7 +8,6 @@ import {SiCoursera} from 'react-icons/si'
 import {BiMessageDetail} from 'react-icons/bi'
 import {BsBookmarkCheckFill} from 'react-icons/bs'
 import {AiOutlineFileSearch} from 'react-icons/ai'
-import {MdOutlineDocumentScanner} from 'react-icons/md'
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom";
