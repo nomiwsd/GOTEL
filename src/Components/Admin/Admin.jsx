@@ -27,12 +27,12 @@ const columns = [
     editable: true,
     Image: ''
   },
-  {
-    field: 'Status',
-    headerName: 'Status',
-    width: 150,
-    editable: true,
-  },
+  // {
+  //   field: 'Status',
+  //   headerName: 'Status',
+  //   width: 150,
+  //   editable: true,
+  // },
   {
     field: 'URL',
     headerName: 'URL',
@@ -80,12 +80,12 @@ const columns1 = [
     width: 160,
     editable: true,
   },
-  {
-    field: 'Status',
-    headerName: 'Status',
-    sortable: false,
-    width: 160,
-  },
+  // {
+  //   field: 'Status',
+  //   headerName: 'Status',
+  //   sortable: false,
+  //   width: 160,
+  // },
   {
     field: 'DateJoined',
     headerName: 'Joining Date',
@@ -116,10 +116,14 @@ function Admin() {
     onSnapshot(collection(firestore, 'users'), (users) => {
       users.docs.map((user, index) => {
         if (user.data().userType == 'Company') {
-          setCompany((company) => [...company,{id:index,companyName: user.data().Name, Status: 'Approved', URL: user.data().websiteUrl, RegisteredDate: new Date(user.data().date).toDateString() }])
+          setCompany((company) => [...company,{id:index,companyName: user.data().Name,
+            //  Status: 'Approved',
+              URL: user.data().websiteUrl, RegisteredDate: new Date(user.data().date).toDateString() }])
         }
         else {
-          setJobseekers((jobseekers) => [...jobseekers, {id:index,UserName: user.data().Name, Status: 'Pending', Email: user.data().email,Gender:user.data().gender, DateJoined: new Date(user.data().date).toDateString()}])
+          setJobseekers((jobseekers) => [...jobseekers, {id:index,UserName: user.data().Name, 
+            // Status: 'Pending',
+             Email: user.data().email,Gender:user.data().gender, DateJoined: new Date(user.data().date).toDateString()}])
         }
       })
     })

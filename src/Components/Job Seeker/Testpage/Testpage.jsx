@@ -19,6 +19,7 @@ import Mcqs from '../../../Data/testQuestions.json'
 import { update } from 'firebase/database';
 import JobSeekerNavbar from '../Navbar/JobSeekerNavbar';
 function Testpage() {    
+    const [sel,setsel] = useState('')
     const [user,setUser] = useState({})
     const [testQuestions,setTestQuestions] = useState(null)
     const [currentMcqs,setCurrentMcqs] = useState(0)
@@ -51,13 +52,14 @@ function Testpage() {
                 score = score + 1
             }
         }
-        updateDoc(doc(firestore,`users,${user.uid}`),{
+        
+        console.log(score)
+        updateDoc(doc(firestore,`users/${user.uid}`),{
             testQuestions:null,
             testScore:score
         }).then(()=>{
             console.log('testCompleted')
         })
-        console.log(score)
     }
     return (
         <div>
@@ -149,16 +151,24 @@ function Testpage() {
                                                     <h3 class="text-danger">Q.</h3>
                                                     <h5 class="mt-1 ml-2">{testQuestions.get(Array.from(testQuestions.keys())[currentMcqs]).question}</h5>
                                                 </div><div class="ans ml-2">
-                                                    <label class="radio" onClick={()=>{selectedOptions[currentMcqs] = 'a'}}> <input type="radio" name="brazil" value="brazil"/> <span>{testQuestions.get(Array.from(testQuestions.keys())[currentMcqs]).option1}</span>
+                                                    <label class={`radio ${sel == 'a' ? ' bg-green-500 text-white' : ' text-red-600 bg-transparent'}`} onClick={()=>{
+                                                        setsel('a')
+                                                        selectedOptions[currentMcqs] = 'a'}}> <input type="radio" name="brazil" value="brazil"/> <span>{testQuestions.get(Array.from(testQuestions.keys())[currentMcqs]).option1}</span>
                                                     </label>
                                                 </div><div class="ans ml-2">
-                                                    <label class="radio" onClick={()=>{selectedOptions[currentMcqs] = 'b'}}> <input type="radio" name="Germany" value="Germany"/> <span>{testQuestions.get(Array.from(testQuestions.keys())[currentMcqs]).option2}</span>
+                                                    <label class={`radio ${sel == 'b' ? ' bg-green-500 text-white' : ' text-red-600 bg-transparent'}`} onClick={()=>{
+                                                        setsel('b')
+                                                        selectedOptions[currentMcqs] = 'b'}}> <input type="radio" name="Germany" value="Germany"/> <span>{testQuestions.get(Array.from(testQuestions.keys())[currentMcqs]).option2}</span>
                                                     </label>
                                                 </div><div class="ans ml-2">
-                                                    <label class="radio" onClick={()=>{selectedOptions[currentMcqs] = 'c'}}> <input type="radio" name="Indonesia" value="Indonesia"/> <span>{testQuestions.get(Array.from(testQuestions.keys())[currentMcqs]).option3}</span>
+                                                    <label class={`radio ${sel == 'c' ? ' bg-green-500 text-white' : ' text-red-600 bg-transparent'}`} onClick={()=>{
+                                                        setsel('c')
+                                                        selectedOptions[currentMcqs] = 'c'}}> <input type="radio" name="Indonesia" value="Indonesia"/> <span>{testQuestions.get(Array.from(testQuestions.keys())[currentMcqs]).option3}</span>
                                                     </label>
-                                                </div><div class="ans ml-2">
-                                                    <label class="radio" onClick={()=>{selectedOptions[currentMcqs] = 'd'}}> <input type="radio" name="Russia" value="Russia"/> <span>{testQuestions.get(Array.from(testQuestions.keys())[currentMcqs]).option4}</span>
+                                                </div><div class={`ans ml-2`}>
+                                                    <label class={`radio ${sel == 'd' ? ' bg-green-500 text-white' : ' text-red-600 bg-transparent'}`} onClick={()=>{
+                                                        setsel('d')
+                                                        selectedOptions[currentMcqs] = 'd'}}> <input type="radio" name="Russia" value="Russia"/> <span>{testQuestions.get(Array.from(testQuestions.keys())[currentMcqs]).option4}</span>
                                                     </label>
                                             </div>
                                             </div>

@@ -69,13 +69,13 @@ function Company() {
     setSelectedCover(await getDownloadURL(ref(storage,`images/${user.uid}/cover`)))
   }
   const writeUserDetails = async () => {
-    await setDoc(doc(firestore, "users",location.state.user.uid), {
+    await setDoc(doc(firestore, "users",user.uid), {
       Name:CompanyName,
       userType:'Company',
       companyUrl:CompanyUrl,
       email:CompanyEmail,
       about:CompanyAbout,
-      websiteUrl:WebsiteName,
+      location:WebsiteName,
       phoneNo:PhoneNo,
       companySize:companySize.value,
       twitterLink:TwitterLink,
@@ -225,8 +225,8 @@ function Company() {
                                 }}></textarea>
                 </div>
                 <div className="col-lg-6 my-2">
-                  <label>Website <sup>*</sup></label>
-                  <input type="text" id="jobs_title" name="jobs_title" placeholder="www.domain.com" class="error" aria-invalid="true"  value={WebsiteName}  onChange={(e)=> {
+                  <label>Location <sup>*</sup></label>
+                  <input type="text" id="jobs_title" name="jobs_title" placeholder="California .. " class="error" aria-invalid="true"  value={WebsiteName}  onChange={(e)=> {
                                     setWebsiteName(e.target.value);
                                 }}/>
                 </div>

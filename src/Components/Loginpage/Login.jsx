@@ -95,6 +95,7 @@ function Login() {
 
     }
     const onSubmit = async () => {
+        console.log(new Date())
         if (email == 'nomimalik8051@gmail.com' && password == '123456') {
             console.log('Looged In as Admin')
             setloogedInAsAdmin(true)

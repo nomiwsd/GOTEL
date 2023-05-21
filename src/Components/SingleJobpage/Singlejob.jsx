@@ -148,7 +148,7 @@ function Singlejob() {
                             <Breadcrumb.Item >
                                 <Link to='../Findjob'>Find Job</Link>
                             </Breadcrumb.Item>
-                            <Breadcrumb.Item >Sr. Backend Go Developer</Breadcrumb.Item>
+                            <Breadcrumb.Item >{company.length > 0 ? company[0].Name :''}</Breadcrumb.Item>
                         </Breadcrumb>
                         <div className="Jobsection rounded-2 border-1 mb-0 mb-lg-5">
                             <img src={img1} alt="wait for internet" className='rounded-2' />

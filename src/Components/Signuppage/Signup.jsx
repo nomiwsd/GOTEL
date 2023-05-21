@@ -9,7 +9,7 @@ import { Email } from '@material-ui/icons';
 import { HalfMalf } 
 from 'react-spinner-animated';
 
-import {  createUserWithEmailAndPassword } from 'firebase/auth';
+import {  createUserWithEmailAndPassword,sendEmailVerification } from 'firebase/auth';
 import { auth,firestore } from '../../firebase';
 import { setDoc,doc } from "@firebase/firestore"
  
@@ -54,6 +54,7 @@ function Signup() {
           else{   
             await setDoc(doc(firestore, "users",user.uid), {
                 Name:UserName,
+                email:email,
                 userType:selectedTab,
                 // date:new Date().now
              })
@@ -81,6 +82,7 @@ function Signup() {
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
+                sendEmailVerification(userCredential.user)
                 writeUserDetails(user)  
             })
             .catch((error) => {

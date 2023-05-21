@@ -22,6 +22,10 @@ import { useEffect } from 'react';
 
 function Companydetails() {
     const [SearchBar, setSearchBar] = useState(false)
+    
+  const [search, setSearch] = useState('')
+  const [selected, setSelected] = useState('All')
+  
     const [jobCount, setJob] = useState(new Map([]))
     const [jobseekers, setJobseekers] = useState([])
     const [company, setCompany] = useState([])
@@ -103,7 +107,7 @@ function Companydetails() {
                                     <SiCoursera className="icon fs-4" />
                                     <span>Upload Courses</span>
                                 </li></Link>
-                       
+
                             <Link to='/Message' style={{ textDecoration: "none" }}>   <li>
                                 <BiMessageDetail className="icon fs-4" />
                                 <span>Messages</span>
@@ -126,65 +130,122 @@ function Companydetails() {
                     <div class="entry-my-page company-dashboard my-5">
                         <div class="entry-title d-flex justify-content-between my-2">
                             <h4>Companies</h4>
-                            <div className="search d-none d-md-block border-1 rounded-4 p-1">
-                                <input type="text" placeholder="Search..." value={SearchBar} onChange={(e) => {
-                                    setSearchBar(e.target.value);
-                                }} />
-                                <SearchOutlinedIcon />
+
+                        </div>
+                        <div className="row d-flex m-4 p-0 ">
+                            <select className="firstDropdown col-12 col-lg-3 me-2 p-lg-0" onChange={(e) => { setSelected(e.target.value) }}>
+                            <option selected value="All">All Categories</option>
+                                                    <option value="Analytics">Analytics</option>
+                                                    <option value="Customer & Service">Customer Service</option>
+                                                    <option value="Design & Creative">Design Creative</option>
+                                                    <option value="Development & IT">Development IT</option>
+                                                    <option value="Legal & Finance">Legal Finance</option>
+                                                    <option value="Marketing & Sales">Marketing Sales</option>
+                                                    <option value="Product & Management">Product Management</option>
+                                                    <option value="Writing & Translation">Writing Translation</option>
+                            </select>
+                            <div className=" searchdiv d-flex col-12 col-lg-3 border-1 rounded-1 p-0 my-2 m-lg-0 ">
+                                <input type="text" placeholder="Find By Company" className='px-2 w-100 searchinput' value={search} onChange={(e) => { setSearch(e.target.value) }} />
+                                <SearchOutlinedIcon className='fs-3 mt-2 searchicon' />
                             </div>
+
                         </div>
                         <div class="table-dashboard-wapper">
                             <table class="table-dashboard companytable" id="my-company">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        
                                         <th>Category</th>
                                         <th>Active Jobs</th>
                                         <th>Registered Date</th>
-                                        </tr>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     {
                                         company != null ?
                                             company.map((C, I) => {
-                                                return (
-                                                    <tr>
-                                                        <td class="info-user">
-                                                            <Link >
-                                                                <img src={C.img} className=' rounded-full object-cover mr-5' alt={C.companyName} />
-                                                            </Link>
-                                                            <div class="info-details">
-                                                                <h4 className='companyname text-center m-0'><a href="">{C.companyName}</a></h4>
-                                                                <p>
-                                                                    <span>{C.categorie}</span>
-                                                                </p>
-                                                            </div>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <span class="cate">
-                                                                <span>{C.categorie}</span>
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="active-jobs">{C.jobs }</span>
-                                                        </td>
-                                                        <td>04-10-2023</td>
-                                                        <td class="action-setting company-control">
-                                                            <div class="btn-group dropend">
-                                                                <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    <HiOutlineDotsHorizontal />
-                                                                </button>
-                                                                <ul class="dropdown-menu dropdownmenu">
-                                                                    <li><a class="dropdown-item" href="#sf">Edit</a></li>
-                                                                    <li><a class="dropdown-item" href="#sf">Delete</a></li>
-
-                                                                </ul>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                )
+                                                if(C.companyName.includes(search)){
+                                                    if(selected == 'All'){
+                                                        return (
+                                                            <tr>
+                                                                <td class="info-user">
+                                                                    <Link >
+                                                                        <img src={C.img} className=' rounded-full object-cover mr-5' alt={C.companyName} />
+                                                                    </Link>
+                                                                    <div class="info-details">
+                                                                        <h4 className='companyname text-center m-0'><a href="">{C.companyName}</a></h4>
+                                                                        <p>
+                                                                            <span>{C.categorie}</span>
+                                                                        </p>
+                                                                    </div>
+                                                                </td>
+        
+                                                                <td>
+                                                                    <span class="cate">
+                                                                        <span>{C.categorie}</span>
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="active-jobs">{C.jobs}</span>
+                                                                </td>
+                                                                <td>04-10-2023</td>
+                                                                {/* <td class="action-setting company-control">
+                                                                    <div class="btn-group dropend">
+                                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                            <HiOutlineDotsHorizontal />
+                                                                        </button>
+                                                                        <ul class="dropdown-menu dropdownmenu">
+                                                                            <li><a class="dropdown-item" href="#sf">Edit</a></li>
+                                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
+        
+                                                                        </ul>
+                                                                    </div>
+                                                                </td> */}
+                                                            </tr>
+                                                        )
+                                                    }
+                                                    else if(C.categorie == selected)
+                                                    {
+                                                        return (
+                                                            <tr>
+                                                                <td class="info-user">
+                                                                    <Link >
+                                                                        <img src={C.img} className=' rounded-full object-cover mr-5' alt={C.companyName} />
+                                                                    </Link>
+                                                                    <div class="info-details">
+                                                                        <h4 className='companyname text-center m-0'><a href="">{C.companyName}</a></h4>
+                                                                        <p>
+                                                                            <span>{C.categorie}</span>
+                                                                        </p>
+                                                                    </div>
+                                                                </td>
+        
+                                                                <td>
+                                                                    <span class="cate">
+                                                                        <span>{C.categorie}</span>
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="active-jobs">{C.jobs}</span>
+                                                                </td>
+                                                                <td>04-10-2023</td>
+                                                                {/* <td class="action-setting company-control">
+                                                                    <div class="btn-group dropend">
+                                                                        <button type="button" className="editdelete" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                            <HiOutlineDotsHorizontal />
+                                                                        </button>
+                                                                        <ul class="dropdown-menu dropdownmenu">
+                                                                            <li><a class="dropdown-item" href="#sf">Edit</a></li>
+                                                                            <li><a class="dropdown-item" href="#sf">Delete</a></li>
+        
+                                                                        </ul>
+                                                                    </div>
+                                                                </td> */}
+                                                            </tr>
+                                                        )
+                                                    }
+                                                }
+                                               
                                             })
                                             : <></>
                                     }
@@ -192,7 +253,7 @@ function Companydetails() {
                             </table>
                             <div class="civi-loading-effect"><span class="civi-dual-ring"></span></div>
                         </div>
-                    
+
                     </div>
 
                 </div>

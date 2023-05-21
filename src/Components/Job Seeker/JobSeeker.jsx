@@ -58,6 +58,8 @@ function JobSeeker() {
     var company = localStorage.getItem('user')
     company = JSON.parse(company)
     setUser(company)
+    setName(company.Name)
+    setEmail(company.email)
     fetchAllDetails(company.uid)
   },[])
   var [user,setUser] = useState({})
@@ -140,6 +142,8 @@ function JobSeeker() {
     fetchProjectDetails(uid)
     fetchAwardDetails(uid)
     fetchEducationDetails(uid)
+    setSelectedImage(await getDownloadURL(ref(storage,`images/${uid}/profile`)))
+
   }
   const writeUserDetails = async () => {
     await setDoc(doc(firestore, "users",user.uid), {
@@ -174,25 +178,22 @@ function JobSeeker() {
     
   }
   const fetchUserDetails = async (uid) => {
-        setSelectedImage(await getDownloadURL(ref(storage,`images/${uid}/profile`)))
         await getDoc(doc(firestore,'users',uid))
             .then((querySnapshot)=>{
-                if(querySnapshot.exists()){
-                    setName(querySnapshot.data().Name)
-                    setCnic(querySnapshot.data().cnic)
-                    setPosition(querySnapshot.data().position)
-                    setCategories(querySnapshot.data().categories)
-                    setDob(querySnapshot.data().dob)
-                    setPhoneNo(querySnapshot.data().phoneNo)
-                    setTwitterLink(querySnapshot.data().twitterLink)
-                    setInstagramLink(querySnapshot.data().instagramLink)
-                    setFacebookLink(querySnapshot.data().facebookLink)
-                    setLinkedInLink(querySnapshot.data().linkedInLink)
-                    setGender({value:querySnapshot.data().gender,label:querySnapshot.data().gender})
-                    setLanguage(querySnapshot.data().language)
-                    setQualification({label:querySnapshot.data().qualification,value:querySnapshot.data().qualification})
-                    setEmail(querySnapshot.data().email)
-                }
+              setName(querySnapshot.data().Name)
+              setCnic(querySnapshot.data().cnic)
+              setPosition(querySnapshot.data().position)
+              setCategories(querySnapshot.data().categories)
+              setDob(querySnapshot.data().dob)
+              setPhoneNo(querySnapshot.data().phoneNo)
+              setTwitterLink(querySnapshot.data().twitterLink)
+              setInstagramLink(querySnapshot.data().instagramLink)
+              setFacebookLink(querySnapshot.data().facebookLink)
+              setLinkedInLink(querySnapshot.data().linkedInLink)
+              setGender({value:querySnapshot.data().gender,label:querySnapshot.data().gender})
+              setLanguage(querySnapshot.data().language)
+              setQualification({label:querySnapshot.data().qualification,value:querySnapshot.data().qualification})
+              setEmail(querySnapshot.data().email)
                 console.log('User Data fetched')
             })
             .catch((e)=>{

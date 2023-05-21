@@ -32,13 +32,18 @@ function Postedjob() {
         await getDocs(collection(firestore, 'jobs'))
             .then((querySnapshot) => {
                 const newData = querySnapshot.docs
-                    .map((doc) => {
+                    .map(async (doc) => {
                         if(doc.data().by == uid){
+                            var alp = 0
+                            await getDocs(collection(firestore, `jobs/${doc.id}/Applications`))
+                                .then(async (applicants) => {
+                                    alp = applicants.docs.length
+                                })
                             const newDocData = {
                                 id: doc.id,
                                 title: doc.data().jobTitle,
                                 type: doc.data().type,
-                                applicants: doc.data().Applicants,
+                                applicants: alp,
                                 posted: doc.data().posted,
                                 status: doc.data().status,
                             }

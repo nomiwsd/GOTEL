@@ -15,9 +15,11 @@ import { setDoc, doc as Doc, addDoc, getDocs,updateDoc, docR, getDoc, collection
 import { firestore, storage } from '../../../firebase';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { getDownloadURL, ref } from 'firebase/storage';
 
 function CompanyNavbar({userProfileImg}) {
   var [user, setUser] = useState({})
+  const [image,setImage] = useState('')
   const [unReadMsgs,setUnReadMsgs] = useState(0)
   useEffect(() => {
     var company = localStorage.getItem('user')
@@ -26,6 +28,8 @@ function CompanyNavbar({userProfileImg}) {
     fetchUsersDetails(company.uid)
 }, [])  
 const fetchUsersDetails = async (uid)=>{
+  const img = await getDownloadURL(ref(storage,`images/${uid}/profile`))
+  setImage(img)
     onSnapshot(collection(firestore,`users/${uid}/chat`),(msgs)=>{
       setUnReadMsgs(0)
       msgs.docs.map((msg,index)=>{
@@ -107,9 +111,10 @@ const fetchUsersDetails = async (uid)=>{
           <div className="item">
             <img
               // src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              src={userProfileImg}
+              src={Image}
+
               alt=""
-              className="avatar"
+              className="avatar object-cover"
             />
           </div>
         </div>

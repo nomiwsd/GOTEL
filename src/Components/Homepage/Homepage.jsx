@@ -27,6 +27,11 @@ import { setDoc, doc as Doc, getDocs, docR, getDoc, collection, deleteDoc } from
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage"
 function Homepage() {
+
+    const [search, setSearch] = useState('')
+    const [selectedCategorie, setSelectedCategorie] = useState('All')
+    const [selectedLocation, setSelectedLocation] = useState('All')
+
     const navigate = useNavigate()
     const [counterup, setcounterup] = useState(false);
     const [Jobs, setJobs] = useState([])
@@ -34,7 +39,12 @@ function Homepage() {
         var company = localStorage.getItem('user')
         company = JSON.parse(company)
         setUser(company)
-        fetchJobDetails(company.uid)
+        if (company) {
+            fetchJobDetails(company.uid)
+        }
+        else {
+            fetchJobs()
+        }
     }, [])
     var [user, setUser] = useState({})
     const [loading, setLoading] = useState(false)
@@ -54,6 +64,25 @@ function Homepage() {
                                         var UserImg = await getDownloadURL(ref(storage, `images/${doc.data().by}/profile`))
                                         setJobs((Jobs) => [...Jobs, { by: posterOfJob.data().Name, img: UserImg, id: doc.id, liked: likedDoc.exists(), job: doc.data() }])
                                     })
+                            })
+
+                    });
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+    }
+    const fetchJobs = async () => {
+        setJobs([])
+        await getDocs(collection(firestore, 'jobs'))
+            .then((querySnapshot) => {
+                const newData = querySnapshot.docs
+                    .map(async (doc) => {
+                        await getDoc(Doc(firestore, `users/${doc.data().by}`))
+                            .then(async (posterOfJob) => {
+                                var UserImg = await getDownloadURL(ref(storage, `images/${doc.data().by}/profile`))
+                                setJobs((Jobs) => [...Jobs, { by: posterOfJob.data().Name, img: UserImg, id: doc.id, liked: false, job: doc.data() }])
+
                             })
 
                     });
@@ -171,32 +200,32 @@ function Homepage() {
                                 <div className="row m-0 p-0 smallsearchbar py-2">
                                     <div className="col-12 d-flex formgroup p-0">
                                         <TfiSearch className='mx-3 mt-2 fs-3' />
-                                        <input type="text" placeholder='Job title or keywords' />
+                                        <input type="text" placeholder='Job title or keywords' value={search} onChange={(e) => { setSearch(e.target.value) }} />
                                     </div>
                                     <div className="col-12 d-flex formgroup my-2 p-0">
                                         <SlLocationPin className='mx-3 mt-2 fs-4' />
-                                        <select class="selectpicker form-control">
-                                            <option selected>All Location</option>
-                                            <option value="1">Boston</option>
-                                            <option value="2">California</option>
-                                            <option value="3">Chicago</option>
-                                            <option value="4">New York</option>
-                                            <option value="5">Pakistan</option>
-                                            <option value="6">Seatle</option>
+                                        <select class="selectpicker form-control" onChange={(e) => { setSelectedLocation(e.target.value) }}>
+                                            <option selected value="All">All Location</option>
+                                            <option value="Boston">Boston</option>
+                                            <option value="California">California</option>
+                                            <option value="Chicago">Chicago</option>
+                                            <option value="New York">New York</option>
+                                            <option value="Pakistan">Pakistan</option>
+                                            <option value="Seatle">Seatle</option>
                                         </select>
                                     </div>
                                     <div className="col-12 d-flex formgroup  p-0">
                                         <TbFolder className='mx-3 mt-2 fs-4' />
-                                        <select class="selectpicker form-control">
-                                            <option selected>All Categories</option>
-                                            <option value="1">Analytics</option>
-                                            <option value="2">Customer Service</option>
-                                            <option value="3">Design &amp; Creative</option>
-                                            <option value="4">Development &amp; IT</option>
-                                            <option value="5">Legal &amp; Finance</option>
-                                            <option value="6">Marketing &amp; Sales</option>
-                                            <option value="7">Product Management</option>
-                                            <option value="8">Writing &amp; Translation</option>
+                                        <select class="selectpicker form-control" onChange={(e) => { setSelectedCategorie(e.target.value) }}>
+                                            <option selected value="All">All Categories</option>
+                                            <option value="Analytics">Analytics</option>
+                                            <option value="Customer & Service">Customer Service</option>
+                                            <option value="Design & Creative">Design Creative</option>
+                                            <option value="Development & IT">Development IT</option>
+                                            <option value="Legal & Finance">Legal Finance</option>
+                                            <option value="Marketing & Sales">Marketing Sales</option>
+                                            <option value="Product & Management">Product Management</option>
+                                            <option value="Writing & Translation">Writing Translation</option>
                                         </select>
                                     </div>
                                     <div className="col-12 d-flex justify-content-center rightgroup mt-2">
@@ -248,32 +277,32 @@ function Homepage() {
                             <div className="row m-0 p-0 searchbar ">
                                 <div className="col-lg-3 col-md-6 formgroup searchinput my-1">
                                     <TfiSearch className='mt-2 mx-1 fs-4' />
-                                    <input type="text" placeholder='Job title or keywords' />
+                                    <input type="text" placeholder='Job title or keywords' value={search} onChange={(e) => { setSearch(e.target.value) }} />
                                 </div>
                                 <div className="col-lg-3 col-md-6  formgroup my-1">
                                     <SlLocationPin className='mt-1 mx-1 fs-4' />
-                                    <select name="jobs-location" className="optionselect" >
-                                        <option value="">All Location</option>
-                                        <option value="37">Boston</option>
-                                        <option value="40">California</option>
-                                        <option value="46">Chicago</option>
-                                        <option value="86">New York</option>
-                                        <option value="94">Pakistan</option>
-                                        <option value="96">Seatle</option>
+                                    <select name="jobs-location" className="optionselect" onChange={(e) => { setSelectedLocation(e.target.value) }}>
+                                        <option selected value="All">All Location</option>
+                                        <option value="Boston">Boston</option>
+                                        <option value="California">California</option>
+                                        <option value="Chicago">Chicago</option>
+                                        <option value="New York">New York</option>
+                                        <option value="Pakistan">Pakistan</option>
+                                        <option value="Seatle">Seatle</option>
                                     </select>
                                 </div>
                                 <div className="col-lg-3 col-md-6  formgroup my-1">
                                     <TbFolder className='my-1 fs-4' />
-                                    <select name="jobs-categories" className="optionselect"  >
-                                        <option value="">All Categories</option>
-                                        <option value="168">Analytics</option>
-                                        <option value="50">Customer Service</option>
-                                        <option value="57">Design &amp; Creative</option>
-                                        <option value="58">Development &amp; IT</option>
-                                        <option value="64">Legal &amp; Finance</option>
-                                        <option value="76">Marketing &amp; Sales</option>
-                                        <option value="90">Product Management</option>
-                                        <option value="162">Writing &amp; Translation</option>
+                                    <select name="jobs-categories" className="optionselect" onChange={(e) => { setSelectedCategorie(e.target.value) }}>
+                                        <option value="All" selected>All Categories</option>
+                                        <option value="Analytics">Analytics</option>
+                                        <option value="Customer & Service">Customer Service</option>
+                                        <option value="Design & Creative">Design Creative</option>
+                                        <option value="Development & IT">Development IT</option>
+                                        <option value="Legal & Finance">Legal Finance</option>
+                                        <option value="Marketing & Sales">Marketing Sales</option>
+                                        <option value="Product & Management">Product Management</option>
+                                        <option value="Writing & Translation">Writing Translation</option>
                                     </select>
                                 </div>
                                 <div className="col-lg-3 col-md-6  rightgroup my-1 ">
@@ -452,73 +481,149 @@ function Homepage() {
                                 <div className="row m-0 p-0 d-flex justify-content-center gy-4">
                                     {
                                         Jobs.map(({ by, img, id, job, liked }, index) => {
-                                            return (
-                                                <div class="jobs-item layout-list jobs-featured col-lg-8 col-12 ">
-                                                    <div class="jobs-header d-flex justify-content-between p-0">
-                                                        <div class="jobs-header-left d-flex justify-content-between p-0">
-                                                            <img class="logo-company rounded-full" src={img} alt="" />
-                                                            <div class="jobs-left-inner mx-3">
-                                                                <h3 class="jobs-title"><a onClick={() => {
-                                                                    // setNavigateState({
-                                                                    //     id: id,
-                                                                    //     img: img,
-                                                                    //     job: job,
-                                                                    //     liked: liked
-                                                                    // })
-                                                                    navigate('../SingleJob', {
-                                                                        state: {
-                                                                            by:by,
-                                                                            id: id,
-                                                                            img: img,
-                                                                            job: job,
-                                                                            liked: liked
-                                                                        }
-                                                                    })
-                                                                }}>{job.jobTitle}</a>
-                                                                </h3>
-                                                                <div class="info-company d-flex ">
-                                                                    <p >by <a class="authour civi-link-bottom mx-2" href="https://civi.uxper.co/companies/software/uxper/">{by}</a> in
-                                                                        <Link to='' class="cate civi-link-bottom mx-2">
-                                                                            {job.jobCategorie}   </Link> </p>
+                                            if (selectedCategorie == 'All') {
+                                                if (job.jobTitle.includes(search)) {
+                                                    return (
+                                                        <div class="jobs-item layout-list jobs-featured col-lg-8 col-12 ">
+                                                            <div class="jobs-header d-flex justify-content-between p-0">
+                                                                <div class="jobs-header-left d-flex justify-content-between p-0">
+                                                                    <img class="logo-company rounded-full" src={img} alt="" />
+                                                                    <div class="jobs-left-inner mx-3">
+                                                                        <h3 class="jobs-title"><a onClick={() => {
+                                                                            // setNavigateState({
+                                                                            //     id: id,
+                                                                            //     img: img,
+                                                                            //     job: job,
+                                                                            //     liked: liked
+                                                                            // })
+                                                                            navigate('../SingleJob', {
+                                                                                state: {
+                                                                                    by: by,
+                                                                                    id: id,
+                                                                                    img: img,
+                                                                                    job: job,
+                                                                                    liked: liked
+                                                                                }
+                                                                            })
+                                                                        }}>{job.jobTitle}</a>
+                                                                        </h3>
+                                                                        <div class="info-company d-flex ">
+                                                                            <p >by <a class="authour civi-link-bottom mx-2" href="https://civi.uxper.co/companies/software/uxper/">{by}</a> in
+                                                                                <Link to='' class="cate civi-link-bottom mx-2">
+                                                                                    {job.jobCategorie}   </Link> </p>
 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="jobs-header-right d-flex justify-content-between">
+                                                                    <div class="logged-out mx-2">
+                                                                        {
+                                                                            liked ?
+                                                                                <BsHeartFill className=' text-xl mt-2' onClick={() => {
+                                                                                    DisLikeJob(id, index)
+                                                                                }} />
+                                                                                :
+                                                                                <BsHeart className=' text-xl mt-2' onClick={() => {
+                                                                                    LikeJob(id, index)
+                                                                                }} />
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="jobsfooter row  p-0 d-flex justify-content-center ">
+                                                                <div class="jobs-footer-left col-12  col-lg-12 row ">
+                                                                    <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
+                                                                        <Link to='' class="label" >
+                                                                            {job.jobType} </Link></div>
+                                                                    <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
+                                                                        <Link to='' class="label" >
+
+                                                                            <GrLocation className='fs-5' />Pakistan</Link></div>
+
+                                                                    <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
+                                                                        <Link to='' class="label" >
+                                                                            ${job.jobSalaryMax}/month
+                                                                        </Link></div>
+                                                                    <p class="days col-lg-5 col-12 col-md-4  d-flex justify-content-center align-items-center ">
+                                                                        <span className='mx-2'> {job.posted} </span> last date to apply  </p>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="jobs-header-right d-flex justify-content-between">
-                                                            <div class="logged-out mx-2">
-                                                                {
-                                                                    liked ?
-                                                                        <BsHeartFill className=' text-xl mt-2' onClick={() => {
-                                                                            DisLikeJob(id, index)
-                                                                        }} />
-                                                                        :
-                                                                        <BsHeart className=' text-xl mt-2' onClick={() => {
-                                                                            LikeJob(id, index)
-                                                                        }} />
-                                                                }
+                                                    )
+                                                }
+                                            }
+                                            else if (job.jobCategorie.includes(selectedCategorie)) {
+                                                if (job.jobTitle.includes(search)) {
+                                                    return (
+                                                        <div class="jobs-item layout-list jobs-featured col-lg-8 col-12 ">
+                                                            <div class="jobs-header d-flex justify-content-between p-0">
+                                                                <div class="jobs-header-left d-flex justify-content-between p-0">
+                                                                    <img class="logo-company rounded-full object-cover" src={img} alt="" />
+                                                                    <div class="jobs-left-inner mx-3">
+                                                                        <h3 class="jobs-title"><a onClick={() => {
+                                                                            // setNavigateState({
+                                                                            //     id: id,
+                                                                            //     img: img,
+                                                                            //     job: job,
+                                                                            //     liked: liked
+                                                                            // })
+                                                                            navigate('../SingleJob', {
+                                                                                state: {
+                                                                                    by: by,
+                                                                                    id: id,
+                                                                                    img: img,
+                                                                                    job: job,
+                                                                                    liked: liked
+                                                                                }
+                                                                            })
+                                                                        }}>{job.jobTitle}</a>
+                                                                        </h3>
+                                                                        <div class="info-company d-flex ">
+                                                                            <p >by <a class="authour civi-link-bottom mx-2" href="https://civi.uxper.co/companies/software/uxper/">{by}</a> in
+                                                                                <Link to='' class="cate civi-link-bottom mx-2">
+                                                                                    {job.jobCategorie}   </Link> </p>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="jobs-header-right d-flex justify-content-between">
+                                                                    <div class="logged-out mx-2">
+                                                                        {
+                                                                            liked ?
+                                                                                <BsHeartFill className=' text-xl mt-2' onClick={() => {
+                                                                                    DisLikeJob(id, index)
+                                                                                }} />
+                                                                                :
+                                                                                <BsHeart className=' text-xl mt-2' onClick={() => {
+                                                                                    LikeJob(id, index)
+                                                                                }} />
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="jobsfooter row  p-0 d-flex justify-content-center ">
+                                                                <div class="jobs-footer-left col-12  col-lg-12 row ">
+                                                                    <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
+                                                                        <Link to='' class="label" >
+                                                                            {job.jobType} </Link></div>
+                                                                    <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
+                                                                        <Link to='' class="label" >
+
+                                                                            <GrLocation className='fs-5' />Pakistan</Link></div>
+
+                                                                    <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
+                                                                        <Link to='' class="label" >
+                                                                            ${job.jobSalaryMax}/month
+                                                                        </Link></div>
+                                                                    <p class="days col-lg-5 col-12 col-md-4  d-flex justify-content-center align-items-center ">
+                                                                        <span className='mx-2'> {job.posted} </span> last date to apply  </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="jobsfooter row  p-0 d-flex justify-content-center ">
-                                                        <div class="jobs-footer-left col-12  col-lg-12 row ">
-                                                            <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
-                                                                <Link to='' class="label" >
-                                                                    {job.jobType} </Link></div>
-                                                            <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
-                                                                <Link to='' class="label" >
+                                                    )
+                                                }
+                                            }
 
-                                                                    <GrLocation className='fs-5' />Pakistan</Link></div>
-
-                                                            <div className="jobtype d-flex justify-content-center align-items-center col-6 col-md-2  col-lg-3  mx-md-2 mx-lg-2 my-2">
-                                                                <Link to='' class="label" >
-                                                                    ${job.jobSalaryMax}/month
-                                                                </Link></div>
-                                                            <p class="days col-lg-5 col-12 col-md-4  d-flex justify-content-center align-items-center ">
-                                                                <span className='mx-2'> {job.posted} </span> last date to apply  </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            )
                                         })
                                     }
                                     <div className="d-flex justify-content-center mt-3">
@@ -861,7 +966,7 @@ function Homepage() {
                 </footer>
             </div>
         )
-    } 
+    }
 }
 
 export default Homepage

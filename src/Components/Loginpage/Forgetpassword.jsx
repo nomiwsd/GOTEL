@@ -5,8 +5,21 @@ import { FcGoogle } from 'react-icons/fc'
 import { Link, useNavigate } from 'react-router-dom'
 import { HalfMalf } from 'react-spinner-animated';
 
+import { signInWithEmailAndPassword,sendPasswordResetEmail } from 'firebase/auth';
+import { auth, firestore, storage } from "../../firebase";
+
 function Forgetpassword() {
+
+    const [msg,setMsg] = useState('')
     const [email, setEmail] = useState('')
+
+    const sendEmail= ()=>{
+        sendPasswordResetEmail(auth,email).then(()=>{
+            setMsg('Email Sent Successfully')
+        }).catch(()=>{
+            setMsg('Email Not Found')
+        })
+    }
 
   return (
     <div>
@@ -19,12 +32,11 @@ function Forgetpassword() {
                 <input type="email" className="form-control" id="ControlInput1" placeholder="name@example.com" value={email} onChange={(e) => {
                     setEmail(e.target.value);
                 }} />
-
-             <div className="d-flex justify-content-center"><Link to='../Login'  className='submitbtn  my-3 col-4'>Confirm</Link></div>
+             <div className="d-flex justify-content-center"><button  className='submitbtn  my-3 col-4' onClick={()=>{sendEmail()}}>Confirm</button></div>
                 <HalfMalf text={"Loading..."} bgColor={"#F0A500"} center={false} width={"100px"} height={"100px"} />
                  <div className="d-flex justify-content-center align-items-center">
                     <div className="">
-                        <p className='text-success'>Your Password is Reset Successfully</p>
+                        <p className='text-success'>{msg}</p>
                         <p className='text-danger'>Please Fill out Your Details First*</p>
                     </div>
                 </div>

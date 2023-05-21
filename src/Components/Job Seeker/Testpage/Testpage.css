@@ -8,14 +8,12 @@ label.radio input {
   }
   
   label.radio span {
-    padding: 4px 0px;
+    padding: 4px 4px;
     border: 1px solid red;
     display: inline-block;
-    color: red;
-    width: 100px;
+    min-width: 100px;
     text-align: center;
     border-radius: 3px;
-    margin-top: 7px;
     text-transform: uppercase;
   }
   .courseselect{
@@ -24,11 +22,11 @@ label.radio input {
   .courseselect:focus{
     border: 1px solid black !important;
   }
-  label.radio input:checked + span {
+  /* label.radio input:checked + span {
     border-color: red;
     background-color: red;
     color: #fff;
-  }
+  } */
   
   .ans {
     margin-left: 36px !important;
